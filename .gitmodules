@@ -1,0 +1,6 @@
+[submodule "themes/mainroad"]
+	path = themes/hiero
+    url = https://github.com/stackuncle/hexo-theme-hiero.git
+[submodule "public"]
+	path = public
+	url = https://github.com/stackuncle/stackuncle.github.io.git

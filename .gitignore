@@ -1,0 +1,8 @@
+.idea
+db.json
+debug.log
+themes/*
+public
+resources/_gen
+node_modules/
+package-lock.json
