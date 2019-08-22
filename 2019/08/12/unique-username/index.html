@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>找到独一无二的用户名 - 络壳 LockShell</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="find unique Username,python,spider,网名">
+	<meta property="og:title" content="找到独一无二的用户名" />
+<meta property="og:description" content="find unique Username,python,spider,网名" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lockshell.com/2019/08/12/unique-username/" />
+<meta property="article:published_time" content="2019-08-12T11:37:28&#43;08:00"/>
+<meta property="article:modified_time" content="2019-08-12T11:37:28&#43;08:00"/>
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="找到独一无二的用户名"/>
+<meta name="twitter:description" content="find unique Username,python,spider,网名"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-131513582-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="络壳 LockShell" rel="home">
+				<div class="logo__title">络壳 LockShell</div>
+				<div class="logo__tagline">A coder&#39;s thinking</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">关于络壳</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/links/">友情链接</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/ads/">广而告之</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/archives/">文章归档</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+
+
+
+<script async src="//cdn.busuanzi.ibruce.info/cdn/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 100);
+        var busuanziSiteOffset =  0 
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">找到独一无二的用户名</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-12T11:37:28">2019-08-12</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7" rel="category">开发工具</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 881 words</span>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#安装">安装</a></li>
+<li><a href="#查找示例">查找示例</a></li>
+<li><a href="#结果示例">结果示例</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<p>很多朋友想要申请一个独一无二的个性用户名/网名，但是自己想好的名称总容易跟别人的冲突；要么是A网站不冲突，在B网站冲突了。</p>
+
+<p>那么有没有方法一次性找出某个用户名，在所有常见社交网站、论坛的注册情况呢？</p>
+
+<p>万能的Github已经有人为我们提供了方便的工具，那就是<a href="https://github.com/sherlock-project/sherlock">sherlock</a>。</p>
+
+<p>sherlock是一个用Python编写的爬虫工具，通过社交网络上的用户名搜索社交媒体帐户。</p>
+
+<h2 id="安装">安装</h2>
+
+<pre><code class="language-bash"># clone the repo
+$ git clone https://github.com/sherlock-project/sherlock.git
+
+# change the working directory to sherlock
+$ cd sherlock
+
+# install python3 and python3-pip if they are not installed
+
+# install the requirements
+$ python3 -m pip install -r requirements.txt
+</code></pre>
+
+<h2 id="查找示例">查找示例</h2>
+
+<p>查找单个用户:</p>
+
+<pre><code>python3 sherlock.py user123
+</code></pre>
+
+<p>查询多个用户:</p>
+
+<pre><code>python3 sherlock.py user1 user2 user3
+</code></pre>
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/sherlock-project/sherlock/master/images/sherlock_preview.gif"/>
+</p>
+
+<h2 id="结果示例">结果示例</h2>
+
+<p>比如运行<code>python sherlock.py  python</code> 来查找<code>python</code>这个用户名的注册结果。</p>
+
+<pre><code>[*] Checking username python on:
+[-] ResearchGate: Illegal Username Format For This Site!
+[+] 500px: https://500px.com/python
+[+] 9GAG: https://9gag.com/u/python
+[+] About.me: https://about.me/python
+[-] Academia.edu: Not Found!
+[-] AngelList: Not Found!
+[+] Anobii: https://www.anobii.com/python/profile
+[+] Aptoide: https://python.en.aptoide.com/
+[+] Archive.org: https://archive.org/details/@python
+[+] AskFM: https://ask.fm/python
+[+] BLIP.fm: https://blip.fm/python
+[+] Badoo: https://badoo.com/profile/python
+[+] Bandcamp: https://www.bandcamp.com/python
+[+] Basecamp: https://python.basecamphq.com
+[+] Behance: https://www.behance.net/python
+[+] BitBucket: https://bitbucket.org/python/
+[-] BitCoinForum: Not Found!
+[+] Blogger: https://python.blogspot.com
+[-] Brew: Not Found!
+[-] BuyMeACoffee: Not Found!
+[-] BuzzFeed: Not Found!
+[+] Canva: https://www.canva.com/python
+[+] Carbonmade: https://python.carbonmade.com
+[+] CashMe: https://cash.me/python
+[-] Cent: Not Found!
+[+] Cloob: https://www.cloob.com/name/python
+[+] Codecademy: https://www.codecademy.com/python
+[+] Codechef: https://www.codechef.com/users/python
+[-] Codementor: Not Found!
+[-] Codepen: Not Found!
+[-] Coderwall: Not Found!
+[+] Codewars: https://www.codewars.com/users/python
+[+] ColourLovers: https://www.colourlovers.com/lover/python
+[-] Contently: Not Found!
+[-] Coroflot: Not Found!
+[+] CreativeMarket: https://creativemarket.com/python
+[-] Crevado: Not Found!
+[+] Crunchyroll: https://www.crunchyroll.com/user/python
+[-] DEV Community: Not Found!
+[+] DailyMotion: https://www.dailymotion.com/python
+[-] Designspiration: Not Found!
+[-] DeviantART: Not Found!
+[+] Discogs: https://www.discogs.com/user/python
+[+] Disqus: https://disqus.com/python
+[+] Docker Hub: https://hub.docker.com/u/python/
+[+] Dribbble: https://dribbble.com/python
+[+] EVE Online: https://evewho.com/pilot/python/
+[+] Ebay: https://www.ebay.com/usr/python
+[+] Ello: https://ello.co/python
+[-] Etsy: Not Found!
+[+] EyeEm: https://www.eyeem.com/u/python
+[-] Facebook: Not Found!
+[-] Fandom: Not Found!
+[-] Filmogs: Not Found!
+[+] Flickr: https://www.flickr.com/people/python
+[-] Flightradar24: Not Found!
+[+] Flipboard: https://flipboard.com/@python
+[-] Foursquare: Not Found!
+[+] Giphy: https://giphy.com/python
+[+] GitHub: https://www.github.com/python
+[-] GitLab: Not Found!
+[+] Gitee: https://gitee.com/python
+[+] GoodReads: https://www.goodreads.com/python
+[+] Gravatar: http://en.gravatar.com/python
+[-] Gumroad: Not Found!
+[-] HackerNews: Not Found!
+[+] HackerOne: https://hackerone.com/python
+[+] HackerRank: https://hackerrank.com/python
+[+] House-Mixes.com: https://www.house-mixes.com/profile/python
+[+] Houzz: https://houzz.com/user/python
+[+] HubPages: https://hubpages.com/@python
+[+] IFTTT: https://www.ifttt.com/p/python
+[+] ImageShack: https://imageshack.us/user/python
+[+] Imgur: https://imgur.com/user/python
+[+] Instagram: https://www.instagram.com/python
+[+] Instructables: https://www.instructables.com/member/python
+[-] Investing.com: Not Found!
+[+] Issuu: https://issuu.com/python
+[+] Itch.io: https://python.itch.io/
+[-] Jimdo: Not Found!
+[-] Kaggle: Not Found!
+[+] KanoWorld: https://api.kano.me/progress/user/python
+[-] Keybase: Not Found!
+[+] Kik: https://ws2.kik.com/user/python
+[+] Kongregate: https://www.kongregate.com/accounts/python
+[+] Launchpad: https://launchpad.net/~python
+[+] LeetCode: https://leetcode.com/python
+[-] Letterboxd: Not Found!
+[+] LiveJournal: https://python.livejournal.com
+[-] Mastodon: Not Found!
+[+] Medium: https://medium.com/@python
+[+] MeetMe: https://www.meetme.com/python
+[+] MixCloud: https://www.mixcloud.com/python/
+[+] MyAnimeList: https://myanimelist.net/profile/python
+[+] Myspace: https://myspace.com/python
+[+] NPM: https://www.npmjs.com/~python
+[+] NPM-Package: https://www.npmjs.com/package/python
+[+] NameMC (Minecraft.net skins): https://namemc.com/profile/python
+[-] NationStates Nation: Not Found!
+[-] NationStates Region: Not Found!
+[+] Newgrounds: https://python.newgrounds.com
+[-] OK: Not Found!
+[-] OpenCollective: Not Found!
+[-] Packagist: Not Found!
+[+] Pastebin: https://pastebin.com/u/python
+[+] Patreon: https://www.patreon.com/python
+[+] PayPal: https://www.paypal.me/python
+[-] Pexels: Not Found!
+[+] Photobucket: https://photobucket.com/user/python/library
+[+] Pinterest: https://www.pinterest.com/python/
+[+] Pixabay: https://pixabay.com/en/users/python
+[-] PlayStore: Not Found!
+[-] Plug.DJ: Not Found!
+[+] Pokemon Showdown: https://pokemonshowdown.com/users/python
+[-] ProductHunt: Not Found!
+[-] Quora: Not Found!
+[+] Rajce.net: https://python.rajce.idnes.cz/
+[+] Rate Your Music: https://rateyourmusic.com/~python
+[+] Reddit: https://www.reddit.com/user/python
+[+] Repl.it: https://repl.it/@python
+[-] ReverbNation: Not Found!
+[-] Roblox: Not Found!
+[+] Scratch: https://scratch.mit.edu/users/python
+[+] Scribd: https://www.scribd.com/python
+[-] Signal: Not Found!
+[+] Slack: https://python.slack.com
+[+] SlideShare: https://slideshare.net/python
+[-] Smashcast: Not Found!
+[+] SoundCloud: https://soundcloud.com/python
+[+] SourceForge: https://sourceforge.net/u/python
+[+] Speedrun.com: https://speedrun.com/user/python
+[-] Splits.io: Not Found!
+[+] Spotify: https://open.spotify.com/user/python
+[+] Star Citizen: https://robertsspaceindustries.com/citizens/python
+[+] Steam: https://steamcommunity.com/id/python
+[+] SteamGroup: https://steamcommunity.com/groups/python
+[+] Taringa: https://www.taringa.net/python
+[+] Telegram: https://t.me/python
+[+] TikTok: https://www.tiktok.com/@python
+[+] Tinder: https://www.gotinder.com/@python
+[-] TradingView: Not Found!
+[+] Trakt: https://www.trakt.tv/users/python
+[-] Trello: Not Found!
+[-] Trip: Not Found!
+[+] TripAdvisor: https://tripadvisor.com/members/python
+[+] Twitch: https://m.twitch.tv/python
+[+] Twitter: https://www.twitter.com/python
+[+] Unsplash: https://unsplash.com/@python
+[+] VK: https://vk.com/python
+[+] VSCO: https://vsco.co/python
+[+] Venmo: https://venmo.com/python
+[+] Vimeo: https://vimeo.com/python
+[+] Virgool: https://virgool.io/@python
+[-] VirusTotal: Not Found!
+[+] Wattpad: https://www.wattpad.com/user/python
+[+] We Heart It: https://weheartit.com/python
+[+] WebNode: https://python.webnode.cz/
+[-] Wikipedia: Not Found!
+[-] Wix: Not Found!
+[+] WordPress: https://python.wordpress.com/
+[+] WordPressOrg: https://profiles.wordpress.org/python/
+[+] YouNow: https://www.younow.com/python/
+[-] YouPic: Not Found!
+[-] YouTube: Not Found!
+[+] Zhihu: https://www.zhihu.com/people/python
+[+] authorSTREAM: http://www.authorstream.com/python/
+[-] boingboing.net: Not Found!
+[+] devRant: https://devrant.com/users/python
+[+] gfycat: https://gfycat.com/@python
+[+] iMGSRC.RU: https://imgsrc.ru/main/user.php?user=python
+[+] last.fm: https://last.fm/user/python
+[+] mixer.com: https://mixer.com/python
+[+] osu!: https://osu.ppy.sh/users/python
+
+</code></pre>
+
+			<div>本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
+			<hr>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/python/" rel="tag">Python</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="络壳-LockShell avatar" src="http://wx1.sinaimg.cn/sq612/007WyrCfgy1g5uyiopw05j30by0bydgn.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 络壳-LockShell</span>
+	</div>
+	<div class="authorbox__description">
+		扫码关注络壳公众号，获取更多最新内容。
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2019/08/11/skill-tree/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">程序员技能树</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2019/08/12/nginx-security-configs/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Nginx安全相关配置</p></a>
+	</div>
+</nav>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '41b3bd5685f4310306a5',
+    clientSecret: '4b943ef7620d478481ffd403f08bb951e01e22b8',
+    repo: 'stackuncle.github.io',
+    owner: 'stackuncle',
+    admin: ['stackuncle'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 LockShell.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+			<span id="busuanzi_container_site_pv">本站访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+			&nbsp;
+			<span id="busuanzi_container_site_uv">您是本站第 <span id="busuanzi_value_site_uv"></span> 位访问者
+        </span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script></body>
+</html>

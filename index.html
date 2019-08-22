@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta name="generator" content="Hugo 0.55.6" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>络壳 LockShell</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Python,Coding,Cache,Django,Nginx,MySql">
+	<meta property="og:title" content="络壳 LockShell" />
+<meta property="og:description" content="Python,Coding,Cache,Django,Nginx,MySql" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lockshell.com/" />
+
+<meta property="og:updated_time" content="2019-08-21T19:09:21&#43;08:00"/>
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="络壳 LockShell"/>
+<meta name="twitter:description" content="Python,Coding,Cache,Django,Nginx,MySql"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="络壳 LockShell">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-131513582-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="络壳 LockShell" rel="home">
+				<div class="logo__title">络壳 LockShell</div>
+				<div class="logo__tagline">A coder&#39;s thinking</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">关于络壳</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/links/">友情链接</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/ads/">广而告之</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/archives/">文章归档</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+
+
+
+<script async src="//cdn.busuanzi.ibruce.info/cdn/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 100);
+        var busuanziSiteOffset =  0 
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/21/backend-interview-resource/" rel="bookmark">
+			怎样准备后端面试？
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-21T13:25:48">2019-08-21</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e6%8a%80%e6%9c%af%e4%ba%ba%e7%94%9f" rel="category">技术人生</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1351 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		数据结构和算法 主要内容 数据结构：字符串、栈、队列、二叉树、优先队列、hash表（Redis怎么用的）、B+树(数据库索引) 算法：基本的几种排
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/21/backend-interview-resource/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/20/note-of-west-with-the-night/" rel="bookmark">
+			读书简记《夜航西飞》
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-20T21:48:31">2019-08-20</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0" rel="category">读书笔记</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2699 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		无论是广袤无垠的热带草原，还是黄尘漫漫的万里狂沙，非洲大陆对大部分人来说是神秘的。《夜航西飞》是所有写非洲的书里最精彩绝伦的那一本，没有之一
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/20/note-of-west-with-the-night/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/19/note-of-rework/" rel="bookmark">
+			读书简记《重来：更简单有效的商业思维》
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-19T22:43:36">2019-08-19</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0" rel="category">读书笔记</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2296 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		《重来》可以说是我去年读的最好的书。 书中讲了很多道理，看到与看懂，懂得与行动，这中间是隔了十万八千里的。世界上的道理千千万，大多说的很绝对，
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/19/note-of-rework/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/18/note-of-the-little-prince/" rel="bookmark">
+			读书简记《小王子》
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-18T20:53:40">2019-08-18</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0" rel="category">读书笔记</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1292 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		“有一天，我看过四十四次日落。” 过一会儿，你又说：人难过的时候，总是爱看日落的。 如果你爱上了一朵生长在一颗星星上的花，那么夜间，你看着天空就
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/18/note-of-the-little-prince/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/18/note-of-easiest-rules-in-invest/" rel="bookmark">
+			读书简记《投资中最简单的事》
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-18T19:32:53">2019-08-18</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0" rel="category">读书笔记</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 5738 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		注：本文整理自《投资中最简单的事》一书，该书写于2014年，很多观点是基于那个时间点来看的。 01 以实业的眼光做投资 下跌后，悲痛欲绝；上涨后，欢
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/18/note-of-easiest-rules-in-invest/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/18/how-to-use-httpie/" rel="bookmark">
+			Httpie超赞的http客户端
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-18T15:34:15">2019-08-18</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/linux" rel="category">Linux</a>, <a class="meta__link" href="/categories/%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7" rel="category">开发工具</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 356 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Httpie是一个人性化的HTTP的命令行客户端，httpie之于curl，有点类似requests之于urllib，用起来更方便。 HTTPie (pronounced aitch-tee-tee-pie) is
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/18/how-to-use-httpie/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/18/how-to-calculate-ip-subnet-address/" rel="bookmark">
+			怎样计算子网IP地址
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-18T15:08:15">2019-08-18</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7" rel="category">开发工具</a>, <a class="meta__link" href="/categories/linux" rel="category">Linux</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 212 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		工作中遇到这样的子网ip和掩码：192.168.20.0/24，得在脑海中用二进制去算IP范围是多少，子网掩码是多少；有时还得在纸上画一画，
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/18/how-to-calculate-ip-subnet-address/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/18/how-to-find-dns-ip/" rel="bookmark">
+			怎样查看DNS服务的IP
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-18T14:48:06">2019-08-18</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/linux" rel="category">Linux</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 410 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。域名解析就是域名到IP地址的转换过程。域名的解析工作由
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/18/how-to-find-dns-ip/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/17/python-third-party-libs/" rel="bookmark">
+			Python常用三方库
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-17T00:16:31">2019-08-17</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 286 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		以下是Python Web开发中常用的三方库，按功能和使用场景做了简单的分类。 常用 ipython 功能丰富的工具，非常有效的使用交互式 Python。 ipdb 调试神
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/17/python-third-party-libs/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/15/python-test-tools/" rel="bookmark">
+			Python测试工具
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-15T00:16:09">2019-08-15</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7" rel="category">开发工具</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 183 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>本文介绍常用的Python测试工具。</p>
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/15/python-test-tools/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/14/python-free-resources/" rel="bookmark">
+			Python免费学习资源
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-14T23:42:15">2019-08-14</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 214 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>本文介绍了很多学习资源，帮助小伙伴们更深入的理解Python的各个方面。</p>
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/14/python-free-resources/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/14/chrome-extensions/" rel="bookmark">
+			程序员必备Chrome插件
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-14T09:41:49">2019-08-14</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7" rel="category">开发工具</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 329 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Octotree 在GitHub边侧栏上显示代码树。非常适合查看项目源代码，无需将代码库clone到计算机上用IDE查看。Postman Postman有单独
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/14/chrome-extensions/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/14/programmer-self-discipline2/" rel="bookmark">
+			程序员的自我修养2
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-14T01:00:22">2019-08-14</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e6%8a%80%e6%9c%af%e4%ba%ba%e7%94%9f" rel="category">技术人生</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 363 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		之前在极客时间上订阅了耗子哥的专栏，花了169大洋，但是这个钱我觉得花的值。从耗子哥的这些文章里，学到很多有所裨益的东西。 在《程序员如何用技
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/14/programmer-self-discipline2/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/13/law-of-ten-thousand-hours/" rel="bookmark">
+			你被一万小时定律欺骗了嘛？
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-13T22:53:07">2019-08-13</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0" rel="category">读书笔记</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2337 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		PS: 这篇笔记整理自《刻意练习》一书。 一万小时天才理论 《异类》这本书中最让人印象深刻的就是“一万小时天才理论”。 “人们眼中的天才之所以卓越非凡，
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/13/law-of-ten-thousand-hours/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/13/programmer-self-discipline/" rel="bookmark">
+			程序员的自我修养
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-13T21:08:08">2019-08-13</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e6%8a%80%e6%9c%af%e4%ba%ba%e7%94%9f" rel="category">技术人生</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1554 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		现在互联网用到的很多技术都相当成熟了。不必高估技术，技术是为业务服务的，认清自己作为研发人员在公司的位置。比如小米号称黑科技、为发烧而生，实
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/13/programmer-self-discipline/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://lockshell.com/2019/08/12/note-of-deliberate-practice/">
+			<img src="http://dingyue.ws.126.net/2019/03/20/498c14bc161943919f4e60fe72a70c46.jpeg?imageView&amp;quality=100" alt="读书笔记《刻意练习》" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/12/note-of-deliberate-practice/" rel="bookmark">
+			读书笔记《刻意练习》
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-12T21:56:11">2019-08-12</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0" rel="category">读书笔记</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3300 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		第1章 有目的的练习 有目的的练习具有定义明确的特定目标 定义明确的具体目标，可以有效地用于引导你的练习。 有目的的练习是专注的 有目的的练习包含反馈
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/12/note-of-deliberate-practice/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://lockshell.com/2019/08/12/git-brain-map/">
+			<img src="https://cdn-media-1.freecodecamp.org/images/1*fbmqZte8Tx-KfrZlkw4q4g.png" alt="Git思维导图" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/12/git-brain-map/" rel="bookmark">
+			Git思维导图
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-12T20:17:16">2019-08-12</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/tools" rel="category">Tools</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 7 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Git思维导图
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/12/nginx-security-configs/" rel="bookmark">
+			Nginx安全相关配置
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-12T15:35:37">2019-08-12</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/nginx" rel="category">Nginx</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 362 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>A summary of Nginx security configuration.</p>
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/12/nginx-security-configs/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/12/unique-username/" rel="bookmark">
+			找到独一无二的用户名
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-12T11:37:28">2019-08-12</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7" rel="category">开发工具</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 881 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		很多朋友想要申请一个独一无二的个性用户名/网名，但是自己想好的名称总容易跟别人的冲突；要么是A网站不冲突，在B网站冲突了。 那么有没有方法一次
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/08/12/unique-username/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="/2019/08/11/skill-tree/" rel="bookmark">
+			程序员技能树
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-11T20:03:57">2019-08-11</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/other" rel="category">Other</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 33 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		程序员技能树 转自https://www.frankfeekr.cn
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<span class="pagination__item pagination__item--current">1/2</span>
+	<a class="pagination__item pagination__item--next btn" href="/page/2/">»</a>
+</div>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://lockshell.com/" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2019/08/21/backend-interview-resource/">怎样准备后端面试？</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/20/note-of-west-with-the-night/">读书简记《夜航西飞》</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/19/note-of-rework/">读书简记《重来：更简单有效的商业思维》</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/18/note-of-the-little-prince/">读书简记《小王子》</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/18/note-of-easiest-rules-in-invest/">读书简记《投资中最简单的事》</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/18/how-to-use-httpie/">Httpie超赞的http客户端</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/18/how-to-calculate-ip-subnet-address/">怎样计算子网IP地址</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/18/how-to-find-dns-ip/">怎样查看DNS服务的IP</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/17/python-third-party-libs/">Python常用三方库</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/15/python-test-tools/">Python测试工具</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/14/python-free-resources/">Python免费学习资源</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/14/chrome-extensions/">程序员必备Chrome插件</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/14/programmer-self-discipline2/">程序员的自我修养2</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/13/law-of-ten-thousand-hours/">你被一万小时定律欺骗了嘛？</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/13/programmer-self-discipline/">程序员的自我修养</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/algorithm" title="Algorithm">Algorithm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/career" title="Career">Career (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/china" title="China">China (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cs" title="Cs">Cs (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git" title="Git">Git (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo" title="Hugo">Hugo (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/invest" title="Invest">Invest (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux" title="Linux">Linux (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx" title="Nginx">Nginx (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/note" title="Note">Note (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/other" title="Other">Other (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python" title="Python">Python (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tools" title="Tools">Tools (5)</a>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/categories/life">Life</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/linux">Linux</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/nginx">Nginx</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/other">Other</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/python">Python</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/thinking">Thinking</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/tools">Tools</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7">开发工具</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e6%8a%80%e6%9c%af%e4%ba%ba%e7%94%9f">技术人生</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0">读书笔记</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Twitter" rel="noopener noreferrer" href="https://twitter.com/lockshell_com" target="_blank">
+				<svg class="widget-social__link-icon icon icon-twitter" width="24" height="24" viewBox="0 0 384 312"><path d="m384 36.9c-14.1 6.3-29.3 10.5-45.2 12.4 16.3-9.7 28.8-25.2 34.6-43.6-15.2 9-32.1 15.6-50 19.1-14.4-15.2-34.9-24.8-57.5-24.8-43.5 0-78.8 35.3-78.8 78.8 0 6.2.7 12.2 2 17.9-65.5-3.3-123.5-34.6-162.4-82.3-6.7 11.6-10.6 25.2-10.6 39.6 0 27.3 13.9 51.4 35 65.6-12.9-.4-25.1-4-35.7-9.9v1c0 38.2 27.2 70 63.2 77.2-6.6 1.8-13.6 2.8-20.8 2.8-5.1 0-10-.5-14.8-1.4 10 31.3 39.1 54.1 73.6 54.7-27 21.1-60.9 33.7-97.8 33.7-6.4 0-12.6-.4-18.8-1.1 34.9 22.4 76.3 35.4 120.8 35.4 144.9 0 224.1-120 224.1-224.1 0-3.4-.1-6.8-.2-10.2 15.4-11.1 28.7-25 39.3-40.8z"/></svg>
+				<span>Twitter</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Email" href="mailto:lockshell@foxmail.com">
+				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
+				<span>lockshell@foxmail.com</span>
+			</a>
+		</div>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 LockShell.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+			<span id="busuanzi_container_site_pv">本站访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+			&nbsp;
+			<span id="busuanzi_container_site_uv">您是本站第 <span id="busuanzi_value_site_uv"></span> 位访问者
+        </span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script></body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on 络壳 LockShell</title>
+    <link>https://lockshell.com/tags/linux/</link>
+    <description>Recent content in Linux on 络壳 LockShell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 18 Aug 2019 15:34:15 +0800</lastBuildDate>
+    
+	<atom:link href="https://lockshell.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Httpie超赞的http客户端</title>
+      <link>https://lockshell.com/2019/08/18/how-to-use-httpie/</link>
+      <pubDate>Sun, 18 Aug 2019 15:34:15 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/18/how-to-use-httpie/</guid>
+      <description>Httpie是一个人性化的HTTP的命令行客户端，httpie之于curl，有点类似requests之于urllib，用起来更方便。 HTTPie (pronounced aitch-tee-tee-pie) is</description>
+    </item>
+    
+    <item>
+      <title>怎样计算子网IP地址</title>
+      <link>https://lockshell.com/2019/08/18/how-to-calculate-ip-subnet-address/</link>
+      <pubDate>Sun, 18 Aug 2019 15:08:15 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/18/how-to-calculate-ip-subnet-address/</guid>
+      <description>工作中遇到这样的子网ip和掩码：192.168.20.0/24，得在脑海中用二进制去算IP范围是多少，子网掩码是多少；有时还得在纸上画一画，</description>
+    </item>
+    
+    <item>
+      <title>怎样查看DNS服务的IP</title>
+      <link>https://lockshell.com/2019/08/18/how-to-find-dns-ip/</link>
+      <pubDate>Sun, 18 Aug 2019 14:48:06 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/18/how-to-find-dns-ip/</guid>
+      <description>IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。域名解析就是域名到IP地址的转换过程。域名的解析工作由</description>
+    </item>
+    
+  </channel>
+</rss>

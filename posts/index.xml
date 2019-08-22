@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Index on 络壳 LockShell</title>
+    <link>https://lockshell.com/posts/</link>
+    <description>Recent content in Index on 络壳 LockShell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 17 Aug 2019 16:44:38 +0800</lastBuildDate>
+    
+	<atom:link href="https://lockshell.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>怎样准备后端面试？</title>
+      <link>https://lockshell.com/2019/08/21/backend-interview-resource/</link>
+      <pubDate>Wed, 21 Aug 2019 13:25:48 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/21/backend-interview-resource/</guid>
+      <description>数据结构和算法 主要内容 数据结构：字符串、栈、队列、二叉树、优先队列、hash表（Redis怎么用的）、B+树(数据库索引) 算法：基本的几种排</description>
+    </item>
+    
+    <item>
+      <title>读书简记《夜航西飞》</title>
+      <link>https://lockshell.com/2019/08/20/note-of-west-with-the-night/</link>
+      <pubDate>Tue, 20 Aug 2019 21:48:31 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/20/note-of-west-with-the-night/</guid>
+      <description>无论是广袤无垠的热带草原，还是黄尘漫漫的万里狂沙，非洲大陆对大部分人来说是神秘的。《夜航西飞》是所有写非洲的书里最精彩绝伦的那一本，没有之一</description>
+    </item>
+    
+    <item>
+      <title>读书简记《重来：更简单有效的商业思维》</title>
+      <link>https://lockshell.com/2019/08/19/note-of-rework/</link>
+      <pubDate>Mon, 19 Aug 2019 22:43:36 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/19/note-of-rework/</guid>
+      <description>《重来》可以说是我去年读的最好的书。 书中讲了很多道理，看到与看懂，懂得与行动，这中间是隔了十万八千里的。世界上的道理千千万，大多说的很绝对，</description>
+    </item>
+    
+    <item>
+      <title>读书简记《小王子》</title>
+      <link>https://lockshell.com/2019/08/18/note-of-the-little-prince/</link>
+      <pubDate>Sun, 18 Aug 2019 20:53:40 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/18/note-of-the-little-prince/</guid>
+      <description>“有一天，我看过四十四次日落。” 过一会儿，你又说：人难过的时候，总是爱看日落的。 如果你爱上了一朵生长在一颗星星上的花，那么夜间，你看着天空就</description>
+    </item>
+    
+    <item>
+      <title>读书简记《投资中最简单的事》</title>
+      <link>https://lockshell.com/2019/08/18/note-of-easiest-rules-in-invest/</link>
+      <pubDate>Sun, 18 Aug 2019 19:32:53 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/18/note-of-easiest-rules-in-invest/</guid>
+      <description>注：本文整理自《投资中最简单的事》一书，该书写于2014年，很多观点是基于那个时间点来看的。 01 以实业的眼光做投资 下跌后，悲痛欲绝；上涨后，欢</description>
+    </item>
+    
+    <item>
+      <title>Httpie超赞的http客户端</title>
+      <link>https://lockshell.com/2019/08/18/how-to-use-httpie/</link>
+      <pubDate>Sun, 18 Aug 2019 15:34:15 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/18/how-to-use-httpie/</guid>
+      <description>Httpie是一个人性化的HTTP的命令行客户端，httpie之于curl，有点类似requests之于urllib，用起来更方便。 HTTPie (pronounced aitch-tee-tee-pie) is</description>
+    </item>
+    
+    <item>
+      <title>怎样计算子网IP地址</title>
+      <link>https://lockshell.com/2019/08/18/how-to-calculate-ip-subnet-address/</link>
+      <pubDate>Sun, 18 Aug 2019 15:08:15 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/18/how-to-calculate-ip-subnet-address/</guid>
+      <description>工作中遇到这样的子网ip和掩码：192.168.20.0/24，得在脑海中用二进制去算IP范围是多少，子网掩码是多少；有时还得在纸上画一画，</description>
+    </item>
+    
+    <item>
+      <title>怎样查看DNS服务的IP</title>
+      <link>https://lockshell.com/2019/08/18/how-to-find-dns-ip/</link>
+      <pubDate>Sun, 18 Aug 2019 14:48:06 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/18/how-to-find-dns-ip/</guid>
+      <description>IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。域名解析就是域名到IP地址的转换过程。域名的解析工作由</description>
+    </item>
+    
+    <item>
+      <title>Python常用三方库</title>
+      <link>https://lockshell.com/2019/08/17/python-third-party-libs/</link>
+      <pubDate>Sat, 17 Aug 2019 00:16:31 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/17/python-third-party-libs/</guid>
+      <description>以下是Python Web开发中常用的三方库，按功能和使用场景做了简单的分类。 常用 ipython 功能丰富的工具，非常有效的使用交互式 Python。 ipdb 调试神</description>
+    </item>
+    
+    <item>
+      <title>Python测试工具</title>
+      <link>https://lockshell.com/2019/08/15/python-test-tools/</link>
+      <pubDate>Thu, 15 Aug 2019 00:16:09 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/15/python-test-tools/</guid>
+      <description>&lt;p&gt;本文介绍常用的Python测试工具。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python免费学习资源</title>
+      <link>https://lockshell.com/2019/08/14/python-free-resources/</link>
+      <pubDate>Wed, 14 Aug 2019 23:42:15 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/14/python-free-resources/</guid>
+      <description>&lt;p&gt;本文介绍了很多学习资源，帮助小伙伴们更深入的理解Python的各个方面。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>程序员必备Chrome插件</title>
+      <link>https://lockshell.com/2019/08/14/chrome-extensions/</link>
+      <pubDate>Wed, 14 Aug 2019 09:41:49 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/14/chrome-extensions/</guid>
+      <description>Octotree 在GitHub边侧栏上显示代码树。非常适合查看项目源代码，无需将代码库clone到计算机上用IDE查看。Postman Postman有单独</description>
+    </item>
+    
+    <item>
+      <title>程序员的自我修养2</title>
+      <link>https://lockshell.com/2019/08/14/programmer-self-discipline2/</link>
+      <pubDate>Wed, 14 Aug 2019 01:00:22 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/14/programmer-self-discipline2/</guid>
+      <description>之前在极客时间上订阅了耗子哥的专栏，花了169大洋，但是这个钱我觉得花的值。从耗子哥的这些文章里，学到很多有所裨益的东西。 在《程序员如何用技</description>
+    </item>
+    
+    <item>
+      <title>你被一万小时定律欺骗了嘛？</title>
+      <link>https://lockshell.com/2019/08/13/law-of-ten-thousand-hours/</link>
+      <pubDate>Tue, 13 Aug 2019 22:53:07 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/13/law-of-ten-thousand-hours/</guid>
+      <description>PS: 这篇笔记整理自《刻意练习》一书。 一万小时天才理论 《异类》这本书中最让人印象深刻的就是“一万小时天才理论”。 “人们眼中的天才之所以卓越非凡，</description>
+    </item>
+    
+    <item>
+      <title>程序员的自我修养</title>
+      <link>https://lockshell.com/2019/08/13/programmer-self-discipline/</link>
+      <pubDate>Tue, 13 Aug 2019 21:08:08 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/13/programmer-self-discipline/</guid>
+      <description>现在互联网用到的很多技术都相当成熟了。不必高估技术，技术是为业务服务的，认清自己作为研发人员在公司的位置。比如小米号称黑科技、为发烧而生，实</description>
+    </item>
+    
+    <item>
+      <title>读书笔记《刻意练习》</title>
+      <link>https://lockshell.com/2019/08/12/note-of-deliberate-practice/</link>
+      <pubDate>Mon, 12 Aug 2019 21:56:11 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/12/note-of-deliberate-practice/</guid>
+      <description>第1章 有目的的练习 有目的的练习具有定义明确的特定目标 定义明确的具体目标，可以有效地用于引导你的练习。 有目的的练习是专注的 有目的的练习包含反馈</description>
+    </item>
+    
+    <item>
+      <title>Git思维导图</title>
+      <link>https://lockshell.com/2019/08/12/git-brain-map/</link>
+      <pubDate>Mon, 12 Aug 2019 20:17:16 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/12/git-brain-map/</guid>
+      <description>Git思维导图</description>
+    </item>
+    
+    <item>
+      <title>Nginx安全相关配置</title>
+      <link>https://lockshell.com/2019/08/12/nginx-security-configs/</link>
+      <pubDate>Mon, 12 Aug 2019 15:35:37 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/12/nginx-security-configs/</guid>
+      <description>&lt;p&gt;A summary of Nginx security configuration.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>找到独一无二的用户名</title>
+      <link>https://lockshell.com/2019/08/12/unique-username/</link>
+      <pubDate>Mon, 12 Aug 2019 11:37:28 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/12/unique-username/</guid>
+      <description>很多朋友想要申请一个独一无二的个性用户名/网名，但是自己想好的名称总容易跟别人的冲突；要么是A网站不冲突，在B网站冲突了。 那么有没有方法一次</description>
+    </item>
+    
+    <item>
+      <title>程序员技能树</title>
+      <link>https://lockshell.com/2019/08/11/skill-tree/</link>
+      <pubDate>Sun, 11 Aug 2019 20:03:57 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/11/skill-tree/</guid>
+      <description>程序员技能树 转自https://www.frankfeekr.cn</description>
+    </item>
+    
+    <item>
+      <title>写给面试者的数据结构和算法文章</title>
+      <link>https://lockshell.com/2019/08/11/data-structure-and-algorithms-articles-for-beginners/</link>
+      <pubDate>Sun, 11 Aug 2019 17:14:00 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/11/data-structure-and-algorithms-articles-for-beginners/</guid>
+      <description>142 Resources for Mastering Coding Interviews 作者在这篇文章中列出了很多编程面试资源，有很多如像《50+算法问题》和《20+字符串编程问题》对准备编程面试超级有用。 14 Patterns to Ace Any</description>
+    </item>
+    
+    <item>
+      <title>How Chinese Think About the US-China Trade War</title>
+      <link>https://lockshell.com/2019/08/10/how-chinese-think-about-trade-war/</link>
+      <pubDate>Sat, 10 Aug 2019 13:39:16 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/10/how-chinese-think-about-trade-war/</guid>
+      <description>如果我们的敌人激烈的批评和反对我们，我们一定是做了什么非常正确的事情。—— 毛泽东 If our enemies fiercely criticize and oppose us, we must have done something very right. 民主国家的政治变化很快，严厉的</description>
+    </item>
+    
+    <item>
+      <title>Add Gitalk for comments in Hugo Blog</title>
+      <link>https://lockshell.com/2019/08/10/add-gitalk-for-hugo-blog/</link>
+      <pubDate>Sat, 10 Aug 2019 11:12:00 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/10/add-gitalk-for-hugo-blog/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Gitalk&lt;/code&gt; is a comment plug based on Github issue api.&lt;code&gt;Hugo&lt;/code&gt; can compile the Markdown files with themes and templates into static web files, such as CSS, HTML and JavaScript.&lt;/p&gt;
+
+&lt;p&gt;To use &lt;code&gt;Gitalk&lt;/code&gt; in the &lt;code&gt;Hugo&lt;/code&gt; blog, we need to add Gitalk related code as &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; into the HTML template.Then update the config.toml for &lt;code&gt;Gitalk&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Display Word Count in Hugo Blog</title>
+      <link>https://lockshell.com/2019/08/10/display-word-count-in-hugo-blog/</link>
+      <pubDate>Sat, 10 Aug 2019 10:57:14 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/10/display-word-count-in-hugo-blog/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Hugo&lt;/code&gt; has many template params for the blog web page. There are two which are related to word count of articles.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Display Your Github Chart in Blog</title>
+      <link>https://lockshell.com/2019/08/10/display-your-github-chart-in-blog/</link>
+      <pubDate>Sat, 10 Aug 2019 10:23:28 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/10/display-your-github-chart-in-blog/</guid>
+      <description>&lt;p&gt;There is an interesting api on &lt;a href=&#34;https://ghchart.rshah.org/&#34;&gt;https://ghchart.rshah.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It can display your Github chart information as an image.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Welcome</title>
+      <link>https://lockshell.com/2019/07/21/my-first-post/</link>
+      <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lockshell.com/2019/07/21/my-first-post/</guid>
+      <description>Welcome to LockShell </description>
+    </item>
+    
+    <item>
+      <title>在哪里找新加坡的工作？</title>
+      <link>https://lockshell.com/2019/03/09/where-to-find-jobs-in-singapore/</link>
+      <pubDate>Sat, 09 Mar 2019 14:32:46 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/03/09/where-to-find-jobs-in-singapore/</guid>
+      <description>Websites Monster Jobsdb JobStreet JobsCentral</description>
+    </item>
+    
+    <item>
+      <title>Python技术栈/工具链整理</title>
+      <link>https://lockshell.com/2018/12/10/python-tech-stack/</link>
+      <pubDate>Mon, 10 Dec 2018 23:07:04 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2018/12/10/python-tech-stack/</guid>
+      <description>开发环境 开发工具 Vim/SublimeText2/PyCharm/VS Code 用着顺手就好，我是由vim转PyCharm的。集成开发环境自动补全、单步调试等功能好很多，有利于提高工作效率。 iTerm</description>
+    </item>
+    
+    <item>
+      <title>Nginx正向代理配置</title>
+      <link>https://lockshell.com/2018/08/17/nginx-forward-proxy-config/</link>
+      <pubDate>Fri, 17 Aug 2018 11:20:19 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2018/08/17/nginx-forward-proxy-config/</guid>
+      <description>&lt;p&gt;Nginx不仅可以做反向代理，实现负载均衡。还能用作正向代理来进行上网等功能。&lt;/p&gt;
+
+&lt;p&gt;正向代理：如果把局域网外的Internet想象成一个巨大的资源库，局域网中的客户端要访问Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Nginx as Static File Server</title>
+      <link>https://lockshell.com/2018/02/12/nginx-as-static-file-server/</link>
+      <pubDate>Mon, 12 Feb 2018 11:31:48 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2018/02/12/nginx-as-static-file-server/</guid>
+      <description>&lt;p&gt;Nginx一大经典使用场景就是用来提供静态文件服务，例如图片、html、脚本、样式文件等，这些文件没有必要交给 tomcat、jboss等应用服务器处理，使用 Nginx 直接处理将大大提高性能。用 Nginx 来提供静态文件服务十分简单，只需要添加一个 server块指令即可。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Nginx反向代理配置</title>
+      <link>https://lockshell.com/2018/02/12/nginx-reverse-proxy-config/</link>
+      <pubDate>Mon, 12 Feb 2018 11:03:42 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2018/02/12/nginx-reverse-proxy-config/</guid>
+      <description>&lt;h2 id=&#34;nginx反向代理&#34;&gt;Nginx反向代理&lt;/h2&gt;
+
+&lt;p&gt;Nginx是一个轻量级的、高性能的WebServer，主要可以干下面两件事：作为http服务器（和apache的功能一样）；作为反向代理服务器实现负载均衡。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

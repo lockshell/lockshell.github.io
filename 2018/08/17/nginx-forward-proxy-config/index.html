@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Nginx正向代理配置 - 络壳 LockShell</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Nginx Forward Proxy Config">
+	<meta property="og:title" content="Nginx正向代理配置" />
+<meta property="og:description" content="Nginx Forward Proxy Config" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lockshell.com/2018/08/17/nginx-forward-proxy-config/" />
+<meta property="article:published_time" content="2018-08-17T11:20:19&#43;08:00"/>
+<meta property="article:modified_time" content="2018-08-17T11:20:19&#43;08:00"/>
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Nginx正向代理配置"/>
+<meta name="twitter:description" content="Nginx Forward Proxy Config"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-131513582-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="络壳 LockShell" rel="home">
+				<div class="logo__title">络壳 LockShell</div>
+				<div class="logo__tagline">A coder&#39;s thinking</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">关于络壳</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/links/">友情链接</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/ads/">广而告之</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/archives/">文章归档</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+
+
+
+<script async src="//cdn.busuanzi.ibruce.info/cdn/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 100);
+        var busuanziSiteOffset =  0 
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Nginx正向代理配置</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2018-08-17T11:20:19">2018-08-17</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/nginx" rel="category">Nginx</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1133 words</span>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#配置代理">配置代理</a></li>
+<li><a href="#加载配置">加载配置</a></li>
+<li><a href="#测试访问">测试访问</a></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>Nginx不仅可以做反向代理，实现负载均衡。还能用作正向代理来进行上网等功能。</p>
+
+<p>正向代理：如果把局域网外的Internet想象成一个巨大的资源库，局域网中的客户端要访问Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理。</p>
+
+<h2 id="配置代理">配置代理</h2>
+
+<pre><code>
+server {  
+    resolver 114.114.114.114;       #指定DNS服务器IP地址  
+    listen 80;
+    location / {  
+        proxy_pass http://$http_host$request_uri;     #设定代理服务器的协议和地址  
+                proxy_set_header HOST $http_host;
+                proxy_buffers 256 4k;
+                proxy_max_temp_file_size 0k; 
+                proxy_connect_timeout 30;
+                proxy_send_timeout 60;
+                proxy_read_timeout 60;
+                proxy_next_upstream error timeout invalid_header http_502;
+    }  
+}
+
+server {  
+    resolver 114.114.114.114;       #指定DNS服务器IP地址  
+    listen 443;  
+    location / {  
+       proxy_pass https://$host$request_uri;    #设定代理服务器的协议和地址  
+             proxy_buffers 256 4k;
+             proxy_max_temp_file_size 0k; 
+       proxy_connect_timeout 30;
+       proxy_send_timeout 60;
+       proxy_read_timeout 60;
+       proxy_next_upstream error timeout invalid_header http_502;
+    }  
+}  
+</code></pre>
+
+<p>配置两个SERVER节点，一个处理HTTP转发，另一个处理HTTPS转发，而客户端都通过HTTP来访问代理，通过访问代理不同的端口，来区分HTTP和HTTPS请求。</p>
+
+<h2 id="加载配置">加载配置</h2>
+
+<pre><code>nginx -s reload
+</code></pre>
+
+<h2 id="测试访问">测试访问</h2>
+
+<pre><code>server {   
+    resolver 114.114.114.114;       #指定DNS服务器IP地址  
+    listen 8000;  
+    location / {
+        proxy_pass http://$http_host$request_uri;     #设定代理服务器的协议和地址  
+    }   
+} 
+</code></pre>
+
+<p>在本地的Nginx设置了一个通过8000端口的http代理。用代理访问淘宝，不过被重定向了。</p>
+
+<pre><code>➜  curl -l --proxy 127.0.0.1:8000 http://www.taobao.com/   
+&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;302 Found&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor=&quot;white&quot;&gt;
+&lt;h1&gt;302 Found&lt;/h1&gt;
+&lt;p&gt;The requested resource resides temporarily under a different URI.&lt;/p&gt;
+&lt;hr/&gt;Powered by Tengine&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>试试访问百度，可以的呐。</p>
+
+<pre><code>➜ curl -l --proxy 127.0.0.1:8000 &quot;www.baidu.com&quot;
+&lt;!DOCTYPE html&gt;
+&lt;!--STATUS OK--&gt;&lt;html&gt; &lt;head&gt;&lt;meta http-equiv=content-type content=text/html;charset=utf-8&gt;&lt;meta http-equiv=X-UA-Compatible content=IE=Edge&gt;&lt;meta content=always name=referrer&gt;&lt;link rel=stylesheet type=text/css href=http://s1.bdstatic.com/r/www/cache/bdorz/baidu.min.css&gt;&lt;title&gt;百度一下，你就知道&lt;/title&gt;&lt;/head&gt; &lt;body link=#0000cc&gt; &lt;div id=wrapper&gt; &lt;div id=head&gt; &lt;div class=head_wrapper&gt; &lt;div class=s_form&gt; &lt;div class=s_form_wrapper&gt; &lt;div id=lg&gt; &lt;img hidefocus=true src=//www.baidu.com/img/bd_logo1.png width=270 height=129&gt; &lt;/div&gt; &lt;form id=form name=f action=//www.baidu.com/s class=fm&gt; &lt;input type=hidden name=bdorz_come value=1&gt; &lt;input type=hidden name=ie value=utf-8&gt; &lt;input type=hidden name=f value=8&gt; &lt;input type=hidden name=rsv_bp value=1&gt; &lt;input type=hidden name=rsv_idx value=1&gt; &lt;input type=hidden name=tn value=baidu&gt;&lt;span class=&quot;bg s_ipt_wr&quot;&gt;&lt;input id=kw name=wd class=s_ipt value maxlength=255 autocomplete=off autofocus&gt;&lt;/span&gt;&lt;span class=&quot;bg s_btn_wr&quot;&gt;&lt;input type=submit id=su value=百度一下 class=&quot;bg s_btn&quot;&gt;&lt;/span&gt; &lt;/form&gt; &lt;/div&gt; &lt;/div&gt; &lt;div id=u1&gt; &lt;a href=http://news.baidu.com name=tj_trnews class=mnav&gt;新闻&lt;/a&gt; &lt;a href=http://www.hao123.com name=tj_trhao123 class=mnav&gt;hao123&lt;/a&gt; &lt;a href=http://map.baidu.com name=tj_trmap class=mnav&gt;地图&lt;/a&gt; &lt;a href=http://v.baidu.com name=tj_trvideo class=mnav&gt;视频&lt;/a&gt; &lt;a href=http://tieba.baidu.com name=tj_trtieba class=mnav&gt;贴吧&lt;/a&gt; &lt;noscript&gt; &lt;a href=http://www.baidu.com/bdorz/login.gif?login&amp;amp;tpl=mn&amp;amp;u=http%3A%2F%2Fwww.baidu.com%2f%3fbdorz_come%3d1 name=tj_login class=lb&gt;登录&lt;/a&gt; &lt;/noscript&gt; &lt;script&gt;document.write('&lt;a href=&quot;http://www.baidu.com/bdorz/login.gif?login&amp;tpl=mn&amp;u='+ encodeURIComponent(window.location.href+ (window.location.search === &quot;&quot; ? &quot;?&quot; : &quot;&amp;&quot;)+ &quot;bdorz_come=1&quot;)+ '&quot; name=&quot;tj_login&quot; class=&quot;lb&quot;&gt;登录&lt;/a&gt;');&lt;/script&gt; &lt;a href=//www.baidu.com/more/ name=tj_briicon class=bri style=&quot;display: block;&quot;&gt;更多产品&lt;/a&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;div id=ftCon&gt; &lt;div id=ftConw&gt; &lt;p id=lh&gt; &lt;a href=http://home.baidu.com&gt;关于百度&lt;/a&gt; &lt;a href=http://ir.baidu.com&gt;About Baidu&lt;/a&gt; &lt;/p&gt; &lt;p id=cp&gt;&amp;copy;2017&amp;nbsp;Baidu&amp;nbsp;&lt;a href=http://www.baidu.com/duty/&gt;使用百度前必读&lt;/a&gt;&amp;nbsp; &lt;a href=http://jianyi.baidu.com/ class=cp-feedback&gt;意见反馈&lt;/a&gt;&amp;nbsp;京ICP证030173号&amp;nbsp; &lt;img src=//www.baidu.com/img/gs.gif&gt; &lt;/p&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/body&gt; &lt;/html&gt;
+</code></pre>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+<li><a href="http://lockshell.com">深入理解Nginx</a></li>
+</ul>
+			<div>本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
+			<hr>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/cs/" rel="tag">CS</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/nginx/" rel="tag">Nginx</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="络壳-LockShell avatar" src="http://wx1.sinaimg.cn/sq612/007WyrCfgy1g5uyiopw05j30by0bydgn.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 络壳-LockShell</span>
+	</div>
+	<div class="authorbox__description">
+		扫码关注络壳公众号，获取更多最新内容。
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2018/02/12/nginx-as-static-file-server/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Nginx as Static File Server</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2018/12/10/python-tech-stack/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Python技术栈/工具链整理</p></a>
+	</div>
+</nav>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '41b3bd5685f4310306a5',
+    clientSecret: '4b943ef7620d478481ffd403f08bb951e01e22b8',
+    repo: 'stackuncle.github.io',
+    owner: 'stackuncle',
+    admin: ['stackuncle'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 LockShell.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+			<span id="busuanzi_container_site_pv">本站访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+			&nbsp;
+			<span id="busuanzi_container_site_uv">您是本站第 <span id="busuanzi_value_site_uv"></span> 位访问者
+        </span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script></body>
+</html>

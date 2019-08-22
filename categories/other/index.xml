@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Other on 络壳 LockShell</title>
+    <link>https://lockshell.com/categories/other/</link>
+    <description>Recent content in Other on 络壳 LockShell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 21 Aug 2019 19:09:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://lockshell.com/categories/other/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>广而告之</title>
+      <link>https://lockshell.com/ads/</link>
+      <pubDate>Wed, 21 Aug 2019 19:09:21 +0800</pubDate>
+      
+      <guid>https://lockshell.com/ads/</guid>
+      <description>通过下面的二维码购买对应的课程，有20块左右的优惠。</description>
+    </item>
+    
+    <item>
+      <title>Index</title>
+      <link>https://lockshell.com/posts/</link>
+      <pubDate>Sat, 17 Aug 2019 16:44:38 +0800</pubDate>
+      
+      <guid>https://lockshell.com/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>友情链接</title>
+      <link>https://lockshell.com/links/</link>
+      <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
+      
+      <guid>https://lockshell.com/links/</guid>
+      <description>友情链接，欢迎大家在下面通过评论互换友链，谢谢O(∩_∩)O。因为是手动添加，可能会稍有延迟。 2019-08-20 崔笑颜的博客 阿星Plus 2019-08-18 赵俊的博客 2019-08-17 初始化</description>
+    </item>
+    
+    <item>
+      <title>文章归档</title>
+      <link>https://lockshell.com/archives/</link>
+      <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
+      
+      <guid>https://lockshell.com/archives/</guid>
+      <description>很好，总共写了31篇日志，继续加油哦！ 2019-08 2019-08-21 怎样准备后端面试？ 2019-08-20 读书简记《夜航西飞》 2019-08-19 读书简记《重来：更简单有效的商业思维》 2019-08-18 Httpie超赞</description>
+    </item>
+    
+    <item>
+      <title>程序员技能树</title>
+      <link>https://lockshell.com/2019/08/11/skill-tree/</link>
+      <pubDate>Sun, 11 Aug 2019 20:03:57 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/11/skill-tree/</guid>
+      <description>程序员技能树 转自https://www.frankfeekr.cn</description>
+    </item>
+    
+    <item>
+      <title>写给面试者的数据结构和算法文章</title>
+      <link>https://lockshell.com/2019/08/11/data-structure-and-algorithms-articles-for-beginners/</link>
+      <pubDate>Sun, 11 Aug 2019 17:14:00 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/11/data-structure-and-algorithms-articles-for-beginners/</guid>
+      <description>142 Resources for Mastering Coding Interviews 作者在这篇文章中列出了很多编程面试资源，有很多如像《50+算法问题》和《20+字符串编程问题》对准备编程面试超级有用。 14 Patterns to Ace Any</description>
+    </item>
+    
+    <item>
+      <title>关于络壳</title>
+      <link>https://lockshell.com/about/</link>
+      <pubDate>Fri, 09 Aug 2019 10:24:14 +0800</pubDate>
+      
+      <guid>https://lockshell.com/about/</guid>
+      <description>&lt;h2 id=&#34;关于络壳&#34;&gt;关于络壳&lt;/h2&gt;
+
+&lt;p&gt;之前在&lt;a href=&#34;https://coolshell.cn&#34;&gt;CoolShell&lt;/a&gt;的博客上学到了不少，于是也想建一个自己的站点。2019-08-09正是新加坡国庆节假期，这边没啥朋友，也没啥好去的地方。于是动手撸了一个博客，来记录一些技术和生活上的思考。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

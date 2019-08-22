@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Nginx反向代理配置 - 络壳 LockShell</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Nginx Reverse Proxy Config">
+	<meta property="og:title" content="Nginx反向代理配置" />
+<meta property="og:description" content="Nginx Reverse Proxy Config" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lockshell.com/2018/02/12/nginx-reverse-proxy-config/" />
+<meta property="article:published_time" content="2018-02-12T11:03:42&#43;08:00"/>
+<meta property="article:modified_time" content="2018-02-12T11:03:42&#43;08:00"/>
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Nginx反向代理配置"/>
+<meta name="twitter:description" content="Nginx Reverse Proxy Config"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-131513582-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="络壳 LockShell" rel="home">
+				<div class="logo__title">络壳 LockShell</div>
+				<div class="logo__tagline">A coder&#39;s thinking</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">关于络壳</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/links/">友情链接</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/ads/">广而告之</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/archives/">文章归档</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+
+
+
+<script async src="//cdn.busuanzi.ibruce.info/cdn/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 100);
+        var busuanziSiteOffset =  0 
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Nginx反向代理配置</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2018-02-12T11:03:42">2018-02-12</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/nginx" rel="category">Nginx</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1619 words</span>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#nginx反向代理">Nginx反向代理</a>
+<ul>
+<li><a href="#安装nginx">安装Nginx</a></li>
+<li><a href="#nginx基本操作">Nginx基本操作</a></li>
+</ul></li>
+<li><a href="#关于代理">关于代理</a>
+<ul>
+<li><a href="#正向代理">正向代理</a></li>
+<li><a href="#反向代理">反向代理</a></li>
+<li><a href="#反向代理的作用">反向代理的作用</a></li>
+</ul></li>
+<li><a href="#反向代理实例">反向代理实例</a>
+<ul>
+<li><a href="#tornado服务-demo-py">tornado服务<code>demo.py</code></a></li>
+<li><a href="#调整nginx配置">调整Nginx配置</a>
+<ul>
+<li><a href="#负载均衡配置">负载均衡配置</a></li>
+<li><a href="#反向代理配置">反向代理配置</a></li>
+</ul></li>
+<li><a href="#完整配置示例">完整配置示例</a></li>
+<li><a href="#重新加载ginx-conf">重新加载ginx.conf</a></li>
+<li><a href="#访问结果">访问结果</a></li>
+</ul></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<h2 id="nginx反向代理">Nginx反向代理</h2>
+
+<p>Nginx是一个轻量级的、高性能的WebServer，主要可以干下面两件事：作为http服务器（和apache的功能一样）；作为反向代理服务器实现负载均衡。</p>
+
+<h3 id="安装nginx">安装Nginx</h3>
+
+<p>Mac上执行</p>
+
+<pre><code>brew install nginx
+</code></pre>
+
+<p>Ubuntu上执行：</p>
+
+<pre><code>sudo apt-get install nginx 
+</code></pre>
+
+<h3 id="nginx基本操作">Nginx基本操作</h3>
+
+<pre><code>1) 启动Nginx：start nginx
+2) 停止Nginx：nginx -s stop
+3) 修改配置后重启：nginx -s reload
+</code></pre>
+
+<h2 id="关于代理">关于代理</h2>
+
+<h3 id="正向代理">正向代理</h3>
+
+<p>正向代理，作为一个媒介将互联网上获取的资源返回给相关联的客户端。代理和客户端在一个局域网，对于服务端是透明的</p>
+
+<h3 id="反向代理">反向代理</h3>
+
+<p>反向代理，根据客户端的请求，从后端的服务器上获取资源，然后再将这些资源返回给客户端。代理和服务器在一个局域网，对客户端是透明的。</p>
+
+<h3 id="反向代理的作用">反向代理的作用</h3>
+
+<ul>
+<li>提高动态语言的I/O处理能力，Python、PHP、Java这样的动态服务的I/O处理能力不高，反向代理可以缓冲请求，交给后端一个完整的HTTP请求，同样，Nginx也可以缓冲响应，也达到了减轻后端的压力。</li>
+<li>加密和SSL加速。</li>
+<li>安全。它保护和隐藏了原始资源服务器，还可以用作应用防火墙防御一些网络攻击，比如DDoS。</li>
+<li>负载均衡。它帮应用服务器分配请求，以达到资源使用率最佳、吞吐率最大、响应时间最小的目的。</li>
+<li>缓存静态内容。代理缓存通常可以满足相当数量的网站请求，大大降低应用服务器上的负载。</li>
+<li>支持压缩。通过压缩优化可以提高网站访问速度，还能大大减少带宽的消耗。</li>
+</ul>
+
+<p>在生产环境中，通常会在多个服务器启动多个tornado进程实例，使用Nginx在前端作为反向代理服务器来分发web请求，同时负载均衡。</p>
+
+<h2 id="反向代理实例">反向代理实例</h2>
+
+<h3 id="tornado服务-demo-py">tornado服务<code>demo.py</code></h3>
+
+<pre><code># coding: utf-8
+import tornado.ioloop
+import tornado.web
+from multiprocessing import Pool
+import sys
+import os
+
+
+class MainHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write(&quot;Hello, world! PID: %s&quot; % os.getpid())
+
+application = tornado.web.Application([
+    (r&quot;/&quot;, MainHandler),
+])
+
+if __name__ == &quot;__main__&quot;:
+    def run(port):
+        print 'Start Process on port: %s' % port
+        sys.stdout.flush()
+        application.listen(port)
+        tornado.ioloop.IOLoop.instance().start()
+
+    pool = Pool(3)
+    pool.map(run, [8001, 8002, 8003])
+</code></pre>
+
+<p>我们运行<code>demo.py</code>，tornado会启动三个进程，分别侦听8001, 8002, 8003三个端口。</p>
+
+<h3 id="调整nginx配置">调整Nginx配置</h3>
+
+<p>负载均衡的目的是为了解决单个节点压力过大，造成Web服务响应过慢，严重的情况下导致服务瘫痪，无法正常提供服务的问题。Nginx负载均衡是通过upstream模块来实现的，内置实现了多种负载策略。Mac上Nginx的配置文件位于<code>/usr/local/etc/nginx</code>，用vim打开进行编辑。</p>
+
+<h4 id="负载均衡配置">负载均衡配置</h4>
+
+<pre><code>upstream tornado.server {
+   server 127.0.0.1:8001;
+   server 127.0.0.1:8002;
+   server 127.0.0.1:8003;
+}
+</code></pre>
+
+<p>upstream指令主要用于负载均衡，设置一系列的后端服务器。nginx 的 upstream默认是以轮询的方式实现负载均衡，这种方式中，每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。此外还有ip_hash、weight、url_hash、fair等负载均衡策略。upstream命名和服务器地址根据实际情况修改。我这里是本地起的三个tornado服务，所以server IP地址都配的是127.0.0.1，默认轮询的负载均衡。</p>
+
+<h4 id="反向代理配置">反向代理配置</h4>
+
+<pre><code>location / {
+       proxy_pass_header Server;
+       proxy_set_header Host $http_host;
+       proxy_set_header X-Real-IP $remote_addr;
+       proxy_set_header X-Scheme $scheme;
+       proxy_pass http://tornado.server;
+    }
+</code></pre>
+
+<p>location部分用于匹配反向代理的网页位置。反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。</p>
+
+<h3 id="完整配置示例">完整配置示例</h3>
+
+<pre><code>
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+    use kqueue;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    # 负载均衡配置
+    upstream tornado.server {
+        server 127.0.0.1:8001;
+        server 127.0.0.1:8002;
+        server 127.0.0.1:8003;
+    }
+
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen       80;
+        server_name  localhost;
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # 反向代理配置
+        location / {
+            proxy_pass_header Server;
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Scheme $scheme;
+            proxy_pass http://tornado.server;
+        }
+    }
+}
+
+</code></pre>
+
+<p>代理地址根据实际情况修改，其他缺省配置项采用默认值就可以。</p>
+
+<h3 id="重新加载ginx-conf">重新加载ginx.conf</h3>
+
+<p>如果已经启动了Nginx，执行<code>sudo nginx -s reload</code>重新加载配置。</p>
+
+<h3 id="访问结果">访问结果</h3>
+
+<p>直接在浏览器中访问<code>http://127.0.0.1/</code>，就可以访问demo应用了。每次刷新都返回了<code>Hello, world! PID：18854</code>，后面跟的pid是交替出现，说明负载均衡生效了。</p>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+<li><a href="http://lockshell.com">Python Web开发实战 董伟明</a></li>
+<li><a href="http://lockshell.com">深入理解Nginx</a></li>
+</ul>
+			<div>本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
+			<hr>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/cs/" rel="tag">CS</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/nginx/" rel="tag">Nginx</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="络壳-LockShell avatar" src="http://wx1.sinaimg.cn/sq612/007WyrCfgy1g5uyiopw05j30by0bydgn.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 络壳-LockShell</span>
+	</div>
+	<div class="authorbox__description">
+		扫码关注络壳公众号，获取更多最新内容。
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2018/02/12/nginx-as-static-file-server/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Nginx as Static File Server</p></a>
+	</div>
+</nav>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '41b3bd5685f4310306a5',
+    clientSecret: '4b943ef7620d478481ffd403f08bb951e01e22b8',
+    repo: 'stackuncle.github.io',
+    owner: 'stackuncle',
+    admin: ['stackuncle'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 LockShell.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+			<span id="busuanzi_container_site_pv">本站访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+			&nbsp;
+			<span id="busuanzi_container_site_uv">您是本站第 <span id="busuanzi_value_site_uv"></span> 位访问者
+        </span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script></body>
+</html>

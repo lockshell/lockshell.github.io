@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on 络壳 LockShell</title>
+    <link>https://lockshell.com/categories/</link>
+    <description>Recent content in Categories on 络壳 LockShell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 21 Aug 2019 19:09:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://lockshell.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Other</title>
+      <link>https://lockshell.com/categories/other/</link>
+      <pubDate>Wed, 21 Aug 2019 19:09:21 +0800</pubDate>
+      
+      <guid>https://lockshell.com/categories/other/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>技术人生</title>
+      <link>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</link>
+      <pubDate>Wed, 21 Aug 2019 13:25:48 +0800</pubDate>
+      
+      <guid>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>读书笔记</title>
+      <link>https://lockshell.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 20 Aug 2019 21:48:31 +0800</pubDate>
+      
+      <guid>https://lockshell.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://lockshell.com/categories/linux/</link>
+      <pubDate>Sun, 18 Aug 2019 15:34:15 +0800</pubDate>
+      
+      <guid>https://lockshell.com/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>开发工具</title>
+      <link>https://lockshell.com/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Sun, 18 Aug 2019 15:34:15 +0800</pubDate>
+      
+      <guid>https://lockshell.com/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://lockshell.com/categories/python/</link>
+      <pubDate>Sat, 17 Aug 2019 00:16:31 +0800</pubDate>
+      
+      <guid>https://lockshell.com/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>https://lockshell.com/categories/tools/</link>
+      <pubDate>Mon, 12 Aug 2019 20:17:16 +0800</pubDate>
+      
+      <guid>https://lockshell.com/categories/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://lockshell.com/categories/nginx/</link>
+      <pubDate>Mon, 12 Aug 2019 15:35:37 +0800</pubDate>
+      
+      <guid>https://lockshell.com/categories/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Thinking</title>
+      <link>https://lockshell.com/categories/thinking/</link>
+      <pubDate>Sat, 10 Aug 2019 13:39:16 +0800</pubDate>
+      
+      <guid>https://lockshell.com/categories/thinking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Life</title>
+      <link>https://lockshell.com/categories/life/</link>
+      <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lockshell.com/categories/life/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

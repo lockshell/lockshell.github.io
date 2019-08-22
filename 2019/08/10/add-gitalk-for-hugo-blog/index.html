@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Add Gitalk for comments in Hugo Blog - 络壳 LockShell</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Add Gitalk for comments in Hugo Blog">
+	<meta property="og:title" content="Add Gitalk for comments in Hugo Blog" />
+<meta property="og:description" content="Add Gitalk for comments in Hugo Blog" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lockshell.com/2019/08/10/add-gitalk-for-hugo-blog/" />
+<meta property="article:published_time" content="2019-08-10T11:12:00&#43;08:00"/>
+<meta property="article:modified_time" content="2019-08-10T11:12:00&#43;08:00"/>
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Add Gitalk for comments in Hugo Blog"/>
+<meta name="twitter:description" content="Add Gitalk for comments in Hugo Blog"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-131513582-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="络壳 LockShell" rel="home">
+				<div class="logo__title">络壳 LockShell</div>
+				<div class="logo__tagline">A coder&#39;s thinking</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">关于络壳</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/links/">友情链接</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/ads/">广而告之</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/archives/">文章归档</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+
+
+
+<script async src="//cdn.busuanzi.ibruce.info/cdn/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 100);
+        var busuanziSiteOffset =  0 
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Add Gitalk for comments in Hugo Blog</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-10T11:12:00">2019-08-10</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/tools" rel="category">Tools</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 351 words</span>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#create-github-application">Create Github Application</a></li>
+<li><a href="#create-gitalk-comments-template">Create Gitalk Comments Template</a></li>
+<li><a href="#update-config-toml">Update config.toml</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p><code>Gitalk</code> is a comment plug based on Github issue api.<code>Hugo</code> can compile the Markdown files with themes and templates into static web files, such as CSS, HTML and JavaScript.</p>
+
+<p>To use <code>Gitalk</code> in the <code>Hugo</code> blog, we need to add Gitalk related code as <code>&lt;div&gt;</code> into the HTML template.Then update the config.toml for <code>Gitalk</code>.</p>
+
+<h2 id="create-github-application">Create Github Application</h2>
+
+<p>Firstly, you should create Github Application on Github.Yon can refer to the official sites below for more information.</p>
+
+<ul>
+<li><a href="https://github.com/gitalk/gitalk/">https://github.com/gitalk/gitalk/</a></li>
+<li><a href="https://gitalk.github.io/">https://gitalk.github.io/</a></li>
+</ul>
+
+<p>Then you can get Client ID and Client Secret.</p>
+
+<h2 id="create-gitalk-comments-template">Create Gitalk Comments Template</h2>
+
+<pre><code>{{ if .Site.Params.enableGitalk }}
+&lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/gitalk/dist/gitalk.css&quot;&gt;
+&lt;script src=&quot;https://unpkg.com/gitalk/dist/gitalk.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  const gitalk = new Gitalk({
+    clientID: '{{ .Site.Params.Gitalk.clientID }}',
+    clientSecret: '{{ .Site.Params.Gitalk.clientSecret }}',
+    repo: '{{ .Site.Params.Gitalk.repo }}',
+    owner: '{{ .Site.Params.Gitalk.owner }}',
+    admin: ['{{ .Site.Params.Gitalk.owner }}'],
+    id: location.pathname, // Ensure uniqueness and length less than 50
+    distractionFreeMode: false // Facebook-like distraction free mode
+  });
+  (function() {
+    if ([&quot;localhost&quot;, &quot;127.0.0.1&quot;].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+&lt;/script&gt;
+{{ end }}
+</code></pre>
+
+<p>I&rsquo;m using the <code>Mainroad</code> theme, so I just overwrite the <code>comments.html</code> with the code above.</p>
+
+<h2 id="update-config-toml">Update config.toml</h2>
+
+<pre><code>[params]
+  enableGitalk = true
+  
+[params.gitalk]
+    clientID = &quot;[Client ID]&quot; # Your client ID
+    clientSecret = &quot;[Client Secret]&quot; # Your client secret
+    repo = &quot;&quot; # The repo to store comments
+    owner = &quot;&quot; # Your GitHub ID
+    admin= &quot;&quot; # Required. Github repository owner and collaborators. (Users who having write access to this repository)
+    id= &quot;location.pathname&quot; # The unique id of the page.
+    labels= &quot;gitalk&quot; # Github issue labels. If you used to use Gitment, you can change it
+    perPage= 15 # Pagination size, with maximum 100.
+    pagerDirection= &quot;last&quot; # Comment sorting direction, available values are 'last' and 'first'.
+    createIssueManually= false # If it is 'false', it is auto to make a Github issue when the administrators login.
+    distractionFreeMode= false # Enable hot key (cmd|ctrl + enter) submit comment.
+</code></pre>
+
+<ul>
+<li>replace [Client ID] with Github Application&rsquo;s Client ID</li>
+<li>replace [Client Secret] with Github Application&rsquo;s Client Secret</li>
+<li>set repo to your blog address</li>
+<li>set owner and admin to your GitHub ID</li>
+</ul>
+			<div>本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
+			<hr>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/hugo/" rel="tag">Hugo</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="络壳-LockShell avatar" src="http://wx1.sinaimg.cn/sq612/007WyrCfgy1g5uyiopw05j30by0bydgn.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 络壳-LockShell</span>
+	</div>
+	<div class="authorbox__description">
+		扫码关注络壳公众号，获取更多最新内容。
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2019/08/10/display-word-count-in-hugo-blog/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Display Word Count in Hugo Blog</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2019/08/10/how-chinese-think-about-trade-war/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">How Chinese Think About the US-China Trade War</p></a>
+	</div>
+</nav>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '41b3bd5685f4310306a5',
+    clientSecret: '4b943ef7620d478481ffd403f08bb951e01e22b8',
+    repo: 'stackuncle.github.io',
+    owner: 'stackuncle',
+    admin: ['stackuncle'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 LockShell.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+			<span id="busuanzi_container_site_pv">本站访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+			&nbsp;
+			<span id="busuanzi_container_site_uv">您是本站第 <span id="busuanzi_value_site_uv"></span> 位访问者
+        </span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script></body>
+</html>

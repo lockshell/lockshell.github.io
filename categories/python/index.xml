@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on 络壳 LockShell</title>
+    <link>https://lockshell.com/categories/python/</link>
+    <description>Recent content in Python on 络壳 LockShell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 17 Aug 2019 00:16:31 +0800</lastBuildDate>
+    
+	<atom:link href="https://lockshell.com/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python常用三方库</title>
+      <link>https://lockshell.com/2019/08/17/python-third-party-libs/</link>
+      <pubDate>Sat, 17 Aug 2019 00:16:31 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/17/python-third-party-libs/</guid>
+      <description>以下是Python Web开发中常用的三方库，按功能和使用场景做了简单的分类。 常用 ipython 功能丰富的工具，非常有效的使用交互式 Python。 ipdb 调试神</description>
+    </item>
+    
+    <item>
+      <title>Python测试工具</title>
+      <link>https://lockshell.com/2019/08/15/python-test-tools/</link>
+      <pubDate>Thu, 15 Aug 2019 00:16:09 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/15/python-test-tools/</guid>
+      <description>&lt;p&gt;本文介绍常用的Python测试工具。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python免费学习资源</title>
+      <link>https://lockshell.com/2019/08/14/python-free-resources/</link>
+      <pubDate>Wed, 14 Aug 2019 23:42:15 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/14/python-free-resources/</guid>
+      <description>&lt;p&gt;本文介绍了很多学习资源，帮助小伙伴们更深入的理解Python的各个方面。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python技术栈/工具链整理</title>
+      <link>https://lockshell.com/2018/12/10/python-tech-stack/</link>
+      <pubDate>Mon, 10 Dec 2018 23:07:04 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2018/12/10/python-tech-stack/</guid>
+      <description>开发环境 开发工具 Vim/SublimeText2/PyCharm/VS Code 用着顺手就好，我是由vim转PyCharm的。集成开发环境自动补全、单步调试等功能好很多，有利于提高工作效率。 iTerm</description>
+    </item>
+    
+  </channel>
+</rss>
