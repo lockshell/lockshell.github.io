@@ -12,12 +12,21 @@
     
     
     <item>
+      <title>后端开发MySQL优化思路</title>
+      <link>https://lockshell.com/2019/08/23/mysql-optimization-of-backend/</link>
+      <pubDate>Fri, 23 Aug 2019 22:42:49 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/23/mysql-optimization-of-backend/</guid>
+      <description>查询优化 为搜索字段建索引，合理使用 当只要一行数据时使用 LIMIT 1 EXPLAIN 你的SELECT 查询 查看索引命中的情况 分析查询语句或是表结构的性能瓶颈 避免SEL</description>
+    </item>
+    
+    <item>
       <title>怎样准备后端面试？</title>
       <link>https://lockshell.com/2019/08/21/backend-interview-resource/</link>
       <pubDate>Wed, 21 Aug 2019 13:25:48 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/21/backend-interview-resource/</guid>
-      <description>数据结构和算法 主要内容 数据结构：字符串、栈、队列、二叉树、优先队列、hash表（Redis怎么用的）、B+树(数据库索引) 算法：基本的几种排</description>
+      <description>数据结构和算法 重点内容 数据结构：字符串、栈、队列、二叉树、优先队列、hash表（Redis怎么用的）、B+树(数据库索引) 算法：基本的几种排</description>
     </item>
     
     <item>

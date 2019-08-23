@@ -4,7 +4,36 @@
   
   <url>
     <loc>https://lockshell.com/categories/</loc>
-    <lastmod>2019-08-21T19:09:21+08:00</lastmod>
+    <lastmod>2019-08-23T22:42:49+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/mysql/</loc>
+    <lastmod>2019-08-23T22:42:49+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/</loc>
+    <lastmod>2019-08-23T22:42:49+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/2019/08/23/mysql-optimization-of-backend/</loc>
+    <lastmod>2019-08-23T22:42:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2019-08-23T22:42:49+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/</loc>
+    <lastmod>2019-08-23T22:42:49+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -21,20 +50,8 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/</loc>
-    <lastmod>2019-08-21T19:09:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://lockshell.com/ads/</loc>
     <lastmod>2019-08-21T19:09:21+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/</loc>
-    <lastmod>2019-08-21T19:09:21+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
