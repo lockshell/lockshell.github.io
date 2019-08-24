@@ -6,19 +6,10 @@
     <description>Recent content in Python on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 17 Aug 2019 00:16:31 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 15 Aug 2019 00:16:09 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Python常用三方库</title>
-      <link>https://lockshell.com/2019/08/17/python-third-party-libs/</link>
-      <pubDate>Sat, 17 Aug 2019 00:16:31 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/17/python-third-party-libs/</guid>
-      <description>以下是Python Web开发中常用的三方库，按功能和使用场景做了简单的分类。 常用 ipython 功能丰富的工具，非常有效的使用交互式 Python。 ipdb 调试神</description>
-    </item>
     
     <item>
       <title>Python测试工具</title>

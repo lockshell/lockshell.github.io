@@ -93,15 +93,6 @@
     </item>
     
     <item>
-      <title>Python常用三方库</title>
-      <link>https://lockshell.com/2019/08/17/python-third-party-libs/</link>
-      <pubDate>Sat, 17 Aug 2019 00:16:31 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/17/python-third-party-libs/</guid>
-      <description>以下是Python Web开发中常用的三方库，按功能和使用场景做了简单的分类。 常用 ipython 功能丰富的工具，非常有效的使用交互式 Python。 ipdb 调试神</description>
-    </item>
-    
-    <item>
       <title>Python测试工具</title>
       <link>https://lockshell.com/2019/08/15/python-test-tools/</link>
       <pubDate>Thu, 15 Aug 2019 00:16:09 +0800</pubDate>
@@ -162,15 +153,6 @@
       
       <guid>https://lockshell.com/2019/08/12/note-of-deliberate-practice/</guid>
       <description>第1章 有目的的练习 有目的的练习具有定义明确的特定目标 定义明确的具体目标，可以有效地用于引导你的练习。 有目的的练习是专注的 有目的的练习包含反馈</description>
-    </item>
-    
-    <item>
-      <title>Git思维导图</title>
-      <link>https://lockshell.com/2019/08/12/git-brain-map/</link>
-      <pubDate>Mon, 12 Aug 2019 20:17:16 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/12/git-brain-map/</guid>
-      <description>Git思维导图</description>
     </item>
     
     <item>
@@ -255,7 +237,7 @@
       <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://lockshell.com/2019/07/21/my-first-post/</guid>
-      <description>Welcome to LockShell </description>
+      <description>Welcome to LockShell</description>
     </item>
     
     <item>
@@ -288,7 +270,7 @@
     </item>
     
     <item>
-      <title>Nginx as Static File Server</title>
+      <title>Nginx静态文件服务配置</title>
       <link>https://lockshell.com/2018/02/12/nginx-as-static-file-server/</link>
       <pubDate>Mon, 12 Feb 2018 11:31:48 +0800</pubDate>
       

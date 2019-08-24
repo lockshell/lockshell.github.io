@@ -155,19 +155,14 @@
   
   <url>
     <loc>https://lockshell.com/categories/python/</loc>
-    <lastmod>2019-08-17T00:16:31+08:00</lastmod>
+    <lastmod>2019-08-15T00:16:09+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://lockshell.com/tags/python/</loc>
-    <lastmod>2019-08-17T00:16:31+08:00</lastmod>
+    <lastmod>2019-08-15T00:16:09+08:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/2019/08/17/python-third-party-libs/</loc>
-    <lastmod>2019-08-17T00:16:31+08:00</lastmod>
   </url>
   
   <url>
@@ -203,23 +198,6 @@
   <url>
     <loc>https://lockshell.com/2019/08/12/note-of-deliberate-practice/</loc>
     <lastmod>2019-08-12T21:56:11+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/git/</loc>
-    <lastmod>2019-08-12T20:17:16+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/2019/08/12/git-brain-map/</loc>
-    <lastmod>2019-08-12T20:17:16+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/categories/tools/</loc>
-    <lastmod>2019-08-12T20:17:16+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -299,6 +277,12 @@
   </url>
   
   <url>
+    <loc>https://lockshell.com/categories/tools/</loc>
+    <lastmod>2019-08-10T11:12:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://lockshell.com/2019/08/10/display-word-count-in-hugo-blog/</loc>
     <lastmod>2019-08-10T10:57:14+08:00</lastmod>
   </url>
@@ -309,14 +293,14 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/about/</loc>
-    <lastmod>2019-08-09T10:24:14+08:00</lastmod>
+    <loc>https://lockshell.com/tags/git/</loc>
+    <lastmod>2019-08-10T10:23:28+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/life/</loc>
-    <lastmod>2019-07-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://lockshell.com/about/</loc>
+    <lastmod>2019-08-09T10:24:14+08:00</lastmod>
   </url>
   
   <url>
@@ -332,12 +316,6 @@
   <url>
     <loc>https://lockshell.com/2018/12/10/python-tech-stack/</loc>
     <lastmod>2018-12-10T23:07:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/cs/</loc>
-    <lastmod>2018-08-17T11:20:19+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

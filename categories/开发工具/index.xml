@@ -56,14 +56,5 @@
       <description>很多朋友想要申请一个独一无二的个性用户名/网名，但是自己想好的名称总容易跟别人的冲突；要么是A网站不冲突，在B网站冲突了。 那么有没有方法一次</description>
     </item>
     
-    <item>
-      <title>Python技术栈/工具链整理</title>
-      <link>https://lockshell.com/2018/12/10/python-tech-stack/</link>
-      <pubDate>Mon, 10 Dec 2018 23:07:04 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2018/12/10/python-tech-stack/</guid>
-      <description>开发环境 开发工具 Vim/SublimeText2/PyCharm/VS Code 用着顺手就好，我是由vim转PyCharm的。集成开发环境自动补全、单步调试等功能好很多，有利于提高工作效率。 iTerm</description>
-    </item>
-    
   </channel>
 </rss>
