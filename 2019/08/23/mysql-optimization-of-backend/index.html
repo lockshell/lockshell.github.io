@@ -123,7 +123,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1712 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1710 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -133,6 +133,7 @@ if (!doNotTrack) {
 <ul>
 <li>
 <ul>
+<li><a href="#基本思路">基本思路</a></li>
 <li><a href="#查询优化">查询优化</a></li>
 <li><a href="#设计优化">设计优化</a></li>
 <li><a href="#索引优化">索引优化</a></li>
@@ -145,7 +146,7 @@ if (!doNotTrack) {
 <div class="content post__content clearfix">
 			
 
-<p>基本思路：</p>
+<h2 id="基本思路">基本思路</h2>
 
 <p><strong>首先是如何定位性能瓶颈？</strong><br>一般使用show命令、慢查询日志、explain、profiling等进行分析。</p>
 
@@ -284,15 +285,15 @@ if (!doNotTrack) {
 <li>降低表的复杂度和字段的数目</li>
 </ul></li>
 
-<li><p>适度冗余，让Query尽量减少Join</p></li>
-
 <li><p>不适合建索引的情况</p>
 
 <ul>
-<li>区分度不高的字段，不适合建索引；消耗资源，对性能提升不大。</li>
+<li>区分度不高的字段，不适合建索引；消耗资源，对性能提升不大</li>
 <li>乱序的字段不适合作为索引；否则，在插入数据时，也需要更新索引，在B+树中移动结点，导致较多硬盘IO</li>
 <li>更新非常频繁的字段不适合创建索引；原因同上。</li>
 </ul></li>
+
+<li><p>适度冗余，让Query尽量减少Join</p></li>
 </ol>
 
 <h2 id="索引优化">索引优化</h2>
