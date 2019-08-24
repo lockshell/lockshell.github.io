@@ -123,7 +123,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1793 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1790 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -290,7 +290,7 @@ if (!doNotTrack) {
 
 <ul>
 <li>区分度不高的字段，不适合建索引；消耗资源，对性能提升不大</li>
-<li>乱序的字段不适合作为索引，如<code>MD5</code>, <code>UUID</code>；否则，在插入数据时，需要更新索引，需在B+树中大量移动结点，导致较多硬盘IO</li>
+<li>乱序的字段不适合作为索引，如<code>MD5</code>, <code>UUID</code>；否则，在插入数据时，更新索引需在B+树中大量移动结点，导致较多硬盘IO</li>
 <li>更新非常频繁的字段不适合创建索引；原因同上</li>
 </ul></li>
 
