@@ -123,7 +123,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1728 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1712 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -160,11 +160,11 @@ if (!doNotTrack) {
 <h2 id="查询优化">查询优化</h2>
 
 <ol>
-<li><p>为搜索字段建索引，合理使用</p></li>
+<li><p><strong>为搜索字段建索引，合理使用</strong></p></li>
 
 <li><p>当只要一行数据时使用 <code>LIMIT 1</code></p></li>
 
-<li><p>避免<code>SELECT *</code></p>
+<li><p>避免 <code>SELECT *</code></p>
 
 <ul>
 <li>从数据库里读出越多的数据，那么查询就会变得越慢</li>
@@ -177,11 +177,11 @@ if (!doNotTrack) {
 <li>使用像<code>NOW()</code>和<code>RAND()</code>或是其它类似的SQL函数，都不会开启查询缓存</li>
 </ul></li>
 
-<li><p><code>WHERE</code>子句</p>
+<li><p><code>WHERE</code> 子句</p>
 
 <ul>
 <li>避免对于null的判断，否则会导致全表扫描</li>
-<li>避免使用!=或&lt;&gt;操作符，否则会造成后面的索引字段失效</li>
+<li>避免使用 <code>!=</code> 或 <code>&lt;&gt;</code> 操作符，否则会造成后面的索引字段失效</li>
 <li>不使用%前缀模糊查询
 <ul>
 <li>例如<code>like “%name”</code> 或者<code>like “%name%”</code>，这种查询会导致索引失效</li>
@@ -211,10 +211,10 @@ if (!doNotTrack) {
 <li><p><code>COUNT()</code></p>
 
 <ul>
-<li>避免在整个表上使用<code>count(*)</code>，它可能会将整个表hang住</li>
+<li>避免在整个表上使用<code>count(*)</code>，它可能会导致整个表hang住</li>
 <li>InnoDB是没有保存row count的，因为在不同transaction中，看到的行可能不一样</li>
 <li>InnoDB通过扫描索引来计数，count全表时，需要遍历全部索引；当索引不再内存中时，还需要从磁盘读取，会更慢更消耗资源</li>
-<li>如果只需要一个大概的数字，可以用<code>SHOW TABLE STATUS</code></li>
+<li>如果只需要一个大概的行数，可以用<code>SHOW TABLE STATUS</code></li>
 </ul></li>
 
 <li><p><code>JOIN</code></p>
