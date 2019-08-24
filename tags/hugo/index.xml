@@ -31,5 +31,16 @@
       <description>&lt;p&gt;&lt;code&gt;Hugo&lt;/code&gt; has many template params for the blog web page. There are two which are related to word count of articles.&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Display Your Github Chart in Blog</title>
+      <link>https://lockshell.com/2019/08/10/display-your-github-chart-in-blog/</link>
+      <pubDate>Sat, 10 Aug 2019 10:23:28 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/10/display-your-github-chart-in-blog/</guid>
+      <description>&lt;p&gt;There is an interesting api on &lt;a href=&#34;https://ghchart.rshah.org/&#34;&gt;https://ghchart.rshah.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It can display your Github chart information as an image.&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

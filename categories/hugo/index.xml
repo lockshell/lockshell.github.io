@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tools on 络壳 LockShell</title>
-    <link>https://lockshell.com/categories/tools/</link>
-    <description>Recent content in Tools on 络壳 LockShell</description>
+    <title>Hugo on 络壳 LockShell</title>
+    <link>https://lockshell.com/categories/hugo/</link>
+    <description>Recent content in Hugo on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 10 Aug 2019 11:12:00 +0800</lastBuildDate>
     
-	<atom:link href="https://lockshell.com/categories/tools/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lockshell.com/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
