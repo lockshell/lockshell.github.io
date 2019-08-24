@@ -123,7 +123,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1769 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1767 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -184,7 +184,7 @@ if (!doNotTrack) {
 <ul>
 <li>避免对于null的判断，否则会导致全表扫描</li>
 <li>避免使用 <code>!=</code> 或 <code>&lt;&gt;</code> 操作符，否则会造成后面的索引字段失效</li>
-<li>不使用%前缀模糊查询
+<li>不使用 <code>%</code> 前缀模糊查询
 <ul>
 <li>例如<code>like “%name”</code> 或者<code>like “%name%”</code>，这种查询会导致索引失效</li>
 <li>但是可以使用<code>like “name%”</code></li>
@@ -214,8 +214,8 @@ if (!doNotTrack) {
 
 <ul>
 <li>避免在整个表上使用<code>count(*)</code>，它可能会导致整个表hang住</li>
-<li>InnoDB是没有保存row count的，因为在不同transaction中，看到的行可能不一样</li>
-<li>InnoDB通过扫描索引来计数，count全表时，需要遍历全部索引；当索引不再内存中时，还需要从磁盘读取，会更慢更消耗资源</li>
+<li><code>InnoDB</code>是没有保存rows count的，因为在不同transaction中，看到的行可能不一样</li>
+<li><code>InnoDB</code>通过扫描索引来计数，count全表时，需要遍历全部索引；当索引不再内存中时，还需要从磁盘读取，会更慢更消耗资源</li>
 <li>如果只需要一个大概的行数，可以用<code>SHOW TABLE STATUS</code></li>
 </ul></li>
 
@@ -223,7 +223,7 @@ if (!doNotTrack) {
 
 <ul>
 <li>尽可能避免复杂的join和子查询</li>
-<li>建议减少对大表的 join 查询，innodb 引擎会产生行锁；myisam 引擎会产生表锁，会导致其他写操作被阻塞</li>
+<li>建议减少对大表的 join 查询，<code>InnoDB</code> 引擎会产生行锁；<code>MyISAM</code> 引擎会产生表锁，会导致其他写操作被阻塞</li>
 <li>尽量使用inner join，避免left join；没有其他过滤条件时，MySQL默认会自动选择小表作为驱动表</li>
 </ul></li>
 </ol>
@@ -234,10 +234,10 @@ if (!doNotTrack) {
 <li><p>每张表都设置一个ID做为其主键</p>
 
 <ul>
-<li>INT型（推荐使用UNSIGNED），设置上AUTO_INCREMENT标志</li>
+<li>推荐使用<code>UNSIGNED INT</code>，设置上<code>AUTO_INCREMENT</code>标志</li>
 </ul></li>
 
-<li><p>把IP地址存成 UNSIGNED INT</p>
+<li><p>把IP地址存成 <code>UNSIGNED INT</code></p>
 
 <ul>
 <li>用<code>VARCHAR(15)</code>字段的字符串来存IP不划算</li>
