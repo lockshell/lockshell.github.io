@@ -123,7 +123,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1710 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1769 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -153,7 +153,7 @@ if (!doNotTrack) {
 <ul>
 <li>当服务器的负载增加时，使用<code>SHOW PROCESSLIST</code>来查看有问题的查询</li>
 <li>打印慢查询日志，找出执行慢的查询</li>
-<li><code>EXPLAIN</code>查看SELECT时索引命中的情况，分析查询语句或是表结构的性能瓶颈</li>
+<li><code>EXPLAIN</code>查看<code>SELECT</code>时索引命中的情况，分析查询语句和表结构</li>
 </ul>
 
 <p>根据分析结果，优化索引和查询，优化表结构；这是后端小伙伴可以着手的部分。然后，还可以找DBA优化MySQL配置和硬件。</p>
@@ -176,6 +176,7 @@ if (!doNotTrack) {
 
 <ul>
 <li>使用像<code>NOW()</code>和<code>RAND()</code>或是其它类似的SQL函数，都不会开启查询缓存</li>
+<li>保持查询条件次序一致<br>第一次查<code>select col from tab where a = 'x' and b = 'y'</code><br>下次查是<code>select col from tab where b = 'y' and a = 'x'</code>，就无法利用查询缓存了</li>
 </ul></li>
 
 <li><p><code>WHERE</code> 子句</p>
