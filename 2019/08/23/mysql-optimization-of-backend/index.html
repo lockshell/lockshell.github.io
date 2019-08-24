@@ -123,7 +123,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1594 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1704 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -212,6 +212,8 @@ if (!doNotTrack) {
 
 <ul>
 <li>避免在整个表上使用<code>count(*)</code>，它可能会将整个表锁住</li>
+<li>InnoDB是没有保存row count的，因为在不同transaction中，看到的行可能不一样</li>
+<li>InnoDB通过扫描索引来计数，count全表时，需要遍历全部索引；当索引不再内存中时，还需要从磁盘读取，会更慢更消耗资源。</li>
 </ul></li>
 
 <li><p><code>JOIN</code></p>
