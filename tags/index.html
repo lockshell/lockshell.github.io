@@ -80,24 +80,7 @@ if (!doNotTrack) {
 	  });
 	</script>
 
-	
-	
-	<script async src="//cdn.busuanzi.ibruce.info/cdn/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			var int = setInterval(fixCount, 100);
-			var busuanziSiteOffset =  0 
-			function fixCount() {
-				if ($("#busuanzi_container_site_pv").css("display") != "none") {
-					clearInterval(int);
-					$("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
-				}
-			}
-		});
-	</script>
-	
 
 	
 	
@@ -458,6 +441,22 @@ if (!doNotTrack) {
 </aside>
 		</div>
 		<footer class="footer">
+	
+	<script async src="//cdn.busuanzi.ibruce.info/cdn/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<script>
+		$(document).ready(function() {
+			var int = setInterval(fixCount, 100);
+			var busuanziSiteOffset =  0 
+			function fixCount() {
+				if ($("#busuanzi_container_site_pv").css("display") != "none") {
+					clearInterval(int);
+					$("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+				}
+			}
+		});
+	</script>
+	
+
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -471,5 +470,6 @@ if (!doNotTrack) {
 	</div>
 </footer>
 	</div>
-<script async defer src="/js/menu.js"></script></body>
+<script async defer src="/js/menu.js"></script>
+</body>
 </html>
