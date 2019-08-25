@@ -123,7 +123,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2058 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2140 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -360,7 +360,7 @@ user = db_model.objects().get(user_id=user_id)
 
 <h2 id="改进-hack-model类的创建">改进-hack Model类的创建</h2>
 
-<p>针对上面的问题，我们可以hook Django Model的创建，直接去动态创建生成User Model类。不仅直接让User Model支持分表，还能方便的让<code>X Model</code>， <code>Y Model</code>也支持分表。</p>
+<p>针对上面的问题，我们可以hook Django Model的创建，在动态创建生成User Model类时修改一些属性，把分表需要的信息填充进去。我们可以创建一个基类来实现动态创建的功能，不仅支持User Model分表，还能方便的让<code>X Model</code>， <code>Y Model</code>也支持分表。</p>
 
 <pre><code class="language-python">from django.db import models
 
@@ -452,6 +452,8 @@ for i in range(User.Config.table_num):
     book_name = models.CharField(max_length=256)
     book_author = models.CharField(max_length=256)
 </code></pre>
+
+<p>用类似的方法，还可以把分库的信息也可以在动态创建Model类的过程中填充进去，这里不再赘述。</p>
 
 <p>这样我们就通过层层深入，不断改进我们的方案，得到了一个比较优雅实现Django分表的方法。</p>
 
