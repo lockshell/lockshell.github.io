@@ -278,7 +278,7 @@ class User(models.Model):
             'Meta': Meta,
         }
 
-        user_db_model = type(str('User%s' % suffix), (cls,), attrs)
+        user_db_model = type(str('User_%s' % suffix), (cls,), attrs)
         cls._user_model_dict[table_name] = user_db_model
         return user_db_model
 
@@ -346,13 +346,13 @@ class User(models.Model):
 <ol>
 <li><p>这里获取<code>db_model</code>，在访问数据库时，还是没有直接<code>objects.get()</code>来的方便。</p>
 
-<pre><code>db_model = User.get_user_db_model(user_id)
+<pre><code class="language-python">db_model = User.get_user_db_model(user_id)
 user = db_model.objects().get(user_id=user_id)
 </code></pre>
 
 <p>VS</p>
 
-<pre><code>User.objects().get(user_id=user_id)
+<pre><code class="language-python">User.objects().get(user_id=user_id)
 </code></pre></li>
 
 <li><p>我们的分表只支持了User一个表，其他表分表还得再写一个<code>get_xx_db_model</code>，可不可以做的更通用些呢？</p></li>
