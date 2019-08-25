@@ -123,7 +123,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2140 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2128 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -352,7 +352,7 @@ user = db_model.objects().get(user_id=user_id)
 
 <p>VS</p>
 
-<pre><code class="language-python">User.objects().get(user_id=user_id)
+<pre><code class="language-python">user = User.objects().get(user_id=user_id)
 </code></pre></li>
 
 <li><p>我们的分表只支持了User一个表，其他表分表还得再写一个<code>get_xx_db_model</code>，可不可以做的更通用些呢？</p></li>
@@ -418,11 +418,6 @@ class User(SplitModel):
 
     class Meta:
         db_table = 'user_%s'
-
-
-# Register user models
-for i in range(User.Config.table_num):
-    _ = User(i)
 </code></pre>
 
 <p>通过继承<code>SplitModel</code>，<code>User</code>类就具备的自动分表的功能。在<code>views</code>中可通过如下方法获取user info:</p>
@@ -453,7 +448,7 @@ for i in range(User.Config.table_num):
     book_author = models.CharField(max_length=256)
 </code></pre>
 
-<p>用类似的方法，还可以把分库的信息也可以在动态创建Model类的过程中填充进去，这里不再赘述。</p>
+<p>用类似的方法，还可以把分库的信息在动态创建Model类的过程中填充进去，这里不再赘述。</p>
 
 <p>这样我们就通过层层深入，不断改进我们的方案，得到了一个比较优雅实现Django分表的方法。</p>
 
