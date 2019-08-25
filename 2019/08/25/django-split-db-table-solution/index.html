@@ -146,13 +146,13 @@ if (!doNotTrack) {
 <div class="content post__content clearfix">
 			
 
-<p>Django ORM没有提供默认的分表功能，给访问分表的数据库带来的不变。那么Django分表怎么实现呢？</p>
+<p><code>Django ORM</code>没有提供默认的分表功能，给访问分表的数据库带来的不变。那么<code>Django</code>分表怎么实现呢？</p>
 
 <h2 id="分析django-orm">分析Django ORM</h2>
 
 <p>在实现具体的方案之前，我们先看看<code>Django ORM</code>是如何访问数据表的。</p>
 
-<p>在Django中，数据库访问的逻辑基本上是在<code>Queryset</code>中完成的。假设我们有如下一个User Model：</p>
+<p>在<code>Django</code>中，数据库访问的逻辑基本上是在<code>Queryset</code>中完成的。假设我们有如下一个<code>User Model</code>：</p>
 
 <pre><code class="language-python">class User(models.Model):
     user_id = models.IntegerField()
@@ -163,9 +163,9 @@ if (!doNotTrack) {
         db_table = 'user'
 </code></pre>
 
-<p>当根据user_id查询用户数据时，比如：<code>User.objects.filter(user_id=10).first()</code>。</p>
+<p>当根据<code>user_id</code>查询用户数据时，比如：<code>User.objects.filter(user_id=10).first()</code>。</p>
 
-<p>其中的objects就是<code>models.Manager</code>，我们看看Manager的源码：</p>
+<p>其中的<code>objects</code>就是<code>models.Manager</code>，我们看看<code>Manager</code>的源码：</p>
 
 <pre><code class="language-python">class Manager(BaseManager.from_queryset(QuerySet)):
     pass
@@ -191,7 +191,7 @@ if (!doNotTrack) {
 
 <h2 id="简单方案-穷举-model-类分表">简单方案-穷举<code>Model</code>类分表</h2>
 
-<p>有了上面背景知识，假如我们要根据user_id给user表分三个表。在Django <code>models</code>里如何支持呢？最直接的思路就是声明三个User Model，然后在Meta类中，指定不同的db_table。在查询的时候，根据user_id返回具体的Model。</p>
+<p>有了上面背景知识，假如我们要根据user_id给user表分三个表。在<code>Django</code> <code>models</code>里如何支持呢？最直接的思路就是声明三个<code>User Model</code>，然后在<code>Meta</code>类中，指定不同的<code>db_table</code>。在查询的时候，根据user_id返回具体的Model。</p>
 
 <p>实现方法如下：</p>
 
@@ -255,7 +255,7 @@ def get_user_db_model(user_id):
 <p>学过Java的同学都知道反射，Java的框架和ORM必然是用到反射的，需要动态处理一些类信息。而Python作为一门动态语言，天生就支持<code>Java 反射</code>里各种黑科技的功能，对，我们不需要反射，原生Python已经自带了。</p>
 </blockquote>
 
-<p>下面看看在Django里怎样去动态创建我们需要的1000个User类。</p>
+<p>下面看看在<code>Django</code>里怎样去动态创建我们需要的1000个User类。</p>
 
 <pre><code class="language-python">from django.db import models
 
@@ -425,7 +425,7 @@ for i in range(User.Config.table_num):
     _ = User(i)
 </code></pre>
 
-<p>通过继承SplitModel，User类就具备的自动分表的功能。在<code>views</code>中可通过如下方法获取user info:</p>
+<p>通过继承<code>SplitModel</code>，<code>User</code>类就具备的自动分表的功能。在<code>views</code>中可通过如下方法获取user info:</p>
 
 <pre><code class="language-python">def get_user_info(request):
     user_id = int(request.GET.get('user_id'))
@@ -445,7 +445,7 @@ for i in range(User.Config.table_num):
 
 <p>nice, it works!</p>
 
-<p>如果我们有一个Book表也需要分表，这样只需要简单的继承就行了。</p>
+<p>如果我们有一个<code>Book</code>表也需要分表，这样只需要简单的继承就行了。</p>
 
 <pre><code class="language-python">class Book(SplitModel):
     book_id = models.IntegerField()
