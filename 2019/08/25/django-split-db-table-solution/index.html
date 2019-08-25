@@ -123,7 +123,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2061 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2059 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -135,8 +135,8 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#分析django-orm">分析Django ORM</a></li>
 <li><a href="#简单方案-穷举-model-类分表">简单方案-穷举<code>Model</code>类分表</a></li>
-<li><a href="#改进方案-动态创建model">改进方案-动态创建Model</a></li>
-<li><a href="#改进-动态创建-本地cache">改进-动态创建+本地Cache</a></li>
+<li><a href="#改进方案-动态创建-model-类">改进方案-动态创建<code>Model</code>类</a></li>
+<li><a href="#改进-动态创建-本地缓存">改进-动态创建+本地缓存</a></li>
 <li><a href="#改进-hack-model类的创建">改进-hack Model类的创建</a></li>
 </ul></li>
 </ul>
@@ -247,7 +247,7 @@ def get_user_db_model(user_id):
 
 <p>Python这么牛逼的语言，怎么可以这么糟蹋呢？下面继续探究一下更好的方法吧。</p>
 
-<h2 id="改进方案-动态创建model">改进方案-动态创建Model</h2>
+<h2 id="改进方案-动态创建-model-类">改进方案-动态创建<code>Model</code>类</h2>
 
 <p>既然不通过复制粘贴来定义1000个类，那么就需要动态去创建这1000个类。</p>
 
@@ -301,7 +301,7 @@ user = db_model.objects().get(user_id=user_id)
 
 <p>但是这里还有优化的空间，因为每次查询我们都创建了一个User Model对象，岂不是很浪费资源，那这些对象可以复用嘛？</p>
 
-<h2 id="改进-动态创建-本地cache">改进-动态创建+本地Cache</h2>
+<h2 id="改进-动态创建-本地缓存">改进-动态创建+本地缓存</h2>
 
 <p>那怎么复用呢？自然是用字典把已经创建过的Model缓存下来，虽然这会消耗一部分本地内存，但为了提高性能还是值得的。</p>
 
