@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>优雅实现Django分表 - 络壳 LockShell</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Implement Python Django Split DB Table Solution">
+	<meta property="og:title" content="优雅实现Django分表" />
+<meta property="og:description" content="Implement Python Django Split DB Table Solution" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lockshell.com/2019/08/25/django-split-db-table-solution/" />
+<meta property="article:published_time" content="2019-08-25T10:37:30&#43;08:00"/>
+<meta property="article:modified_time" content="2019-08-25T10:37:30&#43;08:00"/>
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="优雅实现Django分表"/>
+<meta name="twitter:description" content="Implement Python Django Split DB Table Solution"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-131513582-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="络壳 LockShell" rel="home">
+				<div class="logo__title">络壳 LockShell</div>
+				<div class="logo__tagline">A coder&#39;s thinking</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">关于络壳</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/links/">友情链接</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/ads/">广而告之</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/archives/">文章归档</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+
+	
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: "ca-pub-1242672487226703",
+		enable_page_level_ads: true
+	  });
+	</script>
+
+	
+	
+	<script async src="//cdn.busuanzi.ibruce.info/cdn/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var int = setInterval(fixCount, 100);
+			var busuanziSiteOffset =  0 
+			function fixCount() {
+				if ($("#busuanzi_container_site_pv").css("display") != "none") {
+					clearInterval(int);
+					$("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+				}
+			}
+		});
+	</script>
+	
+
+	
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	
+</header>
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">优雅实现Django分表</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-25T10:37:30">2019-08-25</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2061 words</span>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#分析django-orm">分析Django ORM</a></li>
+<li><a href="#简单方案-穷举-model-类分表">简单方案-穷举<code>Model</code>类分表</a></li>
+<li><a href="#改进方案-动态创建model">改进方案-动态创建Model</a></li>
+<li><a href="#改进-动态创建-本地cache">改进-动态创建+本地Cache</a></li>
+<li><a href="#改进-hack-model类的创建">改进-hack Model类的创建</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<p>Django ORM没有提供默认的分表功能，给访问分表的数据库带来的不变。那么Django分表怎么实现呢？</p>
+
+<h2 id="分析django-orm">分析Django ORM</h2>
+
+<p>在实现具体的方案之前，我们先看看<code>Django ORM</code>是如何访问数据表的。</p>
+
+<p>在Django中，数据库访问的逻辑基本上是在<code>Queryset</code>中完成的。假设我们有如下一个User Model：</p>
+
+<pre><code class="language-python">class User(models.Model):
+    user_id = models.IntegerField()
+    user_name = models.CharField(max_length=256)
+    password = models.CharField(max_length=256)
+
+    class Meta:
+        db_table = 'user'
+</code></pre>
+
+<p>当根据user_id查询用户数据时，比如：<code>User.objects.filter(user_id=10).first()</code>。</p>
+
+<p>其中的objects就是<code>models.Manager</code>，我们看看Manager的源码：</p>
+
+<pre><code class="language-python">class Manager(BaseManager.from_queryset(QuerySet)):
+    pass
+</code></pre>
+
+<p><code>from_queryset</code>的源码如下</p>
+
+<pre><code class="language-python">    @classmethod
+    def from_queryset(cls, queryset_class, class_name=None):
+        if class_name is None:
+            class_name = '%sFrom%s' % (cls.__name__, queryset_class.__name__)
+        return type(class_name, (cls,), {
+            '_queryset_class': queryset_class,
+            **cls._get_queryset_methods(queryset_class),
+        })
+</code></pre>
+
+<p>这里可以看出<code>Manager</code>是对<code>QuerySet</code>的一个包装。<code>QuerySet</code>是最终要转换为SQL的一个中间层，这其实就是ORM的核心功能，把Model操作转换为SQL语句的部分。</p>
+
+<p>所以当我们调用<code>User.objects()</code>的时候，就已经决定了要访问的数据表了。</p>
+
+<p>实际访问哪个表是由<code>models.Model</code>中的内部类<code>class Meta</code>中的<code>db_table</code>字段决定的。</p>
+
+<h2 id="简单方案-穷举-model-类分表">简单方案-穷举<code>Model</code>类分表</h2>
+
+<p>有了上面背景知识，假如我们要根据user_id给user表分三个表。在Django <code>models</code>里如何支持呢？最直接的思路就是声明三个User Model，然后在Meta类中，指定不同的db_table。在查询的时候，根据user_id返回具体的Model。</p>
+
+<p>实现方法如下：</p>
+
+<pre><code class="language-python">class User(models.Model):
+    user_id = models.IntegerField(primary_key=True)
+    user_name = models.CharField(max_length=256)
+    password = models.CharField(max_length=256)
+
+
+class User0(User):
+
+    class Meta:
+        db_table = 'user_0'
+
+
+class User1(User):
+
+    class Meta:
+        db_table = 'user_1'
+
+
+class User2(User):
+
+    class Meta:
+        db_table = 'user_2'
+
+
+user_model_map = {
+    0: User0,
+    1: User1,
+    2: User2,
+}
+
+table_num = 3
+
+
+def get_user_db_model(user_id):
+    key = user_id % table_num
+    return user_model_map[key]
+</code></pre>
+
+<p>然后，在实际查询时，先获取user model，再根据user_id查询数据。</p>
+
+<pre><code class="language-python">def get_user_by_id(user_id):
+    db_model = models.get_user_db_model(user_id)
+    user = db_model.objects.get(user_id=user_id)
+    return model_to_dict(user)
+</code></pre>
+
+<p>这样就可以支持访问分表的数据库了。</p>
+
+<p>但是，聪明的大家都能看出来，要是user分100个表，甚至1000个表的时候怎么办呢？难道定义1000个User类？</p>
+
+<p>Python这么牛逼的语言，怎么可以这么糟蹋呢？下面继续探究一下更好的方法吧。</p>
+
+<h2 id="改进方案-动态创建model">改进方案-动态创建Model</h2>
+
+<p>既然不通过复制粘贴来定义1000个类，那么就需要动态去创建这1000个类。</p>
+
+<blockquote>
+<p>学过Java的同学都知道反射，Java的框架和ORM必然是用到反射的，需要动态处理一些类信息。而Python作为一门动态语言，天生就支持<code>Java 反射</code>里各种黑科技的功能，对，我们不需要反射，原生Python已经自带了。</p>
+</blockquote>
+
+<p>下面看看在Django里怎样去动态创建我们需要的1000个User类。</p>
+
+<pre><code class="language-python">from django.db import models
+
+TABLE_NUM = 3
+
+
+class User(models.Model):
+    @classmethod
+    def get_user_db_model(cls, user_id=None):
+        suffix = user_id % TABLE_NUM
+        table_name = 'user_%s' % suffix
+        if table_name in cls._user_model_dict:
+            return cls._user_model_dict[table_name]
+
+        class Meta:
+            db_table = table_name
+
+        attrs = {
+            '__module__': cls.__module__,
+            'Meta': Meta,
+        }
+
+        user_db_model = type(str('User%s' % suffix), (cls,), attrs)
+        cls._user_model_dict[table_name] = user_db_model
+        return user_db_model
+
+    _user_model_dict = {}
+    user_id = models.IntegerField()
+    user_name = models.CharField(max_length=256)
+    password = models.CharField(max_length=256)
+
+    class Meta:
+        abstract = True
+</code></pre>
+
+<p>嗯，看起来不错，我们已经不需要用复制粘贴来定义1000个类了，而且实现同样的功能代码短了不少。</p>
+
+<p>依然可通过如下的方式获取数据：</p>
+
+<pre><code>db_model = User.get_user_db_model(user_id)
+user = db_model.objects().get(user_id=user_id)
+</code></pre>
+
+<p>但是这里还有优化的空间，因为每次查询我们都创建了一个User Model对象，岂不是很浪费资源，那这些对象可以复用嘛？</p>
+
+<h2 id="改进-动态创建-本地cache">改进-动态创建+本地Cache</h2>
+
+<p>那怎么复用呢？自然是用字典把已经创建过的Model缓存下来，虽然这会消耗一部分本地内存，但为了提高性能还是值得的。</p>
+
+<pre><code class="language-python">from django.db import models
+
+TABLE_NUM = 3
+
+class User(models.Model):
+    @classmethod
+    def get_user_db_model(cls, user_id=None):
+        suffix = user_id % TABLE_NUM
+        table_name = 'user_%s' % suffix
+        if table_name in cls._user_model_dict:
+            return cls._user_model_dict[table_name]
+
+        class Meta:
+            db_table = table_name
+
+        attrs = {
+            '__module__': cls.__module__,
+            'Meta': Meta,
+        }
+
+        user_db_model = type(str('User%s' % suffix), (cls,), attrs)
+        cls._user_model_dict[table_name] = user_db_model
+        return user_db_model
+
+    _user_model_dict = {}
+    
+    user_id = models.IntegerField(primary_key=True)
+    user_name = models.CharField(max_length=256)
+    password = models.CharField(max_length=256)
+    
+    class Meta:
+        abstract = True
+</code></pre>
+
+<p>这里定义了一个私有变量<code>_user_model_dict</code>，以table_name作为key，model对象作为值，把已经创建的Model类都缓存下来。</p>
+
+<p>但到了这里还是有点麻烦。</p>
+
+<ol>
+<li><p>这里获取<code>db_model</code>，在访问数据库时，还是没有直接<code>objects.get()</code>来的方便。</p>
+
+<pre><code>db_model = User.get_user_db_model(user_id)
+user = db_model.objects().get(user_id=user_id)
+</code></pre>
+
+<p>VS</p>
+
+<pre><code>User.objects().get(user_id=user_id)
+</code></pre></li>
+
+<li><p>我们的分表只支持了User一个表，其他表分表还得再写一个<code>get_xx_db_model</code>，可不可以做的更通用些呢？</p></li>
+</ol>
+
+<h2 id="改进-hack-model类的创建">改进-hack Model类的创建</h2>
+
+<p>针对上面的问题，我们可以hook Django Model的创建，直接去动态创建生成User Model类。不仅直接让User Model支持分表，还能方便的让<code>X Model</code>， <code>Y Model</code>也支持分表。</p>
+
+<pre><code class="language-python">from django.db import models
+
+
+class Object:
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
+
+
+def _model_new(cls, *args, **kwargs):
+    return cls(*args, **kwargs)
+
+
+class SplitModel(object):
+    &quot;&quot;&quot;
+    SplitModel support table partition.
+    &quot;&quot;&quot;
+    _split_db_models = {}
+
+    def __new__(cls, *args, **kwargs):
+        split_idx = kwargs.pop('split_idx', 0) % cls.Config.table_num
+        model_name = cls.__name__
+        model_name += '_%s' % split_idx
+
+        model_class = cls._split_db_models.get(model_name)
+        if model_class is not None:
+            return model_class
+
+        # Deep copy attrs
+        attrs = dict()
+        attrs.update(cls.__dict__)
+        if 'objects' in attrs:
+            attrs['objects'] = attrs['objects'].__class__()
+
+        # Set table name with split_idx
+        meta = Object(**cls.Meta.__dict__)
+        meta.db_table = meta.db_table % split_idx
+
+        attrs['Meta'] = meta
+        attrs['new'] = classmethod(_model_new)
+
+        # Create model class dynamically
+        model_class = type(model_name, tuple([models.Model] + list(cls.__bases__[1:])), attrs)
+        cls._split_db_models[model_name] = model_class
+        return model_class
+
+
+class User(SplitModel):
+    user_id = models.IntegerField()
+    user_name = models.CharField(max_length=256)
+    password = models.CharField(max_length=256)
+
+    class Config:
+        table_num = 3
+
+    class Meta:
+        db_table = 'user_%s'
+
+
+# Register user models
+for i in range(User.Config.table_num):
+    _ = User(i)
+</code></pre>
+
+<p>通过继承SplitModel，User类就具备的自动分表的功能。在<code>views</code>中可通过如下方法获取user info:</p>
+
+<pre><code class="language-python">def get_user_info(request):
+    user_id = int(request.GET.get('user_id'))
+    user = models.User(split_idx=user_id).objects.get(user_id=user_id)
+    return HttpResponse(json.dumps(model_to_dict(user)))
+</code></pre>
+
+<p>配置好<code>Django urls</code>，在浏览器访问<code>http://127.0.0.1:8000/user/get?user_id=32</code>，得到下面的结果：</p>
+
+<pre><code>{
+  &quot;user_name&quot;: &quot;test32&quot;,
+  &quot;password&quot;: &quot;test32&quot;,
+  &quot;user_id&quot;: 32,
+  &quot;id&quot;: 1
+}
+</code></pre>
+
+<p>nice, it works!</p>
+
+<p>如果我们有一个Book表也需要分表，这样只需要简单的继承就行了。</p>
+
+<pre><code class="language-python">class Book(SplitModel):
+    book_id = models.IntegerField()
+    book_name = models.CharField(max_length=256)
+    book_author = models.CharField(max_length=256)
+</code></pre>
+
+<p>这样我们就通过层层深入，不断改进我们的方案，得到了一个比较优雅实现Django分表的方法。</p>
+
+			<div>本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
+			<hr>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/django/" rel="tag">Django</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/python/" rel="tag">Python</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="络壳-LockShell avatar" src="http://wx1.sinaimg.cn/sq612/007WyrCfgy1g5uyiopw05j30by0bydgn.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 络壳-LockShell</span>
+	</div>
+	<div class="authorbox__description">
+		扫码关注络壳公众号，获取更多最新内容。
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2019/08/23/mysql-optimization-of-backend/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">MySQL-后端开发优化思路</p></a>
+	</div>
+</nav>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '41b3bd5685f4310306a5',
+    clientSecret: '4b943ef7620d478481ffd403f08bb951e01e22b8',
+    repo: 'stackuncle.github.io',
+    owner: 'stackuncle',
+    admin: ['stackuncle'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 LockShell.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+			<span id="busuanzi_container_site_pv">本站访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+			&nbsp;
+			<span id="busuanzi_container_site_uv">您是本站第 <span id="busuanzi_value_site_uv"></span> 位访问者
+        </span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script></body>
+</html>
