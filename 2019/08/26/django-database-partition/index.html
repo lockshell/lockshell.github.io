@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1191 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1116 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -116,7 +116,7 @@ if (!doNotTrack) {
 <ul>
 <li>
 <ul>
-<li><a href="#定义-models">定义<code>models</code></a></li>
+<li><a href="#定义好-models">定义好<code>models</code></a></li>
 <li><a href="#配置数据库">配置数据库</a></li>
 <li><a href="#同步数据库变更">同步数据库变更</a></li>
 <li><a href="#定义数据库路由">定义数据库路由</a></li>
@@ -129,13 +129,11 @@ if (!doNotTrack) {
 <div class="content post__content clearfix">
 			
 
-<p><code>Django</code>原生支持分库，只需要在<code>settings.py</code>文件中，新增数据库配置和路由配置。</p>
+<p><code>Django ORM</code>原生支持分库，只需要在<code>settings.py</code>文件中，添加相应的数据库配置和路由配置。</p>
 
-<p>参考<code>Django</code>官方文档，<a href="https://docs.djangoproject.com/en/2.0/topics/db/multi-db/#synchronizing-your-databases">https://docs.djangoproject.com/en/2.0/topics/db/multi-db/#synchronizing-your-databases</a></p>
+<p>参考<code>Django</code>官方文档，<a href="https://docs.djangoproject.com/en/2.0/topics/db/multi-db/#synchronizing-your-databases">db/multi-db/#synchronizing-your-databases</a>，如果我们在<code>Django</code>项目有<code>users</code>, <code>book</code>, <code>blog</code>三个app，需要将<code>user</code>，<code>book</code>，<code>blog</code>三个表分库，我们需要分如下5步来实现具体分库和路由的功能。</p>
 
-<p>如果我们在<code>Django</code>项目有<code>users</code>, <code>book</code>, <code>blog</code>三个app，需要将<code>user</code>，<code>book</code>，<code>blog</code>三个表分库，我们需要分5步来实现分库的功能。</p>
-
-<h2 id="定义-models">定义<code>models</code></h2>
+<h2 id="定义好-models">定义好<code>models</code></h2>
 
 <p>例如在book app的models中，我们定义如下Book类。</p>
 
@@ -207,20 +205,18 @@ DATABASE_APPS_MAPPING = {
 }
 </code></pre>
 
-<p>这里我们定义了三个库，默认库<code>default</code>, <code>db_blog</code>, <code>db_book</code>。</p>
-
-<p>然后user信息存default库，book数据存在db_book，blog数据存在db_blog。</p>
+<p>这里我们定义了三个库和地址，默认库<code>default</code>, <code>db_blog</code>, <code>db_book</code>。</p>
 
 <h2 id="同步数据库变更">同步数据库变更</h2>
 
-<p><code>migrate</code>命令在同步变更是，每次操作一个数据库，默认操作<code>default</code>数据库。通过<code>--database</code>选项，可以指定操作的数据库。</p>
+<p><code>migrate</code>命令在同步变更时，每次操作一个数据库，默认操作<code>default</code>数据库。通过<code>--database</code>选项，可以指定操作的数据库。</p>
 
 <pre><code>python manage.py migrate
 python manage.py migrate --database=db_book
 python manage.py migrate --database=db_blog
 </code></pre>
 
-<p>我们通过上面的命令，把models定义的信息，同步到数据库。</p>
+<p>通过上面的命令，把models里定义的信息，同步到数据库。</p>
 
 <h2 id="定义数据库路由">定义数据库路由</h2>
 
@@ -275,7 +271,7 @@ b.save(using='db_blog')
 </code></pre></li>
 </ul>
 
-<p>按完成了上述的路由配置后，<code>Django ORM</code>会根据路由规则来选择访问的数据库。users默认访问default库，book访问db_book，blog访问db_blog。</p>
+<p>按完成了上述的路由配置后，<code>Django ORM</code>会根据路由规则来选择访问的数据库。根据我们的配置，users默认访问default库，book访问db_book，blog访问db_blog。</p>
 
 <p>例如：<code>Book.objects.all()</code>会自动访问<code>db_book</code>数据库，无需再通过<code>using</code>来指定数据库。</p>
 
