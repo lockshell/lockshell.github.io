@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1445 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1471 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -117,7 +117,7 @@ if (!doNotTrack) {
 <li>
 <ul>
 <li><a href="#配置数据库">配置数据库</a></li>
-<li><a href="#定义-models">定义<code>models</code></a></li>
+<li><a href="#定义-model">定义<code>Model</code></a></li>
 <li><a href="#同步数据变更">同步数据变更</a></li>
 <li><a href="#使用分库">使用分库</a>
 <ul>
@@ -141,11 +141,11 @@ if (!doNotTrack) {
 
 <p><code>Django ORM</code>提供了默认的分库功能，只需要在<code>settings.py</code>文件中添加相应的数据库配置。</p>
 
-<p>例如我们在<code>Django</code>项目有<code>users</code>, <code>book</code>, <code>blog</code>三个app，对应的<code>user</code>，<code>book</code>，<code>blog</code>三个DB分库，下面就探究一下如何在Django实现这三个库的分库？</p>
+<p>例如我们在<code>Django</code>项目有<code>users</code>, <code>book</code>, <code>blog</code>三个app，对应<code>user</code>，<code>book</code>，<code>blog</code>三个DB，下面就探究一下如何在Django实现这三个库的分库？</p>
 
 <h2 id="配置数据库">配置数据库</h2>
 
-<p>在<code>settings.py</code>中配置需要连接的多个数据库地址。</p>
+<p>在<code>settings.py</code> <code>DATABASES</code>中配置需要连接的多个数据库地址。</p>
 
 <pre><code>DATABASES = {
     'default': {
@@ -171,9 +171,9 @@ DATABASE_APPS_MAPPING = {
 }
 </code></pre>
 
-<p>这里我们定义了三个库和地址，默认库<code>default</code>, 以及<code>db_blog</code>和<code>db_book</code>。</p>
+<p>这里我们定义了三个库和地址，<code>default</code>, <code>db_blog</code>和<code>db_book</code>；以及app name到db name的映射。</p>
 
-<h2 id="定义-models">定义<code>models</code></h2>
+<h2 id="定义-model">定义<code>Model</code></h2>
 
 <p>对应的，在book app的models中，我们定义如下Book类。</p>
 
@@ -256,7 +256,7 @@ b.save(using='db_blog')
 
 <h3 id="配置db路由">配置DB路由</h3>
 
-<p>配置<code>Database routers</code>需要新建一个<code>db_router.py</code>文件，添加数据库路由类<code>DbRouter</code>。</p>
+<p>配置<code>Database routers</code>需要新建一个<code>db_router.py</code>文件，添加自定义的数据库路由类<code>DbRouter</code>。</p>
 
 <p>这个类里需要实现<code>db_for_read</code>、<code>db_for_write</code>、<code>allow_relation</code>以及<code>allow_migrate</code>四个方法来定义路由规则，我们可以根据<code>app_label</code>来指定访问的DB。</p>
 
@@ -288,9 +288,9 @@ class DbRouter(object):
 <pre><code>DATABASE_ROUTERS = ['partition.db_router.DbRouter']  # partition是项目名
 </code></pre>
 
-<p>配置在<code>DATABASE_ROUTERS</code>中的路由规则才会生效，会被<code>django.db.router</code>使用。</p>
+<p>配置在<code>DATABASE_ROUTERS</code>中的路由规则才会生效，能被<code>django.db.router</code>使用。</p>
 
-<p>我们可以指定多个数据库路由，比如对于读操作，Django将会循环所有路由中的<code>db_for_read()</code>方法，直到其中一个有返回值，然后使用这个数据库进行当前操作。</p>
+<p>我们可以指定多个数据库路由规则，比如对于读操作，Django将会循环所有路由中的<code>db_for_read()</code>方法，直到其中一个有返回值，然后使用这个数据库进行当前操作。</p>
 
 <p>按完成了上述的路由配置后，<code>Django ORM</code>会根据路由规则来选择访问的数据库。安照我们的配置，user会访问default库，book访问db_book，blog访问db_blog。例如：<code>Book.objects.all()</code>会自动访问<code>db_book</code>数据库，无需再通过<code>using</code>来指定数据库。</p>
 
