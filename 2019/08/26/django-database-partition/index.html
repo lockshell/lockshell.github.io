@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1428 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1432 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -139,7 +139,9 @@ if (!doNotTrack) {
 
 <p>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外，另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的性能问题。</p>
 
-<p><code>Django ORM</code>提供了默认分库功能，只需要在<code>settings.py</code>文件中添加相应的数据库配置和路由配置。如果我们在<code>Django</code>项目有<code>users</code>, <code>book</code>, <code>blog</code>三个app，需要将<code>user</code>，<code>book</code>，<code>blog</code>三个表分库，下面就探究一下如何实现这三个库的分库？</p>
+<p><code>Django ORM</code>提供了默认的分库功能，只需要在<code>settings.py</code>文件中添加相应的数据库配置。</p>
+
+<p>例如我们在<code>Django</code>项目有<code>users</code>, <code>book</code>, <code>blog</code>三个app，对应的<code>user</code>，<code>book</code>，<code>blog</code>三个DB分库，下面就探究一下如何在Django实现这三个库的分库？</p>
 
 <h2 id="配置数据库">配置数据库</h2>
 
