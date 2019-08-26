@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>Django数据库分库</title>
+      <title>Django数据库分库&#43;读写分离</title>
       <link>https://lockshell.com/2019/08/26/django-database-partition/</link>
       <pubDate>Mon, 26 Aug 2019 20:47:37 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/26/django-database-partition/</guid>
-      <description>Django ORM提供了默认分库功能，只需要在settings.py文件中添加相应的数据库配置和路由配置。 参考Django官方文档，db/multi-</description>
+      <description>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外，另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的</description>
     </item>
     
     <item>
@@ -170,7 +170,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了26篇日志，继续加油哦！ 2019-08 2019-08-26 Django数据库分库 2019-08-25 优雅实现Django分表 2019-08-23 MySQL-后端开发优化思路 2019-08-21 怎样准备后端面试？</description>
+      <description>很好，总共写了26篇日志，继续加油哦！ 2019-08 2019-08-26 Django数据库分库+读写分离 2019-08-25 优雅实现Django分表 2019-08-23 MySQL-后端开发优化思路 2019-08-21 怎样准备</description>
     </item>
     
     <item>

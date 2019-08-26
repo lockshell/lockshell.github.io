@@ -6,10 +6,19 @@
     <description>Recent content in 数据库 on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 23 Aug 2019 22:42:49 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Aug 2019 20:47:37 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Django数据库分库&#43;读写分离</title>
+      <link>https://lockshell.com/2019/08/26/django-database-partition/</link>
+      <pubDate>Mon, 26 Aug 2019 20:47:37 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/26/django-database-partition/</guid>
+      <description>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外，另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的</description>
+    </item>
     
     <item>
       <title>MySQL-后端开发优化思路</title>

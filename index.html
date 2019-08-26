@@ -99,7 +99,7 @@ if (!doNotTrack) {
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="/2019/08/26/django-database-partition/" rel="bookmark">
-			Django数据库分库
+			Django数据库分库&#43;读写分离
 			</a>
 		</h3>
 		<div class="list__meta meta">
@@ -110,13 +110,13 @@ if (!doNotTrack) {
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1118 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1403 words</span>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Django ORM提供了默认分库功能，只需要在settings.py文件中添加相应的数据库配置和路由配置。 参考Django官方文档，db/multi-
+		为了解决单个数据库的性能问题，除了使用性能更好的硬件之外，另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2019/08/26/django-database-partition/">Read more…</a>
@@ -642,7 +642,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/2019/08/26/django-database-partition/">Django数据库分库</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2019/08/26/django-database-partition/">Django数据库分库&#43;读写分离</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2019/08/25/django-split-db-table-solution/">优雅实现Django分表</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2019/08/23/mysql-optimization-of-backend/">MySQL-后端开发优化思路</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2019/08/21/backend-interview-resource/">怎样准备后端面试？</a></li>
