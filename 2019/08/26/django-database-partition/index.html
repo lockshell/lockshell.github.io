@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1432 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1445 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -122,7 +122,7 @@ if (!doNotTrack) {
 <li><a href="#使用分库">使用分库</a>
 <ul>
 <li><a href="#using-方法"><code>using()</code>方法</a></li>
-<li><a href="#定义数据库路由">定义数据库路由</a></li>
+<li><a href="#配置db路由">配置DB路由</a></li>
 </ul></li>
 <li><a href="#读写分离">读写分离</a>
 <ul>
@@ -254,9 +254,9 @@ b.save(using='db_blog')
 </code></pre></li>
 </ul>
 
-<h3 id="定义数据库路由">定义数据库路由</h3>
+<h3 id="配置db路由">配置DB路由</h3>
 
-<p>定义<code>Database routers</code>需要新建一个<code>db_router.py</code>文件，添加数据库路由类<code>DbRouter</code>。这个类里需要实现<code>db_for_read</code>、<code>db_for_write</code>、<code>allow_relation</code>以及<code>allow_migrate</code>四个方法来定义路由规则，我们可以根据<code>app_label</code>来指定访问的DB。</p>
+<p>配置<code>Database routers</code>需要新建一个<code>db_router.py</code>文件，添加数据库路由类<code>DbRouter</code>。这个类里需要实现<code>db_for_read</code>、<code>db_for_write</code>、<code>allow_relation</code>以及<code>allow_migrate</code>四个方法来定义路由规则，我们可以根据<code>app_label</code>来指定访问的DB。</p>
 
 <pre><code class="language-python">from django.conf import settings
 
@@ -283,7 +283,7 @@ class DbRouter(object):
 
 <p>然后，在<code>settings.py</code>文件添加数据库路由的配置<code>DATABASE_ROUTERS</code>，如下：</p>
 
-<pre><code>DATABASE_ROUTERS = ['partition.db_router.DbRouter']
+<pre><code>DATABASE_ROUTERS = ['partition.db_router.DbRouter']  # partition是项目名
 </code></pre>
 
 <p>配置在<code>DATABASE_ROUTERS</code>中的路由规则才会生效，会被<code>django.db.router</code>使用。</p>
