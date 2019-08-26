@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1348 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1412 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -139,7 +139,7 @@ if (!doNotTrack) {
 
 <p>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外，另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的性能问题。</p>
 
-<p><code>Django ORM</code>提供了默认分库功能，只需要在<code>settings.py</code>文件中添加相应的数据库配置和路由配置。如果我们在<code>Django</code>项目有<code>users</code>, <code>book</code>, <code>blog</code>三个app，需要将<code>user</code>，<code>book</code>，<code>blog</code>三个表分库，下面就看看如何实现这三个库的分库？</p>
+<p><code>Django ORM</code>提供了默认分库功能，只需要在<code>settings.py</code>文件中添加相应的数据库配置和路由配置。如果我们在<code>Django</code>项目有<code>users</code>, <code>book</code>, <code>blog</code>三个app，需要将<code>user</code>，<code>book</code>，<code>blog</code>三个表分库，下面就探究一下如何实现这三个库的分库？</p>
 
 <h2 id="配置数据库">配置数据库</h2>
 
@@ -228,7 +228,12 @@ python manage.py migrate --database=db_blog
 
 <h2 id="使用分库">使用分库</h2>
 
-<p>我们就完成了Django数据库分库的配置后有两种方法使用分库。1. <code>using()</code>方法2. 指定Database Router</p>
+<p>通过前面几部操作，我们就完成了Django数据库分库的配置。有两种方法来使用分库：</p>
+
+<ol>
+<li><code>using()</code>方法</li>
+<li>指定<code>Database Router</code></li>
+</ol>
 
 <h3 id="using-方法"><code>using()</code>方法</h3>
 
@@ -249,7 +254,7 @@ b.save(using='db_blog')
 
 <h3 id="定义数据库路由">定义数据库路由</h3>
 
-<p>定义<code>Database routers</code>需要新建一个<code>db_router.py</code>文件，添加数据库路由类<code>DbRouter</code>，这个类里有四个方法类定义路由规则，我们可以根据<code>app_label</code>来确定访问的数据库。</p>
+<p>定义<code>Database routers</code>需要新建一个<code>db_router.py</code>文件，添加数据库路由类<code>DbRouter</code>。这个类里需要实现<code>db_for_read</code>、<code>db_for_write</code>、<code>allow_relation</code>以及<code>allow_migrate</code>四个方法来定义路由规则，我们可以根据<code>app_label</code>来指定访问的DB。</p>
 
 <pre><code class="language-python">from django.conf import settings
 
