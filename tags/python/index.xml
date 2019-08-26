@@ -6,10 +6,19 @@
     <description>Recent content in Python on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 25 Aug 2019 10:37:30 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Aug 2019 20:47:37 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Django数据库分库</title>
+      <link>https://lockshell.com/2019/08/26/django-database-partition/</link>
+      <pubDate>Mon, 26 Aug 2019 20:47:37 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/26/django-database-partition/</guid>
+      <description>Django原生支持分库，只需要在settings.py文件中，新增数据库配置和路由配置。 参考Django官方文档，https://docs</description>
+    </item>
     
     <item>
       <title>优雅实现Django分表</title>

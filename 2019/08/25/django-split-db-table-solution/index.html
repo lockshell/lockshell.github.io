@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>优雅实现Django分表 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Implement Python Django Split DB Table Solution">
+	<meta name="description" content="Implement Python Django ORM DB Table partition">
 	<meta property="og:title" content="优雅实现Django分表" />
-<meta property="og:description" content="Implement Python Django Split DB Table Solution" />
+<meta property="og:description" content="Implement Python Django ORM DB Table partition" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2019/08/25/django-split-db-table-solution/" />
 <meta property="article:published_time" content="2019-08-25T10:37:30&#43;08:00"/>
@@ -16,7 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="优雅实现Django分表"/>
-<meta name="twitter:description" content="Implement Python Django Split DB Table Solution"/>
+<meta name="twitter:description" content="Implement Python Django ORM DB Table partition"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2126 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2083 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -431,8 +431,6 @@ class User(SplitModel):
     book_author = models.CharField(max_length=256)
 </code></pre>
 
-<p>用类似的方法，还可以把分库的信息在动态创建Model类的过程中填充进去，这里不再赘述。</p>
-
 <p>这样我们就通过层层深入，不断改进我们的方案，得到了一个比较优雅实现Django分表的方法。</p>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
@@ -466,6 +464,9 @@ class User(SplitModel):
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
 		<a class="post-nav__link" href="/2019/08/23/mysql-optimization-of-backend/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">MySQL-后端开发优化思路</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2019/08/26/django-database-partition/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Django数据库分库</p></a>
 	</div>
 </nav>
 

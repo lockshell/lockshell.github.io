@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Django数据库分库 - 络壳 LockShell</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Django ORM Database Partition Configuration">
+	<meta property="og:title" content="Django数据库分库" />
+<meta property="og:description" content="Django ORM Database Partition Configuration" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lockshell.com/2019/08/26/django-database-partition/" />
+<meta property="article:published_time" content="2019-08-26T20:47:37&#43;08:00"/>
+<meta property="article:modified_time" content="2019-08-26T20:47:37&#43;08:00"/>
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Django数据库分库"/>
+<meta name="twitter:description" content="Django ORM Database Partition Configuration"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-131513582-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="络壳 LockShell" rel="home">
+				<div class="logo__title">络壳 LockShell</div>
+				<div class="logo__tagline">A coder&#39;s thinking</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">关于络壳</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/links/">友情链接</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/ads/">广而告之</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/archives/">文章归档</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+
+	
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: "ca-pub-1242672487226703",
+		enable_page_level_ads: true
+	  });
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	
+</header>
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Django数据库分库</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-08-26T20:47:37">2019-08-26</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1191 words</span>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#定义-models">定义<code>models</code></a></li>
+<li><a href="#配置数据库">配置数据库</a></li>
+<li><a href="#同步数据库变更">同步数据库变更</a></li>
+<li><a href="#定义数据库路由">定义数据库路由</a></li>
+<li><a href="#使用路由">使用路由</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<p><code>Django</code>原生支持分库，只需要在<code>settings.py</code>文件中，新增数据库配置和路由配置。</p>
+
+<p>参考<code>Django</code>官方文档，<a href="https://docs.djangoproject.com/en/2.0/topics/db/multi-db/#synchronizing-your-databases">https://docs.djangoproject.com/en/2.0/topics/db/multi-db/#synchronizing-your-databases</a></p>
+
+<p>如果我们在<code>Django</code>项目有<code>users</code>, <code>book</code>, <code>blog</code>三个app，需要将<code>user</code>，<code>book</code>，<code>blog</code>三个表分库，我们需要分5步来实现分库的功能。</p>
+
+<h2 id="定义-models">定义<code>models</code></h2>
+
+<p>例如在book app的models中，我们定义如下Book类。</p>
+
+<pre><code># -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models
+
+# Create your models here.
+
+
+class Book(models.Model):
+    book_id = models.IntegerField(primary_key=True)
+    title = models.CharField(max_length=256)
+    author = models.CharField(max_length=256)
+
+    class Meta:
+        app_label = 'book'
+        db_table = 'book_tab'
+</code></pre>
+
+<p>在blog app的models中，我们定义如下Blog类。</p>
+
+<pre><code># -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models
+
+# Create your models here.
+
+
+class Blog(models.Model):
+	blog_id = models.IntegerField(primary_key=True)
+	title = models.CharField(max_length=256)
+	content = models.TextField()
+
+	class Meta:
+		app_label = 'blog'
+		db_table = 'blog_tab'
+</code></pre>
+
+<p>类似的，在users app中定义User类。</p>
+
+<h2 id="配置数据库">配置数据库</h2>
+
+<p>在<code>settings.py</code>中配置需要连接的多个数据库连接。</p>
+
+<pre><code>DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'db_book': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db_book.sqlite3'),
+    },
+    'db_blog': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db_blog.sqlite3'),
+    },
+}
+
+DATABASE_APPS_MAPPING = {
+    # example:
+    # 'app_name':'database_name',
+    'blog': 'db_blog',
+    'book': 'db_book',
+    'users': 'default',
+}
+</code></pre>
+
+<p>这里我们定义了三个库，默认库<code>default</code>, <code>db_blog</code>, <code>db_book</code>。</p>
+
+<p>然后user信息存default库，book数据存在db_book，blog数据存在db_blog。</p>
+
+<h2 id="同步数据库变更">同步数据库变更</h2>
+
+<p><code>migrate</code>命令在同步变更是，每次操作一个数据库，默认操作<code>default</code>数据库。通过<code>--database</code>选项，可以指定操作的数据库。</p>
+
+<pre><code>python manage.py migrate
+python manage.py migrate --database=db_book
+python manage.py migrate --database=db_blog
+</code></pre>
+
+<p>我们通过上面的命令，把models定义的信息，同步到数据库。</p>
+
+<h2 id="定义数据库路由">定义数据库路由</h2>
+
+<p>定义<code>Database routers</code>需要新建一个<code>db_router.py</code>文件，定义数据库路由类<code>DbRouter</code>，这个类里有四个方法类定义路由规则，我们可以根据<code>app_label</code>来确定访问的数据库。</p>
+
+<pre><code class="language-python">from django.conf import settings
+
+DATABASE_MAPPING = settings.DATABASE_APPS_MAPPING
+
+
+class DbRouter(object):
+    def db_for_read(self, model, **hints):
+        if model._meta.app_label in DATABASE_MAPPING:
+            return DATABASE_MAPPING[model._meta.app_label]
+        return None
+
+    def db_for_write(self, model, **hints):
+        if model._meta.app_label in DATABASE_MAPPING:
+            return DATABASE_MAPPING[model._meta.app_label]
+        return None
+
+    def allow_relation(self, obj1, obj2, **hints):
+        pass
+
+    def allow_migrate(self, db, app_label, model=None, **hints):
+        pass
+</code></pre>
+
+<p>然后，在<code>settings.py</code>文件添加数据库路由的配置<code>DATABASE_ROUTERS</code>，如下：</p>
+
+<pre><code>DATABASE_ROUTERS = ['partition.db_router.DbRouter']
+</code></pre>
+
+<p>配置在<code>DATABASE_ROUTERS</code>中的路由规则才会生效，会被<code>django.db.router</code>使用。</p>
+
+<h2 id="使用路由">使用路由</h2>
+
+<p>这样，我们就完成了Django数据库分库的配置和路由规则的配置。</p>
+
+<p>在没有配置路由前，我们需要通过<code>using</code>方法手动指定需要访问的数据库，示例：</p>
+
+<ul>
+<li><p>指定保存的数据库</p>
+
+<pre><code>b = Blog(content='test')
+b.save(using='db_blog')
+</code></pre></li>
+
+<li><p>指定读取的数据库</p>
+
+<pre><code>Book.objects.using('db_book').all()
+</code></pre></li>
+</ul>
+
+<p>按完成了上述的路由配置后，<code>Django ORM</code>会根据路由规则来选择访问的数据库。users默认访问default库，book访问db_book，blog访问db_blog。例如：<code>Book.objects.all()</code>会自动访问<code>db_book</code>数据库，无需再通过<code>using</code>来指定数据库。</p>
+
+<p>此外，数据库<code>读写分离</code>是只是数据库分库的一种特殊情况，在现有的基础上，我们只需要简单调整下配置就可以实现读写分离了。</p>
+
+			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
+			<hr>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/python/" rel="tag">Python</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/django/" rel="tag">Django</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="络壳-LockShell avatar" src="http://wx1.sinaimg.cn/sq612/007WyrCfgy1g5uyiopw05j30by0bydgn.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 络壳-LockShell</span>
+	</div>
+	<div class="authorbox__description">
+		扫码关注络壳公众号，获取更多最新内容。
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2019/08/25/django-split-db-table-solution/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">优雅实现Django分表</p></a>
+	</div>
+</nav>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '41b3bd5685f4310306a5',
+    clientSecret: '4b943ef7620d478481ffd403f08bb951e01e22b8',
+    repo: 'stackuncle.github.io',
+    owner: 'stackuncle',
+    admin: ['stackuncle'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	
+	<script async src="//cdn.busuanzi.ibruce.info/cdn/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<script>
+		$(document).ready(function() {
+			var int = setInterval(fixCount, 100);
+			var busuanziSiteOffset =  0 
+			function fixCount() {
+				if ($("#busuanzi_container_site_pv").css("display") != "none") {
+					clearInterval(int);
+					$("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+				}
+			}
+		});
+	</script>
+	
+
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 LockShell.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+			<span id="busuanzi_container_site_pv">本站访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+			&nbsp;
+			<span id="busuanzi_container_site_uv">您是本站第 <span id="busuanzi_value_site_uv"></span> 位访问者
+        </span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

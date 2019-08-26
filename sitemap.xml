@@ -4,43 +4,48 @@
   
   <url>
     <loc>https://lockshell.com/categories/</loc>
-    <lastmod>2019-08-25T10:37:30+08:00</lastmod>
+    <lastmod>2019-08-26T20:47:37+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://lockshell.com/tags/django/</loc>
-    <lastmod>2019-08-25T10:37:30+08:00</lastmod>
+    <lastmod>2019-08-26T20:47:37+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://lockshell.com/2019/08/26/django-database-partition/</loc>
+    <lastmod>2019-08-26T20:47:37+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://lockshell.com/categories/python/</loc>
-    <lastmod>2019-08-25T10:37:30+08:00</lastmod>
+    <lastmod>2019-08-26T20:47:37+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://lockshell.com/tags/python/</loc>
-    <lastmod>2019-08-25T10:37:30+08:00</lastmod>
+    <lastmod>2019-08-26T20:47:37+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://lockshell.com/tags/</loc>
-    <lastmod>2019-08-25T10:37:30+08:00</lastmod>
+    <lastmod>2019-08-26T20:47:37+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/</loc>
+    <lastmod>2019-08-26T20:47:37+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://lockshell.com/2019/08/25/django-split-db-table-solution/</loc>
     <lastmod>2019-08-25T10:37:30+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/</loc>
-    <lastmod>2019-08-25T10:37:30+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
