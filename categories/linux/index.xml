@@ -6,19 +6,10 @@
     <description>Recent content in Linux on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 18 Aug 2019 15:34:15 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 18 Aug 2019 15:08:15 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Httpie超赞的http客户端</title>
-      <link>https://lockshell.com/2019/08/18/how-to-use-httpie/</link>
-      <pubDate>Sun, 18 Aug 2019 15:34:15 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/18/how-to-use-httpie/</guid>
-      <description>Httpie是一个人性化的HTTP的命令行客户端，httpie之于curl，有点类似requests之于urllib，用起来更方便。 HTTPie (pronounced aitch-tee-tee-pie) is</description>
-    </item>
     
     <item>
       <title>怎样计算子网IP地址</title>
