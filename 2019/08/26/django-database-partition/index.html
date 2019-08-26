@@ -292,7 +292,7 @@ class DbRouter(object):
 
 <p>我们可以指定多个数据库路由规则，比如对于读操作，Django将会循环所有路由中的<code>db_for_read()</code>方法，直到其中一个有返回值，然后使用这个数据库进行当前操作。</p>
 
-<p>按完成了上述的路由配置后，<code>Django ORM</code>会根据路由规则来选择访问的数据库。安照我们的配置，user会访问default库，book访问db_book，blog访问db_blog。例如：<code>Book.objects.all()</code>会自动访问<code>db_book</code>数据库，无需再通过<code>using</code>来指定数据库。</p>
+<p>按完成了上述的路由配置后，<code>Django ORM</code>会根据路由规则来选择访问的数据库。按照前面的配置，user会访问default库，book访问db_book，blog访问db_blog。例如：<code>Book.objects.all()</code>会自动访问<code>db_book</code>数据库，无需再通过<code>using</code>来指定数据库。</p>
 
 <h2 id="读写分离">读写分离</h2>
 
