@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1477 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1493 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -116,15 +116,18 @@ if (!doNotTrack) {
 <ul>
 <li>
 <ul>
-<li><a href="#配置数据库">配置数据库</a></li>
+<li><a href="#如何配置分库">如何配置分库</a>
+<ul>
+<li><a href="#配置db地址">配置DB地址</a></li>
 <li><a href="#定义-model">定义<code>Model</code></a></li>
-<li><a href="#同步数据变更">同步数据变更</a></li>
-<li><a href="#使用分库">使用分库</a>
+<li><a href="#执行-migrate">执行<code>migrate</code></a></li>
+</ul></li>
+<li><a href="#如何访问分库">如何访问分库</a>
 <ul>
 <li><a href="#using-方法"><code>using()</code>方法</a></li>
 <li><a href="#配置db路由">配置DB路由</a></li>
 </ul></li>
-<li><a href="#读写分离">读写分离</a>
+<li><a href="#如何配置读写分离">如何配置读写分离</a>
 <ul>
 <li><a href="#主库写从库读">主库写从库读</a></li>
 <li><a href="#多个app读写分离">多个app读写分离</a></li>
@@ -143,7 +146,9 @@ if (!doNotTrack) {
 
 <p>例如我们在<code>Django</code>项目有<code>users</code>, <code>book</code>, <code>blog</code>三个app，对应<code>user</code>，<code>book</code>，<code>blog</code>三个DB，下面就探究一下如何在Django实现这三个库的分库？</p>
 
-<h2 id="配置数据库">配置数据库</h2>
+<h2 id="如何配置分库">如何配置分库</h2>
+
+<h3 id="配置db地址">配置DB地址</h3>
 
 <p>在<code>settings.py</code> <code>DATABASES</code>中配置需要连接的多个数据库地址。</p>
 
@@ -173,7 +178,7 @@ DATABASE_APPS_MAPPING = {
 
 <p>这里我们定义了三个库和地址，<code>default</code>, <code>db_blog</code>和<code>db_book</code>；以及app name到db name的映射。</p>
 
-<h2 id="定义-model">定义<code>Model</code></h2>
+<h3 id="定义-model">定义<code>Model</code></h3>
 
 <p>对应的，在book app的models中，我们定义如下Book类。</p>
 
@@ -217,7 +222,7 @@ class Blog(models.Model):
 
 <p>类似的，在users app中定义User类。</p>
 
-<h2 id="同步数据变更">同步数据变更</h2>
+<h3 id="执行-migrate">执行<code>migrate</code></h3>
 
 <p><code>migrate</code>命令在同步变更时，每次操作一个数据库，默认操作<code>default</code>数据库。通过<code>--database</code>选项，可以指定操作的数据库。</p>
 
@@ -228,7 +233,7 @@ python manage.py migrate --database=db_blog
 
 <p>通过上面的命令，把models里定义的信息，同步到数据库。</p>
 
-<h2 id="使用分库">使用分库</h2>
+<h2 id="如何访问分库">如何访问分库</h2>
 
 <p>通过前面几步，就完成了Django数据库分库的配置。那配置完了怎样使用呢？有两种方法来使用分库：</p>
 
@@ -296,7 +301,7 @@ class DbRouter(object):
 
 <p>按完成了上述的路由配置后，<code>Django ORM</code>会根据路由规则来选择访问的DB。按照上面<code>DbRouter</code>的配置，user会访问default库，book访问db_book库，blog访问db_blog库。例如：<code>Book.objects.all()</code>会自动访问<code>db_book</code>数据库，无需再通过<code>using</code>来指定数据库。</p>
 
-<h2 id="读写分离">读写分离</h2>
+<h2 id="如何配置读写分离">如何配置读写分离</h2>
 
 <p>数据库<code>读写分离</code>是只是数据库分库的一种特殊情况，在现有的基础上，我们只需要简单调整下路由配置就可以实现读写分离了。示例：</p>
 
