@@ -20,13 +20,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/python/</loc>
+    <loc>https://lockshell.com/categories/python/</loc>
     <lastmod>2019-08-26T20:47:37+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/python/</loc>
+    <loc>https://lockshell.com/tags/python/</loc>
     <lastmod>2019-08-26T20:47:37+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -66,13 +66,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/other/</loc>
+    <loc>https://lockshell.com/categories/other/</loc>
     <lastmod>2019-08-21T19:09:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/other/</loc>
+    <loc>https://lockshell.com/tags/other/</loc>
     <lastmod>2019-08-21T19:09:21+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -133,13 +133,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/linux/</loc>
+    <loc>https://lockshell.com/categories/linux/</loc>
     <lastmod>2019-08-18T15:08:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/linux/</loc>
+    <loc>https://lockshell.com/tags/linux/</loc>
     <lastmod>2019-08-18T15:08:15+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -197,13 +197,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/nginx/</loc>
+    <loc>https://lockshell.com/categories/nginx/</loc>
     <lastmod>2019-08-12T15:35:37+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/nginx/</loc>
+    <loc>https://lockshell.com/tags/nginx/</loc>
     <lastmod>2019-08-12T15:35:37+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -234,20 +234,8 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/china/</loc>
-    <lastmod>2019-08-10T13:39:16+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://lockshell.com/2019/08/10/how-chinese-think-about-trade-war/</loc>
     <lastmod>2019-08-10T13:39:16+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/categories/thinking/</loc>
-    <lastmod>2019-08-10T13:39:16+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -256,13 +244,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/hugo/</loc>
+    <loc>https://lockshell.com/categories/hugo/</loc>
     <lastmod>2019-08-10T11:12:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/hugo/</loc>
+    <loc>https://lockshell.com/tags/hugo/</loc>
     <lastmod>2019-08-10T11:12:00+08:00</lastmod>
     <priority>0</priority>
   </url>
