@@ -256,7 +256,9 @@ b.save(using='db_blog')
 
 <h3 id="配置db路由">配置DB路由</h3>
 
-<p>配置<code>Database routers</code>需要新建一个<code>db_router.py</code>文件，添加数据库路由类<code>DbRouter</code>。这个类里需要实现<code>db_for_read</code>、<code>db_for_write</code>、<code>allow_relation</code>以及<code>allow_migrate</code>四个方法来定义路由规则，我们可以根据<code>app_label</code>来指定访问的DB。</p>
+<p>配置<code>Database routers</code>需要新建一个<code>db_router.py</code>文件，添加数据库路由类<code>DbRouter</code>。</p>
+
+<p>这个类里需要实现<code>db_for_read</code>、<code>db_for_write</code>、<code>allow_relation</code>以及<code>allow_migrate</code>四个方法来定义路由规则，我们可以根据<code>app_label</code>来指定访问的DB。</p>
 
 <pre><code class="language-python">from django.conf import settings
 
