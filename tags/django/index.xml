@@ -17,7 +17,7 @@
       <pubDate>Mon, 26 Aug 2019 20:47:37 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/26/django-database-partition/</guid>
-      <description>Django ORM原生支持分库，只需要在settings.py文件中，添加相应的数据库配置和路由配置。 参考Django官方文档，db/multi-db</description>
+      <description>Django ORM提供了默认分库功能，只需要在settings.py文件中添加相应的数据库配置和路由配置。 参考Django官方文档，db/multi-</description>
     </item>
     
     <item>
