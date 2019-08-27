@@ -21,11 +21,11 @@
     </item>
     
     <item>
-      <title>优雅实现Django分表</title>
-      <link>https://lockshell.com/2019/08/25/django-split-db-table-solution/</link>
+      <title>Django数据库分表</title>
+      <link>https://lockshell.com/2019/08/25/django-orm-db-table-partition/</link>
       <pubDate>Sun, 25 Aug 2019 10:37:30 +0800</pubDate>
       
-      <guid>https://lockshell.com/2019/08/25/django-split-db-table-solution/</guid>
+      <guid>https://lockshell.com/2019/08/25/django-orm-db-table-partition/</guid>
       <description>Django ORM没有提供默认的分表功能，给访问分表的数据库带来的不变。那么Django分表怎么实现呢？ 分析Django ORM 在实现具体的方案之前，我们先</description>
     </item>
     
@@ -116,7 +116,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了17篇日志，继续加油哦！ 2019-08 2019-08-26 Django数据库分库+读写分离 2019-08-25 优雅实现Django分表 2019-08-23 MySQL-后端开发优化思路 2019-08-21 怎样准备</description>
+      <description>很好，总共写了17篇日志，继续加油哦！ 2019-08 2019-08-26 Django数据库分库+读写分离 2019-08-25 Django数据库分表 2019-08-23 MySQL-后端开发优化思路 2019-08-21 怎样准备后</description>
     </item>
     
     <item>
