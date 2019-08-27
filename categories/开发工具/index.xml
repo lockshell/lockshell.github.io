@@ -20,14 +20,5 @@
       <description>工作中遇到这样的子网ip和掩码：192.168.20.0/24，得在脑海中用二进制去算IP范围是多少，子网掩码是多少；有时还得在纸上画一画，</description>
     </item>
     
-    <item>
-      <title>找到独一无二的用户名</title>
-      <link>https://lockshell.com/2019/08/12/unique-username/</link>
-      <pubDate>Mon, 12 Aug 2019 11:37:28 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/12/unique-username/</guid>
-      <description>很多朋友想要申请一个独一无二的个性用户名/网名，但是自己想好的名称总容易跟别人的冲突；要么是A网站不冲突，在B网站冲突了。 那么有没有方法一次</description>
-    </item>
-    
   </channel>
 </rss>

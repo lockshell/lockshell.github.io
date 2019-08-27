@@ -48,24 +48,6 @@
     </item>
     
     <item>
-      <title>读书简记《夜航西飞》</title>
-      <link>https://lockshell.com/2019/08/20/note-of-west-with-the-night/</link>
-      <pubDate>Tue, 20 Aug 2019 21:48:31 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/20/note-of-west-with-the-night/</guid>
-      <description>无论是广袤无垠的热带草原，还是黄尘漫漫的万里狂沙，非洲大陆对大部分人来说是神秘的。《夜航西飞》是所有写非洲的书里最精彩绝伦的那一本，没有之一</description>
-    </item>
-    
-    <item>
-      <title>读书简记《重来：更简单有效的商业思维》</title>
-      <link>https://lockshell.com/2019/08/19/note-of-rework/</link>
-      <pubDate>Mon, 19 Aug 2019 22:43:36 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/19/note-of-rework/</guid>
-      <description>《重来》可以说是我去年读的最好的书。 书中讲了很多道理，看到与看懂，懂得与行动，这中间是隔了十万八千里的。世界上的道理千千万，大多说的很绝对，</description>
-    </item>
-    
-    <item>
       <title>读书简记《投资中最简单的事》</title>
       <link>https://lockshell.com/2019/08/18/note-of-easiest-rules-in-invest/</link>
       <pubDate>Sun, 18 Aug 2019 19:32:53 +0800</pubDate>
@@ -111,15 +93,6 @@
     </item>
     
     <item>
-      <title>你被一万小时定律欺骗了嘛？</title>
-      <link>https://lockshell.com/2019/08/13/law-of-ten-thousand-hours/</link>
-      <pubDate>Tue, 13 Aug 2019 22:53:07 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/13/law-of-ten-thousand-hours/</guid>
-      <description>PS: 这篇笔记整理自《刻意练习》一书。 一万小时天才理论 《异类》这本书中最让人印象深刻的就是“一万小时天才理论”。 “人们眼中的天才之所以卓越非凡，</description>
-    </item>
-    
-    <item>
       <title>程序员的自我修养</title>
       <link>https://lockshell.com/2019/08/13/programmer-self-discipline/</link>
       <pubDate>Tue, 13 Aug 2019 21:08:08 +0800</pubDate>
@@ -129,30 +102,12 @@
     </item>
     
     <item>
-      <title>读书笔记《刻意练习》</title>
-      <link>https://lockshell.com/2019/08/12/note-of-deliberate-practice/</link>
-      <pubDate>Mon, 12 Aug 2019 21:56:11 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/12/note-of-deliberate-practice/</guid>
-      <description>第1章 有目的的练习 有目的的练习具有定义明确的特定目标 定义明确的具体目标，可以有效地用于引导你的练习。 有目的的练习是专注的 有目的的练习包含反馈</description>
-    </item>
-    
-    <item>
       <title>Nginx安全相关配置</title>
       <link>https://lockshell.com/2019/08/12/nginx-security-configs/</link>
       <pubDate>Mon, 12 Aug 2019 15:35:37 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/12/nginx-security-configs/</guid>
       <description>&lt;p&gt;A summary of Nginx security configuration.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>找到独一无二的用户名</title>
-      <link>https://lockshell.com/2019/08/12/unique-username/</link>
-      <pubDate>Mon, 12 Aug 2019 11:37:28 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/12/unique-username/</guid>
-      <description>很多朋友想要申请一个独一无二的个性用户名/网名，但是自己想好的名称总容易跟别人的冲突；要么是A网站不冲突，在B网站冲突了。 那么有没有方法一次</description>
     </item>
     
     <item>
@@ -202,24 +157,6 @@
       <description>&lt;p&gt;There is an interesting api on &lt;a href=&#34;https://ghchart.rshah.org/&#34;&gt;https://ghchart.rshah.org/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;It can display your Github chart information as an image.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Welcome</title>
-      <link>https://lockshell.com/2019/07/21/my-first-post/</link>
-      <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://lockshell.com/2019/07/21/my-first-post/</guid>
-      <description>Welcome to LockShell</description>
-    </item>
-    
-    <item>
-      <title>Python技术栈/工具链整理</title>
-      <link>https://lockshell.com/2018/12/10/python-tech-stack/</link>
-      <pubDate>Mon, 10 Dec 2018 23:07:04 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2018/12/10/python-tech-stack/</guid>
-      <description>开发环境 开发工具 Vim/SublimeText2/PyCharm/VS Code 用着顺手就好，我是由vim转PyCharm的。集成开发环境自动补全、单步调试等功能好很多，有利于提高工作效率。 iTerm</description>
     </item>
     
     <item>

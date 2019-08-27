@@ -44,7 +44,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了26篇日志，继续加油哦！ 2019-08 2019-08-26 Django数据库分库+读写分离 2019-08-25 优雅实现Django分表 2019-08-23 MySQL-后端开发优化思路 2019-08-21 怎样准备</description>
+      <description>很好，总共写了19篇日志，继续加油哦！ 2019-08 2019-08-26 Django数据库分库+读写分离 2019-08-25 优雅实现Django分表 2019-08-23 MySQL-后端开发优化思路 2019-08-21 怎样准备</description>
     </item>
     
     <item>
@@ -65,15 +65,6 @@
       <description>&lt;h2 id=&#34;关于络壳&#34;&gt;关于络壳&lt;/h2&gt;
 
 &lt;p&gt;之前在&lt;a href=&#34;https://coolshell.cn&#34;&gt;CoolShell&lt;/a&gt;的博客上学到了不少，于是也想建一个自己的站点。2019-08-09正是新加坡国庆节假期，这边没啥朋友，也没啥好去的地方。于是动手撸了一个博客，来记录一些技术和生活上的思考。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Welcome</title>
-      <link>https://lockshell.com/2019/07/21/my-first-post/</link>
-      <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://lockshell.com/2019/07/21/my-first-post/</guid>
-      <description>Welcome to LockShell</description>
     </item>
     
   </channel>

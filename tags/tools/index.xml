@@ -20,14 +20,5 @@
       <description>工作中遇到这样的子网ip和掩码：192.168.20.0/24，得在脑海中用二进制去算IP范围是多少，子网掩码是多少；有时还得在纸上画一画，</description>
     </item>
     
-    <item>
-      <title>Python技术栈/工具链整理</title>
-      <link>https://lockshell.com/2018/12/10/python-tech-stack/</link>
-      <pubDate>Mon, 10 Dec 2018 23:07:04 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2018/12/10/python-tech-stack/</guid>
-      <description>开发环境 开发工具 Vim/SublimeText2/PyCharm/VS Code 用着顺手就好，我是由vim转PyCharm的。集成开发环境自动补全、单步调试等功能好很多，有利于提高工作效率。 iTerm</description>
-    </item>
-    
   </channel>
 </rss>
