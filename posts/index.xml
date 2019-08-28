@@ -12,15 +12,6 @@
     
     
     <item>
-      <title>Django-Db-Connection-Pool</title>
-      <link>https://lockshell.com/2019/08/28/django-db-connection-pool/</link>
-      <pubDate>Wed, 28 Aug 2019 02:40:57 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/28/django-db-connection-pool/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Django数据库分库&#43;读写分离</title>
       <link>https://lockshell.com/2019/08/26/django-database-partition/</link>
       <pubDate>Mon, 26 Aug 2019 20:47:37 +0800</pubDate>
