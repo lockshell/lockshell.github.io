@@ -4,19 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Django-Db-Connection-Pool - 络壳 LockShell</title>
+	<title>Django数据库连接池 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="">
-	<meta property="og:title" content="Django-Db-Connection-Pool" />
-<meta property="og:description" content="" />
+	<meta name="description" content="Django Database Connection Pooling">
+	<meta property="og:title" content="Django数据库连接池" />
+<meta property="og:description" content="Django Database Connection Pooling" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2019/08/28/django-db-connection-pool/" />
 <meta property="article:published_time" content="2019-08-28T02:40:57&#43;08:00"/>
 <meta property="article:modified_time" content="2019-08-28T02:40:57&#43;08:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Django-Db-Connection-Pool"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Django数据库连接池"/>
+<meta name="twitter:description" content="Django Database Connection Pooling"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -95,7 +95,7 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Django-Db-Connection-Pool</h1>
+			<h1 class="post__title">Django数据库连接池</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
@@ -104,12 +104,267 @@ if (!doNotTrack) {
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/" rel="category"></a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 0 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2099 words</span>
 </div>
-		</header><div class="content post__content clearfix">
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#django长连接">Django长连接</a>
+<ul>
+<li><a href="#长连接">长连接</a></li>
+<li><a href="#连接管理">连接管理</a></li>
+<li><a href="#使用提示">使用提示</a></li>
+</ul></li>
+<li><a href="#长连接-vs-连接池">长连接 VS 连接池</a>
+<ul>
+<li><a href="#为啥django不支持db连接池">为啥Django不支持DB连接池</a></li>
+<li><a href="#连接池的好处">连接池的好处</a></li>
+</ul></li>
+<li><a href="#django连接池方案">Django连接池方案</a>
+<ul>
+<li><a href="#django-mysqlpool"><code>django-mysqlpool</code></a></li>
+<li><a href="#djorm-ext-pool"><code>djorm-ext-pool</code></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
 			
+
+<h2 id="django长连接">Django长连接</h2>
+
+<p>先看看官方文档是怎么讲的。参见<a href="https://docs.djangoproject.com/en/2.2/ref/databases/">django databases</a>，可能翻译的不太得体。</p>
+
+<h3 id="长连接">长连接</h3>
+
+<p>长连接(Persistent connections)是为了避免在每个请求中都重新建立数据库连接的开销。在Django中，数据库连接由<code>CONN_MAX_AGE</code>控制，这个参数定义了每个连接的最长寿命。可以为每个DB单独设置<code>CONN_MAX_AGE</code>。</p>
+
+<p><code>CONN_MAX_AGE</code>的默认值是0，在每个请求结束时，将关闭数据库连接。</p>
+
+<p>要启用长连接，请将<code>CONN_MAX_AGE</code>设置为正数秒。对于不限时的长连接，请将其设置为<code>None</code>。</p>
+
+<h3 id="连接管理">连接管理</h3>
+
+<p>Django在首次进行数据库查询时会建立与数据库的连接。它保持此连接打开，并在后续请求中重用它。连接一旦超过<code>CONN_MAX_AGE</code>定义的最大寿命或不再可用，Django就会关闭连接。</p>
+
+<p>具体来讲，没有连接分两种情况：1、这是第一个连接，2、或者先前的连接已关闭。如果Django没有连接，它会<strong>在需要时自动建立与数据库的连接。</strong></p>
+
+<p>在每个请求开始时，Django会关闭达到其最大年寿命的连接。如果你的数据库在一段时间后会关闭空闲连接，则应将<code>CONN_MAX_AGE</code>设置为较小的值，以便Django不会试图使用已由DB终止的连接。（这个问题可能只会影响非常低的流量网站。）</p>
+
+<p>在每个请求结束时，Django会在连接达到最大寿命或者处于不可恢复的错误状态时关闭连接。如果在处理请求时发生任何数据库错误，Django会检查连接是否仍然有效，如果没有则关闭它。</p>
+
+<p>因此，数据库错误最多只影响一个请求；如果DB连接变得不可用，则下一个请求将获取新连接。</p>
+
+<h3 id="使用提示">使用提示</h3>
+
+<p>由于<strong>每个线程都维护自己的连接</strong>，因此你的数据库必须至少支持与工作线程一样多的并发连接。</p>
+
+<p>有时，大多数<code>views</code>都不会访问数据库，例如，因为它是外部系统的数据库，或者归功于缓存。</p>
+
+<p>在这种情况下，应该将<code>CONN_MAX_AGE</code>设置为较小的值甚至0，因为维护不太可能重用的连接没有意义。这将有助于将与数据库的并发连接数量保持在较小的值。</p>
+
+<p>开发模式的Server为它处理的每个请求创建一个新线程，无视长连接的作用。在开发过程中不需要启用长连接。</p>
+
+<p>当Django建立与数据库的连接时，它会根据所使用的后端设置恰当的参数。如果启用长连接，则不会再对每个请求重复设置。如果修改连接的<strong>隔离级别</strong>或时区等参数，则应在每个请求结束时恢复Django的默认值，在每个请求开始时强制使用适当的值，或者禁用长连接。</p>
+
+<h2 id="长连接-vs-连接池">长连接 VS 连接池</h2>
+
+<h3 id="为啥django不支持db连接池">为啥Django不支持DB连接池</h3>
+
+<p>我们看看<a href="https://groups.google.com/forum/#!topic/django-developers/NwY9CHM4xpU">Google Group</a>里各路大神的讨论吧。</p>
+
+<ul>
+<li><p>第三方工具已经提供了，更专注做得更好。Django不需要做全栈。</p></li>
+
+<li><p>用从pool里取连接代替新建连接，向pool归还连接代替关闭连接，然后在worker在整个请求期间都持有连接并不是真正的连接池。这需要跟worker数一样多的数据库连接，除了能在各个worker循环使用外，基本跟长连接是等效的。长连接也有自己的优点，消除了新建连接的开销，避免的池化的复杂性，适用于不需要手动管理事务的中小型站点。</p></li>
+
+<li><p>首先要操心的不是数据库，AWS之类的云计算已经很牛了，按需扩容，多关注下缓存吧。</p></li>
+
+<li><p>……</p></li>
+</ul>
+
+<h3 id="连接池的好处">连接池的好处</h3>
+
+<ol>
+<li>资源重用，更快的响应速度
+<ul>
+<li>利用现有可用连接，避免了数据库连接初始化和释放过程的时间和资源开销，从而节约资源，减少了系统的响应时间</li>
+</ul></li>
+<li>统一的连接管理，避免数据库连接泄漏
+<ul>
+<li>预先设定超时时间、连接数量，强制回收被占用连接，避免数据库连接操作中可能出现的资源泄露</li>
+</ul></li>
+</ol>
+
+<p>说了这么多，总而言之有两点是确定的：</p>
+
+<ol>
+<li>Django原生支持长连接，但不支持连接池</li>
+<li>连接池还是有很多优点的，也有很多成熟的三方库</li>
+</ol>
+
+<p>那么我们接下来看看，如何在Django中利用DB连接池？</p>
+
+<h2 id="django连接池方案">Django连接池方案</h2>
+
+<h3 id="django-mysqlpool"><code>django-mysqlpool</code></h3>
+
+<p><a href="https://github.com/smartfile/django-mysqlpool"><code>django-mysqlpool</code></a>用100来行代码，实现了一个优雅的基于<code>SQLAlchemy</code>的patch方案。</p>
+
+<pre><code># -*- coding: utf-8 -*-
+&quot;&quot;&quot;The top-level package for ``django-mysqlpool``.&quot;&quot;&quot;
+# These imports make 2 act like 3, making it easier on us to switch to PyPy or
+# some other VM if we need to for performance reasons.
+from __future__ import (absolute_import, print_function, unicode_literals,
+                        division)
+
+# Make ``Foo()`` work the same in Python 2 as it does in Python 3.
+__metaclass__ = type
+
+
+import os
+
+
+from django.conf import settings
+from django.db.backends.mysql import base
+from django.core.exceptions import ImproperlyConfigured
+
+try:
+    import sqlalchemy.pool as pool
+except ImportError as e:
+    raise ImproperlyConfigured(&quot;Error loading SQLAlchemy module: %s&quot; % e)
+
+
+# Global variable to hold the actual connection pool.
+MYSQLPOOL = None
+# Default pool type (QueuePool, SingletonThreadPool, AssertionPool, NullPool,
+# StaticPool).
+DEFAULT_BACKEND = 'QueuePool'
+# Needs to be less than MySQL connection timeout (server setting). The default
+# is 120, so default to 119.
+DEFAULT_POOL_TIMEOUT = 119
+
+
+def isiterable(value):
+    &quot;&quot;&quot;Determine whether ``value`` is iterable.&quot;&quot;&quot;
+    try:
+        iter(value)
+        return True
+    except TypeError:
+        return False
+
+
+class OldDatabaseProxy():
+    &quot;&quot;&quot;
+    Saves a reference to the old connect function.
+    Proxies calls to its own connect() method to the old function.
+    &quot;&quot;&quot;
+
+    def __init__(self, old_connect):
+        &quot;&quot;&quot;Store ``old_connect`` to be used whenever we connect.&quot;&quot;&quot;
+        self.old_connect = old_connect
+
+    def connect(self, **kwargs):
+        &quot;&quot;&quot;Delegate to the old ``connect``.&quot;&quot;&quot;
+        # Bounce the call to the old function.
+        return self.old_connect(**kwargs)
+
+
+class HashableDict(dict):
+    &quot;&quot;&quot;
+    A dictionary that is hashable.
+    This is not generally useful, but created specifically to hold the ``conv``
+    parameter that needs to be passed to MySQLdb.
+    &quot;&quot;&quot;
+
+    def __hash__(self):
+        &quot;&quot;&quot;Calculate the hash of this ``dict``.
+        The hash is determined by converting to a sorted tuple of key-value
+        pairs and hashing that.
+        &quot;&quot;&quot;
+        items = [(n, tuple(v)) for n, v in self.items() if isiterable(v)]
+        return hash(tuple(items))
+
+
+# Define this here so Django can import it.
+DatabaseWrapper = base.DatabaseWrapper
+
+
+# Wrap the old connect() function so our pool can call it.
+OldDatabase = OldDatabaseProxy(base.Database.connect)
+
+
+def get_pool():
+    &quot;&quot;&quot;Create one and only one pool using the configured settings.&quot;&quot;&quot;
+    global MYSQLPOOL
+    if MYSQLPOOL is None:
+        backend_name = getattr(settings, 'MYSQLPOOL_BACKEND', DEFAULT_BACKEND)
+        backend = getattr(pool, backend_name)
+        kwargs = getattr(settings, 'MYSQLPOOL_ARGUMENTS', {})
+        kwargs.setdefault('poolclass', backend)
+        kwargs.setdefault('recycle', DEFAULT_POOL_TIMEOUT)
+        MYSQLPOOL = pool.manage(OldDatabase, **kwargs)
+        setattr(MYSQLPOOL, '_pid', os.getpid())
+
+    if getattr(MYSQLPOOL, '_pid', None) != os.getpid():
+        pool.clear_managers()
+    return MYSQLPOOL
+
+
+def connect(**kwargs):
+    &quot;&quot;&quot;Obtain a database connection from the connection pool.&quot;&quot;&quot;
+    # SQLAlchemy serializes the parameters to keep unique connection
+    # parameter groups in their own pool. We need to store certain
+    # values in a manner that is compatible with their serialization.
+    conv = kwargs.pop('conv', None)
+    ssl = kwargs.pop('ssl', None)
+    if conv:
+        kwargs['conv'] = HashableDict(conv)
+
+    if ssl:
+        kwargs['ssl'] = HashableDict(ssl)
+
+    # Open the connection via the pool.
+    return get_pool().connect(**kwargs)
+
+
+# Monkey-patch the regular mysql backend to use our hacked-up connect()
+# function.
+base.Database.connect = connect
+</code></pre>
+
+<h3 id="djorm-ext-pool"><code>djorm-ext-pool</code></h3>
+
+<p><strong><a href="https://github.com/djangonauts/djorm-ext-pool">djorm-ext-pool</a>安装</strong></p>
+
+<pre><code>pip install djorm-ext-pool
+</code></pre>
+
+<p><strong>使用</strong>只需在<code>settings.py</code>中添加配置即可</p>
+
+<pre><code># settings.py
+
+INSTALLED_APPS = (
+    'djorm_pool',
+    ...
+)
+
+DJORM_POOL_OPTIONS = {
+    'pool_size': 20,
+    'max_overflow': 0,
+    'recycle': 3600, # the default value
+}
+</code></pre>
+
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
 		</div>
@@ -118,7 +373,8 @@ if (!doNotTrack) {
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags//" rel="tag"></a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/python/" rel="tag">Python</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/django/" rel="tag">Django</a></li>
 	</ul>
 </div>
 		</footer>
