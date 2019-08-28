@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1854 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1862 words</span>
 </div>
 		</header><div class="content post__content clearfix">
 			
@@ -126,7 +126,14 @@ if (!doNotTrack) {
 <h2 id="查询优化">查询优化</h2>
 
 <ol>
-<li><p><strong>为搜索字段建索引，合理使用</strong></p></li>
+<li><p><strong>为搜索字段建索引，合理使用</strong> （第一条，因为它最关键）</p>
+
+<ul>
+<li>在 <code>WHERE</code>、<code>GROUP BY</code> 和 <code>ORDER BY</code> 的列上加上索引</li>
+<li>尽量保证索引简单，避免在同一列上加多个索引</li>
+<li>有时<code>MySQL</code>会选择错误的索引，可考虑使用<code>USE INDEX</code></li>
+<li>查询字段存在索引中，考虑<code>Cover Index</code></li>
+</ul></li>
 
 <li><p>当只要一行数据时使用 <code>LIMIT 1</code></p></li>
 
@@ -182,7 +189,7 @@ if (!doNotTrack) {
 <li><code>InnoDB</code>是没有保存rows count的，因为在不同transaction中，看到的行可能不一样</li>
 <li><code>InnoDB</code>通过扫描索引来计数，count全表时，需要遍历全部索引；当索引不再内存中时，还需要从磁盘读取，会更慢更消耗资源</li>
 <li>如果只需要一个大概的行数，可以用<code>SHOW TABLE STATUS</code></li>
-<li><code>MyISAM</code>引擎不一样，维护了count值，SELECT COUNT(*)能马上返回</li>
+<li><code>MyISAM</code>引擎不一样，维护了count值，<code>SELECT COUNT(*)</code>能马上返回</li>
 </ul></li>
 
 <li><p><code>JOIN</code></p>
@@ -263,18 +270,6 @@ if (!doNotTrack) {
 <li><p>适度冗余，让Query尽量减少Join</p></li>
 
 <li><p>不推荐使用外键<code>Foreign Key</code></p></li>
-</ol>
-
-<h2 id="索引优化">索引优化</h2>
-
-<ol>
-<li><p>在 <code>WHERE</code>、<code>GROUP BY</code> 和 <code>ORDER BY</code> 的列上加上索引</p></li>
-
-<li><p>尽量保证索引简单，避免在同一列上加多个索引</p></li>
-
-<li><p>有时MySQL 会选择错误的索引，可考虑使用<code>USE INDEX</code></p></li>
-
-<li><p>查询字段存在索引中，考虑<code>Cover Index</code></p></li>
 </ol>
 
 <h2 id="其他优化">其他优化</h2>
