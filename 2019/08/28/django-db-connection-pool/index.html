@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3510 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3543 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -378,10 +378,12 @@ application = get_wsgi_application()
 
 <p>然后访问接口<code>http://127.0.0.1:8000/book/get?book_id=1</code>，就可以观察到下面的log啦。</p>
 
-<pre><code>2019-08-29 20:12:19,336 - db_pool_patch - DEBUG - connection retrieved from pool
+<pre><code>2019-08-29 22:17:10,140 db_pool_patch - db_pool_listen.py - DEBUG - connection retrieved from pool
 (0.000) SELECT &quot;book_tab&quot;.&quot;book_id&quot;, &quot;book_tab&quot;.&quot;title&quot;, &quot;book_tab&quot;.&quot;author&quot; FROM &quot;book_tab&quot; WHERE &quot;book_tab&quot;.&quot;book_id&quot; = 1; args=(1,)
-[29/Aug/2019 20:12:19] &quot;GET /book/get?book_id=1 HTTP/1.1&quot; 200 62
-2019-08-29 20:12:19,337 - db_pool_patch - DEBUG - connection returned to pool
+2019-08-29 22:17:10,141 db_pool_patch - views.py - INFO - some shit code begin to run ...
+2019-08-29 22:17:15,144 db_pool_patch - views.py - INFO - hmm, shit code finished, it took 5 seconds
+[29/Aug/2019 22:17:15] &quot;GET /book/get?book_id=1 HTTP/1.1&quot; 200 62
+2019-08-29 22:17:15,146 db_pool_patch - db_pool_listen.py - DEBUG - connection returned to pool
 </code></pre>
 
 <p>nice, 我们的连接池已经可以正常工作了。但是从log里可以看出，我们的patch有个问题，<strong>在整个请求处理期间一直持有连接</strong>，容易导致pool里的连接不够用；实际上一查完数据，就不需要继续持有DB连接了。</p>
