@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3002 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3264 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -125,7 +125,7 @@ if (!doNotTrack) {
 <li><a href="#长连接-vs-连接池">长连接 VS 连接池</a>
 <ul>
 <li><a href="#为啥django不支持db连接池">为啥Django不支持DB连接池</a></li>
-<li><a href="#连接池的好处">连接池的好处</a></li>
+<li><a href="#数据库连接池">数据库连接池</a></li>
 </ul></li>
 <li><a href="#django连接池方案">Django连接池方案</a>
 <ul>
@@ -144,7 +144,9 @@ if (!doNotTrack) {
 
 <h2 id="django长连接">Django长连接</h2>
 
-<p>先看看官方文档是怎么讲的，下文可能翻译的不太得体，原文参见<a href="https://docs.djangoproject.com/en/2.2/ref/databases/">Django databases</a>。</p>
+<p>长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销，尽管MySQL的连接比其他数据库要快得多。</p>
+
+<p>先看看官方文档是怎么讲Django长连接的。下面的翻译可能不太得体，原文参见<a href="https://docs.djangoproject.com/en/2.2/ref/databases/">Django databases</a>。</p>
 
 <h3 id="长连接">长连接</h3>
 
@@ -158,7 +160,7 @@ if (!doNotTrack) {
 
 <p>具体来讲，没有连接分两种情况：1、这是第一个连接，2、或者先前的连接已关闭。如果Django没有连接，它会<strong>在需要时自动建立与数据库的连接。</strong></p>
 
-<p>在每个请求开始时，Django会关闭那些达到其最大寿命的连接。如果你的数据库在一段时间后会关闭空闲连接，则应将<code>CONN_MAX_AGE</code>设置为较小的值，以便Django不会试图使用已由DB终止的连接。（这个问题可能只会影响非常低的流量网站。）</p>
+<p>在每个请求开始时，Django会关闭那些达到其最大寿命的连接。如果你的数据库在一段时间后会关闭空闲连接，则应将<code>CONN_MAX_AGE</code>设置为较小的值，以便Django不会试图使用已由DB终止的连接。（这个问题可能只会影响流量非常低的网站。）</p>
 
 <p>在每个请求结束时，Django会在连接达到最大寿命或者处于不可恢复的错误状态时关闭连接。如果在处理请求时发生任何数据库错误，Django会检查连接是否仍然有效，如果没有则关闭它。因此，数据库错误最多只影响一个请求；如果DB连接变得不可用，则下一个请求将获取新连接。</p>
 
@@ -186,22 +188,27 @@ if (!doNotTrack) {
 <li>……</li>
 </ul>
 
-<h3 id="连接池的好处">连接池的好处</h3>
+<h3 id="数据库连接池">数据库连接池</h3>
+
+<p>数据库连接池（Connection pooling）的核心思想是<strong>连接复用</strong>，通过建立一个数据库连接池以及一套连接使用、分配和管理策略，使得该连接池中的连接可以得到高效、安全的复用，避免了数据库连接频繁建立、关闭的开销。</p>
+
+<p>主要有以下优势：</p>
 
 <ol>
-<li>复用现有可用连接，避免了数据库连接初始化和释放过程的时间和资源开销；从而节约资源，加快系统的响应速度</li>
-<li>统一的连接管理，预先设定超时时间、连接数量</li>
-<li>强制回收被占用连接，避免数据库连接操作中可能出现的资源泄露</li>
+<li>减少资源开销：减少连接的创建，避免了数据库连接初始化和释放过程的时间和资源开销，加快系统的响应速度</li>
+<li>统一连接管理：预先设定超时时间、连接数量，避免数据库连接操作中可能出现的资源泄露，增强系统的稳定性</li>
 </ol>
 
-<p>说了这么多，总而言之有两点是确定的：</p>
+<p>其实我们在连接池里建立的也可以是长连接，能充分利用长连接的节省资源的优点；同时，连接池又可以帮助我们更方便管理DB连接。</p>
+
+<p>说了这么多，有两点是确定的：</p>
 
 <ol>
 <li>Django原生支持长连接，但不支持连接池</li>
 <li>连接池还是有很多优点的，也有很多成熟的三方库</li>
 </ol>
 
-<p>那么我们接下来看看，如何在Django中利用DB连接池。</p>
+<p>那么我们接下来看看，如何在Django中用上DB连接池。</p>
 
 <h2 id="django连接池方案">Django连接池方案</h2>
 
@@ -220,11 +227,11 @@ if (!doNotTrack) {
 
 <ol>
 <li>创建和返回新建的<code>SQLAlchemy pool</code></li>
-<li>从connection pool取connect</li>
+<li>从<code>connection pool</code>取connect</li>
 <li>hack掉Django自己的connect方法</li>
 </ol>
 
-<p>所以，patch主要是<code>connect</code>上做了文章，<strong>使用的依然是Django的ORM，而不是SQLAlchemy的ORM。</strong>知道了原理，那我们可以自己造个轮子，动手撸一个简化版本连接池的patch吧。</p>
+<p>所以，patch主要在是<code>connect()</code>方法上做了文章，<strong>使用的依然是Django的ORM，而不是SQLAlchemy的ORM。</strong>知道了原理，那我们可以自己造个轮子，动手撸一个简化版本连接池的patch吧。</p>
 
 <h3 id="自己造轮子">自己造轮子</h3>
 
@@ -355,10 +362,11 @@ def _on_connect(*args, **kwargs):
 POOL_PESSIMISTIC_MODE = True
 </code></pre>
 
-<p>在<code>wsgi.py</code>中安装我们新建的patch：</p>
+<p>在Django项目的<code>wsgi.py</code>中安装我们新建的patch：</p>
 
 <pre><code>import db_pool_patch
 db_pool_patch.install_patch()
+
 if settings.DEBUG:
     import db_pool_listen
 
