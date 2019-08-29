@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3485 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3571 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -120,14 +120,15 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#django长连接">Django长连接</a></li>
 <li><a href="#连接管理">连接管理</a></li>
-<li><a href="#使用说明">使用说明</a></li>
+<li><a href="#说明">说明</a></li>
 </ul></li>
 <li><a href="#数据库连接池">数据库连接池</a>
 <ul>
 <li><a href="#为啥django不支持连接池">为啥Django不支持连接池</a></li>
 <li><a href="#连接池的优点">连接池的优点</a></li>
+<li><a href="#为何要在django中用连接池">为何要在Django中用连接池</a></li>
 </ul></li>
-<li><a href="#django连接池方案">Django连接池方案</a>
+<li><a href="#django连接池实现">Django连接池实现</a>
 <ul>
 <li><a href="#sqlalchemy-patch">SQLAlchemy Patch</a></li>
 <li><a href="#自己造轮子">自己造轮子</a></li>
@@ -162,7 +163,7 @@ if (!doNotTrack) {
 
 <p>在每个请求结束时，Django会在连接达到最大寿命或者处于不可恢复的错误状态时关闭连接。如果在处理请求时发生任何数据库错误，Django会检查连接是否仍然有效，如果没有则关闭它。因此，数据库错误最多只影响一个请求；如果DB连接变得不可用，则下一个请求将获取新连接。</p>
 
-<h3 id="使用说明">使用说明</h3>
+<h3 id="说明">说明</h3>
 
 <p>由于<strong>每个线程都维护自己的连接</strong>，因此你的数据库必须至少支持与工作线程一样多的并发连接。</p>
 
@@ -197,7 +198,9 @@ if (!doNotTrack) {
 <li>统一连接管理：预先设定超时时间、连接数量，避免数据库连接操作中可能出现的资源泄露，增强系统的稳定性</li>
 </ol>
 
-<p>其实，我们在连接池里建立的也可以是长连接，这样能充分利用长连接的节省资源的优点；同时，连接池又可以帮助我们更方便管理DB连接，减少程序到MySQL的连接数。</p>
+<p>其实，我们在连接池里建立的连接也可以是长连接，这样能充分利用长连接的节省资源的优点；同时，连接池又可以帮助我们更方便管理DB连接，减少后端服务到MySQL的连接数。</p>
+
+<h3 id="为何要在django中用连接池">为何要在Django中用连接池</h3>
 
 <p>说了这么多，有两点是确定的：</p>
 
@@ -210,9 +213,9 @@ if (!doNotTrack) {
 
 <p>举个例子：5个子服务 * 50个容器 * 20个进程 * 20个线程 = 100000个连接（Mysql5.5，Mysql5.6，Mysql5.7：默认的最大连接数都是151，上限为：100000）。</p>
 
-<p>那么我们接下来看看，如何在Django中用上DB连接池。</p>
+<p>假设我们能让20个线程，复用一个<code>size=10</code>的连接池，这样就能减少一半的数据库连接。这对支持服务水平扩展，降低数据库负载是非常有帮助的。那么我们接下来看看，如何在Django中用上DB连接池。</p>
 
-<h2 id="django连接池方案">Django连接池方案</h2>
+<h2 id="django连接池实现">Django连接池实现</h2>
 
 <h3 id="sqlalchemy-patch">SQLAlchemy Patch</h3>
 
