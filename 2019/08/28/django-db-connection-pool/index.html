@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3482 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3485 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -233,7 +233,7 @@ if (!doNotTrack) {
 <li>hack掉Django自己的connect方法</li>
 </ol>
 
-<p>所以，patch主要在是<code>connect()</code>方法上做了文章，<strong>实际使用的依然是Django的ORM，而不是SQLAlchemy的ORM。</strong>知道了原理，那我们可以自己造个轮子，动手撸一个简化版本连接池的patch吧。</p>
+<p>所以，patch主要在是<code>connect()</code>方法上做了文章，<strong>实际使用的依然是Django的ORM，而不是SQLAlchemy的ORM。</strong>知道了原理，那我们可以对照着自己造个轮子，动手撸一个简化版本的连接池patch吧。</p>
 
 <h3 id="自己造轮子">自己造轮子</h3>
 
@@ -250,7 +250,7 @@ POOL_SETTINGS.setdefault(&quot;recycle&quot;, 3600)
 
 
 def is_iterable(value):
-    &quot;&quot;&quot;Check if ``value`` is iterable.&quot;&quot;&quot;
+    &quot;&quot;&quot;Check if value is iterable.&quot;&quot;&quot;
     try:
         _ = iter(value)
         return True
