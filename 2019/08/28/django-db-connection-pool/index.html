@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2245 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2306 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -212,7 +212,7 @@ if (!doNotTrack) {
 
 <h3 id="django-mysqlpool"><code>django-mysqlpool</code></h3>
 
-<p><a href="https://github.com/smartfile/django-mysqlpool"><code>django-mysqlpool</code></a>用100来行代码，实现了一个非常漂亮的基于<code>SQLAlchemy</code>的patch连接池的方案。</p>
+<p><a href="https://github.com/smartfile/django-mysqlpool"><code>django-mysqlpool</code></a>用100来行代码，实现了一个非常漂亮的基于<code>SQLAlchemy</code>的连接池的patch方案。</p>
 
 <pre><code># -*- coding: utf-8 -*-
 &quot;&quot;&quot;The top-level package for ``django-mysqlpool``.&quot;&quot;&quot;
@@ -288,7 +288,6 @@ class HashableDict(dict):
 # Define this here so Django can import it.
 DatabaseWrapper = base.DatabaseWrapper
 
-
 # Wrap the old connect() function so our pool can call it.
 OldDatabase = OldDatabaseProxy(base.Database.connect)
 
@@ -331,7 +330,7 @@ def connect(**kwargs):
 base.Database.connect = connect
 </code></pre>
 
-<p>从代码看，主要做了三件事情：</p>
+<p>从源码看，主要做了三件事情：</p>
 
 <ol>
 <li>创建和返回新建的<code>SQLAlchemy pool</code>对象</li>
@@ -339,7 +338,16 @@ base.Database.connect = connect
 <li>hack掉Django自己的connect方法</li>
 </ol>
 
-<p>所以，这里只是connect上做了文章，在依然使用的是Django的ORM，而不是SQLAlchemy的ORM。</p>
+<p>这三步的核心逻辑，对应的就是下面三行代码：</p>
+
+<pre><code>MYSQLPOOL = pool.manage(OldDatabase, **kwargs)  # Create pool
+
+return get_pool().connect(**kwargs)  # Obtain connection
+
+base.Database.connect = connect  # Patch Django connect
+</code></pre>
+
+<p>所以，这里主要是<code>connect</code>上做了文章，依然使用的是Django的ORM，而不是SQLAlchemy的ORM。比较优雅的支持了Django数据库连接池。</p>
 
 <h3 id="djorm-ext-pool"><code>djorm-ext-pool</code></h3>
 
