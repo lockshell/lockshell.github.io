@@ -17,7 +17,7 @@
       <pubDate>Wed, 28 Aug 2019 02:40:57 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/28/django-db-connection-pool/</guid>
-      <description>Django长连接 长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销，尽管MySQL的连接比其</description>
+      <description>数据库长连接 长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销。 先看看官方文档是怎么讲Djan</description>
     </item>
     
     <item>
