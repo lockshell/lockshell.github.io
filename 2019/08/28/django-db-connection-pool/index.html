@@ -378,10 +378,10 @@ application = get_wsgi_application()
 
 <p>然后访问接口<code>http://127.0.0.1:8000/book/get?book_id=1</code>，就可以观察到下面的log啦。</p>
 
-<pre><code>2019-08-29 08:12:19,336 - db_pool_patch - DEBUG - connection retrieved from pool
+<pre><code>2019-08-29 20:12:19,336 - db_pool_patch - DEBUG - connection retrieved from pool
 (0.000) SELECT &quot;book_tab&quot;.&quot;book_id&quot;, &quot;book_tab&quot;.&quot;title&quot;, &quot;book_tab&quot;.&quot;author&quot; FROM &quot;book_tab&quot; WHERE &quot;book_tab&quot;.&quot;book_id&quot; = 1; args=(1,)
-[29/Aug/2019 08:12:19] &quot;GET /book/get?book_id=1 HTTP/1.1&quot; 200 62
-2019-08-29 08:12:19,337 - db_pool_patch - DEBUG - connection returned to pool
+[29/Aug/2019 20:12:19] &quot;GET /book/get?book_id=1 HTTP/1.1&quot; 200 62
+2019-08-29 20:12:19,337 - db_pool_patch - DEBUG - connection returned to pool
 </code></pre>
 
 <p>nice, 我们的连接池已经可以正常工作了。但是从log里可以看出，我们的patch有个问题，<strong>在整个请求处理期间一直持有连接</strong>，容易导致pool里的连接不够用；实际上一查完数据，就不需要继续持有DB连接了。</p>
@@ -428,11 +428,11 @@ def install_django_orm_patch():
 
 <p>打印的log如下：</p>
 
-<pre><code>2019-08-29 08:56:45,839 - db_pool_patch - DEBUG - connection created
-2019-08-29 08:56:45,839 - db_pool_patch - DEBUG - connection retrieved from pool
+<pre><code>2019-08-29 21:06:45,839 - db_pool_patch - DEBUG - connection created
+2019-08-29 21:06:45,839 - db_pool_patch - DEBUG - connection retrieved from pool
 (0.000) SELECT &quot;book_tab&quot;.&quot;book_id&quot;, &quot;book_tab&quot;.&quot;title&quot;, &quot;book_tab&quot;.&quot;author&quot; FROM &quot;book_tab&quot; WHERE &quot;book_tab&quot;.&quot;book_id&quot; = 1; args=(1,)
-2019-08-29 08:56:45,840 - db_pool_patch - DEBUG - connection returned to pool
-[29/Aug/2019 08:56:45] &quot;GET /book/get?book_id=1 HTTP/1.1&quot; 200 62
+2019-08-29 21:06:45,840 - db_pool_patch - DEBUG - connection returned to pool
+[29/Aug/2019 21:06:45] &quot;GET /book/get?book_id=1 HTTP/1.1&quot; 200 62
 </code></pre>
 
 <p>不错，可以看出，DB连接在HTTP请求返回前，就已经归还给连接池了；这样就降低了单个连接的持有时间，能显著提高连接的使用率和pool的性能。</p>
