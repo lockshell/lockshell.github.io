@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2368 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2978 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -120,7 +120,7 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#长连接">长连接</a></li>
 <li><a href="#连接管理">连接管理</a></li>
-<li><a href="#使用提示">使用提示</a></li>
+<li><a href="#使用说明">使用说明</a></li>
 </ul></li>
 <li><a href="#长连接-vs-连接池">长连接 VS 连接池</a>
 <ul>
@@ -129,9 +129,11 @@ if (!doNotTrack) {
 </ul></li>
 <li><a href="#django连接池方案">Django连接池方案</a>
 <ul>
-<li><a href="#django-mysqlpool"><code>django-mysqlpool</code></a></li>
-<li><a href="#djorm-ext-pool"><code>djorm-ext-pool</code></a></li>
+<li><a href="#sqlalchemy-patch">SQLAlchemy Patch</a></li>
+<li><a href="#自己造轮子">自己造轮子</a></li>
+<li><a href="#测试结果及改进">测试结果及改进</a></li>
 </ul></li>
+<li><a href="#小结">小结</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -142,7 +144,7 @@ if (!doNotTrack) {
 
 <h2 id="django长连接">Django长连接</h2>
 
-<p>先看看官方文档是怎么讲的，参见<a href="https://docs.djangoproject.com/en/2.2/ref/databases/">Django databases</a>，下文可能翻译的不太得体。</p>
+<p>先看看官方文档是怎么讲的，下文可能翻译的不太得体。原文参见<a href="https://docs.djangoproject.com/en/2.2/ref/databases/">Django databases</a>，</p>
 
 <h3 id="长连接">长连接</h3>
 
@@ -160,7 +162,7 @@ if (!doNotTrack) {
 
 <p>在每个请求结束时，Django会在连接达到最大寿命或者处于不可恢复的错误状态时关闭连接。如果在处理请求时发生任何数据库错误，Django会检查连接是否仍然有效，如果没有则关闭它。因此，数据库错误最多只影响一个请求；如果DB连接变得不可用，则下一个请求将获取新连接。</p>
 
-<h3 id="使用提示">使用提示</h3>
+<h3 id="使用说明">使用说明</h3>
 
 <p>由于<strong>每个线程都维护自己的连接</strong>，因此你的数据库必须至少支持与工作线程一样多的并发连接。</p>
 
@@ -207,169 +209,213 @@ if (!doNotTrack) {
 
 <h2 id="django连接池方案">Django连接池方案</h2>
 
+<h3 id="sqlalchemy-patch">SQLAlchemy Patch</h3>
+
 <p><code>SQLAlchemy</code>有一个成熟的连接池实现，支持Django使用连接池，首先考虑的就是<code>SQLAlchemy</code>。</p>
 
-<h3 id="django-mysqlpool"><code>django-mysqlpool</code></h3>
+<p>Github上的轮子：</p>
 
-<p><a href="https://github.com/smartfile/django-mysqlpool"><code>django-mysqlpool</code></a>用100来行代码，实现了一个非常漂亮的基于<code>SQLAlchemy</code>的连接池的patch。</p>
+<ul>
+<li><a href="https://github.com/smartfile/django-mysqlpool">django-mysqlpool</a></li>
+<li><a href="https://github.com/djangonauts/djorm-ext-pool">djorm-ext-pool</a></li>
+</ul>
+
+<p>从源码看，patch主要做了三件事情：</p>
+
+<ol>
+<li>创建和返回新建的<code>SQLAlchemy pool</code></li>
+<li>从connection pool取connect</li>
+<li>hack掉Django自己的connect方法</li>
+</ol>
+
+<p>所以，patch主要是<code>connect</code>上做了文章，<strong>使用的依然是Django的ORM，而不是SQLAlchemy的ORM。</strong>知道了原理，那我们可以自己造个轮子，动手撸一个简化版本连接池的patch吧。</p>
+
+<h3 id="自己造轮子">自己造轮子</h3>
+
+<p>新建一个<code>db_pool_patch.py</code></p>
 
 <pre><code># -*- coding: utf-8 -*-
-&quot;&quot;&quot;The top-level package for ``django-mysqlpool``.&quot;&quot;&quot;
-# These imports make 2 act like 3, making it easier on us to switch to PyPy or
-# some other VM if we need to for performance reasons.
-from __future__ import (absolute_import, print_function, unicode_literals, division)
-
-# Make ``Foo()`` work the same in Python 2 as it does in Python 3.
-__metaclass__ = type
-
-
-import os
 
 from django.conf import settings
-from django.db.backends.mysql import base
-from django.core.exceptions import ImproperlyConfigured
+from sqlalchemy.pool import manage
 
-try:
-    import sqlalchemy.pool as pool
-except ImportError as e:
-    raise ImproperlyConfigured(&quot;Error loading SQLAlchemy module: %s&quot; % e)
+POOL_PESSIMISTIC_MODE = getattr(settings, &quot;DJ_ORM_POOL_PESSIMISTIC&quot;, False)
+POOL_SETTINGS = getattr(settings, 'DJ_ORM_POOL_OPTIONS', {})
+POOL_SETTINGS.setdefault(&quot;recycle&quot;, 3600)
 
 
-# Global variable to hold the actual connection pool.
-MYSQLPOOL = None
-# Default pool type (QueuePool, SingletonThreadPool, AssertionPool, NullPool, StaticPool).
-DEFAULT_BACKEND = 'QueuePool'
-# Needs to be less than MySQL connection timeout (server setting). The default is 120, so default to 119.
-DEFAULT_POOL_TIMEOUT = 119
-
-
-def isiterable(value):
-    &quot;&quot;&quot;Determine whether ``value`` is iterable.&quot;&quot;&quot;
+def is_iterable(value):
+    &quot;&quot;&quot;Check if ``value`` is iterable.&quot;&quot;&quot;
     try:
-        iter(value)
+        _ = iter(value)
         return True
     except TypeError:
         return False
 
 
-class OldDatabaseProxy():
-    &quot;&quot;&quot;
-    Saves a reference to the old connect function.
-    Proxies calls to its own connect() method to the old function.
-    &quot;&quot;&quot;
-
-    def __init__(self, old_connect):
-        &quot;&quot;&quot;Store ``old_connect`` to be used whenever we connect.&quot;&quot;&quot;
-        self.old_connect = old_connect
-
-    def connect(self, **kwargs):
-        &quot;&quot;&quot;Delegate to the old ``connect``.&quot;&quot;&quot;
-        # Bounce the call to the old function.
-        return self.old_connect(**kwargs)
-
-
 class HashableDict(dict):
-    &quot;&quot;&quot;
-    A dictionary that is hashable.
-    This is not generally useful, but created specifically to hold the ``conv``
-    parameter that needs to be passed to MySQLdb.
-    &quot;&quot;&quot;
-
     def __hash__(self):
-        &quot;&quot;&quot;Calculate the hash of this ``dict``.
-        The hash is determined by converting to a sorted tuple of key-value
-        pairs and hashing that.
-        &quot;&quot;&quot;
-        items = [(n, tuple(v)) for n, v in self.items() if isiterable(v)]
+        items = [(n, tuple(v)) for n, v in self.items() if is_iterable(v)]
         return hash(tuple(items))
 
 
-# Define this here so Django can import it.
-DatabaseWrapper = base.DatabaseWrapper
+class ManagerProxy(object):
+    def __init__(self, manager):
+        self.manager = manager
 
-# Wrap the old connect() function so our pool can call it.
-OldDatabase = OldDatabaseProxy(base.Database.connect)
+    def __getattr__(self, key):
+        return getattr(self.manager, key)
 
+    def connect(self, *args, **kwargs):
+        if 'conv' in kwargs:
+            kwargs['conv'] = HashableDict(kwargs['conv'])
 
-def get_pool():
-    &quot;&quot;&quot;Create one and only one pool using the configured settings.&quot;&quot;&quot;
-    global MYSQLPOOL
-    if MYSQLPOOL is None:
-        backend_name = getattr(settings, 'MYSQLPOOL_BACKEND', DEFAULT_BACKEND)
-        backend = getattr(pool, backend_name)
-        kwargs = getattr(settings, 'MYSQLPOOL_ARGUMENTS', {})
-        kwargs.setdefault('poolclass', backend)
-        kwargs.setdefault('recycle', DEFAULT_POOL_TIMEOUT)
-        MYSQLPOOL = pool.manage(OldDatabase, **kwargs)
-        setattr(MYSQLPOOL, '_pid', os.getpid())
+        if 'ssl' in kwargs:
+            kwargs['ssl'] = HashableDict(kwargs['ssl'])
 
-    if getattr(MYSQLPOOL, '_pid', None) != os.getpid():
-        pool.clear_managers()
-    return MYSQLPOOL
+        return self.manager.connect(*args, **kwargs)
 
 
-def connect(**kwargs):
-    &quot;&quot;&quot;Obtain a database connection from the connection pool.&quot;&quot;&quot;
-    # SQLAlchemy serializes the parameters to keep unique connection
-    # parameter groups in their own pool. We need to store certain
-    # values in a manner that is compatible with their serialization.
-    conv = kwargs.pop('conv', None)
-    ssl = kwargs.pop('ssl', None)
-    if conv:
-        kwargs['conv'] = HashableDict(conv)
+def patch_mysql():
+    from django.db.backends.mysql import base as mysql_base
 
-    if ssl:
-        kwargs['ssl'] = HashableDict(ssl)
-
-    # Open the connection via the pool.
-    return get_pool().connect(**kwargs)
+    # 这里本质上是一个简单的单例模式
+    if not hasattr(mysql_base, &quot;_Database&quot;):
+        mysql_base._Database = mysql_base.Database
+        manager = manage(mysql_base._Database, **POOL_SETTINGS)
+        mysql_base.Database = ManagerProxy(manager)
 
 
-# Monkey-patch the regular mysql backend to use our hacked-up connect() function.
-base.Database.connect = connect
+def patch_sqlite3():
+    from django.db.backends.sqlite3 import base as sqlite3_base
+
+    if not hasattr(sqlite3_base, &quot;_Database&quot;):
+        sqlite3_base._Database = sqlite3_base.Database
+        sqlite3_base.Database = manage(sqlite3_base._Database, **POOL_SETTINGS)
+
+
+def install_patch():
+    patch_mysql()
+    patch_sqlite3()
 </code></pre>
 
-<p>从源码看，主要做了三件事情：</p>
+<p>这里，我们用不到60行代码，就实现了对<code>mysql</code>和<code>sqlite3</code>的patch。</p>
 
-<ol>
-<li>创建和返回新建的<code>SQLAlchemy pool</code>对象</li>
-<li>从connection pool取connect</li>
-<li>hack掉Django自己的connect方法</li>
-</ol>
+<p>为了方便跟踪<code>connection pool</code>的工作情况，还可以建一个<code>db_pool_listen.py</code>添加一些监听函数并打印log。</p>
 
-<p>这三步的核心逻辑，对应的就是下面三行代码：</p>
+<pre><code># -*- coding: utf-8 -*-
 
-<pre><code>MYSQLPOOL = pool.manage(OldDatabase, **kwargs)  # Create pool
+import logging
 
-return get_pool().connect(**kwargs)  # Obtain connection
+from django.conf import settings
+from sqlalchemy import event, exc
+from sqlalchemy.pool import Pool
 
-base.Database.connect = connect  # Patch Django connect
+logger = logging.getLogger('db_pool_patch')
+logger.setLevel(logging.DEBUG)
+# 创建一个handler，用于输出到控制台
+ch = logging.StreamHandler()
+
+# 定义handler的输出格式formatter
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ch.setFormatter(formatter)
+
+logger.addHandler(ch)
+
+
+@event.listens_for(Pool, &quot;checkout&quot;)
+def _on_checkout(dbapi_connection, connection_record, connection_proxy):
+    logger.debug(&quot;connection retrieved from pool&quot;)
+
+    if settings.POOL_PESSIMISTIC_MODE:
+        cursor = dbapi_connection.cursor()
+        try:
+            cursor.execute(&quot;SELECT 1&quot;)
+        except:
+            # raise DisconnectionError - pool will try
+            # connecting again up to three times before raising.
+            raise exc.DisconnectionError()
+        finally:
+            cursor.close()
+
+
+@event.listens_for(Pool, &quot;checkin&quot;)
+def _on_checkin(*args, **kwargs):
+    logger.debug(&quot;connection returned to pool&quot;)
+
+
+@event.listens_for(Pool, &quot;connect&quot;)
+def _on_connect(*args, **kwargs):
+    logger.debug(&quot;connection created&quot;)
 </code></pre>
 
-<p>所以，这里主要是<code>connect</code>上做了文章，依然使用的是Django的ORM，而不是SQLAlchemy的ORM。比较优雅的支持了Django数据库连接池。</p>
+<p>在<code>settings.py</code>中配置一下pool的参数：</p>
 
-<h3 id="djorm-ext-pool"><code>djorm-ext-pool</code></h3>
-
-<p><strong><a href="https://github.com/djangonauts/djorm-ext-pool">djorm-ext-pool</a>安装</strong></p>
-
-<pre><code>pip install djorm-ext-pool
-</code></pre>
-
-<p><strong>使用</strong>只需在<code>settings.py</code>中添加配置即可</p>
-
-<pre><code># settings.py
-
-INSTALLED_APPS = (
-    'djorm_pool',
-    ...
-)
-
-DJORM_POOL_OPTIONS = {
-    'pool_size': 20,
-    'max_overflow': 0,
-    'recycle': 3600, # the default value
+<pre><code>DJ_ORM_POOL_OPTIONS = {
+    &quot;pool_size&quot;: 20,
+    &quot;max_overflow&quot;: 0,
+    &quot;recycle&quot;: 3600,  # the default value
 }
+POOL_PESSIMISTIC_MODE = True
 </code></pre>
+
+<p>在<code>wsgi.py</code>中安装我们新建的patch：</p>
+
+<pre><code>import db_pool_patch
+db_pool_patch.install_patch()
+if settings.DEBUG:
+    import db_pool_listen
+
+application = get_wsgi_application()
+</code></pre>
+
+<h3 id="测试结果及改进">测试结果及改进</h3>
+
+<p>然后访问接口<code>http://127.0.0.1:8000/book/get?book_id=1</code>，就可以观察到下面的log啦。</p>
+
+<pre><code>2019-08-29 08:12:19,336 - db_pool_patch - DEBUG - connection retrieved from pool
+(0.000) SELECT &quot;book_tab&quot;.&quot;book_id&quot;, &quot;book_tab&quot;.&quot;title&quot;, &quot;book_tab&quot;.&quot;author&quot; FROM &quot;book_tab&quot; WHERE &quot;book_tab&quot;.&quot;book_id&quot; = 1; args=(1,)
+[29/Aug/2019 08:12:19] &quot;GET /book/get?book_id=1 HTTP/1.1&quot; 200 62
+2019-08-29 08:12:19,337 - db_pool_patch - DEBUG - connection returned to pool
+</code></pre>
+
+<p>nice, 我们的连接池已经可以正常工作了。但是从log里可以看出，我们的patch有个问题，在整个请求处理期间一直持有连接，容易导致pool里的连接不够用；实际上我们一查完数据，就不需要继续持有连接了。</p>
+
+<p>如我们前文提到的那样：</p>
+
+<blockquote>
+<p>用从pool里取连接代替新建连接，向pool归还连接代替关闭连接，然后在worker在整个请求期间都持有连接并不是真正的连接池。这需要跟worker数一样多的数据库连接，除了能在各个worker循环使用外，基本跟长连接是等效的。</p>
+</blockquote>
+
+<p>那么，我们怎么解决这个问题呢？<strong>在访问完数据库，马上归还连接，而不是在请求完成时再归还。</strong>我们使用的依然是<code>Django ORM</code>，在请求期间持有连接本质上是<code>Django ORM</code>的行为。所以我们可以patch一下<code>Django ORM</code>，执行完查询后，及时释放连接。</p>
+
+<pre><code>def install_dj_orm_patch():
+    old_execute_sql = compiler.SQLCompiler.execute_sql
+
+    def new_execute_sql(self, result_type=MULTI, chunked_fetch=False):
+        result = old_execute_sql(self, result_type, chunked_fetch)
+        if not self.connection.in_atomic_block:
+            # The connection is still necessary for the rest of the transaction section.
+            self.connection.close()
+        return result
+
+    compiler.SQLCompiler.execute_sql = new_execute_sql
+</code></pre>
+
+<p>打印的log如下：</p>
+
+<pre><code>2019-08-29 08:56:45,839 - db_pool_patch - DEBUG - connection created
+2019-08-29 08:56:45,839 - db_pool_patch - DEBUG - connection retrieved from pool
+(0.000) SELECT &quot;book_tab&quot;.&quot;book_id&quot;, &quot;book_tab&quot;.&quot;title&quot;, &quot;book_tab&quot;.&quot;author&quot; FROM &quot;book_tab&quot; WHERE &quot;book_tab&quot;.&quot;book_id&quot; = 1; args=(1,)
+2019-08-29 08:56:45,840 - db_pool_patch - DEBUG - connection returned to pool
+[29/Aug/2019 08:56:45] &quot;GET /book/get?book_id=1 HTTP/1.1&quot; 200 62
+</code></pre>
+
+<p>不错，可以看出，我们的连接在请求返回前，就已经归还给连接池了；这样就降低了单个连接的持有时间，能显著提高连接的使用率和pool的性能。</p>
+
+<h2 id="小结">小结</h2>
+
+<p>本文主要介绍了Django长连接，比较了长连接和连接池，实现了基于<code>SQLAlchemy Patch</code>的长连接方案，并做了一定的改进。</p>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
