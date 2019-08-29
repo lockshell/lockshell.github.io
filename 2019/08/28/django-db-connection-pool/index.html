@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3486 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3510 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -428,11 +428,12 @@ def install_django_orm_patch():
 
 <p>打印的log如下：</p>
 
-<pre><code>2019-08-29 21:06:45,839 - db_pool_patch - DEBUG - connection created
-2019-08-29 21:06:45,839 - db_pool_patch - DEBUG - connection retrieved from pool
+<pre><code>2019-08-29 22:13:22,373 db_pool_patch - db_pool_listen.py - DEBUG - connection retrieved from pool
 (0.000) SELECT &quot;book_tab&quot;.&quot;book_id&quot;, &quot;book_tab&quot;.&quot;title&quot;, &quot;book_tab&quot;.&quot;author&quot; FROM &quot;book_tab&quot; WHERE &quot;book_tab&quot;.&quot;book_id&quot; = 1; args=(1,)
-2019-08-29 21:06:45,840 - db_pool_patch - DEBUG - connection returned to pool
-[29/Aug/2019 21:06:45] &quot;GET /book/get?book_id=1 HTTP/1.1&quot; 200 62
+2019-08-29 22:13:22,374 db_pool_patch - db_pool_listen.py - DEBUG - connection returned to pool
+2019-08-29 22:13:22,374 db_pool_patch - views.py - INFO - some shit code begin to run ...
+2019-08-29 22:13:27,378 db_pool_patch - views.py - INFO - hmm, shit code finished, it took 5 seconds
+[29/Aug/2019 22:13:27] &quot;GET /book/get?book_id=1 HTTP/1.1&quot; 200 62
 </code></pre>
 
 <p>不错，可以看出，DB连接在HTTP请求返回前，就已经归还给连接池了；这样就降低了单个连接的持有时间，能显著提高连接的使用率和pool的性能。</p>
