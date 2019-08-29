@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2251 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2245 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -331,7 +331,13 @@ def connect(**kwargs):
 base.Database.connect = connect
 </code></pre>
 
-<p>从代码看，主要做了三件事情：1. 创建和返回新建的<code>SQLAlchemy pool</code>对象2. 从connection pool取connect3. hack掉Django自己的connect方法</p>
+<p>从代码看，主要做了三件事情：</p>
+
+<ol>
+<li>创建和返回新建的<code>SQLAlchemy pool</code>对象</li>
+<li>从connection pool取connect</li>
+<li>hack掉Django自己的connect方法</li>
+</ol>
 
 <p>所以，这里只是connect上做了文章，在依然使用的是Django的ORM，而不是SQLAlchemy的ORM。</p>
 
