@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2306 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2368 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -183,20 +183,17 @@ if (!doNotTrack) {
 
 <li><p>首先要操心的不是数据库，AWS之类的云计算已经很牛了，按需扩容，多关注下缓存吧。</p></li>
 
+<li><p>MySQL的连接非常轻量和高效，大量的Web应用都没有使用连接池。</p></li>
+
 <li><p>……</p></li>
 </ul>
 
 <h3 id="连接池的好处">连接池的好处</h3>
 
 <ol>
-<li>资源重用，更快的响应速度
-<ul>
-<li>利用现有可用连接，避免了数据库连接初始化和释放过程的时间和资源开销，从而节约资源，减少了系统的响应时间</li>
-</ul></li>
-<li>统一的连接管理，避免数据库连接泄漏
-<ul>
-<li>预先设定超时时间、连接数量，强制回收被占用连接，避免数据库连接操作中可能出现的资源泄露</li>
-</ul></li>
+<li>复用现有可用连接，避免了数据库连接初始化和释放过程的时间和资源开销；从而节约资源，加快系统的响应速度</li>
+<li>统一的连接管理，预先设定超时时间、连接数量</li>
+<li>强制回收被占用连接，避免数据库连接操作中可能出现的资源泄露</li>
 </ol>
 
 <p>说了这么多，总而言之有两点是确定的：</p>
@@ -206,13 +203,15 @@ if (!doNotTrack) {
 <li>连接池还是有很多优点的，也有很多成熟的三方库</li>
 </ol>
 
-<p>那么我们接下来看看，如何在Django中利用DB连接池？</p>
+<p>那么我们接下来看看，如何在Django中利用DB连接池。</p>
 
 <h2 id="django连接池方案">Django连接池方案</h2>
 
+<p><code>SQLAlchemy</code>有一个成熟的连接池实现，支持Django使用连接池，首先考虑的就是<code>SQLAlchemy</code>。</p>
+
 <h3 id="django-mysqlpool"><code>django-mysqlpool</code></h3>
 
-<p><a href="https://github.com/smartfile/django-mysqlpool"><code>django-mysqlpool</code></a>用100来行代码，实现了一个非常漂亮的基于<code>SQLAlchemy</code>的连接池的patch方案。</p>
+<p><a href="https://github.com/smartfile/django-mysqlpool"><code>django-mysqlpool</code></a>用100来行代码，实现了一个非常漂亮的基于<code>SQLAlchemy</code>的连接池的patch。</p>
 
 <pre><code># -*- coding: utf-8 -*-
 &quot;&quot;&quot;The top-level package for ``django-mysqlpool``.&quot;&quot;&quot;
