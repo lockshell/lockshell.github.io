@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2103 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2105 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -142,7 +142,7 @@ if (!doNotTrack) {
 
 <h2 id="django长连接">Django长连接</h2>
 
-<p>先看看官方文档是怎么讲的。参见<a href="https://docs.djangoproject.com/en/2.2/ref/databases/">django databases</a>，可能翻译的不太得体。</p>
+<p>先看看官方文档是怎么讲的，参见<a href="https://docs.djangoproject.com/en/2.2/ref/databases/">Django databases</a>，下文可能翻译的不太得体。</p>
 
 <h3 id="长连接">长连接</h3>
 
@@ -156,7 +156,7 @@ if (!doNotTrack) {
 
 <p>具体来讲，没有连接分两种情况：1、这是第一个连接，2、或者先前的连接已关闭。如果Django没有连接，它会<strong>在需要时自动建立与数据库的连接。</strong></p>
 
-<p>在每个请求开始时，Django会关闭那些达到其最大年寿命的连接。如果你的数据库在一段时间后会关闭空闲连接，则应将<code>CONN_MAX_AGE</code>设置为较小的值，以便Django不会试图使用已由DB终止的连接。（这个问题可能只会影响非常低的流量网站。）</p>
+<p>在每个请求开始时，Django会关闭那些达到其最大寿命的连接。如果你的数据库在一段时间后会关闭空闲连接，则应将<code>CONN_MAX_AGE</code>设置为较小的值，以便Django不会试图使用已由DB终止的连接。（这个问题可能只会影响非常低的流量网站。）</p>
 
 <p>在每个请求结束时，Django会在连接达到最大寿命或者处于不可恢复的错误状态时关闭连接。如果在处理请求时发生任何数据库错误，Django会检查连接是否仍然有效，如果没有则关闭它。因此，数据库错误最多只影响一个请求；如果DB连接变得不可用，则下一个请求将获取新连接。</p>
 
@@ -212,21 +212,19 @@ if (!doNotTrack) {
 
 <h3 id="django-mysqlpool"><code>django-mysqlpool</code></h3>
 
-<p><a href="https://github.com/smartfile/django-mysqlpool"><code>django-mysqlpool</code></a>用100来行代码，实现了一个非常漂亮的基于<code>SQLAlchemy</code>的patch方案。</p>
+<p><a href="https://github.com/smartfile/django-mysqlpool"><code>django-mysqlpool</code></a>用100来行代码，实现了一个非常漂亮的基于<code>SQLAlchemy</code>的patch连接池的方案。</p>
 
 <pre><code># -*- coding: utf-8 -*-
 &quot;&quot;&quot;The top-level package for ``django-mysqlpool``.&quot;&quot;&quot;
 # These imports make 2 act like 3, making it easier on us to switch to PyPy or
 # some other VM if we need to for performance reasons.
-from __future__ import (absolute_import, print_function, unicode_literals,
-                        division)
+from __future__ import (absolute_import, print_function, unicode_literals, division)
 
 # Make ``Foo()`` work the same in Python 2 as it does in Python 3.
 __metaclass__ = type
 
 
 import os
-
 
 from django.conf import settings
 from django.db.backends.mysql import base
@@ -240,11 +238,9 @@ except ImportError as e:
 
 # Global variable to hold the actual connection pool.
 MYSQLPOOL = None
-# Default pool type (QueuePool, SingletonThreadPool, AssertionPool, NullPool,
-# StaticPool).
+# Default pool type (QueuePool, SingletonThreadPool, AssertionPool, NullPool, StaticPool).
 DEFAULT_BACKEND = 'QueuePool'
-# Needs to be less than MySQL connection timeout (server setting). The default
-# is 120, so default to 119.
+# Needs to be less than MySQL connection timeout (server setting). The default is 120, so default to 119.
 DEFAULT_POOL_TIMEOUT = 119
 
 
@@ -331,8 +327,7 @@ def connect(**kwargs):
     return get_pool().connect(**kwargs)
 
 
-# Monkey-patch the regular mysql backend to use our hacked-up connect()
-# function.
+# Monkey-patch the regular mysql backend to use our hacked-up connect() function.
 base.Database.connect = connect
 </code></pre>
 
