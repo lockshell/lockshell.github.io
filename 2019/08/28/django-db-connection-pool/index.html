@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3264 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3274 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -396,7 +396,7 @@ application = get_wsgi_application()
 <p>用从pool里取连接代替新建连接，向pool归还连接代替关闭连接，然后在worker在整个请求期间都持有连接并不是真正的连接池。这需要跟worker数一样多的数据库连接，除了能在各个worker循环使用外，基本跟长连接是等效的。</p>
 </blockquote>
 
-<p>那么，我们怎么解决这个问题呢？<strong>在访问完数据库，马上归还连接，而不是在请求完成时再归还。</strong>因为我们使用的依然是<code>Django ORM</code>，在请求期间持有连接本质上是<code>Django ORM</code>的行为。所以我们可以patch一下<code>Django ORM</code>，执行完查询后，及时释放连接。</p>
+<p>那么，我们怎么解决这个问题呢？<strong>在访问完数据库后，马上归还连接，而不是在请求完成时再归还。</strong>因为我们使用的依然是<code>Django ORM</code>，在请求期间持有连接本质上是<code>Django ORM</code>的行为。所以我们可以patch一下<code>Django ORM</code>，执行完查询后，及时释放连接。</p>
 
 <pre><code>def install_dj_orm_patch():
     old_execute_sql = compiler.SQLCompiler.execute_sql
@@ -424,7 +424,7 @@ application = get_wsgi_application()
 
 <h2 id="小结">小结</h2>
 
-<p>本文主要介绍了Django长连接，比较了长连接和连接池，实现了基于<code>SQLAlchemy Patch</code>的长连接方案，并做了一定的改进。</p>
+<p>本文主要介绍了Django长连接，比较了长连接和连接池，实现了基于<code>SQLAlchemy Patch</code>的Django数据库连接池方案，并做了一定的改进。</p>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
