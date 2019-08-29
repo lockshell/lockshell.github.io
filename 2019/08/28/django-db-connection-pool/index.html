@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a>, <a class="meta__link" href="/categories/%e6%95%b0%e6%8d%ae%e5%ba%93" rel="category">数据库</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3495 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3507 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -390,7 +390,7 @@ application = get_wsgi_application()
 
 <pre><code>def test_request(request):
     obj = TestModel.objects.get(id=1)
-    do_something_that_takes_1000_seconds(obj)  # connection is still being held but it's not needed
+    do_something_that_takes_1000_seconds(obj)  # 这时DB连接依然被占用，但实际已经不需要了
 </code></pre>
 
 <p>如前文提到的那样：</p>
