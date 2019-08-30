@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2083 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2087 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -357,18 +357,18 @@ def _model_new(cls, *args, **kwargs):
     return cls(*args, **kwargs)
 
 
-class SplitModel(object):
+class ShardModel(object):
     &quot;&quot;&quot;
-    SplitModel support table partition.
+    ShardModel support table horizontal partition.
     &quot;&quot;&quot;
-    _split_db_models = {}
+    _shard_db_models = {}
 
     def __new__(cls, *args, **kwargs):
-        split_idx = kwargs.pop('split_idx', 0) % cls.Config.table_num
+        shard_key = kwargs.pop('shard_key', 0) % cls.Config.table_num
         model_name = cls.__name__
-        model_name += '_%s' % split_idx
+        model_name += '_%s' % shard_key
 
-        model_class = cls._split_db_models.get(model_name)
+        model_class = cls._shard_db_models.get(model_name)
         if model_class is not None:
             return model_class
 
@@ -378,20 +378,20 @@ class SplitModel(object):
         if 'objects' in attrs:
             attrs['objects'] = attrs['objects'].__class__()
 
-        # Set table name with split_idx
+        # Set table name with shard_key
         meta = Object(**cls.Meta.__dict__)
-        meta.db_table = meta.db_table % split_idx
+        meta.db_table = meta.db_table % shard_key
 
         attrs['Meta'] = meta
         attrs['new'] = classmethod(_model_new)
 
         # Create model class dynamically
         model_class = type(model_name, tuple([models.Model] + list(cls.__bases__[1:])), attrs)
-        cls._split_db_models[model_name] = model_class
+        cls._shard_db_models[model_name] = model_class
         return model_class
 
-
-class User(SplitModel):
+   
+class User(ShardModel):
     user_id = models.IntegerField()
     user_name = models.CharField(max_length=256)
     password = models.CharField(max_length=256)
@@ -400,14 +400,15 @@ class User(SplitModel):
         table_num = 3
 
     class Meta:
+        app_label = 'default'
         db_table = 'user_%s'
 </code></pre>
 
-<p>通过继承<code>SplitModel</code>，<code>User</code>类就具备的自动分表的功能。在<code>views</code>中可通过如下方法获取user info:</p>
+<p>通过继承<code>ShardModel</code>，<code>User</code>类就具备的自动分表的功能。在<code>views</code>中可通过如下方法获取user info:</p>
 
-<pre><code class="language-python">def get_user_info(request):
+<pre><code>def get_user_info(request):
     user_id = int(request.GET.get('user_id'))
-    user = models.User(split_idx=user_id).objects.get(user_id=user_id)
+    user = models.User(shard_key=user_id).objects.get(user_id=user_id)
     return HttpResponse(json.dumps(model_to_dict(user)))
 </code></pre>
 
@@ -425,7 +426,7 @@ class User(SplitModel):
 
 <p>如果我们有一个<code>Book</code>表也需要分表，这样只需要简单的继承就行了。</p>
 
-<pre><code class="language-python">class Book(SplitModel):
+<pre><code class="language-python">class Book(ShardModel):
     book_id = models.IntegerField()
     book_name = models.CharField(max_length=256)
     book_author = models.CharField(max_length=256)
