@@ -274,9 +274,9 @@ code {
 pre {
 	display: block;
 	padding: 0;
-	padding: 1.25rem;
-	margin-bottom: 20px;
-	margin-bottom: 1.25rem;
+	padding: 0.5rem;
+	margin-bottom: 8px;
+	margin-bottom: 0.5rem;
 	overflow: auto;
 	color: #000;
 }
