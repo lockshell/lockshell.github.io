@@ -106,7 +106,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 657 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 717 words</span>
 </div>
 		</header><div class="content post__content clearfix">
 			
@@ -167,17 +167,19 @@ del l
 <pre><code class="language-python">arg = 1
 
 def change_arg_val(arg):
-	new_val = arg + 1
-	return new_val
+    new_val = arg + 1
+    return new_val
 
 arg = change_arg_val(arg)
 
 </code></pre>
 
+<p>这里<code>arg</code>不是指向一个具体的地址，而是一个具体的对象，当<code>new_val = arg + 1</code>执行，new_val就指向了一个新的对象。</p>
+
 <p>第二种是直接将可变数据类型（比如列表，字典，集合）当作参数传入，直接在其上修改；</p>
 
 <pre><code class="language-python">def change_arg_val(arg):
-	arg[0] += 1
+    arg[0] += 1
 
 arg = [1]
 change_arg_val(arg)
