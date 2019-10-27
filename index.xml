@@ -6,10 +6,19 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 10 Sep 2019 18:28:46 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 27 Oct 2019 13:43:59 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>关于时间的思考</title>
+      <link>https://lockshell.com/2019/10/27/about-time/</link>
+      <pubDate>Sun, 27 Oct 2019 13:43:59 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/10/27/about-time/</guid>
+      <description>路上的时间 刚开始工作的时候，为了节省房租，有的人会住在离公司比较远的小区。这样算下来，房租加上交通费，一个月能省掉两三百块钱。但是，在这个思</description>
+    </item>
     
     <item>
       <title>Python变量与参数传递</title>
@@ -134,7 +143,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了19篇日志，继续加油哦！ 2019-09 2019-09-10 Python变量与参数传递 2019-08 2019-08-28 Django数据库连接池 2019-08-26 Django数据库分库+读写分离 2019-08-25 Djan</description>
+      <description>很好，总共写了20篇日志，继续加油哦！ 2019-10 2019-10-27 关于时间的思考 2019-09 2019-09-10 Python变量与参数传递 2019-08 2019-08-28 Django数据库连接池 2019-08-26 Django数据库分库+</description>
     </item>
     
     <item>

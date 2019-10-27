@@ -6,10 +6,19 @@
     <description>Recent content in Categories on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 10 Sep 2019 18:28:46 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 27 Oct 2019 13:43:59 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>技术人生</title>
+      <link>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</link>
+      <pubDate>Sun, 27 Oct 2019 13:43:59 +0800</pubDate>
+      
+      <guid>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Python</title>
@@ -35,15 +44,6 @@
       <pubDate>Wed, 21 Aug 2019 19:09:21 +0800</pubDate>
       
       <guid>https://lockshell.com/categories/other/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>技术人生</title>
-      <link>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</link>
-      <pubDate>Wed, 21 Aug 2019 13:25:48 +0800</pubDate>
-      
-      <guid>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</guid>
       <description></description>
     </item>
     

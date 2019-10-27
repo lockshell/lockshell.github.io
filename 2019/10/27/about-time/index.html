@@ -4,19 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Python变量与参数传递 - 络壳 LockShell</title>
+	<title>关于时间的思考 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Python-Function-Argument">
-	<meta property="og:title" content="Python变量与参数传递" />
-<meta property="og:description" content="Python-Function-Argument" />
+	<meta name="description" content="">
+	<meta property="og:title" content="关于时间的思考" />
+<meta property="og:description" content="路上的时间 刚开始工作的时候，为了节省房租，有的人会住在离公司比较远的小区。这样算下来，房租加上交通费，一个月能省掉两三百块钱。但是，在这个思" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2019/09/10/python-function-argument/" />
-<meta property="article:published_time" content="2019-09-10T18:28:46&#43;08:00"/>
-<meta property="article:modified_time" content="2019-09-10T18:28:46&#43;08:00"/>
+<meta property="og:url" content="https://lockshell.com/2019/10/27/about-time/" />
+<meta property="article:published_time" content="2019-10-27T13:43:59&#43;08:00"/>
+<meta property="article:modified_time" content="2019-10-27T13:43:59&#43;08:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python变量与参数传递"/>
-<meta name="twitter:description" content="Python-Function-Argument"/>
+<meta name="twitter:title" content="关于时间的思考"/>
+<meta name="twitter:description" content="路上的时间 刚开始工作的时候，为了节省房租，有的人会住在离公司比较远的小区。这样算下来，房租加上交通费，一个月能省掉两三百块钱。但是，在这个思"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -95,97 +95,59 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Python变量与参数传递</h1>
+			<h1 class="post__title">关于时间的思考</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-09-10T18:28:46">2019-09-10</time>
+	<time class="meta__text" datetime="2019-10-27T13:43:59">2019-10-27</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e6%8a%80%e6%9c%af%e4%ba%ba%e7%94%9f" rel="category">技术人生</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 717 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 866 words</span>
 </div>
 		</header><div class="content post__content clearfix">
 			
 
-<h2 id="python变量">Python变量</h2>
+<h2 id="路上的时间">路上的时间</h2>
 
-<p>变量的赋值，只是表示让变量指向了某个对象，并不表示拷贝对象给变量；而一个对象，可以被多个变量所指向。</p>
+<p>刚开始工作的时候，为了节省房租，有的人会住在离公司比较远的小区。这样算下来，房租加上交通费，一个月能省掉两三百块钱。但是，在这个思维和逻辑里，却忽略了另一样很有价值的东西——时间。</p>
 
-<pre><code class="language-python">a = 1
-b = a
-a = a + 1 # a = 2, b = 1
-</code></pre>
+<p>每天2小时的通勤时间和每天半小时的通勤时间，表面看似乎没有什么差别，但日积月累，一个月就是40多个小时，相当于你一个月整整多出了3个白天的时间。如果我把这个时间拿来投资学习或者好好休息一下，其价值可能也远高于节约下来的两三百块钱。</p>
 
-<p>可变对象（列表，字典，集合等等）的改变，会影响所有指向该对象的变量。</p>
+<h2 id="做饭的时间">做饭的时间</h2>
 
-<pre><code>a = [1, 2, 3]
-b = a
-a[0] = 0
-print b  # [0, 2, 3]
-</code></pre>
+<p>刚工作那会我还自己做点饭，后来就不做了；一是因为我不太会做饭，号称是做饭两小时，吃完五分钟；二是公司的食堂、北京的外卖都很方便，够吃。这样，少了柴米油盐的耽误，每天也能多出来一个小时，一个月就是30小时。</p>
 
-<p>对于不可变对象（字符串，整型，元祖等等），所有指向该对象的变量的值总是一样的，也不会改变。但是通过某些操作（+= 等等）更新不可变对象的值时，会返回一个新的对象。</p>
+<h2 id="工作的时间">工作的时间</h2>
 
-<pre><code class="language-python">a = '1'
-b = '1'
+<p>如果去头条、拼多多这样的公司，平均每周多工作一天，一年多工作50天。即使工资提高20%，按时薪算，工资并没有提高。当然，这里只考虑了薪资与时间的关系，至于税后收入、发展机会、个人成长等等，另当别论。</p>
 
-id(a)  # 4467286984
-id(b)  # 4467286984
+<h2 id="休息的时间">休息的时间</h2>
 
-c = a + b
-id(c)  # 4455971336 返回了新的对象
-</code></pre>
+<p>无论如何，休息的时间还是要保证的；我一般尽量保证每晚自己有7个小时的休息时间。年纪稍长之后，熬夜特别吃不消；熬一次夜得2-3天才能缓过来。</p>
 
-<p>变量可以被删除，但是对象无法被删除。</p>
+<h2 id="利用时间">利用时间</h2>
 
-<pre><code class="language-python">l = [1, 2, 3]
-del l
-</code></pre>
+<p>粗略算下来，我们每个月从上班路上、从工作之余省出来一周的白天的时间，是不是吓了一跳？相当于比一般人多了20%多的时间。</p>
 
-<h2 id="值传递-or-引用传递">值传递 or 引用传递</h2>
+<p>但是我们怎么取利用好这些时间呢？而不是把时间消磨在无尽的游戏、头条、抖音、肥皂剧里面呢？</p>
 
-<p>其他语言不同的是，Python 中参数的传递既不是值传递，也不是引用传递，而是<strong>赋值传递</strong>，或者是叫<strong>对象的引用传递</strong>。</p>
+<ol>
+<li>排除干扰，营造一个做事的环境。比如卸载王者荣耀、抖音；带上降噪耳机</li>
+<li>设定自己的小目标，比如这个月看600页书</li>
+<li>付诸行动</li>
+</ol>
 
-<blockquote>
-<p>“Remember that arguments are passed by assignment in Python. Since assignment just creates references to objects, there’s no alias between an argument name in the caller and callee, and so no call-by-reference per Se.”</p>
-</blockquote>
+<h2 id="零碎时间">零碎时间</h2>
 
-<p>Python 的参数传递是赋值传递（pass by assignment），或者叫作对象的引用传递（pass by object reference）。</p>
+<p>对于零碎的时间，确实不好充分的利用起来；因为大脑在不同的任务之间切换跟CPU类似，需要许多context switch的开销。因此，可以安排一些可以快速切入的任务。比如听书、背单词。</p>
 
-<p>Python 里所有的数据类型都是对象，所以参数传递时，只是让新变量与原变量指向相同的对象而已，并不存在值传递或是引用传递一说。</p>
+<h2 id="时间的节奏">时间的节奏</h2>
 
-<h2 id="用函数来改变变量的值">用函数来改变变量的值</h2>
-
-<p>如果你想通过一个函数来改变某个变量的值，通常有两种方法。</p>
-
-<p>一种是创建一个新变量，来保存修改后的值，然后将其返回给原变量。</p>
-
-<pre><code class="language-python">arg = 1
-
-def change_arg_val(arg):
-    new_val = arg + 1
-    return new_val
-
-arg = change_arg_val(arg)
-
-</code></pre>
-
-<p>这里<code>arg</code>不是指向一个具体的地址，而是一个具体的对象，当<code>new_val = arg + 1</code>执行，new_val就指向了一个新的对象。</p>
-
-<p>第二种是直接将可变数据类型（比如列表，字典，集合）当作参数传入，直接在其上修改；</p>
-
-<pre><code class="language-python">def change_arg_val(arg):
-    arg[0] += 1
-
-arg = [1]
-change_arg_val(arg)
-</code></pre>
-
-<p>在实际工作中，我们更倾向于使用前者；逻辑更清晰，减少耦合，不容易出错。</p>
+<p>把生活节奏调整得慢一点。为什么要把自己搞得那么忙，忙到疲惫不堪，无暇思考；而结果还是碌碌无为？不管多么忙，都要去思考那些真正对我们重要的事情，搞清楚事情的轻重缓急。要知道，凡是值得做的事情，都值得慢慢做，坐很久很久。</p>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
@@ -195,7 +157,7 @@ change_arg_val(arg)
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/python/" rel="tag">Python</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/career/" rel="tag">Career</a></li>
 	</ul>
 </div>
 		</footer>
@@ -216,10 +178,7 @@ change_arg_val(arg)
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2019/08/28/django-db-connection-pool/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Django数据库连接池</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2019/10/27/about-time/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">关于时间的思考</p></a>
+		<a class="post-nav__link" href="/2019/09/10/python-function-argument/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Python变量与参数传递</p></a>
 	</div>
 </nav>
 
