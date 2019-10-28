@@ -6,10 +6,19 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 27 Oct 2019 13:43:59 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 28 Oct 2019 16:04:53 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>程序员如何应对你的35岁</title>
+      <link>https://lockshell.com/2019/10/28/preparing-for-35-years-old/</link>
+      <pubDate>Mon, 28 Oct 2019 16:04:53 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/10/28/preparing-for-35-years-old/</guid>
+      <description>网曝阿里淘宝兼天猫总裁蒋凡要求，公司内部 P8 级别尽快实现全员 35 周岁（85 年后），这意味着如果 35 岁了还没达到 P8 级别，那就有可能被优化。阿里P8是</description>
+    </item>
     
     <item>
       <title>关于时间的思考</title>
@@ -152,7 +161,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了21篇日志，继续加油哦！ 2019-10 2019-10-27 关于时间的思考 2019-10-12 程序员的自我修养3 2019-09 2019-09-10 Python变量与参数传递 2019-08 2019-08-28 Django数据库连接池 2019-08-26 Dj</description>
+      <description>很好，总共写了21篇日志，继续加油哦！ 2019-10 2019-10-28 程序员如何应对你的35岁 2019-10-27 关于时间的思考 2019-10-12 程序员的自我修养3 2019-09 2019-09-10 Python变量与参数传递 2019-08 2019-08-28 Dj</description>
     </item>
     
     <item>
@@ -162,15 +171,6 @@
       
       <guid>https://lockshell.com/2019/08/11/skill-tree/</guid>
       <description>程序员技能树</description>
-    </item>
-    
-    <item>
-      <title>How Chinese Think About the US-China Trade War</title>
-      <link>https://lockshell.com/2019/08/10/how-chinese-think-about-trade-war/</link>
-      <pubDate>Sat, 10 Aug 2019 13:39:16 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/10/how-chinese-think-about-trade-war/</guid>
-      <description>如果我们的敌人激烈的批评和反对我们，我们一定是做了什么非常正确的事情。—— 毛泽东 If our enemies fiercely criticize and oppose us, we must have done something very right. 民主国家的政治变化很快，严厉的</description>
     </item>
     
     <item>
