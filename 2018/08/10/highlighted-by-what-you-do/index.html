@@ -4,19 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Nginx静态文件服务配置 - 络壳 LockShell</title>
+	<title>人因事显 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Nginx as Static File Server">
-	<meta property="og:title" content="Nginx静态文件服务配置" />
-<meta property="og:description" content="Nginx as Static File Server" />
+	<meta name="description" content="Highlighted by What You Do">
+	<meta property="og:title" content="人因事显" />
+<meta property="og:description" content="Highlighted by What You Do" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2018/02/12/nginx-as-static-file-server/" />
-<meta property="article:published_time" content="2018-02-12T11:31:48&#43;08:00"/>
-<meta property="article:modified_time" content="2018-02-12T11:31:48&#43;08:00"/>
+<meta property="og:url" content="https://lockshell.com/2018/08/10/highlighted-by-what-you-do/" />
+<meta property="article:published_time" content="2018-08-10T20:35:01&#43;08:00"/>
+<meta property="article:modified_time" content="2018-08-10T20:35:01&#43;08:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Nginx静态文件服务配置"/>
-<meta name="twitter:description" content="Nginx as Static File Server"/>
+<meta name="twitter:title" content="人因事显"/>
+<meta name="twitter:description" content="Highlighted by What You Do"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -89,86 +89,32 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Nginx静态文件服务配置</h1>
+			<h1 class="post__title">人因事显</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-02-12T11:31:48">2018-02-12</time>
+	<time class="meta__text" datetime="2018-08-10T20:35:01">2018-08-10</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/nginx" rel="category">Nginx</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e6%8a%80%e6%9c%af%e4%ba%ba%e7%94%9f" rel="category">技术人生</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 601 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 648 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>Nginx一大经典使用场景就是用来提供静态文件服务，例如图片、html、脚本、样式文件等，这些文件没有必要交给 tomcat、jboss等应用服务器处理，使用 Nginx 直接处理将大大提高性能。用 Nginx 来提供静态文件服务十分简单，只需要添加一个 server块指令即可。</p>
+			<p>下午，几个同事一起点了外卖，吃饭时聊到小米的软件基础设施（Hadoop服务，Hbase服务，数据工厂，发布系统，等等）一直有各种各样的问题，平时也能凑合用；但隔三差五来个故障，也确实影响正常业务。</p>
 
-<h2 id="基本配置">基本配置</h2>
+<p>这让我想起扁鹊治病的典故。</p>
 
-<p>假设我们的静态文件位于 <code>/Users/test</code> 目录下，文件服务基本配置如下：</p>
+<p>魏文王问名医扁鹊说：“你们家兄弟三人，都精于医术，到底哪一位最好呢？”扁鹊答：“大哥最好，二哥次之，我最差。”文王再问：“那么为什么你最出名呢？”扁鹊答说：“我大哥治病，是治病于病情发作之前。由于一般人不知道他率先能铲除病因，所以他的名气无法传出去，只有我们家的人才知道。我二哥治病，是治病于病情初起之时。一般人以为他只能治轻微的小病，所以他的名气只及于本乡里。而我扁鹊治病，是治病于病情严重之时。一般人都看到我在经脉上穿针管来放血、在皮肤上敷药等大手术，所以以为我的医术高明，名气因此响遍全国。”</p>
 
-<pre><code>    server {
-        client_max_body_size 4G;
-        listen  0.0.0.0:8888;  ## listen for ipv4; this line is default and implied
-        server_name localhost;
-        root /Users/test/;
-        location / {
-        }
-    }
-</code></pre>
+<p>比较起来，能防范于未然是最高明的，但往往因防范在前，不会出现恶果，使事物保持了原态，没有“明显”的功绩而被忽略。正如不见防火英雄，只有救火英雄一样。高明者不见得一定名声显赫。</p>
 
-<p>location指令用来映射请求到本地文件系统。root 指令用来指定文件在服务器上的基路径。</p>
+<p>在很多大公司，亦是如此。很少有人主动去修复基础服务里那些不紧急的问题。修复这样的问题，往往不能算作功劳。因为汇报的时候，总不能说这半年修复了某某系统的多少个bug，这样的描述丝毫体现不出个人的产出；但修改引发了其他的问题，就容易有人来问责。直到某一天，系统真的出现了很严重的故障，给公司带来了巨大的损失；这时，有人跳出来修复问题，“挽狂澜于既倒，扶大厦于将倾”；这样才能显示出自己的功绩。</p>
 
-<h2 id="配置索引">配置索引</h2>
+<p>此谓人因事显。</p>
 
-<pre><code>    server {
-        client_max_body_size 4G;
-        listen  8889;  ## listen for ipv4; this line is default and implied
-        server_name localhost;
-        root /Users/test;
-        location / {
-            autoindex on; 
-            autoindex_exact_size on;
-            autoindex_localtime on;
-        } 
-    }
-</code></pre>
-
-<p>执行<code>sudo nginx -s reload</code>重新加载配置。在浏览器中访问<code>http://127.0.0.1:8889/</code>，即可显示root指定的<code>/Users/test</code>目录下的内容。</p>
-
-<h2 id="设置密码">设置密码</h2>
-
-<p>搭建文件服务器有时候不想让别人任意访问，想做成一个私有的该怎么办呢，这个时候我们可以用到nginx自带的认证模块。 需配置<code>auth_basic</code>和<code>auth_basic_user_file</code>字段。</p>
-
-<pre><code>    server {
-        client_max_body_size 4G;
-        listen  8890;  ## listen for ipv4; this line is default and implied
-        server_name localhost;
-        root /Users/test/;
-        location / {
-            auth_basic   &quot;Restricted&quot;;
-            auth_basic_user_file /usr/local/etc/nginx/pass_file;
-            autoindex on;
-            autoindex_exact_size on;
-            autoindex_localtime on;
-        }
-    }
-</code></pre>
-
-<h2 id="生成用户名和密码">生成用户名和密码</h2>
-
-<pre><code>htpasswd -c -d pass_file test
-</code></pre>
-
-<p>这样就在<code>/usr/local/etc/nginx/pass_file</code>文件中添加了一个用户。在访问<code>http://localhost:8890/</code>时，会弹窗提示输入用户名和密码进行验证，然后就可以正常访问了。</p>
-
-<h2 id="参考">参考</h2>
-
-<ul>
-<li><a href="http://lockshell.com">深入理解Nginx</a></li>
-</ul>
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
 		</div>
@@ -177,7 +123,7 @@ if (!doNotTrack) {
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/nginx/" rel="tag">Nginx</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/life/" rel="tag">Life</a></li>
 	</ul>
 </div>
 		</footer>
@@ -198,10 +144,10 @@ if (!doNotTrack) {
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2018/02/12/nginx-reverse-proxy-config/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Nginx反向代理配置</p></a>
+		<a class="post-nav__link" href="/2018/02/12/nginx-as-static-file-server/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Nginx静态文件服务配置</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2018/08/10/highlighted-by-what-you-do/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">人因事显</p></a>
+		<a class="post-nav__link" href="/2018/08/17/nginx-forward-proxy-config/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Nginx正向代理配置</p></a>
 	</div>
 </nav>
 

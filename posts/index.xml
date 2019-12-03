@@ -207,6 +207,15 @@
     </item>
     
     <item>
+      <title>人因事显</title>
+      <link>https://lockshell.com/2018/08/10/highlighted-by-what-you-do/</link>
+      <pubDate>Fri, 10 Aug 2018 20:35:01 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2018/08/10/highlighted-by-what-you-do/</guid>
+      <description>下午，几个同事一起点了外卖，吃饭时聊到小米的软件基础设施（Hadoop服务，Hbase服务，数据工厂，发布系统，等等）一直有各种各样的问题，</description>
+    </item>
+    
+    <item>
       <title>Nginx静态文件服务配置</title>
       <link>https://lockshell.com/2018/02/12/nginx-as-static-file-server/</link>
       <pubDate>Mon, 12 Feb 2018 11:31:48 +0800</pubDate>
