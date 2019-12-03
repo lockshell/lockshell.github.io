@@ -64,13 +64,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/python/</loc>
+    <loc>https://lockshell.com/tags/python/</loc>
     <lastmod>2019-09-10T18:28:46+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/python/</loc>
+    <loc>https://lockshell.com/categories/python/</loc>
     <lastmod>2019-09-10T18:28:46+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -119,13 +119,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/other/</loc>
+    <loc>https://lockshell.com/tags/other/</loc>
     <lastmod>2019-08-21T19:09:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/other/</loc>
+    <loc>https://lockshell.com/categories/other/</loc>
     <lastmod>2019-08-21T19:09:21+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -141,13 +141,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/linux/</loc>
+    <loc>https://lockshell.com/tags/linux/</loc>
     <lastmod>2019-08-18T15:08:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/linux/</loc>
+    <loc>https://lockshell.com/categories/linux/</loc>
     <lastmod>2019-08-18T15:08:15+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -185,13 +185,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/nginx/</loc>
+    <loc>https://lockshell.com/tags/nginx/</loc>
     <lastmod>2019-08-12T15:35:37+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/nginx/</loc>
+    <loc>https://lockshell.com/categories/nginx/</loc>
     <lastmod>2019-08-12T15:35:37+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -217,13 +217,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/hugo/</loc>
+    <loc>https://lockshell.com/tags/hugo/</loc>
     <lastmod>2019-08-10T11:12:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/hugo/</loc>
+    <loc>https://lockshell.com/categories/hugo/</loc>
     <lastmod>2019-08-10T11:12:00+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -266,11 +266,6 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/2018/12/09/little-girl-and-old-man/</loc>
-    <lastmod>2018-12-09T21:11:25+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://lockshell.com/2018/12/03/active-learning/</loc>
     <lastmod>2018-12-03T21:02:04+08:00</lastmod>
   </url>
@@ -291,11 +286,6 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/2018/05/29/move-house/</loc>
-    <lastmod>2018-05-29T21:26:14+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://lockshell.com/2018/02/12/nginx-as-static-file-server/</loc>
     <lastmod>2018-02-12T11:31:48+08:00</lastmod>
   </url>
@@ -303,6 +293,16 @@
   <url>
     <loc>https://lockshell.com/2018/02/12/nginx-reverse-proxy-config/</loc>
     <lastmod>2018-02-12T11:03:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/2017/12/09/little-girl-and-old-man/</loc>
+    <lastmod>2017-12-09T21:11:25+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/2017/05/29/move-house/</loc>
+    <lastmod>2017-05-29T21:26:14+08:00</lastmod>
   </url>
   
 </urlset>
