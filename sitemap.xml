@@ -3,42 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://lockshell.com/tags/career/</loc>
+    <lastmod>2019-11-10T17:04:50+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://lockshell.com/categories/</loc>
-    <lastmod>2019-12-02T14:12:57+08:00</lastmod>
+    <lastmod>2019-11-10T17:04:50+08:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/categories/python/</loc>
-    <lastmod>2019-12-02T14:12:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/python/</loc>
-    <lastmod>2019-12-02T14:12:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/2019/12/02/python-requests-http-connection-pool/</loc>
-    <lastmod>2019-12-02T14:12:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lockshell.com/tags/</loc>
-    <lastmod>2019-12-02T14:12:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/</loc>
-    <lastmod>2019-12-02T14:12:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/career/</loc>
     <lastmod>2019-11-10T17:04:50+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -50,6 +27,12 @@
   
   <url>
     <loc>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</loc>
+    <lastmod>2019-11-10T17:04:50+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/</loc>
     <lastmod>2019-11-10T17:04:50+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -67,6 +50,18 @@
   <url>
     <loc>https://lockshell.com/2019/10/12/programmer-self-discipline2/</loc>
     <lastmod>2019-10-12T14:31:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/python/</loc>
+    <lastmod>2019-09-10T18:28:46+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/categories/python/</loc>
+    <lastmod>2019-09-10T18:28:46+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -113,13 +108,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/other/</loc>
+    <loc>https://lockshell.com/tags/other/</loc>
     <lastmod>2019-08-21T19:09:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/other/</loc>
+    <loc>https://lockshell.com/categories/other/</loc>
     <lastmod>2019-08-21T19:09:21+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -135,13 +130,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/linux/</loc>
+    <loc>https://lockshell.com/tags/linux/</loc>
     <lastmod>2019-08-18T15:08:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/linux/</loc>
+    <loc>https://lockshell.com/categories/linux/</loc>
     <lastmod>2019-08-18T15:08:15+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -179,13 +174,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/nginx/</loc>
+    <loc>https://lockshell.com/tags/nginx/</loc>
     <lastmod>2019-08-12T15:35:37+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/nginx/</loc>
+    <loc>https://lockshell.com/categories/nginx/</loc>
     <lastmod>2019-08-12T15:35:37+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -211,13 +206,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/hugo/</loc>
+    <loc>https://lockshell.com/tags/hugo/</loc>
     <lastmod>2019-08-10T11:12:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/hugo/</loc>
+    <loc>https://lockshell.com/categories/hugo/</loc>
     <lastmod>2019-08-10T11:12:00+08:00</lastmod>
     <priority>0</priority>
   </url>
