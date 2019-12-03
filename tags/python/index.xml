@@ -6,10 +6,19 @@
     <description>Recent content in Python on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 10 Sep 2019 18:28:46 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 02 Dec 2019 14:12:57 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python Requests Http Connection Pool</title>
+      <link>https://lockshell.com/2019/12/02/python-requests-http-connection-pool/</link>
+      <pubDate>Mon, 02 Dec 2019 14:12:57 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/12/02/python-requests-http-connection-pool/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Python变量与参数传递</title>

@@ -6,10 +6,19 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 10 Nov 2019 17:04:50 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 02 Dec 2019 14:12:57 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python Requests Http Connection Pool</title>
+      <link>https://lockshell.com/2019/12/02/python-requests-http-connection-pool/</link>
+      <pubDate>Mon, 02 Dec 2019 14:12:57 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/12/02/python-requests-http-connection-pool/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>启迪民智</title>
@@ -152,7 +161,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/links/</guid>
-      <description>友情链接，欢迎大家在下面通过评论互换友链，谢谢O(∩_∩)O。因为是手动添加，可能会稍有延迟。 2019-11-30 YH的个人小站 2019-10-27 星文-Xstar News 2019-08-20 崔笑颜的</description>
+      <description>友情链接，欢迎大家在下面通过评论互换友链，谢谢O(∩_∩)O。 2019-12 mghio&amp;rsquo;s blog 2019-11 YH的个人小站 2019-10 星文-Xstar News 2019-08 崔笑颜的博客 阿星Plus 赵俊的博客</description>
     </item>
     
     <item>
@@ -161,7 +170,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了20篇日志，继续加油哦！ 2019-11 2019-11-10 启迪民智 2019-10 2019-10-28 程序员如何应对你的35岁 2019-10-27 关于时间的思考 2019-10-12 程序员的自我修养2 2019-09 2019-09-10 Python变量与参数</description>
+      <description>很好，总共写了21篇日志，继续加油哦！ 2019-12 2019-12-02 Python Requests Http Connection Pool 2019-11 2019-11-10 启迪民智 2019-10 2019-10-28 程序员如何应对你的35岁 2019-10-27 关于时间的思考 2019-10-12 程序员的自我修养2 2019-09 2019-09-10 Pyth</description>
     </item>
     
     <item>
