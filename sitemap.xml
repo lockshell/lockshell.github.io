@@ -97,6 +97,12 @@
   </url>
   
   <url>
+    <loc>https://lockshell.com/tags/mysql/</loc>
+    <lastmod>2019-08-28T02:40:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://lockshell.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2019-08-28T02:40:57+08:00</lastmod>
     <priority>0</priority>
@@ -110,12 +116,6 @@
   <url>
     <loc>https://lockshell.com/2019/08/25/django-orm-db-table-partition/</loc>
     <lastmod>2019-08-25T10:37:30+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/mysql/</loc>
-    <lastmod>2019-08-23T22:42:49+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
