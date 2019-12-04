@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Python函数返回值设计</title>
+      <link>https://lockshell.com/2019/12/04/python-function-return-value/</link>
+      <pubDate>Wed, 04 Dec 2019 09:05:40 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/12/04/python-function-return-value/</guid>
+      <description>返回元组 def func(): error = None value = 123 return error, value def func2(): error, value1 = func() # balabala value2 = value1 + 123 return error, value2 返回字典 import json def func1(): error1 = &#39;Test Error&#39; value1 = 456 if error1: return {&#39;error&#39;: error1} return {&#39;value&#39;: value1} def func2(): result = func1() if &#39;error&#39; in result: return result error2 = None value2 =</description>
+    </item>
+    
+    <item>
       <title>在Shopee工作是怎样一种体验?</title>
       <link>https://lockshell.com/2019/11/30/working-in-shopee/</link>
       <pubDate>Sat, 30 Nov 2019 17:46:55 +0800</pubDate>
