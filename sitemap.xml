@@ -124,23 +124,6 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/other/</loc>
-    <lastmod>2019-08-21T19:09:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/other/</loc>
-    <lastmod>2019-08-21T19:09:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/ads/</loc>
-    <lastmod>2019-08-21T19:09:21+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://lockshell.com/2019/08/21/backend-interview-resource/</loc>
     <lastmod>2019-08-21T13:25:48+08:00</lastmod>
   </url>
@@ -182,6 +165,18 @@
   <url>
     <loc>https://lockshell.com/posts/</loc>
     <lastmod>2019-08-17T16:44:38+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/categories/other/</loc>
+    <lastmod>2019-08-17T16:44:38+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/other/</loc>
+    <lastmod>2019-08-17T16:44:38+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
