@@ -4,19 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Python函数返回值设计 - 络壳 LockShell</title>
+	<title>Python Http连接池 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="The design of Return Value in Python function">
-	<meta property="og:title" content="Python函数返回值设计" />
-<meta property="og:description" content="The design of Return Value in Python function" />
+	<meta name="description" content="Python Requests Http Connection Pool">
+	<meta property="og:title" content="Python Http连接池" />
+<meta property="og:description" content="Python Requests Http Connection Pool" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2019/12/04/python-function-return-value/" />
-<meta property="article:published_time" content="2019-12-04T09:05:40&#43;08:00"/>
-<meta property="article:modified_time" content="2019-12-04T09:05:40&#43;08:00"/>
+<meta property="og:url" content="https://lockshell.com/2019/12/04/python-requests-http-connection-pool/" />
+<meta property="article:published_time" content="2019-12-04T20:28:00&#43;08:00"/>
+<meta property="article:modified_time" content="2019-12-04T20:28:00&#43;08:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python函数返回值设计"/>
-<meta name="twitter:description" content="The design of Return Value in Python function"/>
+<meta name="twitter:title" content="Python Http连接池"/>
+<meta name="twitter:description" content="Python Requests Http Connection Pool"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -86,111 +86,141 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Python函数返回值设计</h1>
+			<h1 class="post__title">Python Http连接池</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-12-04T09:05:40">2019-12-04</time>
+	<time class="meta__text" datetime="2019-12-04T20:28:00">2019-12-04</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 307 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1046 words</span>
 </div>
 		</header><div class="content post__content clearfix">
 			
 
-<p>Python函数同时返回错误值和数据怎么设计？</p>
+<p>HTTP是建立在TCP上面的，一次HTTP请求要经历TCP三次握手阶段，然后发送请求，得到相应数据，最后TCP断开连接。如果我们要发出多个HTTP请求，每次都这么搞，那每次要握手、请求、断开，就比较浪费资源。所以如果我们在HTTP(S)连接建立之后，可以复用已经建立的连接传输数据，就能省反复新建连接的开销。这样有HTTP(S)连接池的用武之地。</p>
 
-<h2 id="返回元组">返回元组</h2>
+<p>在Python中最常用的是requests库，这个库依赖的是urllib库，下面基于urllib3分析一下Http连接池的实现。</p>
 
-<pre><code class="language-python">def func():
-    error = None
-    value = 123
-    return error, value
+<h2 id="httpconnectionpool参数">HTTPConnectionPool参数</h2>
 
-def func2():
-    error, value1 = func()
-     # balabala
-     
-    value2 = value1 + 123
-    return error, value2
+<pre><code class="language-python">class HTTPConnectionPool(ConnectionPool, RequestMethods):
+    &quot;&quot;&quot;
+    :param maxsize:
+        Number of connections to save that can be reused. More than 1 is useful
+        in multithreaded situations. If ``block`` is set to False, more
+        connections will be created but they will not be saved once they've
+        been used.
+
+    :param block:
+        If set to True, no more than ``maxsize`` connections will be used at
+        a time. When no free connections are available, the call will block
+        until a connection has been released. This is a useful side effect for
+        particular multithreaded situations where one does not want to use more
+        than maxsize connections per host to prevent flooding.
+    &quot;&quot;&quot;
+    def __init__(self, host, port=None, strict=False,
+                timeout=Timeout.DEFAULT_TIMEOUT, maxsize=1, block=False,
+                headers=None, retries=None,
+                _proxy=None, _proxy_headers=None,
+                **conn_kw):
+        pass
+</code></pre>
+
+<ul>
+<li>maxsize: maxsize指定的是每个pool中连接的数量。</li>
+<li>block: 如果blcok参数是False（默认），不会创建超过maxsize数量的连接，如果pool中没有可用的连接，那么调用会一直阻塞，直到有一个连接被释放。</li>
+</ul>
+
+<h2 id="httpconnectionpool例子">HTTPConnectionPool例子</h2>
+
+<pre><code class="language-python"># coding: utf-8
+import threading
+from urllib3 import HTTPConnectionPool
+
+pool = HTTPConnectionPool('baidu.com', maxsize=2, block=True)
+
+
+def http_get():
+    for _ in range(3):
+        r = pool.request('GET', '/', redirect=False)
+        print(&quot;Request Status: {}; Connections: {}; Requests: {}; Thread Name: {}&quot;.format(
+            r.status, pool.num_connections, pool.num_requests, threading.current_thread().getName(),
+        ))
+
+
+# 三个线程共用一个连接池
+t1 = threading.Thread(target=http_get, name='t1')
+t2 = threading.Thread(target=http_get, name='t2')
+t3 = threading.Thread(target=http_get, name='t3')
+
+t1.start()
+t2.start()
+t3.start()
 
 </code></pre>
 
-<h2 id="返回字典">返回字典</h2>
+<p>输出：</p>
 
-<pre><code class="language-python">import json
-
-
-def func1():
-    error1 = 'Test Error'
-    value1 = 456
-    if error1:
-        return {'error': error1}
-        
-    return {'value': value1}
-
-def func2():
-    result = func1()
-    if 'error' in result:
-        return result
-
-    error2 = None
-    value2 = 789 + result['value']
-    if error2:
-        return {'error': error2}
-        
-    return {'value': value2}
-    
-def func3():
-    result = func2()
-    return json.dumps(result)
-
+<pre><code>Request Status: 200; Connections: 2; Requests: 2; Thread Name: t1
+Request Status: 200; Connections: 2; Requests: 3; Thread Name: t2
+Request Status: 200; Connections: 2; Requests: 4; Thread Name: t3
+Request Status: 200; Connections: 2; Requests: 5; Thread Name: t2
+Request Status: 200; Connections: 2; Requests: 6; Thread Name: t3
+Request Status: 200; Connections: 2; Requests: 7; Thread Name: t2
+Request Status: 200; Connections: 2; Requests: 8; Thread Name: t1
+Request Status: 200; Connections: 2; Requests: 9; Thread Name: t1
+Request Status: 200; Connections: 2; Requests: 9; Thread Name: t3
 </code></pre>
 
-<p>返回字典的好处：</p>
+<p>如果将block参数改为False，实际创建的Connections可以达到3。</p>
 
-<ol>
-<li>字典容纳的数据类型更加丰富，方便保持前向兼容</li>
-<li>返回的数据方便序列化成Json格式</li>
-<li>在函数调用链中，对于错误的判断保持统一的风格</li>
-</ol>
-
-<h2 id="定义自己的result类">定义自己的Result类</h2>
-
-<pre><code class="language-python">class Error(object):
-    SUCCESS = 0
-    FAIL = 1
-
-
-class Result(object):
-    def __init__(self, error=0, value=None, msg=None):
-        self.error = error
-        self.error_msg = msg
-        self.value = value
-
-
-def func1():
-    return Result(error=Error.FAIL, value='Failed Value')
-
-
-def func2():
-    result = func1()
-    if result.error != Error.SUCCESS:
-        return result
-    
-    return Result(error=Error.SUCCESS, value='Success Value')
+<pre><code>Request Status: 200; Connections: 3; Requests: 3; Thread Name: t3
+Request Status: 200; Connections: 3; Requests: 4; Thread Name: t2
+Request Status: 200; Connections: 3; Requests: 5; Thread Name: t1
+Request Status: 200; Connections: 3; Requests: 6; Thread Name: t3
+Request Status: 200; Connections: 3; Requests: 7; Thread Name: t2
+Request Status: 200; Connections: 3; Requests: 8; Thread Name: t1
+Request Status: 200; Connections: 3; Requests: 9; Thread Name: t3
+Request Status: 200; Connections: 3; Requests: 9; Thread Name: t1
+Request Status: 200; Connections: 3; Requests: 10; Thread Name: t2
 </code></pre>
 
-<p>返回Result对象的好处：</p>
+<p>在多线程的环境中，多缓存一些连接可能带来性能上的提升，一般连接数等于线程数，这样保证所有的线程都有缓存的连接可用。</p>
 
-<ol>
-<li>可以根据需要自定义数据结构，所有函数返回固定的数据结构</li>
-<li>返回信息里面可以包含错误码，错误信息，Value等多个内容</li>
-</ol>
+<h2 id="urllib3-poolmanager">urllib3.PoolManager</h2>
+
+<p>如果我要向不同的域名发请求，希望缓存多个域名的连接，就要有多个连接池。urllib3提供了PoolManager维护自己的Pool。比如初始化的大小设置为3，那么需要建立第4个连接池的时候，最旧的一个连接池就被销毁。</p>
+
+<pre><code class="language-python">class PoolManager(RequestMethods):
+    &quot;&quot;&quot;
+    :param num_pools:
+        Number of connection pools to cache before discarding the least
+        recently used pool.
+    &quot;&quot;&quot;
+    def __init__(self, num_pools=10, headers=None, **connection_pool_kw):
+        pass
+</code></pre>
+
+<ul>
+<li>num_pools：参数num_pools表示池的数量，其余参数将会传给Pool初始化</li>
+</ul>
+
+<h2 id="poolmanager例子">PoolManager例子</h2>
+
+<pre><code>from urllib3 import PoolManager
+
+manager = PoolManager(3)
+
+r = manager.request('GET', 'http://baidu.com/')
+print(r.headers['server'])
+</code></pre>
+
+<h2 id="todo">TODO</h2>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
@@ -221,10 +251,7 @@ def func2():
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2019/11/30/working-in-shopee/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">在Shopee工作是怎样一种体验?</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2019/12/04/python-requests-http-connection-pool/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Python Http连接池</p></a>
+		<a class="post-nav__link" href="/2019/12/04/python-function-return-value/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Python函数返回值设计</p></a>
 	</div>
 </nav>
 

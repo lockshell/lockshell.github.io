@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Python Http连接池</title>
+      <link>https://lockshell.com/2019/12/04/python-requests-http-connection-pool/</link>
+      <pubDate>Wed, 04 Dec 2019 20:28:00 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/12/04/python-requests-http-connection-pool/</guid>
+      <description>HTTP是建立在TCP上面的，一次HTTP请求要经历TCP三次握手阶段，然后发送请求，得到相应数据，最后TCP断开连接。如果我们要发出多个H</description>
+    </item>
+    
+    <item>
       <title>Python函数返回值设计</title>
       <link>https://lockshell.com/2019/12/04/python-function-return-value/</link>
       <pubDate>Wed, 04 Dec 2019 09:05:40 +0800</pubDate>
