@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>程序人生 on 络壳 LockShell</title>
+    <link>https://lockshell.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/</link>
+    <description>Recent content in 程序人生 on 络壳 LockShell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 09 Mar 2016 17:46:22 +0800</lastBuildDate>
+    
+	<atom:link href="https://lockshell.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>[转]打造属于自己的稀缺性</title>
+      <link>https://lockshell.com/2016/03/09/programmers-create-scarcity/</link>
+      <pubDate>Wed, 09 Mar 2016 17:46:22 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2016/03/09/programmers-create-scarcity/</guid>
+      <description>假设说你想在江湖里谋求一定的地位，那么你可以练习独孤九剑成为超一流高手，也可以练习医术，成为绝世神医。这两者在江湖里都是有地位的，也都是稀缺</description>
+    </item>
+    
+  </channel>
+</rss>

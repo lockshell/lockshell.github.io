@@ -179,7 +179,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了32篇日志，继续加油哦！ 2019-12 2019-12-04 Python函数返回值设计 2019-12-04 Python Http连接池 2019-11 2019-11-30 在Shopee工作是怎样一种体验? 2019-11-10 启迪民智 2019-10 2019-10-28 程</description>
+      <description>很好，总共写了33篇日志，继续加油哦！ 2019-12 2019-12-04 Python函数返回值设计 2019-12-04 Python Http连接池 2019-11 2019-11-30 在Shopee工作是怎样一种体验? 2019-11-10 启迪民智 2019-10 2019-10-28 程</description>
     </item>
     
     <item>
@@ -336,6 +336,15 @@
       
       <guid>https://lockshell.com/2016/05/19/python-gunicorn-gevent-server-for-flask/</guid>
       <description>Flask，Django都自带WSGI server，当然性能都一般，自带的web server更多的是测试用途。线上发布时，则使用高性能的WS</description>
+    </item>
+    
+    <item>
+      <title>[转]打造属于自己的稀缺性</title>
+      <link>https://lockshell.com/2016/03/09/programmers-create-scarcity/</link>
+      <pubDate>Wed, 09 Mar 2016 17:46:22 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2016/03/09/programmers-create-scarcity/</guid>
+      <description>假设说你想在江湖里谋求一定的地位，那么你可以练习独孤九剑成为超一流高手，也可以练习医术，成为绝世神医。这两者在江湖里都是有地位的，也都是稀缺</description>
     </item>
     
   </channel>
