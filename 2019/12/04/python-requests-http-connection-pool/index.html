@@ -97,7 +97,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1826 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2578 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -107,11 +107,12 @@ if (!doNotTrack) {
 <ul>
 <li>
 <ul>
+<li><a href="#requests-session">requests.Session</a></li>
+<li><a href="#requests-adapter">requests.Adapter</a></li>
 <li><a href="#urllib3-httpconnectionpool">urllib3.HTTPConnectionPool</a></li>
-<li><a href="#httpconnectionpool例子">HTTPConnectionPool例子</a></li>
 <li><a href="#urllib3-poolmanager">urllib3.PoolManager</a></li>
-<li><a href="#poolmanager例子">PoolManager例子</a></li>
 <li><a href="#recentlyusedcontainer">RecentlyUsedContainer</a></li>
+<li><a href="#request-session封装例子">request Session封装例子</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -123,6 +124,106 @@ if (!doNotTrack) {
 <p>HTTP是建立在TCP上面的，一次HTTP请求要经历TCP三次握手阶段，然后发送请求，得到相应数据，最后TCP断开连接。如果我们要发出多个HTTP请求，每次都这么搞，那每次要握手、请求、断开，就比较浪费资源。所以如果我们在HTTP(S)连接建立之后，可以复用已经建立的连接传输数据，就能省反复新建连接的开销。这样有HTTP(S)连接池的用武之地。</p>
 
 <p>在Python中最常用的是requests库，这个库依赖的是urllib，下面基于urllib3分析一下Http连接池的使用与实现。</p>
+
+<h2 id="requests-session">requests.Session</h2>
+
+<p>requests使用极为方便，三行代码就能搞定。那在这种简洁的后面，requests到底做了哪些事情呢？</p>
+
+<pre><code>Basic Usage::
+
+  &gt;&gt;&gt; import requests
+  &gt;&gt;&gt; s = requests.Session()
+  &gt;&gt;&gt; s.get('https://httpbin.org/get')
+  &lt;Response [200]&gt;
+</code></pre>
+
+<p>在get请求中，函数的调用链是：<code>get() -&gt; request() -&gt; send() -&gt; adapter.send()</code>。可见在requests.Session中，所有的请求都是通过HTTPAdapter发出去的。</p>
+
+<pre><code>    def send(self, request, **kwargs):
+        &quot;&quot;&quot;Send a given PreparedRequest.
+
+        :rtype: requests.Response
+        &quot;&quot;&quot;
+        # Set defaults that the hooks can utilize to ensure they always have
+        # the correct parameters to reproduce the previous request.
+        kwargs.setdefault('stream', self.stream)
+        kwargs.setdefault('verify', self.verify)
+        kwargs.setdefault('cert', self.cert)
+        kwargs.setdefault('proxies', self.proxies)
+
+        # It's possible that users might accidentally send a Request object.
+        # Guard against that specific failure case.
+        if isinstance(request, Request):
+            raise ValueError('You can only send PreparedRequests.')
+
+        # Set up variables needed for resolve_redirects and dispatching of hooks
+        allow_redirects = kwargs.pop('allow_redirects', True)
+        stream = kwargs.get('stream')
+        hooks = request.hooks
+
+        # Get the appropriate adapter to use
+        adapter = self.get_adapter(url=request.url)
+
+        # Start time (approximately) of the request
+        start = preferred_clock()
+
+        # Send the request
+        r = adapter.send(request, **kwargs)
+</code></pre>
+
+<h2 id="requests-adapter">requests.Adapter</h2>
+
+<p>requests.Adapter实际上是对urllib3的封装。如果我们想给一个域名加代理，都可以amount一个自定义的Adapter。</p>
+
+<pre><code class="language-python">class HTTPAdapter(BaseAdapter):
+    &quot;&quot;&quot;The built-in HTTP Adapter for urllib3.
+
+    Provides a general-case interface for Requests sessions to contact HTTP and
+    HTTPS urls by implementing the Transport Adapter interface. This class will
+    usually be created by the :class:`Session &lt;Session&gt;` class under the
+    covers.
+
+    :param pool_connections: The number of urllib3 connection pools to cache.
+    :param pool_maxsize: The maximum number of connections to save in the pool.
+    :param max_retries: The maximum number of retries each connection
+        should attempt. Note, this applies only to failed DNS lookups, socket
+        connections and connection timeouts, never to requests where data has
+        made it to the server. By default, Requests does not retry failed
+        connections. If you need granular control over the conditions under
+        which we retry a request, import urllib3's ``Retry`` class and pass
+        that instead.
+    :param pool_block: Whether the connection pool should block for connections.
+
+    Usage::
+
+      &gt;&gt;&gt; import requests
+      &gt;&gt;&gt; s = requests.Session()
+      &gt;&gt;&gt; a = requests.adapters.HTTPAdapter(max_retries=3)
+      &gt;&gt;&gt; s.mount('http://', a)
+    &quot;&quot;&quot;
+    __attrs__ = ['max_retries', 'config', '_pool_connections', '_pool_maxsize',
+                 '_pool_block']
+
+    def __init__(self, pool_connections=DEFAULT_POOLSIZE,
+                 pool_maxsize=DEFAULT_POOLSIZE, max_retries=DEFAULT_RETRIES,
+                 pool_block=DEFAULT_POOLBLOCK):
+        if max_retries == DEFAULT_RETRIES:
+            self.max_retries = Retry(0, read=False)
+        else:
+            self.max_retries = Retry.from_int(max_retries)
+        self.config = {}
+        self.proxy_manager = {}
+
+        super(HTTPAdapter, self).__init__()
+
+        self._pool_connections = pool_connections
+        self._pool_maxsize = pool_maxsize
+        self._pool_block = pool_block
+
+        self.init_poolmanager(pool_connections, pool_maxsize, block=pool_block)
+</code></pre>
+
+<p>pool_connections会传到HTTPConnectionPool控制缓存连接的数量，pool_maxsize会传到PoolManager控制Pool的数量。</p>
 
 <h2 id="urllib3-httpconnectionpool">urllib3.HTTPConnectionPool</h2>
 
@@ -158,7 +259,7 @@ if (!doNotTrack) {
 <li>block: 如果blcok参数是False（默认），不会创建超过maxsize数量的连接，如果pool中没有可用的连接，那么调用会一直阻塞，直到有一个连接被释放。</li>
 </ul>
 
-<h2 id="httpconnectionpool例子">HTTPConnectionPool例子</h2>
+<p>HTTPConnectionPool例子</p>
 
 <pre><code class="language-python"># coding: utf-8
 import threading
@@ -267,14 +368,14 @@ Request Status: 200; Connections: 3; Requests: 10; Thread Name: t2
         return pool
 </code></pre>
 
-<h2 id="poolmanager例子">PoolManager例子</h2>
+<p>PoolManager例子</p>
 
 <pre><code>from urllib3 import PoolManager
 
 manager = PoolManager(3)
 
 r = manager.request('GET', 'http://baidu.com/')
-print(r.content)
+print(r.status)
 </code></pre>
 
 <h2 id="recentlyusedcontainer">RecentlyUsedContainer</h2>
@@ -355,6 +456,38 @@ print(r.content)
     def keys(self):
         with self.lock:
             return list(iterkeys(self._container))
+</code></pre>
+
+<h2 id="request-session封装例子">request Session封装例子</h2>
+
+<p>实际使用中，我们也可以通过继承封装一下requests.Session，方便设置一些个性化的参数。e.g.</p>
+
+<pre><code>import uuid
+
+from requests import adapters
+from requests.sessions import Session
+
+DEFAULT_TIMEOUT = 30
+SESSION_DEFAULT_NUM_POOLS = 10
+SESSION_DEFAULT_POOL_MAXSIZE = 10
+
+
+class MySession(Session):
+	X_REQUEST_ID_HEADER = 'X-Request-ID'
+
+	def __init__(self, num_pools=SESSION_DEFAULT_NUM_POOLS, pool_maxsize=SESSION_DEFAULT_POOL_MAXSIZE):
+		super(MySession, self).__init__()
+		self.mount(&quot;http://&quot;, adapters.HTTPAdapter(pool_connections=num_pools, pool_maxsize=pool_maxsize))
+		self.mount(&quot;https://&quot;, adapters.HTTPAdapter(pool_connections=num_pools, pool_maxsize=pool_maxsize))
+
+	def request(self, url, headers=None, timeout=None, **kwargs):
+		timeout = timeout or DEFAULT_TIMEOUT
+		headers = headers or {}
+		if not headers.get(self.X_REQUEST_ID_HEADER):
+			headers[self.X_REQUEST_ID_HEADER] = uuid.uuid4().hex
+
+		return super(MySession, self).request('POST', url, headers=headers, timeout=timeout, **kwargs)
+
 </code></pre>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
