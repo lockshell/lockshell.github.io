@@ -473,20 +473,20 @@ SESSION_DEFAULT_POOL_MAXSIZE = 10
 
 
 class MySession(Session):
-	X_REQUEST_ID_HEADER = 'X-Request-ID'
+    X_REQUEST_ID_HEADER = 'X-Request-ID'
 
-	def __init__(self, num_pools=SESSION_DEFAULT_NUM_POOLS, pool_maxsize=SESSION_DEFAULT_POOL_MAXSIZE):
-		super(MySession, self).__init__()
-		self.mount(&quot;http://&quot;, adapters.HTTPAdapter(pool_connections=num_pools, pool_maxsize=pool_maxsize))
-		self.mount(&quot;https://&quot;, adapters.HTTPAdapter(pool_connections=num_pools, pool_maxsize=pool_maxsize))
+    def __init__(self, num_pools=SESSION_DEFAULT_NUM_POOLS, pool_maxsize=SESSION_DEFAULT_POOL_MAXSIZE):
+        super(MySession, self).__init__()
+        self.mount(&quot;http://&quot;, adapters.HTTPAdapter(pool_connections=num_pools, pool_maxsize=pool_maxsize))
+        self.mount(&quot;https://&quot;, adapters.HTTPAdapter(pool_connections=num_pools, pool_maxsize=pool_maxsize))
 
-	def request(self, url, headers=None, timeout=None, **kwargs):
-		timeout = timeout or DEFAULT_TIMEOUT
-		headers = headers or {}
-		if not headers.get(self.X_REQUEST_ID_HEADER):
-			headers[self.X_REQUEST_ID_HEADER] = uuid.uuid4().hex
+    def request(self, url, headers=None, timeout=None, **kwargs):
+        timeout = timeout or DEFAULT_TIMEOUT
+        headers = headers or {}
+        if not headers.get(self.X_REQUEST_ID_HEADER):
+            headers[self.X_REQUEST_ID_HEADER] = uuid.uuid4().hex
 
-		return super(MySession, self).request('POST', url, headers=headers, timeout=timeout, **kwargs)
+        return super(MySession, self).request('POST', url, headers=headers, timeout=timeout, **kwargs)
 
 </code></pre>
 
