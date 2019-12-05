@@ -26,7 +26,7 @@
       <pubDate>Wed, 04 Dec 2019 09:05:40 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/12/04/python-function-return-value/</guid>
-      <description>Python函数同时返回错误值和数据怎么设计？ 返回元组 def func(): error = None value = 123 return error, value def func2(): error, value1 = func() # balabala value2 = value1 + 123 return error, value2 返回字典 import json def func1(): error1 = &#39;Test Error&#39; value1 = 456 if</description>
+      <description>&lt;p&gt;Python函数同时返回错误值和数据怎么设计？&lt;/p&gt;</description>
     </item>
     
     <item>
