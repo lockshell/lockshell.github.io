@@ -108,13 +108,13 @@ if (!doNotTrack) {
 
 <p>在Python中，可以使用collections.OrderedDict很方便的实现LRU算法。</p>
 
-<pre><code># coding: utf-8
+<pre><code class="language-python"># coding: utf-8
 import collections
 
 
 class LRUCache(collections.OrderedDict):
     def __init__(self, size=5):
-        self.size = size,
+        self.size = size
         self.cache = collections.OrderedDict()
 
     def get(self, key):
