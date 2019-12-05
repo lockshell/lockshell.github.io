@@ -4,19 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Python Gunicorn&#43;gevent模式启动Flask应用 - 络壳 LockShell</title>
+	<title>[转]如何学习新东西 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Python Gunicorn Gevent as Server for Flask Application">
-	<meta property="og:title" content="Python Gunicorn&#43;gevent模式启动Flask应用" />
-<meta property="og:description" content="Python Gunicorn Gevent as Server for Flask Application" />
+	<meta name="description" content="How to Learn New Stuff">
+	<meta property="og:title" content="[转]如何学习新东西" />
+<meta property="og:description" content="How to Learn New Stuff" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2016/05/19/python-gunicorn-gevent-server-for-flask/" />
-<meta property="article:published_time" content="2016-05-19T13:43:57&#43;08:00"/>
-<meta property="article:modified_time" content="2016-05-19T13:43:57&#43;08:00"/>
+<meta property="og:url" content="https://lockshell.com/2016/03/04/how-to-learn-new-things/" />
+<meta property="article:published_time" content="2016-03-04T20:13:13&#43;08:00"/>
+<meta property="article:modified_time" content="2016-03-04T20:13:13&#43;08:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python Gunicorn&#43;gevent模式启动Flask应用"/>
-<meta name="twitter:description" content="Python Gunicorn Gevent as Server for Flask Application"/>
+<meta name="twitter:title" content="[转]如何学习新东西"/>
+<meta name="twitter:description" content="How to Learn New Stuff"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -86,120 +86,29 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Python Gunicorn&#43;gevent模式启动Flask应用</h1>
+			<h1 class="post__title">[转]如何学习新东西</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2016-05-19T13:43:57">2016-05-19</time>
+	<time class="meta__text" datetime="2016-03-04T20:13:13">2016-03-04</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/%e6%8a%80%e6%9c%af%e4%ba%ba%e7%94%9f" rel="category">技术人生</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1164 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 704 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			
+			<blockquote>
+<p>在具备基础之后，学习任何新东西，都要抓住主线，突出重点。对于关键理论的学习，要集中精力，速战速决。而旁枝末节和非本质性的知识内容，完全可以留给实践去零敲碎打。</p>
 
-<p>Flask，Django都自带WSGI server，当然性能都一般，自带的web server更多的是测试用途。线上发布时，则使用高性能的WSGI server或者是联合Nginx做UWSGI。</p>
+<p>原因是这样的，任何一个高级的知识内容，其中都只有一小部分是有思想创新、有重大影响的，而其它很多东西都是琐碎的、非本质的。因此，集中学习时必须把握住真正重要那部分，把其它东西留给实践。对于重点知识，只有集中学习其理论，才能确保体系性、连贯性、正确性，而对于那些旁枝末节，只有边干边学能够让你了解它们的真实价值是大是小，才能让你留下更生动的印象。如果你把精力用错了地方，比如用集中大块的时间来学习那些本来只需要查查手册就可以明白的小技巧，而对于真正重要的、思想性东西放在平时零敲碎打，那么肯定是事倍功半，甚至适得其反。</p>
 
-<p>greenlet是一个轻量级的协程库。gevent是基于greenlet的网络库。</p>
+<p>因此我对于市面上绝大部分开发类图书都不满——它们基本上都是面向知识体系本身的，而不是面向读者的。总是把相关的所有知识细节都放在一堆，然后一堆一堆攒起来变成一本书。反映在内容上，就是毫无重点地平铺直叙，不分轻重地陈述细节，往往在第三章以前就用无聊的细节谋杀了读者的热情。为什么当年侯捷先生的《深入浅出MFC》和 Scott Meyers 的 Effective C++ 能够成为经典？就在于这两本书抓住了各自领域中的主干，提纲挈领，纲举目张，一下子打通读者的任督二脉。可惜这样的书太少，就算是已故 Richard Stevens 和当今 Jeffrey Richter 的书，也只是在体系性和深入性上高人一头，并不是面向读者的书。</p>
 
-<p>guincorn是支持WSGI协议的HTTP server，gevent只是它支持的模式之一，可以解决Django、Flask这些Web框架自带WSGI Server性能低下的问题。它的特点是与各个Web框架结合紧密，部署相对方便。</p>
-
-<h2 id="gunicorn安装和使用">gunicorn安装和使用</h2>
-
-<h3 id="安装">安装</h3>
-
-<p><code>pip install gunicorn</code></p>
-
-<h3 id="启动">启动</h3>
-
-<p><code>gunicorn code:application</code>其中code就是指python程序代码code.py，application就是那个wsgi func的名字。这样运行的话， gunicorn 默认作为一个监听 127.0.0.1:8000 的web server，可以在本机通过： <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> 访问。###设置监听端口如果要通过网络访问，则需要绑定不同的地址（也可以同时设置监听端口）。<code>gunicorn -b 127.0.0.1:8080</code></p>
-
-<h3 id="使用多进程">使用多进程</h3>
-
-<p>在多核服务器上，为了支持更多的并发访问并充分利用资源，可以使用更多的 gunicorn 进程。<code>gunicorn -w 8 code:application</code>这样就可以启动8个进程同时处理HTTP请求，提高系统的使用效率及性能。</p>
-
-<h3 id="配合gevent">配合gevent</h3>
-
-<p>另外， gunicorn 默认使用同步阻塞的网络模型(-k sync)，对于大并发的访问可能表现不够好， 它还支持其它更好的模式，比如：gevent或meinheld。</p>
-
-<pre><code># gevent
-gunicorn -k gevent code:application
-</code></pre>
-
-<h3 id="指定配置文件">指定配置文件</h3>
-
-<p>以上设置还可以通过 -c 参数传入一个配置文件实现。<code>gunicorn - gun.conf code:application</code></p>
-
-<pre><code># cat gun.conf
-import os
-bind = '127.0.0.1:5000'
-workers = 4
-backlog = 2048
-worker_class = &quot;sync&quot;
-debug = True
-proc_name = 'gunicorn.proc'
-pidfile = '/tmp/gunicorn.pid'
-logfile = '/var/log/gunicorn/debug.log'
-loglevel = 'debug'
-</code></pre>
-
-<h2 id="关于gevent">关于gevent</h2>
-
-<ul>
-<li>gevent是一个基于libev的并发库。它为各种并发和网络相关的任务提供了整洁的API。gunicorn对于“协程”也就是Gevent的支持非常好。</li>
-<li>gevent程序员指南：<a href="http://xlambda.com/gevent-tutorial/#">gevnet指南</a></li>
-<li>gevent.monkey介绍详见：<a href="http://www.gevent.org/gevent.monkey.html">关于gevent monkey</a>。</li>
-</ul>
-
-<h2 id="简单的flask应用">简单的Flask应用</h2>
-
-<p>Flask是一个轻量级的Web框架，核心简单而易于扩展。Flask介绍详见：<a href="http://docs.jinkan.org/docs/flask/">Flask文档</a>。用Flask简单写了一个web例子，如下：</p>
-
-<pre><code>from flask import Flask
-app = Flask(__name__)
-
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
-if __name__ == '__main__':
-    app.run()
-</code></pre>
-
-<h2 id="用gunicorn启动flask应用">用gunicorn启动Flask应用</h2>
-
-<h3 id="配置文件gun-py">配置文件gun.py</h3>
-
-<pre><code>import os
-import gevent.monkey
-gevent.monkey.patch_all()
-
-import multiprocessing
-
-debug = True
-loglevel = 'debug'
-bind = '0.0.0.0:8800'
-pidfile = 'log/gunicorn.pid'
-logfile = 'log/debug.log'
-
-#启动的进程数
-workers = multiprocessing.cpu_count() * 2 + 1 
-worker_class = 'gunicorn.workers.ggevent.GeventWorker'
-
-x_forwarded_for_header = 'X-FORWARDED-FOR'
-</code></pre>
-
-<h3 id="使用gunicorn来启动">使用gunicorn来启动</h3>
-
-<p><code>gunicorn -c gun.py hello:app</code></p>
-
-<p>单纯的flask 自带的web服务器做下测试，会看到压力大的时候出现socket的问题，因为他是单进程单线程的。</p>
-
-<p>使用gunicorn来启动，响应速度和能力提升显著。配置中workers指定启动的进程数。cpu的损耗是平均到各个进程。workers的值一定不要过大，毕竟多进程对于系统的调度消耗比较大。</p>
+<p>最近我闲逛各技术社区，最深的一个感受，就是开发者的niubility value也跟中国社会的 income distribution 一样，呈现严重的两极分化状态。所以我建议那些老鸟们，多做一点提纲挈领的总结工作，把真正紧要的东西总结出来，给社区一些贡献。</p>
+</blockquote>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
@@ -209,8 +118,7 @@ x_forwarded_for_header = 'X-FORWARDED-FOR'
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/python/" rel="tag">Python</a></li>
-		<li class="tags__item"><a class="tags__link btn" href="/tags/flask/" rel="tag">Flask</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/career/" rel="tag">Career</a></li>
 	</ul>
 </div>
 		</footer>
@@ -230,11 +138,8 @@ x_forwarded_for_header = 'X-FORWARDED-FOR'
 </div>
 
 <nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2016/03/09/how-to-create-scarcity/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">[转]打造属于自己的稀缺性</p></a>
-	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2017/05/29/move-house/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">搬家</p></a>
+		<a class="post-nav__link" href="/2016/03/09/how-to-create-scarcity/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">[转]打造属于自己的稀缺性</p></a>
 	</div>
 </nav>
 
