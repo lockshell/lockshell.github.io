@@ -4,19 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>新居、小女孩、老人 - 络壳 LockShell</title>
+	<title>Python实现LRU Cache - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Little Girl and Old Man">
-	<meta property="og:title" content="新居、小女孩、老人" />
-<meta property="og:description" content="Little Girl and Old Man" />
+	<meta name="description" content="Python LRU Cache">
+	<meta property="og:title" content="Python实现LRU Cache" />
+<meta property="og:description" content="Python LRU Cache" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2017/12/09/little-girl-and-old-man/" />
-<meta property="article:published_time" content="2017-12-09T21:11:25&#43;08:00"/>
-<meta property="article:modified_time" content="2017-12-09T21:11:25&#43;08:00"/>
+<meta property="og:url" content="https://lockshell.com/2017/07/05/python-lru-cache/" />
+<meta property="article:published_time" content="2017-07-05T13:26:07&#43;08:00"/>
+<meta property="article:modified_time" content="2017-07-05T13:26:07&#43;08:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="新居、小女孩、老人"/>
-<meta name="twitter:description" content="Little Girl and Old Man"/>
+<meta name="twitter:title" content="Python实现LRU Cache"/>
+<meta name="twitter:description" content="Python LRU Cache"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -86,29 +86,84 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">新居、小女孩、老人</h1>
+			<h1 class="post__title">Python实现LRU Cache</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-12-09T21:11:25">2017-12-09</time>
+	<time class="meta__text" datetime="2017-07-05T13:26:07">2017-07-05</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e6%8a%80%e6%9c%af%e4%ba%ba%e7%94%9f" rel="category">技术人生</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 502 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 505 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>五月，搬到五彩城对面的一个小区。现在合租的屋子，是一个十多平的次卧。</p>
+			<p>LRU: 最近最少使用算法。</p>
 
-<p>主卧住着一家三口，一对夫妻和一个四五岁的小丫头。小姑娘比较黏他爸，周末在家，总围着他爸转，不时点评一番：爸爸的大肚子，爸爸腿上好多毛，爸爸来电话了。有时目光所及，看不见他爸，小姑娘就开喊：爸爸…，爸爸…，爸爸，要是三声他爸还没应，接下来就要嚎啕哭起来。等到她爸回来，便能破涕为笑；小孩子的欢乐就是这么简单。这番哭笑与闹腾，我不曾觉得烦，这就是生活的气息吧。</p>
+<p>使用场景：在有限的空间存储对象时，当空间满时，按照一定的原则删除原有对象。常用的算法有LRU，FIFO，LFU。如memcached缓存系统即使用的LRU。</p>
 
-<p>每天早上上班，出小区的路上。总能看到一个八九十岁的老爷爷，扶着椅子蹒跚挪动着，看样子是中风之后的康复训练。她女儿在一旁照应着，不时过来搀扶递水擦汗。从夏天到秋天，秋天到冬天，除了下雨天气不好，老人的训练，从未间断过。在十一月初的时候，老人已经能扶着椅子缓慢前行。</p>
+<p>LRU的算法是比较简单的，当对key进行访问时时，将该key放到队列的最前端（或最后端）就行了，这样就实现了对key按其最后一次访问的时间降序（或升序）排列。当向空间中增加新对象时，如果空间满了，删除队尾（或队首）的对象。</p>
 
-<p>小区围墙边，紫色的牵牛花谢了又开，银杏的叶子黄了又绿；可人非草木，无法死而复生，返老还童。随岁月流逝，年华老去，疾病来袭，生命力一点一点被剥夺；人都会感到惶恐吧，我甚至怀疑，自己是否有如老人那般坚持训练的勇气。</p>
+<p>在Python中，可以使用collections.OrderedDict很方便的实现LRU算法。</p>
 
-<p>从出娘胎第一声哭泣，到葬礼上最后一滴眼泪，大部分人的开始和结局都早已注定，那么这中间漫长的时光该如何度过呢？</p>
+<pre><code># coding: utf-8
+import collections
+
+
+class LRUCache(collections.OrderedDict):
+    def __init__(self, size=5):
+        self.size = size,
+        self.cache = collections.OrderedDict()
+
+    def get(self, key):
+        if self.cache.has_key(key):
+            val = self.cache.pop(key)
+            self.cache[key] = val
+        else:
+            val = None
+
+        return val
+
+    def set(self, key, val):
+        if self.cache.has_key(key):
+            val = self.cache.pop(key)
+            self.cache[key] = val
+        else:
+            if len(self.cache) == self.size:
+                self.cache.popitem(last=False)
+                self.cache[key] = val
+            else:
+                self.cache[key] = val
+
+
+if __name__ == '__main__':
+    &quot;&quot;&quot; test &quot;&quot;&quot;
+    cache = LRUCache(6)
+
+    for i in range(10):
+        cache.set(i, i)
+
+    for i in range(10):
+        import random
+
+        i = random.randint(1, 20)
+        print 'cache', cache.cache.keys()
+        if cache.get(i):
+            print 'hit, %s\n' % i
+        else:
+            print 'not hit, %s\n' % i
+
+</code></pre>
+
+<p>这个实现存在的问题：</p>
+
+<ol>
+<li>cache的value是能是不可变对象。</li>
+<li>在并发时，多个线程对缓存进行读写，那么必须对set()操作加锁。<code>TODO 实现一个支持并发访问的LRU cache</code></li>
+<li>value不能设置过期时间，而常用的redis和memcached都支持给value设置expire time。<code>TODO 实现一个支持expire的LRU cache</code></li>
+</ol>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
@@ -118,7 +173,7 @@ if (!doNotTrack) {
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/life/" rel="tag">Life</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/python/" rel="tag">Python</a></li>
 	</ul>
 </div>
 		</footer>
@@ -139,10 +194,10 @@ if (!doNotTrack) {
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2017/07/05/python-lru-cache/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Python实现LRU Cache</p></a>
+		<a class="post-nav__link" href="/2017/05/29/move-house/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">搬家</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2018/02/12/nginx-reverse-proxy-config/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Nginx反向代理配置</p></a>
+		<a class="post-nav__link" href="/2017/12/09/little-girl-and-old-man/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">新居、小女孩、老人</p></a>
 	</div>
 </nav>
 
