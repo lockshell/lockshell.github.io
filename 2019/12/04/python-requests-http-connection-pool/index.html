@@ -97,7 +97,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2578 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2689 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -227,7 +227,7 @@ if (!doNotTrack) {
 
 <h2 id="urllib3-httpconnectionpool">urllib3.HTTPConnectionPool</h2>
 
-<p>HTTPSConnectionPool是连接池类，继承自ConnectionPool, RequestMethods。</p>
+<p>HTTPSConnectionPool是连接池类，继承自ConnectionPool, RequestMethods。HTTP连接池缓存的是TCP连接，这个链接是相对于客户端和服务器的，说简单点，就是针对一个URL(IP)的，所以连接池建立的时候要指定对哪一个host缓存连接。所以对于多个域名，就需要建立多个ConnectionPool。</p>
 
 <pre><code class="language-python">class HTTPConnectionPool(ConnectionPool, RequestMethods):
     &quot;&quot;&quot;
