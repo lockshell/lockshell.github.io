@@ -97,16 +97,36 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1046 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1826 words</span>
 </div>
-		</header><div class="content post__content clearfix">
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#urllib3-httpconnectionpool">urllib3.HTTPConnectionPool</a></li>
+<li><a href="#httpconnectionpool例子">HTTPConnectionPool例子</a></li>
+<li><a href="#urllib3-poolmanager">urllib3.PoolManager</a></li>
+<li><a href="#poolmanager例子">PoolManager例子</a></li>
+<li><a href="#recentlyusedcontainer">RecentlyUsedContainer</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
 			
 
 <p>HTTP是建立在TCP上面的，一次HTTP请求要经历TCP三次握手阶段，然后发送请求，得到相应数据，最后TCP断开连接。如果我们要发出多个HTTP请求，每次都这么搞，那每次要握手、请求、断开，就比较浪费资源。所以如果我们在HTTP(S)连接建立之后，可以复用已经建立的连接传输数据，就能省反复新建连接的开销。这样有HTTP(S)连接池的用武之地。</p>
 
-<p>在Python中最常用的是requests库，这个库依赖的是urllib库，下面基于urllib3分析一下Http连接池的实现。</p>
+<p>在Python中最常用的是requests库，这个库依赖的是urllib，下面基于urllib3分析一下Http连接池的使用与实现。</p>
 
-<h2 id="httpconnectionpool参数">HTTPConnectionPool参数</h2>
+<h2 id="urllib3-httpconnectionpool">urllib3.HTTPConnectionPool</h2>
+
+<p>HTTPSConnectionPool是连接池类，继承自ConnectionPool, RequestMethods。</p>
 
 <pre><code class="language-python">class HTTPConnectionPool(ConnectionPool, RequestMethods):
     &quot;&quot;&quot;
@@ -130,6 +150,8 @@ if (!doNotTrack) {
                 **conn_kw):
         pass
 </code></pre>
+
+<p>需要注意的参数：</p>
 
 <ul>
 <li>maxsize: maxsize指定的是每个pool中连接的数量。</li>
@@ -177,7 +199,7 @@ Request Status: 200; Connections: 2; Requests: 9; Thread Name: t1
 Request Status: 200; Connections: 2; Requests: 9; Thread Name: t3
 </code></pre>
 
-<p>如果将block参数改为False，实际创建的Connections可以达到3。</p>
+<p>如果将block参数改为False，maxsize=2时，实际创建的Connections可以达到3。</p>
 
 <pre><code>Request Status: 200; Connections: 3; Requests: 3; Thread Name: t3
 Request Status: 200; Connections: 3; Requests: 4; Thread Name: t2
@@ -190,11 +212,11 @@ Request Status: 200; Connections: 3; Requests: 9; Thread Name: t1
 Request Status: 200; Connections: 3; Requests: 10; Thread Name: t2
 </code></pre>
 
-<p>在多线程的环境中，多缓存一些连接可能带来性能上的提升，一般连接数等于线程数，这样保证所有的线程都有缓存的连接可用。</p>
+<p>在多线程的环境中，多缓存一些连接可能带来性能上的提升，一般连接数等于线程数，这样保证所有的线程都有缓存的连接可用。如果在程序中使用了协程，那么连接数应该设定呢？（TODO）</p>
 
 <h2 id="urllib3-poolmanager">urllib3.PoolManager</h2>
 
-<p>如果我要向不同的域名发请求，希望缓存多个域名的连接，就要有多个连接池。urllib3提供了PoolManager维护自己的Pool。比如初始化的大小设置为3，那么需要建立第4个连接池的时候，最旧的一个连接池就被销毁。</p>
+<p>如果要向不同的域名发请求，希望缓存多个域名的连接，就要有多个连接池。urllib3提供了PoolManager管理自己的ConnectionPool。</p>
 
 <pre><code class="language-python">class PoolManager(RequestMethods):
     &quot;&quot;&quot;
@@ -203,12 +225,47 @@ Request Status: 200; Connections: 3; Requests: 10; Thread Name: t2
         recently used pool.
     &quot;&quot;&quot;
     def __init__(self, num_pools=10, headers=None, **connection_pool_kw):
-        pass
+        RequestMethods.__init__(self, headers)
+        self.connection_pool_kw = connection_pool_kw
+        self.pools = RecentlyUsedContainer(num_pools, dispose_func=lambda p: p.close())
+
+        # Locally set the pool classes and keys so other PoolManagers can
+        # override them.
+        self.pool_classes_by_scheme = pool_classes_by_scheme
+        self.key_fn_by_scheme = key_fn_by_scheme.copy()
 </code></pre>
 
 <ul>
-<li>num_pools：参数num_pools表示池的数量，其余参数将会传给Pool初始化</li>
+<li>num_pools：参数num_pools表示连接池的数量，其余参数将会传给Pool初始化。</li>
+<li>pools: 是一个RecentlyUsedContainer。</li>
 </ul>
+
+<p>从PoolManager获取pool实际就是根据pool_key从pools中get一下，没有get到就创建一个新的ConnectionPool。</p>
+
+<pre><code>    def connection_from_pool_key(self, pool_key, request_context=None):
+        &quot;&quot;&quot;
+        Get a :class:`ConnectionPool` based on the provided pool key.
+
+        ``pool_key`` should be a namedtuple that only contains immutable
+        objects. At a minimum it must have the ``scheme``, ``host``, and
+        ``port`` fields.
+        &quot;&quot;&quot;
+        with self.pools.lock:
+            # If the scheme, host, or port doesn't match existing open
+            # connections, open a new ConnectionPool.
+            pool = self.pools.get(pool_key)
+            if pool:
+                return pool
+
+            # Make a fresh ConnectionPool of the desired type
+            scheme = request_context['scheme']
+            host = request_context['host']
+            port = request_context['port']
+            pool = self._new_pool(scheme, host, port, request_context=request_context)
+            self.pools[pool_key] = pool
+
+        return pool
+</code></pre>
 
 <h2 id="poolmanager例子">PoolManager例子</h2>
 
@@ -217,10 +274,88 @@ Request Status: 200; Connections: 3; Requests: 10; Thread Name: t2
 manager = PoolManager(3)
 
 r = manager.request('GET', 'http://baidu.com/')
-print(r.headers['server'])
+print(r.content)
 </code></pre>
 
-<h2 id="todo">TODO</h2>
+<h2 id="recentlyusedcontainer">RecentlyUsedContainer</h2>
+
+<p>RecentlyUsedContainer的代码非常漂亮，是一个线程安全类字典的container，基于OrderedDict实现了RecentlyUsed算法。OrderedDict是按添加次序排序的字典。RecentlyUsedContainer中声明了一个名为ContainerCls的OrderDict类变量。</p>
+
+<p>RecentlyUsed具体实现就是，在get的时候，从ContainerCls中pop出对应的pool，放到最前面去；在set的时候，如果初始化的maxsize大小设置为10，那么需要建立第11个连接池的时候，最旧的一个连接池就被销毁。</p>
+
+<pre><code>class RecentlyUsedContainer(MutableMapping):
+    &quot;&quot;&quot;
+    Provides a thread-safe dict-like container which maintains up to
+    ``maxsize`` keys while throwing away the least-recently-used keys beyond
+    ``maxsize``.
+
+    :param maxsize:
+        Maximum number of recent elements to retain.
+
+    :param dispose_func:
+        Every time an item is evicted from the container,
+        ``dispose_func(value)`` is called.  Callback which will get called
+    &quot;&quot;&quot;
+
+    ContainerCls = OrderedDict
+
+    def __init__(self, maxsize=10, dispose_func=None):
+        self._maxsize = maxsize
+        self.dispose_func = dispose_func
+
+        self._container = self.ContainerCls()
+        self.lock = RLock()
+
+    def __getitem__(self, key):
+        # Re-insert the item, moving it to the end of the eviction line.
+        with self.lock:
+            item = self._container.pop(key)
+            self._container[key] = item
+            return item
+
+    def __setitem__(self, key, value):
+        evicted_value = _Null
+        with self.lock:
+            # Possibly evict the existing value of 'key'
+            evicted_value = self._container.get(key, _Null)
+            self._container[key] = value
+
+            # If we didn't evict an existing value, we might have to evict the
+            # least recently used item from the beginning of the container.
+            if len(self._container) &gt; self._maxsize:
+                _key, evicted_value = self._container.popitem(last=False)
+
+        if self.dispose_func and evicted_value is not _Null:
+            self.dispose_func(evicted_value)
+
+    def __delitem__(self, key):
+        with self.lock:
+            value = self._container.pop(key)
+
+        if self.dispose_func:
+            self.dispose_func(value)
+
+    def __len__(self):
+        with self.lock:
+            return len(self._container)
+
+    def __iter__(self):
+        raise NotImplementedError('Iteration over this class is unlikely to be threadsafe.')
+
+    def clear(self):
+        with self.lock:
+            # Copy pointers to all values, then wipe the mapping
+            values = list(itervalues(self._container))
+            self._container.clear()
+
+        if self.dispose_func:
+            for value in values:
+                self.dispose_func(value)
+
+    def keys(self):
+        with self.lock:
+            return list(iterkeys(self._container))
+</code></pre>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
