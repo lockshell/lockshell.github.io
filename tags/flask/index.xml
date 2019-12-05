@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flask on 络壳 LockShell</title>
+    <link>https://lockshell.com/tags/flask/</link>
+    <description>Recent content in Flask on 络壳 LockShell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 19 May 2017 13:43:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://lockshell.com/tags/flask/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python Gunicorn(gevent模式)启动Flask应用</title>
+      <link>https://lockshell.com/2017/05/19/python-gunicorn-gevent-server-for-flask/</link>
+      <pubDate>Fri, 19 May 2017 13:43:57 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2017/05/19/python-gunicorn-gevent-server-for-flask/</guid>
+      <description>Flask，Django都自带WSGI server，当然性能都一般，自带的web server更多的是测试用途。线上发布时，则使用高性能的WS</description>
+    </item>
+    
+  </channel>
+</rss>

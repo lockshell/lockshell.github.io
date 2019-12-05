@@ -4,19 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>搬家 - 络壳 LockShell</title>
+	<title>Python Gunicorn(gevent模式)启动Flask应用 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Move House and Maintenance">
-	<meta property="og:title" content="搬家" />
-<meta property="og:description" content="Move House and Maintenance" />
+	<meta name="description" content="Python Gunicorn Gevent as Server for Flask Application">
+	<meta property="og:title" content="Python Gunicorn(gevent模式)启动Flask应用" />
+<meta property="og:description" content="Python Gunicorn Gevent as Server for Flask Application" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2017/05/29/move-house/" />
-<meta property="article:published_time" content="2017-05-29T21:26:14&#43;08:00"/>
-<meta property="article:modified_time" content="2017-05-29T21:26:14&#43;08:00"/>
+<meta property="og:url" content="https://lockshell.com/2017/05/19/python-gunicorn-gevent-server-for-flask/" />
+<meta property="article:published_time" content="2017-05-19T13:43:57&#43;08:00"/>
+<meta property="article:modified_time" content="2017-05-19T13:43:57&#43;08:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="搬家"/>
-<meta name="twitter:description" content="Move House and Maintenance"/>
+<meta name="twitter:title" content="Python Gunicorn(gevent模式)启动Flask应用"/>
+<meta name="twitter:description" content="Python Gunicorn Gevent as Server for Flask Application"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -86,31 +86,120 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">搬家</h1>
+			<h1 class="post__title">Python Gunicorn(gevent模式)启动Flask应用</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2017-05-29T21:26:14">2017-05-29</time>
+	<time class="meta__text" datetime="2017-05-19T13:43:57">2017-05-19</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%e6%8a%80%e6%9c%af%e4%ba%ba%e7%94%9f" rel="category">技术人生</a></span>
+	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 677 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1164 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>这是来北京后第二次搬家，每次搬家总要收拾一大堆东西：衣服，鞋子，被子，书，球拍，电脑，以及若干杂物。</p>
+			
 
-<p>初来北京工作时，我就背着一个书包，提着一个行李箱；去年第一次搬家，我打了两个快车，把东西全放下了；这次，不得不在58上叫一个小面包车，才装下。其实，我的行李确实还算少的了。<strong>在一个地方呆得越久，身边的东西就越多，耗费的气力就越多；东西越多，维护的成本就越大。但是，花这么多时间去维护是否值得呢？</strong></p>
+<p>Flask，Django都自带WSGI server，当然性能都一般，自带的web server更多的是测试用途。线上发布时，则使用高性能的WSGI server或者是联合Nginx做UWSGI。</p>
 
-<p>我们的成长本来就是一个不断增加成本的过程，高中的时候生活虽然单调，但父母、学校和老师提供了安稳的环境，我们可以心无旁骛，专心学习，照着考大学这一个目标努力；但大学毕业，走向社会之后就不一样了。我们开始慢慢负担起自己的生活，有了爱人、家庭、工作、孩子、房子、车子；生活的丰富度越来越高，负担也越来越重；最终会达到一个阶段：所有的精力和时间，只能维持这么大的摊子，再也无法向外拓展了。于是，从此就慢慢变得平庸了。</p>
+<p>greenlet是一个轻量级的协程库。gevent是基于greenlet的网络库。</p>
 
-<p>现在，无孔不入的广告、软文、营销也影响着我们的消费观念；我们所看到的很多新闻、文章、视频大都是在商业体系下，商人们想让我们看到的。在潜移默化的影响下，很多原本不必要的东西，人也会不由得想要去拥有。最终，这些东西从商场、从淘宝网店来到我们的手上，围绕在我们身边，同时也消耗着我们的时间和精力，我们的生活变得越来越臃肿，越来越承担不起变化。</p>
+<p>guincorn是支持WSGI协议的HTTP server，gevent只是它支持的模式之一，可以解决Django、Flask这些Web框架自带WSGI Server性能低下的问题。它的特点是与各个Web框架结合紧密，部署相对方便。</p>
 
-<p>所以，搬家虽然麻烦，确也有好处；苦于搬家，让我在买一件东西时会思考：这件东西我真的需要么？下次搬家的时候，它的归宿会是垃圾箱么？这样不仅省去了很多无谓的开销，而且让生活保持简洁。</p>
+<h2 id="gunicorn安装和使用">gunicorn安装和使用</h2>
 
-<p>总而言之一句话：“如无必要，勿增实体”。</p>
+<h3 id="安装">安装</h3>
+
+<p><code>pip install gunicorn</code></p>
+
+<h3 id="启动">启动</h3>
+
+<p><code>gunicorn code:application</code>其中code就是指python程序代码code.py，application就是那个wsgi func的名字。这样运行的话， gunicorn 默认作为一个监听 127.0.0.1:8000 的web server，可以在本机通过： <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> 访问。###设置监听端口如果要通过网络访问，则需要绑定不同的地址（也可以同时设置监听端口）。<code>gunicorn -b 127.0.0.1:8080</code></p>
+
+<h3 id="使用多进程">使用多进程</h3>
+
+<p>在多核服务器上，为了支持更多的并发访问并充分利用资源，可以使用更多的 gunicorn 进程。<code>gunicorn -w 8 code:application</code>这样就可以启动8个进程同时处理HTTP请求，提高系统的使用效率及性能。</p>
+
+<h3 id="配合gevent">配合gevent</h3>
+
+<p>另外， gunicorn 默认使用同步阻塞的网络模型(-k sync)，对于大并发的访问可能表现不够好， 它还支持其它更好的模式，比如：gevent或meinheld。</p>
+
+<pre><code># gevent
+gunicorn -k gevent code:application
+</code></pre>
+
+<h3 id="指定配置文件">指定配置文件</h3>
+
+<p>以上设置还可以通过 -c 参数传入一个配置文件实现。<code>gunicorn - gun.conf code:application</code></p>
+
+<pre><code># cat gun.conf
+import os
+bind = '127.0.0.1:5000'
+workers = 4
+backlog = 2048
+worker_class = &quot;sync&quot;
+debug = True
+proc_name = 'gunicorn.proc'
+pidfile = '/tmp/gunicorn.pid'
+logfile = '/var/log/gunicorn/debug.log'
+loglevel = 'debug'
+</code></pre>
+
+<h2 id="关于gevent">关于gevent</h2>
+
+<ul>
+<li>gevent是一个基于libev的并发库。它为各种并发和网络相关的任务提供了整洁的API。gunicorn对于“协程”也就是Gevent的支持非常好。</li>
+<li>gevent程序员指南：<a href="http://xlambda.com/gevent-tutorial/#">gevnet指南</a></li>
+<li>gevent.monkey介绍详见：<a href="http://www.gevent.org/gevent.monkey.html">关于gevent monkey</a>。</li>
+</ul>
+
+<h2 id="简单的flask应用">简单的Flask应用</h2>
+
+<p>Flask是一个轻量级的Web框架，核心简单而易于扩展。Flask介绍详见：<a href="http://docs.jinkan.org/docs/flask/">Flask文档</a>。用Flask简单写了一个web例子，如下：</p>
+
+<pre><code>from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run()
+</code></pre>
+
+<h2 id="用gunicorn启动flask应用">用gunicorn启动Flask应用</h2>
+
+<h3 id="配置文件gun-py">配置文件gun.py</h3>
+
+<pre><code>import os
+import gevent.monkey
+gevent.monkey.patch_all()
+
+import multiprocessing
+
+debug = True
+loglevel = 'debug'
+bind = '0.0.0.0:8800'
+pidfile = 'log/gunicorn.pid'
+logfile = 'log/debug.log'
+
+#启动的进程数
+workers = multiprocessing.cpu_count() * 2 + 1 
+worker_class = 'gunicorn.workers.ggevent.GeventWorker'
+
+x_forwarded_for_header = 'X-FORWARDED-FOR'
+</code></pre>
+
+<h3 id="使用gunicorn来启动">使用gunicorn来启动</h3>
+
+<p><code>gunicorn -c gun.py hello:app</code></p>
+
+<p>单纯的flask 自带的web服务器做下测试，会看到压力大的时候出现socket的问题，因为他是单进程单线程的。</p>
+
+<p>使用gunicorn来启动，响应速度和能力提升显著。配置中workers指定启动的进程数。cpu的损耗是平均到各个进程。workers的值一定不要过大，毕竟多进程对于系统的调度消耗比较大。</p>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
@@ -120,7 +209,8 @@ if (!doNotTrack) {
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/life/" rel="tag">Life</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/python/" rel="tag">Python</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/flask/" rel="tag">Flask</a></li>
 	</ul>
 </div>
 		</footer>
@@ -140,11 +230,8 @@ if (!doNotTrack) {
 </div>
 
 <nav class="post-nav flex">
-	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2017/05/19/python-gunicorn-gevent-server-for-flask/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Python Gunicorn(gevent模式)启动Flask应用</p></a>
-	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2017/07/05/python-lru-cache/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Python实现LRU Cache</p></a>
+		<a class="post-nav__link" href="/2017/05/29/move-house/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">搬家</p></a>
 	</div>
 </nav>
 
