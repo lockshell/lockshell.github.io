@@ -97,7 +97,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1979 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1977 words</span>
 </div>
 		</header><div class="content post__content clearfix">
 			
@@ -276,7 +276,14 @@ None
 
 <p>在调用add时，user实例是待定的(pending)，不执行任何SQL，不会触发insert，因此也不代表数据库中的一行数据。当使用一个flush过程时，Session将执行SQL来持久化user。</p>
 
-<p>对象状态 对象实例有四种状态，分别是：1. Transient（瞬时的）：这个状态的对象还不在session中，也不会保存到数据库中，主键为None（不是绝对的，如果Persistent对象rollback后虽然主键id有值，但还是Transient状态的）。2. Pending（挂起的）：调用session.add()后，Transient对象就会变成Pending，这个时候它还是不会保存到数据库中，只有等到触发了flush动作才会存在数据库，比如query操作就可以出发flush。同样这个时候的实例的主键一样为None3. Persistent（持久的）：session中，数据库中都有对应的一条记录存在，主键有值了。4. Detached（游离的）：数据库中有记录，但是session中不存在，对这个状态的对象进行操作时，不会触发任何SQL语句。</p>
+<p>对象状态 对象实例有四种状态，分别是：</p>
+
+<ol>
+<li>Transient（瞬时的）：这个状态的对象还不在session中，也不会保存到数据库中，主键为None（不是绝对的，如果Persistent对象rollback后虽然主键id有值，但还是Transient状态的）。</li>
+<li>Pending（挂起的）：调用session.add()后，Transient对象就会变成Pending，这个时候它还是不会保存到数据库中，只有等到触发了flush动作才会存在数据库，比如query操作就可以出发flush。同样这个时候的实例的主键一样为None</li>
+<li>Persistent（持久的）：session中，数据库中都有对应的一条记录存在，主键有值了。</li>
+<li>Detached（游离的）：数据库中有记录，但是session中不存在，对这个状态的对象进行操作时，不会触发任何SQL语句。</li>
+</ol>
 
 <p>Session是真正与数据库通信的handler，我们告诉Session我们想要将所有的改变（add，delete，update）存入到数据库，提交事务；然后通过commit()来执行。</p>
 
@@ -287,11 +294,9 @@ None
 <pre><code>    row = session.query(cls).filter(and_(cls.name == name, cls.password == password)).first()
 </code></pre>
 
-<p>执行query时，session返回同一行(对象)就是我们刚刚在session内部的类的字典持久化的对象，所以我们事实上获得的就是我们加入Session中的实例。</p>
+<p>执行query时，session返回同一行(对象)就是我们刚刚在session内部的类的字典持久化的对象，所以我们事实上获得的就是我们加入Session中的实例。Session 使用 connection发送query，把返回的result row 填充到一个Python object中，该对象同时还会保存在Session中，Session内部有一个叫 Identity Map的数据结构，为每一个对象维持了唯一的副本。</p>
 
-<p>Session 使用 connection发送query，把返回的result row 填充到一个Python object中，该对象同时还会保存在Session中，Session内部有一个叫 Identity Map的数据结构，为每一个对象维持了唯一的副本。</p>
-
-<p>filter()方法通常接收的是Python操作符，而filter_by()方法使用关键字参数。filter可以接收更加灵活的SQL表达式结构，一般情况下，基本够用了。查询返回结果有多种：</p>
+<p><code>filter()</code>方法通常接收的是Python操作符，而filter_by()方法使用关键字参数。filter可以接收更加灵活的SQL表达式结构，一般情况下，基本够用了。查询返回结果有多种：</p>
 
 <ol>
 <li>query.all()，all()返回列表</li>
