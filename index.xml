@@ -179,7 +179,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了35篇日志，继续加油哦！ 2019-12 2019-12-04 Python函数返回值设计 2019-12-04 Python Http连接池 2019-11 2019-11-30 在Shopee工作是怎样一种体验? 2019-11-10 启迪民智 2019-10 2019-10-28 程</description>
+      <description>很好，总共写了36篇日志，继续加油哦！ 2019-12 2019-12-04 Python函数返回值设计 2019-12-04 Python Http连接池 2019-11 2019-11-30 在Shopee工作是怎样一种体验? 2019-11-10 启迪民智 2019-10 2019-10-28 程</description>
     </item>
     
     <item>
@@ -327,6 +327,15 @@
       
       <guid>https://lockshell.com/2017/05/29/move-house/</guid>
       <description>这是来北京后第二次搬家，每次搬家总要收拾一大堆东西：衣服，鞋子，被子，书，球拍，电脑，以及若干杂物。 初来北京工作时，我就背着一个书包，提着一</description>
+    </item>
+    
+    <item>
+      <title>Python Thrift 示例</title>
+      <link>https://lockshell.com/2017/05/04/python-thrift-demo/</link>
+      <pubDate>Thu, 04 May 2017 01:28:34 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2017/05/04/python-thrift-demo/</guid>
+      <description>Apache Thrift是Facebook实现的一种高效的、支持多种编程语言的远程服务调用的框架。本文将从 Python开发人员角度简单介绍 Apache Thrift 的架构、</description>
     </item>
     
     <item>

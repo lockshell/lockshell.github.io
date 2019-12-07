@@ -84,6 +84,15 @@
     </item>
     
     <item>
+      <title>Python Thrift 示例</title>
+      <link>https://lockshell.com/2017/05/04/python-thrift-demo/</link>
+      <pubDate>Thu, 04 May 2017 01:28:34 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2017/05/04/python-thrift-demo/</guid>
+      <description>Apache Thrift是Facebook实现的一种高效的、支持多种编程语言的远程服务调用的框架。本文将从 Python开发人员角度简单介绍 Apache Thrift 的架构、</description>
+    </item>
+    
+    <item>
       <title>Python Gunicorn&#43;gevent模式启动Flask应用</title>
       <link>https://lockshell.com/2016/05/19/python-gunicorn-gevent-server-for-flask/</link>
       <pubDate>Thu, 19 May 2016 13:43:57 +0800</pubDate>

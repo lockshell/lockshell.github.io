@@ -322,6 +322,17 @@
   </url>
   
   <url>
+    <loc>https://lockshell.com/2017/05/04/python-thrift-demo/</loc>
+    <lastmod>2017-05-04T01:28:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/thrift/</loc>
+    <lastmod>2017-05-04T01:28:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://lockshell.com/tags/flask/</loc>
     <lastmod>2016-05-19T13:43:57+08:00</lastmod>
     <priority>0</priority>
