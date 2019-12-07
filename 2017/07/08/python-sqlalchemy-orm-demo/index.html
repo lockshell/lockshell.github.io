@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Python SQLAlchemy ORM示例 - 络壳 LockShell</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Python SQLAlchemy ORM Demo">
+	<meta property="og:title" content="Python SQLAlchemy ORM示例" />
+<meta property="og:description" content="Python SQLAlchemy ORM Demo" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lockshell.com/2017/07/08/python-sqlalchemy-orm-demo/" />
+<meta property="article:published_time" content="2017-07-08T01:20:04&#43;08:00"/>
+<meta property="article:modified_time" content="2017-07-08T01:20:04&#43;08:00"/>
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python SQLAlchemy ORM示例"/>
+<meta name="twitter:description" content="Python SQLAlchemy ORM Demo"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-131513582-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="络壳 LockShell" rel="home">
+				<div class="logo__title">络壳 LockShell</div>
+				<div class="logo__tagline">A coder&#39;s thinking</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">关于络壳</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/links/">友情链接</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/archives/">文章归档</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+
+	
+	<script data-ad-client="ca-pub-1242672487226703" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	
+</header>
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Python SQLAlchemy ORM示例</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2017-07-08T01:20:04">2017-07-08</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/python" rel="category">Python</a></span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1979 words</span>
+</div>
+		</header><div class="content post__content clearfix">
+			
+
+<p>SQLAlchemy的是Python的SQL工具包和对象关系映射，给应用程序开发者提供SQL的强大功能和灵活性。</p>
+
+<h1 id="安装">安装</h1>
+
+<pre><code>pip install mysql-python
+pip install sqlalchemy
+</code></pre>
+
+<h1 id="初始化">初始化</h1>
+
+<p>SQLAlchemy ORM提供了一个连接数据库表和用户自定义Python类的方法。 在使用ORM时，我们要初始化一些基本的变量。</p>
+
+<h2 id="定义映射基类">定义映射基类</h2>
+
+<p>类的映射(Mapping)使用已经在基类中定义的声明式系统，declarative_base类维持了一个从类到表的关系，通常一个应用使用一个base实例，所有实体类都应该继承此类对象。我们的应用在一般导入的模块中将只有一个这个基类的实例，使用declarative_base()创建这个基类的实例。</p>
+
+<pre><code>from sqlalchemy.ext.declarative import declarative_base
+Base = declarative_base()
+</code></pre>
+
+<h2 id="创建engine">创建engine</h2>
+
+<p>ORM操作数据库的句柄就是Session。在创建session前，我们先创建一个engine实例。</p>
+
+<pre><code>from sqlalchemy import create_engine
+mysql_engine = create_engine(&quot;mysql://root:1@127.0.0.1/cms?charset=utf8&quot;,
+                             pool_size=1,
+                             max_overflow=10,
+                             echo=False,
+                             encoding='utf-8',
+                             pool_recycle=20000
+                             )
+</code></pre>
+
+<h2 id="创建session">创建session</h2>
+
+<p>当我们启动我们的应用时，在create_engine()的同时，我们定义了一个Session类将作为一个创建Session实例的工厂。</p>
+
+<pre><code>from sqlalchemy.orm import sessionmaker
+Session = sessionmaker(bind=engine)
+</code></pre>
+
+<p>把上面三部整理到一个base.py文件中，方便后续调用：</p>
+
+<pre><code># coding: utf-8
+&quot;&quot;&quot;
+base.py
+Usage: 使用sqlalchemy中的base类型
+&quot;&quot;&quot;
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
+mysql_engine = create_engine(&quot;mysql://root:1@127.0.0.1/cms?charset=utf8&quot;,
+                             pool_size=1,
+                             max_overflow=10,
+                             echo=False,
+                             encoding='utf-8',
+                             pool_recycle=20000
+                             )
+
+Session = sessionmaker(bind=mysql_engine)
+</code></pre>
+
+<h1 id="实体类-model">实体类(model)</h1>
+
+<p>我们基于base.py定义了一个User类。sqlalchemy 就是把Base子类转变为数据库表，定义好User类后，会生成Table和mapper()，分别通过User.<strong>table</strong> 和User.<strong>mapper</strong>返回这两个对象。</p>
+
+<pre><code># coding: utf-8
+import logging
+from sqlalchemy import *
+from base import Base
+from base import Session
+
+
+class User(Base):
+    __tablename__ = 'user'
+    __table_args__ = {'mysql_engine': 'InnoDB', 'mysql_charset': 'utf8'}
+
+    id = Column(BigInteger, primary_key=True)
+    name = Column(String(100), nullable=False)
+    password = Column(String(100), nullable=False)
+
+    @classmethod
+    def to_dict(cls, row):
+        if not row:
+            return None
+
+        d = {'id': row.id,
+             'name': row.name,
+             'password': row.password
+             }
+
+        return d
+
+    @classmethod
+    def get(cls, session, user_id):
+        row = session.query(cls).filter(cls.id == user_id).first()
+
+        return cls.to_dict(row)
+
+    @classmethod
+    def update(cls, session, user_id, name, password):
+        try:
+            session.query(cls.id == user_id).update({cls.name: name, cls.password: password})
+            session.commit()
+            return True
+        except Exception, e:
+            logging.error(e)
+            return False
+
+    @classmethod
+    def add(cls, session, name, password):
+        user = cls(name=name,
+                   password=password)
+
+        session.add(user)
+        try:
+            session.commit()
+            return user.id
+        except Exception, e:
+            logging.error(e)
+            return None
+
+    @classmethod
+    def remove(cls, session, user_id):
+        try:
+            session.query(cls.id == user_id).delete()
+            session.commit()
+            return True
+        except Exception, e:
+            logging.error(e)
+            return False
+
+
+if __name__ == '__main__':
+    session = Session()
+
+    user_id = User.add(session, name='test', password='123')
+    print User.get(session, user_id=user_id)
+
+    print User.update(session, user_id, name='update', password='456')
+    print User.get(session, user_id=user_id)
+
+    print User.remove(session, user_id=user_id)
+    print User.get(session, user_id=user_id)
+
+    session.close()
+
+</code></pre>
+
+<p>执行结果：</p>
+
+<pre><code>{'password': u'123', 'id': 3L, 'name': u'test'}
+True
+{'password': u'456', 'id': 3L, 'name': u'update'}
+True
+None
+</code></pre>
+
+<p>在这个model中基于session，实现了对数据增删查改的方法。</p>
+
+<h1 id="增删查改">增删查改</h1>
+
+<h2 id="add">add</h2>
+
+<pre><code>    user = cls(name=name, password=password)
+    session.add(user)
+</code></pre>
+
+<p>在调用add时，user实例是待定的(pending)，不执行任何SQL，不会触发insert，因此也不代表数据库中的一行数据。当使用一个flush过程时，Session将执行SQL来持久化user。</p>
+
+<p>对象状态 对象实例有四种状态，分别是：1. Transient（瞬时的）：这个状态的对象还不在session中，也不会保存到数据库中，主键为None（不是绝对的，如果Persistent对象rollback后虽然主键id有值，但还是Transient状态的）。2. Pending（挂起的）：调用session.add()后，Transient对象就会变成Pending，这个时候它还是不会保存到数据库中，只有等到触发了flush动作才会存在数据库，比如query操作就可以出发flush。同样这个时候的实例的主键一样为None3. Persistent（持久的）：session中，数据库中都有对应的一条记录存在，主键有值了。4. Detached（游离的）：数据库中有记录，但是session中不存在，对这个状态的对象进行操作时，不会触发任何SQL语句。</p>
+
+<p>Session是真正与数据库通信的handler，我们告诉Session我们想要将所有的改变（add，delete，update）存入到数据库，提交事务；然后通过commit()来执行。</p>
+
+<h2 id="query">query</h2>
+
+<p>查询 Query对象通过Session.query获取，query接收类或属性参数，以及多个类。</p>
+
+<pre><code>    row = session.query(cls).filter(and_(cls.name == name, cls.password == password)).first()
+</code></pre>
+
+<p>执行query时，session返回同一行(对象)就是我们刚刚在session内部的类的字典持久化的对象，所以我们事实上获得的就是我们加入Session中的实例。</p>
+
+<p>Session 使用 connection发送query，把返回的result row 填充到一个Python object中，该对象同时还会保存在Session中，Session内部有一个叫 Identity Map的数据结构，为每一个对象维持了唯一的副本。</p>
+
+<p>filter()方法通常接收的是Python操作符，而filter_by()方法使用关键字参数。filter可以接收更加灵活的SQL表达式结构，一般情况下，基本够用了。查询返回结果有多种：</p>
+
+<ol>
+<li>query.all()，all()返回列表</li>
+<li>query.first()，返回第一个元素</li>
+<li>query.one()，有且只有一个元素时才正确返回</li>
+</ol>
+
+<h2 id="delete">delete</h2>
+
+<pre><code>    session.query(cls.id == user_id).delete()
+</code></pre>
+
+<h2 id="update">update</h2>
+
+<pre><code>    session.query(cls.id == user_id).update({cls.name: name, cls.password: password})
+</code></pre>
+
+<h1 id="小结">小结</h1>
+
+<p>本文记录了使用SQLAlchemy实现常见的CRUD操作，后续会继续记录使用中踩到的坑和一些使用技巧。SQLAlchemy 在构建在 WSGI 规范上的Python Web 框架中得到了广泛应用，在我司的生产环境中久经考验，配合Flask和Tornado一起开发效率极高。</p>
+
+			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
+			<hr>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/mysql/" rel="tag">MySQL</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/python/" rel="tag">Python</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="络壳-LockShell avatar" src="http://wx1.sinaimg.cn/sq612/007WyrCfgy1g5uyiopw05j30by0bydgn.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 络壳-LockShell</span>
+	</div>
+	<div class="authorbox__description">
+		扫码关注络壳公众号，获取更多最新内容。
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2017/07/05/python-lru-cache/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Python实现LRU Cache</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2017/12/09/little-girl-and-old-man/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">新居、小女孩、老人</p></a>
+	</div>
+</nav>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '41b3bd5685f4310306a5',
+    clientSecret: '4b943ef7620d478481ffd403f08bb951e01e22b8',
+    repo: 'stackuncle.github.io',
+    owner: 'stackuncle',
+    admin: ['stackuncle'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	
+	<script async src="//cdn.busuanzi.ibruce.info/cdn/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<script>
+		$(document).ready(function() {
+			var int = setInterval(fixCount, 100);
+			var busuanziSiteOffset =  0 
+			function fixCount() {
+				if ($("#busuanzi_container_site_pv").css("display") != "none") {
+					clearInterval(int);
+					$("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+				}
+			}
+		});
+	</script>
+	
+
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 LockShell.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+			<span id="busuanzi_container_site_pv">本站访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+			&nbsp;
+			<span id="busuanzi_container_site_uv">您是本站第 <span id="busuanzi_value_site_uv"></span> 位访问者
+        </span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

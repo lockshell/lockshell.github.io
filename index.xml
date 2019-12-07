@@ -179,7 +179,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了34篇日志，继续加油哦！ 2019-12 2019-12-04 Python函数返回值设计 2019-12-04 Python Http连接池 2019-11 2019-11-30 在Shopee工作是怎样一种体验? 2019-11-10 启迪民智 2019-10 2019-10-28 程</description>
+      <description>很好，总共写了35篇日志，继续加油哦！ 2019-12 2019-12-04 Python函数返回值设计 2019-12-04 Python Http连接池 2019-11 2019-11-30 在Shopee工作是怎样一种体验? 2019-11-10 启迪民智 2019-10 2019-10-28 程</description>
     </item>
     
     <item>
@@ -300,6 +300,15 @@
       
       <guid>https://lockshell.com/2017/12/09/little-girl-and-old-man/</guid>
       <description>五月，搬到五彩城对面的一个小区。现在合租的屋子，是一个十多平的次卧。 主卧住着一家三口，一对夫妻和一个四五岁的小丫头。小姑娘比较黏他爸，周末在</description>
+    </item>
+    
+    <item>
+      <title>Python SQLAlchemy ORM示例</title>
+      <link>https://lockshell.com/2017/07/08/python-sqlalchemy-orm-demo/</link>
+      <pubDate>Sat, 08 Jul 2017 01:20:04 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2017/07/08/python-sqlalchemy-orm-demo/</guid>
+      <description>SQLAlchemy的是Python的SQL工具包和对象关系映射，给应用程序开发者提供SQL的强大功能和灵活性。 安装 pip install mysql-python pip install sqlalchemy 初始化 SQLAlchemy OR</description>
     </item>
     
     <item>

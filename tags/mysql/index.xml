@@ -47,5 +47,14 @@
       <description>基本思路 首先是如何定位性能瓶颈？ 一般使用show命令、慢查询日志、explain、profiling等进行分析。 当服务器的负载增加时，使用S</description>
     </item>
     
+    <item>
+      <title>Python SQLAlchemy ORM示例</title>
+      <link>https://lockshell.com/2017/07/08/python-sqlalchemy-orm-demo/</link>
+      <pubDate>Sat, 08 Jul 2017 01:20:04 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2017/07/08/python-sqlalchemy-orm-demo/</guid>
+      <description>SQLAlchemy的是Python的SQL工具包和对象关系映射，给应用程序开发者提供SQL的强大功能和灵活性。 安装 pip install mysql-python pip install sqlalchemy 初始化 SQLAlchemy OR</description>
+    </item>
+    
   </channel>
 </rss>

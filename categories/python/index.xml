@@ -66,6 +66,15 @@
     </item>
     
     <item>
+      <title>Python SQLAlchemy ORM示例</title>
+      <link>https://lockshell.com/2017/07/08/python-sqlalchemy-orm-demo/</link>
+      <pubDate>Sat, 08 Jul 2017 01:20:04 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2017/07/08/python-sqlalchemy-orm-demo/</guid>
+      <description>SQLAlchemy的是Python的SQL工具包和对象关系映射，给应用程序开发者提供SQL的强大功能和灵活性。 安装 pip install mysql-python pip install sqlalchemy 初始化 SQLAlchemy OR</description>
+    </item>
+    
+    <item>
       <title>Python实现LRU Cache</title>
       <link>https://lockshell.com/2017/07/05/python-lru-cache/</link>
       <pubDate>Wed, 05 Jul 2017 13:26:07 +0800</pubDate>
