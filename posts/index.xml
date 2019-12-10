@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Python生成随机密码</title>
+      <link>https://lockshell.com/2019/12/10/python-random-password/</link>
+      <pubDate>Tue, 10 Dec 2019 17:39:40 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/12/10/python-random-password/</guid>
+      <description>&lt;p&gt;Python生成随机密码&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Python Http连接池</title>
       <link>https://lockshell.com/2019/12/04/python-requests-http-connection-pool/</link>
       <pubDate>Wed, 04 Dec 2019 20:28:00 +0800</pubDate>
