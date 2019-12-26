@@ -4,7 +4,36 @@
   
   <url>
     <loc>https://lockshell.com/categories/</loc>
-    <lastmod>2019-12-10T17:39:40+08:00</lastmod>
+    <lastmod>2019-12-25T18:01:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/</loc>
+    <lastmod>2019-12-25T18:01:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/vpn/</loc>
+    <lastmod>2019-12-25T18:01:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</loc>
+    <lastmod>2019-12-25T18:01:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</loc>
+    <lastmod>2019-12-25T18:01:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/</loc>
+    <lastmod>2019-12-25T18:01:32+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -23,18 +52,6 @@
   <url>
     <loc>https://lockshell.com/2019/12/10/python-generate-random-password/</loc>
     <lastmod>2019-12-10T17:39:40+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/</loc>
-    <lastmod>2019-12-10T17:39:40+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/</loc>
-    <lastmod>2019-12-10T17:39:40+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -68,12 +85,6 @@
   <url>
     <loc>https://lockshell.com/2019/11/30/working-in-shopee/</loc>
     <lastmod>2019-11-30T17:46:55+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</loc>
-    <lastmod>2019-11-30T17:46:55+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

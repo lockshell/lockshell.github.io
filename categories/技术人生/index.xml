@@ -6,10 +6,19 @@
     <description>Recent content in 技术人生 on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 30 Nov 2019 17:46:55 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 25 Dec 2019 18:01:32 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>在AWS ES2上搭建VPN服务</title>
+      <link>https://lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</link>
+      <pubDate>Wed, 25 Dec 2019 18:01:32 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</guid>
+      <description>&lt;p&gt;在AWS ES2上搭建VPN服务主要有两种比较便捷的方式。一是搭建IPSec VPN，而是搭建Shadowsocks的VPN。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>在Shopee工作是怎样一种体验?</title>
