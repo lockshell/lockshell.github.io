@@ -17,7 +17,7 @@
       <pubDate>Wed, 25 Dec 2019 18:01:32 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</guid>
-      <description>&lt;p&gt;在AWS ES2上搭建VPN服务主要有两种比较便捷的方式。一是搭建IPSec VPN，而是搭建Shadowsocks的VPN。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在AWS ES2上搭建VPN服务主要有两种比较便捷的方式。一是搭建IPSec VPN，二是搭建Shadowsocks的VPN。&lt;/p&gt;</description>
     </item>
     
   </channel>
