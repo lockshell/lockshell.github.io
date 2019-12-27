@@ -97,7 +97,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
 	<span class="meta__text"><a class="meta__link" href="/categories/%e6%8a%80%e6%9c%af%e4%ba%ba%e7%94%9f" rel="category">技术人生</a></span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 783 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 779 words</span>
 </div>
 		</header><div class="content post__content clearfix">
 			<p>在AWS ES2上搭建VPN服务主要有两种比较便捷的方式。一是搭建IPSec VPN，二是搭建Shadowsocks的VPN。</p>
@@ -199,7 +199,7 @@ sudo pip install shadowsocks
 
 <p>配置多个端口和密码</p>
 
-<pre><code>{
+<pre><code class="language-json">{
 	&quot;server&quot;:&quot;0.0.0.0&quot;,
 	&quot;local_address&quot;:&quot;127.0.0.1&quot;,
 	&quot;local_port&quot;:1080,
@@ -224,9 +224,9 @@ sudo pip install shadowsocks
 
 <h2 id="客户端访问-1">客户端访问</h2>
 
-<p>Shadowsocks客户端可从Github上下载。e.g. <a href="https://github.com/shadowsocks/shadowsocks-android">shadowsocks-android</a>，或者<a href="https://shadowsocks.org/en/download/clients.html">Shadowsocks官网</a>下载。</p>
+<p>Shadowsocks客户端可从Github上下载，<a href="https://github.com/shadowsocks/shadowsocks-android">shadowsocks-android</a>，或者<a href="https://shadowsocks.org/en/download/clients.html">Shadowsocks官网</a>下载。</p>
 
-<p>本地设备通过shadowsocks客户端连接VPN服务器，即可实现翻墙。添加服务器，地址即为Amazon EC2的公网IP，端口为配置文件中设置的9000，密码配置中的123456。</p>
+<p>本地设备通过Shadowsocks客户端连接VPN服务器，即可实现翻墙。添加服务器，地址即为Amazon EC2的公网IP，端口为配置文件中设置的9000，密码配置中的123456。</p>
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
 		</div>
