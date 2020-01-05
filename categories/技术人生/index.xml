@@ -6,10 +6,19 @@
     <description>Recent content in 技术人生 on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 25 Dec 2019 18:01:32 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 25 Dec 2019 18:58:06 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>最便宜的VPN</title>
+      <link>https://lockshell.com/2019/12/25/vpn-with-cheapest-price/</link>
+      <pubDate>Wed, 25 Dec 2019 18:58:06 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/12/25/vpn-with-cheapest-price/</guid>
+      <description>在国内因为墙的存在，不能直接访问Google或Yuotube，我自己的在AWS上搭建了VPN。 有需要的朋友，可以一起分摊下机器费用，共用这个</description>
+    </item>
     
     <item>
       <title>在AWS ES2上搭建VPN服务</title>
