@@ -67,13 +67,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/python/</loc>
+    <loc>https://lockshell.com/categories/python/</loc>
     <lastmod>2019-12-10T17:39:40+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/python/</loc>
+    <loc>https://lockshell.com/tags/python/</loc>
     <lastmod>2019-12-10T17:39:40+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -101,19 +101,8 @@
   
   <url>
     <loc>https://lockshell.com/tags/career/</loc>
-    <lastmod>2019-11-30T17:46:55+08:00</lastmod>
+    <lastmod>2019-11-10T17:04:50+08:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/shopee/</loc>
-    <lastmod>2019-11-30T17:46:55+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/2019/11/30/working-in-shopee/</loc>
-    <lastmod>2019-11-30T17:46:55+08:00</lastmod>
   </url>
   
   <url>
@@ -218,13 +207,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/other/</loc>
+    <loc>https://lockshell.com/categories/other/</loc>
     <lastmod>2019-08-17T16:44:38+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/other/</loc>
+    <loc>https://lockshell.com/tags/other/</loc>
     <lastmod>2019-08-17T16:44:38+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -235,13 +224,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/nginx/</loc>
+    <loc>https://lockshell.com/categories/nginx/</loc>
     <lastmod>2019-08-12T15:35:37+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/nginx/</loc>
+    <loc>https://lockshell.com/tags/nginx/</loc>
     <lastmod>2019-08-12T15:35:37+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -267,13 +256,13 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/hugo/</loc>
+    <loc>https://lockshell.com/categories/hugo/</loc>
     <lastmod>2019-08-10T11:12:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/hugo/</loc>
+    <loc>https://lockshell.com/tags/hugo/</loc>
     <lastmod>2019-08-10T11:12:00+08:00</lastmod>
     <priority>0</priority>
   </url>
