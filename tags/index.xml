@@ -6,10 +6,37 @@
     <description>Recent content in Tags on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 25 Dec 2019 18:01:32 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jan 2020 11:16:56 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AWS</title>
+      <link>https://lockshell.com/tags/aws/</link>
+      <pubDate>Sun, 05 Jan 2020 11:16:56 +0800</pubDate>
+      
+      <guid>https://lockshell.com/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BT</title>
+      <link>https://lockshell.com/tags/bt/</link>
+      <pubDate>Sun, 05 Jan 2020 11:16:56 +0800</pubDate>
+      
+      <guid>https://lockshell.com/tags/bt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VPS</title>
+      <link>https://lockshell.com/tags/vps/</link>
+      <pubDate>Sun, 05 Jan 2020 11:16:56 +0800</pubDate>
+      
+      <guid>https://lockshell.com/tags/vps/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>VPN</title>

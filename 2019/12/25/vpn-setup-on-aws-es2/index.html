@@ -91,7 +91,7 @@ if (!doNotTrack) {
 	<script>hljs.initHighlightingOnLoad();</script>
 	
 
-	<script type="text/javascript" src="https://tajs.qq.com/stats?sId=66505732" charset="UTF-8"></script>
+	<script type="text/javascript" src="//tajs.qq.com/stats?sId=66505732" charset="UTF-8"></script>
 </header>
 
 		<div class="wrapper flex">
@@ -123,12 +123,12 @@ if (!doNotTrack) {
 
 <p>ubuntu</p>
 
-<pre><code class="language-shell">wget https://git.io/vpnsetup -O vpnsetup.sh &amp;&amp; sudo sh vpnsetup.sh
+<pre><code>wget https://git.io/vpnsetup -O vpnsetup.sh &amp;&amp; sudo sh vpnsetup.sh
 </code></pre>
 
 <p>centos</p>
 
-<pre><code class="language-shell">wget https://git.io/vpnsetup-centos -O vpnsetup.sh &amp;&amp; sudo sh vpnsetup.sh
+<pre><code>wget https://git.io/vpnsetup-centos -O vpnsetup.sh &amp;&amp; sudo sh vpnsetup.sh
 </code></pre>
 
 <h2 id="修改配置">修改配置</h2>
@@ -185,21 +185,23 @@ YOUR_PASSWORD='1234567'
 
 <h2 id="安装shadowsocks">安装shadowsocks</h2>
 
-<pre><code class="language-shell"># 更新apt-get
+<pre><code># 更新apt-get
 sudo apt-get update
+
 # 安装python包管理工具
 sudo apt-get install python-setuptools
 sudo apt-get install python-pip
+
 # 安装shadowsocks
 sudo pip install shadowsocks
 </code></pre>
 
 <h2 id="修改配置-1">修改配置</h2>
 
-<pre><code class="language-shell">vim /etc/shadowsocks/ss.json
+<pre><code>vim /etc/shadowsocks/ss.json
 </code></pre>
 
-<pre><code class="language-json">{
+<pre><code>{
     &quot;server&quot;:&quot;0.0.0.0&quot;,
     &quot;server_port&quot;:9000, //ss连接服务器的端口
     &quot;local_address&quot;:&quot;127.0.0.1&quot;,
@@ -214,7 +216,7 @@ sudo pip install shadowsocks
 
 <p>配置多个端口和密码</p>
 
-<pre><code class="language-json">{
+<pre><code>{
 	&quot;server&quot;:&quot;0.0.0.0&quot;,
 	&quot;local_address&quot;:&quot;127.0.0.1&quot;,
 	&quot;local_port&quot;:1080,
@@ -251,6 +253,8 @@ sudo pip install shadowsocks
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
 		<li class="tags__item"><a class="tags__link btn" href="/tags/vpn/" rel="tag">VPN</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/vps/" rel="tag">VPS</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/aws/" rel="tag">AWS</a></li>
 	</ul>
 </div>
 		</footer>
@@ -272,6 +276,9 @@ sudo pip install shadowsocks
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
 		<a class="post-nav__link" href="/2019/12/10/python-generate-random-password/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Python生成随机密码</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2020/01/05/block-bt-via-iptables-on-vps/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">在VPS上禁止BT下载</p></a>
 	</div>
 </nav>
 
@@ -322,7 +329,7 @@ sudo pip install shadowsocks
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 LockShell.
+			&copy; 2020 LockShell.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
 			<span id="busuanzi_container_site_pv">本站访问量：<span id="busuanzi_value_site_pv"></span>次</span>
 			&nbsp;
