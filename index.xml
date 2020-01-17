@@ -199,7 +199,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了39篇日志，继续加油哦！ 2020-01 2020-01-05 在VPS上禁止BT下载 2019-12 2019-12-25 在AWS EC2上搭建VPN服务 2019-12-10 Python生成随机密码 2019-12-04 Python函</description>
+      <description>很好，总共写了40篇日志，继续加油哦！ 2020-01 2020-01-05 在VPS上禁止BT下载 2019-12 2019-12-25 在AWS EC2上搭建VPN服务 2019-12-10 Python生成随机密码 2019-12-04 Python函</description>
     </item>
     
     <item>
@@ -401,6 +401,15 @@
       
       <guid>https://lockshell.com/2016/02/29/how-to-do-test-well/</guid>
       <description>就像开发一样，有经验和没有经验的测试在团队起到的作用是很不一样的。从测试中遇到问题采取的行动来看，我观察到的测试人员能达到的层次大概有这么几</description>
+    </item>
+    
+    <item>
+      <title>Python pip配置默认镜像源</title>
+      <link>https://lockshell.com/2016/02/29/python-pip-source-config/</link>
+      <pubDate>Mon, 29 Feb 2016 10:01:16 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2016/02/29/python-pip-source-config/</guid>
+      <description>在连接pip官网的时候状况不是很稳定。很多国内镜像站可以使用，加速下载。使用镜像源很简单，用-i指定就行了： easy_install -i http://pypi.douban.com/simple/ gevent pip install -i http://pypi.douban.com/simple/ gevent 如果觉得太麻烦</description>
     </item>
     
   </channel>

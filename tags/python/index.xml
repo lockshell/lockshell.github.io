@@ -110,5 +110,14 @@
       <description>Flask，Django都自带WSGI server，当然性能都一般，自带的web server更多的是测试用途。线上发布时，则使用高性能的WS</description>
     </item>
     
+    <item>
+      <title>Python pip配置默认镜像源</title>
+      <link>https://lockshell.com/2016/02/29/python-pip-source-config/</link>
+      <pubDate>Mon, 29 Feb 2016 10:01:16 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2016/02/29/python-pip-source-config/</guid>
+      <description>在连接pip官网的时候状况不是很稳定。很多国内镜像站可以使用，加速下载。使用镜像源很简单，用-i指定就行了： easy_install -i http://pypi.douban.com/simple/ gevent pip install -i http://pypi.douban.com/simple/ gevent 如果觉得太麻烦</description>
+    </item>
+    
   </channel>
 </rss>
