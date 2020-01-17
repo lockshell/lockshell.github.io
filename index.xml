@@ -6,10 +6,19 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 05 Jan 2020 11:16:56 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jan 2020 10:56:24 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>投资收益与风险</title>
+      <link>https://lockshell.com/2020/01/12/investment-income-and-risk/</link>
+      <pubDate>Sun, 12 Jan 2020 10:56:24 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/12/investment-income-and-risk/</guid>
+      <description>近两年很多P2P暴雷，不少投资者血本无归。 一方面是平台和监管不规范，让不法分子有机可乘；另一方面投资者自己也缺乏常识，被眼前的高收益蒙蔽的双</description>
+    </item>
     
     <item>
       <title>在VPS上禁止BT下载</title>
@@ -199,7 +208,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了40篇日志，继续加油哦！ 2020-01 2020-01-05 在VPS上禁止BT下载 2019-12 2019-12-25 在AWS EC2上搭建VPN服务 2019-12-10 Python生成随机密码 2019-12-04 Python函</description>
+      <description>很好，总共写了41篇日志，继续加油哦！ 2020-01 2020-01-12 投资收益与风险 2020-01-05 在VPS上禁止BT下载 2019-12 2019-12-25 在AWS EC2上搭建VPN服务 2019-12-10 Python生成随机密码</description>
     </item>
     
     <item>
