@@ -6,10 +6,19 @@
     <description>Recent content in 程序人生 on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 12 Jan 2020 10:56:24 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jan 2020 10:27:34 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>关于金钱</title>
+      <link>https://lockshell.com/2020/01/18/about-money/</link>
+      <pubDate>Sat, 18 Jan 2020 10:27:34 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/18/about-money/</guid>
+      <description>一生的收入 中国人一生根据现在货币价值来算，90%的人赚不到现在货币价值上的500万人民币。 帝都房价 以北京海淀区一所70平米左右的学区房为例，</description>
+    </item>
     
     <item>
       <title>投资收益与风险</title>
@@ -18,6 +27,15 @@
       
       <guid>https://lockshell.com/2020/01/12/investment-income-and-risk/</guid>
       <description>近两年很多P2P暴雷，不少投资者血本无归。 一方面是平台和监管不规范，让不法分子有机可乘；另一方面投资者自己也缺乏常识，被眼前的高收益蒙蔽的双</description>
+    </item>
+    
+    <item>
+      <title>学区房悖论</title>
+      <link>https://lockshell.com/2019/01/18/school-district-house-paradox/</link>
+      <pubDate>Fri, 18 Jan 2019 10:36:31 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/01/18/school-district-house-paradox/</guid>
+      <description>上名校的概率 2018年北京985录取率为4.29%，211录取率为13.99%。估计2019年这个比率也会差不多。985的录取率是985学校</description>
     </item>
     
   </channel>

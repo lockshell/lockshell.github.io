@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Education on 络壳 LockShell</title>
+    <link>https://lockshell.com/tags/education/</link>
+    <description>Recent content in Education on 络壳 LockShell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 18 Jan 2019 10:36:31 +0800</lastBuildDate>
+    
+	<atom:link href="https://lockshell.com/tags/education/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>学区房悖论</title>
+      <link>https://lockshell.com/2019/01/18/school-district-house-paradox/</link>
+      <pubDate>Fri, 18 Jan 2019 10:36:31 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/01/18/school-district-house-paradox/</guid>
+      <description>上名校的概率 2018年北京985录取率为4.29%，211录取率为13.99%。估计2019年这个比率也会差不多。985的录取率是985学校</description>
+    </item>
+    
+  </channel>
+</rss>

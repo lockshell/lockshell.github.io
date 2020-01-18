@@ -6,10 +6,19 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 12 Jan 2020 10:56:24 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jan 2020 10:27:34 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>关于金钱</title>
+      <link>https://lockshell.com/2020/01/18/about-money/</link>
+      <pubDate>Sat, 18 Jan 2020 10:27:34 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/18/about-money/</guid>
+      <description>一生的收入 中国人一生根据现在货币价值来算，90%的人赚不到现在货币价值上的500万人民币。 帝都房价 以北京海淀区一所70平米左右的学区房为例，</description>
+    </item>
     
     <item>
       <title>投资收益与风险</title>
@@ -208,7 +217,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了41篇日志，继续加油哦！ 2020-01 2020-01-12 投资收益与风险 2020-01-05 在VPS上禁止BT下载 2019-12 2019-12-25 在AWS EC2上搭建VPN服务 2019-12-10 Python生成随机密码</description>
+      <description>很好，总共写了43篇日志，继续加油哦！ 2020-01 2020-01-18 关于金钱 2020-01-12 投资收益与风险 2020-01-05 在VPS上禁止BT下载 2019-12 2019-12-25 在AWS EC2上搭建VPN服务 2019-12-10 Python生</description>
     </item>
     
     <item>
@@ -253,6 +262,15 @@
 &lt;p&gt;之前在&lt;a href=&#34;https://coolshell.cn&#34;&gt;CoolShell&lt;/a&gt;的博客上学到了不少，于是也想建一个自己的站点。&lt;/p&gt;
 
 &lt;p&gt;2019-08，动手撸了一个新的博客，来记录一些技术和生活上的思考。在此之前的几篇笔记和旧文，是从其他地方迁移过来的，方便查阅。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>学区房悖论</title>
+      <link>https://lockshell.com/2019/01/18/school-district-house-paradox/</link>
+      <pubDate>Fri, 18 Jan 2019 10:36:31 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/01/18/school-district-house-paradox/</guid>
+      <description>上名校的概率 2018年北京985录取率为4.29%，211录取率为13.99%。估计2019年这个比率也会差不多。985的录取率是985学校</description>
     </item>
     
     <item>
