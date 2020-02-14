@@ -6,10 +6,19 @@
     <description>Recent content in Git on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 10 Aug 2019 10:23:28 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 14 Feb 2020 23:07:57 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mac设置多个GitHub账号</title>
+      <link>https://lockshell.com/2020/02/14/mutiple-github-accout-on-mac/</link>
+      <pubDate>Fri, 14 Feb 2020 23:07:57 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/02/14/mutiple-github-accout-on-mac/</guid>
+      <description>为多个账号设置 ssh keys 假定我们有两个账号，一个lockshell，一个zhangsan。分别用不同 github 账号对应的邮箱生成 ssh key，示例： $ ssh-keygen -t rsa -C</description>
+    </item>
     
     <item>
       <title>Display Your Github Chart in Blog</title>
