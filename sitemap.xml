@@ -3,15 +3,44 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://lockshell.com/categories/</loc>
-    <lastmod>2020-02-14T23:07:57+08:00</lastmod>
+    <loc>https://lockshell.com/tags/ajax/</loc>
+    <lastmod>2020-02-18T23:36:49+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/git/</loc>
-    <lastmod>2020-02-14T23:07:57+08:00</lastmod>
+    <loc>https://lockshell.com/categories/</loc>
+    <lastmod>2020-02-18T23:36:49+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/categories/django/</loc>
+    <lastmod>2020-02-18T23:36:49+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/django/</loc>
+    <lastmod>2020-02-18T23:36:49+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/</loc>
+    <lastmod>2020-02-18T23:36:49+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/</loc>
+    <lastmod>2020-02-18T23:36:49+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/2020/02/18/django-file-upload-via-ajax-and-formdata/</loc>
+    <lastmod>2020-02-18T23:36:49+08:00</lastmod>
   </url>
   
   <url>
@@ -20,7 +49,7 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/</loc>
+    <loc>https://lockshell.com/tags/git/</loc>
     <lastmod>2020-02-14T23:07:57+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -33,12 +62,6 @@
   
   <url>
     <loc>https://lockshell.com/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2020-02-14T23:07:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/</loc>
     <lastmod>2020-02-14T23:07:57+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -195,12 +218,6 @@
   <url>
     <loc>https://lockshell.com/2019/09/10/python-function-argument/</loc>
     <lastmod>2019-09-10T18:28:46+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/django/</loc>
-    <lastmod>2019-08-28T02:40:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

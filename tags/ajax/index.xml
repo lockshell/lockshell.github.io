@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ajax on 络壳 LockShell</title>
+    <link>https://lockshell.com/tags/ajax/</link>
+    <description>Recent content in Ajax on 络壳 LockShell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 18 Feb 2020 23:36:49 +0800</lastBuildDate>
+    
+	<atom:link href="https://lockshell.com/tags/ajax/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>通过Ajax上传文件到Django</title>
+      <link>https://lockshell.com/2020/02/18/django-file-upload-via-ajax-and-formdata/</link>
+      <pubDate>Tue, 18 Feb 2020 23:36:49 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/02/18/django-file-upload-via-ajax-and-formdata/</guid>
+      <description>在上传文件到Django Server时，如果前端页面依赖Django form模板，耦合会较多，不便于异常处理和前后端分离。 我们可以通过新建F</description>
+    </item>
+    
+  </channel>
+</rss>

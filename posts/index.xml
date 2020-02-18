@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>通过Ajax上传文件到Django</title>
+      <link>https://lockshell.com/2020/02/18/django-file-upload-via-ajax-and-formdata/</link>
+      <pubDate>Tue, 18 Feb 2020 23:36:49 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/02/18/django-file-upload-via-ajax-and-formdata/</guid>
+      <description>在上传文件到Django Server时，如果前端页面依赖Django form模板，耦合会较多，不便于异常处理和前后端分离。 我们可以通过新建F</description>
+    </item>
+    
+    <item>
       <title>Mac设置多个GitHub账号</title>
       <link>https://lockshell.com/2020/02/14/mutiple-github-accout-on-mac/</link>
       <pubDate>Fri, 14 Feb 2020 23:07:57 +0800</pubDate>

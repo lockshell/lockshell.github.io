@@ -6,13 +6,31 @@
     <description>Recent content in Tags on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 14 Feb 2020 23:07:57 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 18 Feb 2020 23:36:49 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Git</title>
+      <title>Ajax</title>
+      <link>https://lockshell.com/tags/ajax/</link>
+      <pubDate>Tue, 18 Feb 2020 23:36:49 +0800</pubDate>
+      
+      <guid>https://lockshell.com/tags/ajax/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Django</title>
+      <link>https://lockshell.com/tags/django/</link>
+      <pubDate>Tue, 18 Feb 2020 23:36:49 +0800</pubDate>
+      
+      <guid>https://lockshell.com/tags/django/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
       <link>https://lockshell.com/tags/git/</link>
       <pubDate>Fri, 14 Feb 2020 23:07:57 +0800</pubDate>
       
@@ -21,7 +39,7 @@
     </item>
     
     <item>
-      <title>Tools</title>
+      <title>tools</title>
       <link>https://lockshell.com/tags/tools/</link>
       <pubDate>Fri, 14 Feb 2020 23:07:57 +0800</pubDate>
       
@@ -116,15 +134,6 @@
       <pubDate>Sat, 30 Nov 2019 17:46:55 +0800</pubDate>
       
       <guid>https://lockshell.com/tags/shopee/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Django</title>
-      <link>https://lockshell.com/tags/django/</link>
-      <pubDate>Wed, 28 Aug 2019 02:40:57 +0800</pubDate>
-      
-      <guid>https://lockshell.com/tags/django/</guid>
       <description></description>
     </item>
     
