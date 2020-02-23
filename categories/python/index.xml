@@ -48,15 +48,6 @@
     </item>
     
     <item>
-      <title>Django数据库连接池</title>
-      <link>https://lockshell.com/2019/08/28/django-db-connection-pool/</link>
-      <pubDate>Wed, 28 Aug 2019 02:40:57 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/28/django-db-connection-pool/</guid>
-      <description>数据库长连接 长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销。 先看看官方文档是怎么讲Djan</description>
-    </item>
-    
-    <item>
       <title>Django数据库分库&#43;读写分离</title>
       <link>https://lockshell.com/2019/08/26/django-database-partition/</link>
       <pubDate>Mon, 26 Aug 2019 20:47:37 +0800</pubDate>
