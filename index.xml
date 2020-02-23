@@ -6,10 +6,19 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 18 Feb 2020 23:36:49 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 23 Feb 2020 15:40:49 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>原油投资</title>
+      <link>https://lockshell.com/2020/02/23/oil-investment/</link>
+      <pubDate>Sun, 23 Feb 2020 15:40:49 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/02/23/oil-investment/</guid>
+      <description>一切大宗品底价都是其采掘炼化成本。以原油为例： 美国原油开采商的盈利平衡成本对应的原油区间为47-55美元，美国页岩油成本为45至55美元。海</description>
+    </item>
     
     <item>
       <title>通过Ajax上传文件到Django</title>
@@ -253,7 +262,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了47篇日志，继续加油哦！ 2020-02 2020-02-18 通过Ajax上传文件到Django 2020-02-14 Mac设置多个GitHub账号 2020-02-12 [转]成都七中语文老师致辞 2020-01 2020-01-18</description>
+      <description>很好，总共写了48篇日志，继续加油哦！ 2020-02 2020-02-23 原油投资 2020-02-18 通过Ajax上传文件到Django 2020-02-14 Mac设置多个GitHub账号 2020-02-12 [转]成都七中语文老</description>
     </item>
     
     <item>
