@@ -22,14 +22,5 @@
 &lt;p&gt;一是搭建IPSec VPN，二是安装Shadowsocks，三是安装v2ray。&lt;/p&gt;</description>
     </item>
     
-    <item>
-      <title>共享VPN</title>
-      <link>https://lockshell.com/2018/12/25/vpn-with-cheapest-price/</link>
-      <pubDate>Tue, 25 Dec 2018 18:58:06 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2018/12/25/vpn-with-cheapest-price/</guid>
-      <description>在国内因为墙的存在，不能直接访问Google或Youtube，朋友一起在AWS的EC2上搭建了VPN。 EC2的价格确实不便宜，详见Amazo</description>
-    </item>
-    
   </channel>
 </rss>
