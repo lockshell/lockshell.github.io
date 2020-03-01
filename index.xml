@@ -6,10 +6,19 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 23 Feb 2020 15:40:49 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2020 10:44:01 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>投资中的10大数学原理</title>
+      <link>https://lockshell.com/2020/03/01/top-ten-math-principles-in-investment/</link>
+      <pubDate>Sun, 01 Mar 2020 10:44:01 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/03/01/top-ten-math-principles-in-investment/</guid>
+      <description>1、关于收益率 假如你有100万，收益100%后资产达到200万，如果接下来亏损50%，则资产回到100万，显然亏损50%比赚取100%要容易</description>
+    </item>
     
     <item>
       <title>原油投资</title>
@@ -262,7 +271,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了47篇日志，继续加油哦！ 2020-02 2020-02-23 原油投资 2020-02-18 通过Ajax上传文件到Django 2020-02-14 Mac设置多个GitHub账号 2020-02-12 [转]成都七中语文老</description>
+      <description>很好，总共写了48篇日志，继续加油哦！ 2020-03 2020-03-01 投资中的10大数学原理 2020-02 2020-02-23 原油投资 2020-02-18 通过Ajax上传文件到Django 2020-02-14 Mac设置多个GitHub</description>
     </item>
     
     <item>
