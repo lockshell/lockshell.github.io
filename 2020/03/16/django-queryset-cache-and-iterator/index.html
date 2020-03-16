@@ -112,7 +112,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/django/" rel="category">Django</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 716 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 741 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -193,7 +193,7 @@ if (!doNotTrack) {
 
 <p>For a QuerySet which returns a large number of objects that <strong>you only need to access once</strong>,this can result in better performance and a significant reduction in memory.</p>
 
-<p>Note that using iterator() on a QuerySet which has already been evaluated will force it to evaluate again, repeating the query.</p>
+<p>Of course, using the iterator() method to avoid populating the queryset cache means that iterating over the same queryset again will execute another query.So use <code>iterator()</code> with caution, and make sure that your code is organised to avoid repeated evaluation of the same huge queryset.</p>
 
 <p>Also, use of iterator() causes previous prefetch_related() calls to be ignored since these two optimizations do not make sense together.</p>
 
@@ -243,6 +243,7 @@ def lazy_fetch_objects(table, start_pk=0, chunk_size=1000, *args, **kwargs):
 <h2 id="references">References</h2>
 
 <ul>
+<li><a href="https://blog.etianen.com/blog/2013/06/08/django-querysets/">django-querysets</a></li>
 <li><a href="https://docs.djangoproject.com/en/3.0/topics/db/queries/#limiting-querysets">Django limiting-querysets</a></li>
 <li><a href="https://kite.com/python/docs/django.db.models.query.QuerySet.iterator">QuerySet.iterator</a></li>
 <li><a href="https://djangosnippets.org/snippets/1949/">Memory efficient Django Queryset Iterator</a></li>
