@@ -112,7 +112,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/django/" rel="category">Django</a>, <a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3912 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 4025 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -215,11 +215,9 @@ if (!doNotTrack) {
 
 <p>Django服务，一般情况下<strong>每个线程都维护自己的连接</strong>，有多少线程就会就有多少连接；如果采用分布式部署，线程数较多，则会建立较多的连接。不仅非常消耗资源，还可能出现MySQL连接数不够用的情况。</p>
 
-<p>在使用Gunicorn作为Django的前置服务时，对于数万的异步请求，Gunicorn有自己的worker pool，每个异步worker进程会创建若干协程来处理请求。协程比线程和进程更加轻量，Gunicorn能很好的处理大量并行的请求。</p>
+<p>在使用Gunicorn作为Django的前置服务时，对于数万的异步请求，Gunicorn有自己的worker pool，每个异步worker进程会创建若干协程来处理请求。协程比线程和进程更加轻量，Gunicorn因此能很好的处理大量并行的请求。(Gunicorn如果配置同步的worker，每一个进程只需要一个DB连接，这样总的连接数会变少，但是并发能力就上不去了。)</p>
 
 <p>但是，对于每一个协程转发的请求，Django ORM都需要创建并维护一个数据库连接。成千上万个协程，意味着成千上万个连接，MySQL数据库的连接很快就耗尽。这样就会出现大量创建数据库连接失败，从而导致请求失败。在客户端与服务端之间的网络缓慢时，情况会更加严重。</p>
-
-<p>Gunicorn如果配置同步的worker，每一个进程只需要一个DB连接，这样总的连接数会变少，但是并发能力就上不去了。</p>
 
 <p>举个例子：2个服务 * 100个容器 * 10个进程 * 20个协程 = 40000个连接（Mysql5.5，Mysql5.6，Mysql5.7：默认的最大连接数都是151，理论上限为：100000；实际干到2W就很不容易了）。</p>
 
@@ -388,12 +386,23 @@ application = get_wsgi_application()
 2019-08-29 22:17:15,146 db_pool_patch - db_pool_listen.py - DEBUG - connection returned to pool
 </code></pre>
 
-<p>nice, 我们的连接池已经可以正常工作了。但是从log里可以看出，我们的patch有个问题，<strong>在整个请求处理期间一直持有连接</strong>，容易导致pool里的连接不够用；实际上一查完数据，就不需要继续持有DB连接了。</p>
+<p>nice, 我们的连接池已经可以正常工作了。但是从log里可以看出，我们的patch有个问题，<strong>在整个请求处理期间一直持有连接</strong>，容易导致pool里的连接不够用。</p>
 
-<pre><code>def test_request(request):
+<pre><code>def test_view(request):
     obj = TestModel.objects.get(id=1)
-    do_something_that_takes_1000_seconds(obj)  # 这时DB连接依然被占用，但实际已经不需要了
+    result = do_something_that_takes_1000_seconds(obj)  # 这时DB连接依然会被占用1000s，但实际已经不需要了
+    return result
 </code></pre>
+
+<p>在test_view()中有三个step:</p>
+
+<ul>
+<li>Step1：访问db取到数据</li>
+<li>Step2：处理业务</li>
+<li>Step3：返回结果</li>
+</ul>
+
+<p>实际上Step1中取完数据后，就不需要继续占用DB连接了。在访问完数据库后，可以马上归还连接，而不是必须在请求完成时再归还。</p>
 
 <p>如前文提到的那样：</p>
 
@@ -401,7 +410,7 @@ application = get_wsgi_application()
 <p>用从pool里取连接代替新建连接，向pool归还连接代替关闭连接，然后在worker在整个请求期间都持有连接并算不上<code>真正的连接池</code>。这需要跟worker数一样多的数据库连接，除了能在各个worker循环使用外，基本跟长连接是等效的。</p>
 </blockquote>
 
-<p>那么，我们怎么解决这个问题呢？<strong>在访问完数据库后，马上归还连接，而不是在请求完成时再归还。</strong>因为我们使用的依然是<code>Django ORM</code>，在请求期间持有连接本质上是<code>Django ORM</code>的行为。所以可以patch一下<code>Django ORM</code>，执行完数据库操作后，及时释放连接。</p>
+<p>那么，我们怎么解决这个问题呢？如何实现：<strong>在访问完数据库后，马上归还连接，而不是在请求完成时再归还。</strong>因为我们使用的依然是<code>Django ORM</code>，在请求期间持有连接本质上是<code>Django ORM</code>的行为。所以可以patch一下<code>Django ORM</code>，执行完数据库操作后，及时释放连接。</p>
 
 <pre><code>from django.db.models.sql import compiler
 from django.db.models.sql.constants import MULTI
