@@ -112,7 +112,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/django/" rel="category">Django</a>, <a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3582 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3788 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -211,13 +211,16 @@ if (!doNotTrack) {
 <ol>
 <li>Django原生支持长连接，但不支持连接池</li>
 <li>连接池还是有很多优点的，也有很多成熟的三方库支持</li>
+<li>方便与Gunicorn集成</li>
 </ol>
 
 <p>Django服务，一般情况下<strong>每个线程都维护自己的连接</strong>，有多少线程就会就有多少连接；如果采用分布式部署，线程数较多，则会建立较多的连接。不仅非常消耗资源，还可能出现MySQL连接数不够用的情况。</p>
 
-<p>举个例子：2个服务 * 200个容器 * 10个进程 * 20个线程 = 40000个连接（Mysql5.5，Mysql5.6，Mysql5.7：默认的最大连接数都是151，理论上限为：100000；实际干到2W就很不容易了）。</p>
+<p>在实用Gunicorn作为Django的前置服务时，对于数万的异步请求，Gunicorn有自己的worker pool，能很好的处理并行的请求。如果对于每一个异步的worker转发的请求，Django ORM都创建一个数据库连接的话，MySQL数据库的连接很快就被这些异步的worker耗尽。这样就会出现大量创建数据库连接失败，从而导致请求失败。</p>
 
-<p>假设我们能让20个线程，复用一个<code>size=10</code>的连接池，这样就能减少一半的数据库连接。这对支持服务水平扩展，降低数据库负载是非常有帮助的。那么我们接下来看看，如何在Django中用上DB连接池。</p>
+<p>举个例子：2个服务 * 100个容器 * 10个进程 * 20个线程 = 40000个连接（Mysql5.5，Mysql5.6，Mysql5.7：默认的最大连接数都是151，理论上限为：100000；实际干到2W就很不容易了）。</p>
+
+<p>假设我们能让20个线程，复用一个<code>size=10</code>的连接池，这样就能减少一半的数据库连接。这对支持服务水平扩展，降低数据库负载是非常有帮助的。那么我们接下来看看，如何在Django中引入DB连接池。</p>
 
 <h2 id="django连接池方案">Django连接池方案</h2>
 
@@ -434,7 +437,7 @@ def install_django_orm_patch():
 [29/Aug/2019 22:13:27] &quot;GET /book/get?book_id=1 HTTP/1.1&quot; 200 62
 </code></pre>
 
-<p>不错，可以看出，DB连接在<code>shit code</code>开始运行前，就已经归还给连接池了；这样就降低了单个连接的持有时间，能显著提高连接的使用率和pool的性能。</p>
+<p>不错，可以看出在添加patch之后，view层在处理请求时，DB连接在<code>shit code</code>开始运行前，就已经归还给连接池了；这样就<strong>降低了单个连接的持有时间</strong>，能显著提高连接的使用率和pool的性能。</p>
 
 <h2 id="小结">小结</h2>
 
