@@ -112,7 +112,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/django/" rel="category">Django</a>, <a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3927 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3912 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -211,14 +211,15 @@ if (!doNotTrack) {
 <ol>
 <li>Django原生支持长连接，但不支持连接池</li>
 <li>连接池还是有很多优点的，也有很多成熟的三方库支持</li>
-<li>方便与Gunicorn集成</li>
 </ol>
 
 <p>Django服务，一般情况下<strong>每个线程都维护自己的连接</strong>，有多少线程就会就有多少连接；如果采用分布式部署，线程数较多，则会建立较多的连接。不仅非常消耗资源，还可能出现MySQL连接数不够用的情况。</p>
 
-<p>在使用Gunicorn作为Django的前置服务时，对于数万的异步请求，Gunicorn有自己的worker pool，每个异步worker进程会创建若干协程来处理请求。协程比线程和进程更加轻量，Gunicorn能很好的处理大量并行的请求。但是，对于每一个协程转发的请求，Django ORM都需要创建并维护一个数据库连接。成千上万个协程，意味着成千上万个连接，MySQL数据库的连接很快就耗尽。这样就会出现大量创建数据库连接失败，从而导致请求失败。在客户端与服务端之间的网络缓慢时，情况会更加严重。</p>
+<p>在使用Gunicorn作为Django的前置服务时，对于数万的异步请求，Gunicorn有自己的worker pool，每个异步worker进程会创建若干协程来处理请求。协程比线程和进程更加轻量，Gunicorn能很好的处理大量并行的请求。</p>
 
-<p>（Gunicorn如果配置同步的worker，每一个进程只需要一个DB连接，这样总的连接数会变少，但是并发能力就上不去了。）</p>
+<p>但是，对于每一个协程转发的请求，Django ORM都需要创建并维护一个数据库连接。成千上万个协程，意味着成千上万个连接，MySQL数据库的连接很快就耗尽。这样就会出现大量创建数据库连接失败，从而导致请求失败。在客户端与服务端之间的网络缓慢时，情况会更加严重。</p>
+
+<p>Gunicorn如果配置同步的worker，每一个进程只需要一个DB连接，这样总的连接数会变少，但是并发能力就上不去了。</p>
 
 <p>举个例子：2个服务 * 100个容器 * 10个进程 * 20个协程 = 40000个连接（Mysql5.5，Mysql5.6，Mysql5.7：默认的最大连接数都是151，理论上限为：100000；实际干到2W就很不容易了）。</p>
 
