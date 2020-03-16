@@ -57,15 +57,6 @@
     </item>
     
     <item>
-      <title>Django数据库分表</title>
-      <link>https://lockshell.com/2019/08/25/django-orm-db-table-partition/</link>
-      <pubDate>Sun, 25 Aug 2019 10:37:30 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/25/django-orm-db-table-partition/</guid>
-      <description>Django ORM没有提供默认的分表功能，给访问分表的数据库带来的不变。那么Django分表怎么实现呢？ 分析Django ORM 在实现具体的方案之前，我们先</description>
-    </item>
-    
-    <item>
       <title>Python SQLAlchemy ORM示例</title>
       <link>https://lockshell.com/2017/07/08/python-sqlalchemy-orm-demo/</link>
       <pubDate>Sat, 08 Jul 2017 01:20:04 +0800</pubDate>

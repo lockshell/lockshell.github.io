@@ -6,10 +6,19 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 15 Mar 2020 13:13:47 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2020 12:29:35 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Django QuerySet缓存和迭代器</title>
+      <link>https://lockshell.com/2020/03/16/django-queryset-cache-and-iterator/</link>
+      <pubDate>Mon, 16 Mar 2020 12:29:35 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/03/16/django-queryset-cache-and-iterator/</guid>
+      <description>Lazy QuerySet A queryset in Django represents a number of rows in the database, optionally filtered by a query. For example, the following code represents all people in the database whose first name is ‘Dave’: person_set = Person.objects.filter(first_name=&amp;quot;Dave&amp;quot;) The above code doesn’t run any database queries. You can can take the person_set and apply additional filters, or pass</description>
+    </item>
     
     <item>
       <title>慢慢变富</title>
@@ -325,7 +334,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了54篇日志，继续加油哦！ 2020-03 2020-03-15 及时止损 2020-03-15 慢慢变富 2020-03-14 股票亏损的原因 2020-03-14 从错误中学习 2020-03-01 [转]巴菲特佛罗里达大学商学院演讲 2020-03-01 港股各券商打</description>
+      <description>很好，总共写了55篇日志，继续加油哦！ 2020-03 2020-03-16 Django QuerySet缓存和迭代器 2020-03-15 及时止损 2020-03-15 慢慢变富 2020-03-14 股票亏损的原因 2020-03-14 从错误中学习 2020-03-01 [转]巴菲特佛罗</description>
     </item>
     
     <item>

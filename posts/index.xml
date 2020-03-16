@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Django QuerySet缓存和迭代器</title>
+      <link>https://lockshell.com/2020/03/16/django-queryset-cache-and-iterator/</link>
+      <pubDate>Mon, 16 Mar 2020 12:29:35 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/03/16/django-queryset-cache-and-iterator/</guid>
+      <description>Lazy QuerySet A queryset in Django represents a number of rows in the database, optionally filtered by a query. For example, the following code represents all people in the database whose first name is ‘Dave’: person_set = Person.objects.filter(first_name=&amp;quot;Dave&amp;quot;) The above code doesn’t run any database queries. You can can take the person_set and apply additional filters, or pass</description>
+    </item>
+    
+    <item>
       <title>慢慢变富</title>
       <link>https://lockshell.com/2020/03/15/getting-rick-slowly/</link>
       <pubDate>Sun, 15 Mar 2020 13:13:47 +0800</pubDate>

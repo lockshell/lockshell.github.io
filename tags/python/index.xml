@@ -6,10 +6,19 @@
     <description>Recent content in Python on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 10 Dec 2019 17:39:40 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2020 12:29:35 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Django QuerySet缓存和迭代器</title>
+      <link>https://lockshell.com/2020/03/16/django-queryset-cache-and-iterator/</link>
+      <pubDate>Mon, 16 Mar 2020 12:29:35 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/03/16/django-queryset-cache-and-iterator/</guid>
+      <description>Lazy QuerySet A queryset in Django represents a number of rows in the database, optionally filtered by a query. For example, the following code represents all people in the database whose first name is ‘Dave’: person_set = Person.objects.filter(first_name=&amp;quot;Dave&amp;quot;) The above code doesn’t run any database queries. You can can take the person_set and apply additional filters, or pass</description>
+    </item>
     
     <item>
       <title>Python生成随机密码</title>
