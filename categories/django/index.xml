@@ -39,6 +39,15 @@
     </item>
     
     <item>
+      <title>Django数据库分库&#43;读写分离</title>
+      <link>https://lockshell.com/2019/08/26/django-database-partition/</link>
+      <pubDate>Mon, 26 Aug 2019 20:47:37 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/08/26/django-database-partition/</guid>
+      <description>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外，另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的</description>
+    </item>
+    
+    <item>
       <title>Django数据库分表</title>
       <link>https://lockshell.com/2019/08/25/django-orm-db-table-partition/</link>
       <pubDate>Sun, 25 Aug 2019 10:37:30 +0800</pubDate>
