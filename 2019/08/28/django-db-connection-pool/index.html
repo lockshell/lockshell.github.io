@@ -112,7 +112,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/django/" rel="category">Django</a>, <a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3788 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3813 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -216,7 +216,7 @@ if (!doNotTrack) {
 
 <p>Django服务，一般情况下<strong>每个线程都维护自己的连接</strong>，有多少线程就会就有多少连接；如果采用分布式部署，线程数较多，则会建立较多的连接。不仅非常消耗资源，还可能出现MySQL连接数不够用的情况。</p>
 
-<p>在实用Gunicorn作为Django的前置服务时，对于数万的异步请求，Gunicorn有自己的worker pool，能很好的处理并行的请求。如果对于每一个异步的worker转发的请求，Django ORM都创建一个数据库连接的话，MySQL数据库的连接很快就被这些异步的worker耗尽。这样就会出现大量创建数据库连接失败，从而导致请求失败。</p>
+<p>在实用Gunicorn作为Django的前置服务时，对于数万的异步请求，Gunicorn有自己的worker pool，能很好的处理并行的请求。如果对于每一个异步的worker转发的请求，Django ORM都创建一个数据库连接的话，MySQL数据库的连接很快就被这些异步的worker耗尽。这样就会出现大量创建数据库连接失败，从而导致请求失败。在客户端与服务端之间的网络缓慢时，情况会更加严重。</p>
 
 <p>举个例子：2个服务 * 100个容器 * 10个进程 * 20个线程 = 40000个连接（Mysql5.5，Mysql5.6，Mysql5.7：默认的最大连接数都是151，理论上限为：100000；实际干到2W就很不容易了）。</p>
 
