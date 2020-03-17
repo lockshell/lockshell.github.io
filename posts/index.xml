@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Django QuerySet高效读取百万行数据</title>
+      <link>https://lockshell.com/2020/03/17/django-fetch-huge-data-from-queryset/</link>
+      <pubDate>Tue, 17 Mar 2020 21:21:27 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/03/17/django-fetch-huge-data-from-queryset/</guid>
+      <description>How to fetch millions rows from DataBase by Django Queryset in a memory efficient way? Below is a solution that chunks the QuerySets so they&amp;rsquo;re only keeping a small subset in memory.While this is somewhat heavier on the database (multiple queries) it seriously reduces the memory usage. Example import gc def lazy_fetch_objects(table, start_pk=0, chunk_size=1000, *args, **kwargs): &amp;quot;&amp;quot;&amp;quot; Get the entire rows of a table by iterating over Django QuerySets ordered</description>
+    </item>
+    
+    <item>
       <title>Django QuerySet缓存和迭代器</title>
       <link>https://lockshell.com/2020/03/16/django-queryset-cache-and-iterator/</link>
       <pubDate>Mon, 16 Mar 2020 12:29:35 +0800</pubDate>

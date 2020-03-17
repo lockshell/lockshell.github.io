@@ -4,19 +4,36 @@
   
   <url>
     <loc>https://lockshell.com/categories/</loc>
-    <lastmod>2020-03-16T12:29:35+08:00</lastmod>
+    <lastmod>2020-03-17T21:21:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://lockshell.com/categories/django/</loc>
-    <lastmod>2020-03-16T12:29:35+08:00</lastmod>
+    <lastmod>2020-03-17T21:21:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://lockshell.com/tags/django/</loc>
-    <lastmod>2020-03-16T12:29:35+08:00</lastmod>
+    <lastmod>2020-03-17T21:21:27+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/2020/03/17/django-fetch-huge-data-from-queryset/</loc>
+    <lastmod>2020-03-17T21:21:27+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/</loc>
+    <lastmod>2020-03-17T21:21:27+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/</loc>
+    <lastmod>2020-03-17T21:21:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -27,18 +44,6 @@
   
   <url>
     <loc>https://lockshell.com/tags/python/</loc>
-    <lastmod>2020-03-16T12:29:35+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/</loc>
-    <lastmod>2020-03-16T12:29:35+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/</loc>
     <lastmod>2020-03-16T12:29:35+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -130,14 +135,14 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/2020/02/12/speech-of-chinese-teacher-from-chengdu-7th-middle-school/</loc>
-    <lastmod>2020-02-12T13:36:51+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://lockshell.com/tags/life/</loc>
     <lastmod>2020-02-12T13:36:51+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/2020/02/12/speech-of-chinese-teacher-from-chengdu-7th-middle-school/</loc>
+    <lastmod>2020-02-12T13:36:51+08:00</lastmod>
   </url>
   
   <url>

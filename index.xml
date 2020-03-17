@@ -6,10 +6,19 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 16 Mar 2020 12:29:35 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2020 21:21:27 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Django QuerySet高效读取百万行数据</title>
+      <link>https://lockshell.com/2020/03/17/django-fetch-huge-data-from-queryset/</link>
+      <pubDate>Tue, 17 Mar 2020 21:21:27 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/03/17/django-fetch-huge-data-from-queryset/</guid>
+      <description>How to fetch millions rows from DataBase by Django Queryset in a memory efficient way? Below is a solution that chunks the QuerySets so they&amp;rsquo;re only keeping a small subset in memory.While this is somewhat heavier on the database (multiple queries) it seriously reduces the memory usage. Example import gc def lazy_fetch_objects(table, start_pk=0, chunk_size=1000, *args, **kwargs): &amp;quot;&amp;quot;&amp;quot; Get the entire rows of a table by iterating over Django QuerySets ordered</description>
+    </item>
     
     <item>
       <title>Django QuerySet缓存和迭代器</title>
@@ -334,7 +343,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了55篇日志，继续加油哦！ 2020-03 2020-03-16 Django QuerySet缓存和迭代器 2020-03-15 及时止损 2020-03-15 慢慢变富 2020-03-14 股票亏损的原因 2020-03-14 从错误中学习 2020-03-01 [转]巴菲特佛罗</description>
+      <description>很好，总共写了56篇日志，继续加油哦！ 2020-03 2020-03-17 Django QuerySet高效读取百万行数据 2020-03-16 Django QuerySet缓存和迭代器 2020-03-15 及时止损 2020-03-15 慢慢变富 2020-03-14 股票亏损</description>
     </item>
     
     <item>
