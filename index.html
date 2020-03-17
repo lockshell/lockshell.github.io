@@ -122,7 +122,7 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		How to fetch millions rows from DataBase by Django Queryset in a memory efficient way? Below is a solution that chunks the QuerySets so they&rsquo;re only keeping a small subset in memory.While this is somewhat heavier on the database (multiple queries) it seriously reduces the memory usage. Example import gc def lazy_fetch_objects(table, start_pk=0, chunk_size=1000, *args, **kwargs): &quot;&quot;&quot; Get the entire rows of a table by iterating over Django QuerySets ordered
+		How to fetch millions rows from DataBase by Django Queryset in a memory efficient way? Below is a solution that chunks the QuerySets so they&rsquo;re only keeping a small subset in memory.While this is somewhat heavier on the database (multiple queries) it seriously reduces the memory usage. Example import gc def lazy_fetch_iterator(table, start_pk=0, chunk_size=1000, *args, **kwargs): &quot;&quot;&quot; Get the entire rows of a table by iterating over Django QuerySets ordered
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2020/03/17/django-fetch-huge-data-from-queryset/">Read more…</a>

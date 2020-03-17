@@ -126,7 +126,7 @@ if (!doNotTrack) {
 <pre><code class="language-python">import gc
 
 
-def lazy_fetch_objects(table, start_pk=0, chunk_size=1000, *args, **kwargs):
+def lazy_fetch_iterator(table, start_pk=0, chunk_size=1000, *args, **kwargs):
 	&quot;&quot;&quot;
 	Get the entire rows of a table by iterating over Django QuerySets ordered by the primary key.
 
