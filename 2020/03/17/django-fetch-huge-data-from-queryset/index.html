@@ -112,7 +112,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/django/" rel="category">Django</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 276 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 289 words</span>
 </div>
 		</header><div class="content post__content clearfix">
 			
@@ -155,6 +155,8 @@ def lazy_fetch_iterator(table, start_pk=0, chunk_size=1000, *args, **kwargs):
 <p><strong>why we do not use iterator()</strong>?</p>
 
 <p>When you iterate over a QuerySet with more than one million rows,adding <code>.iterator</code> to your QuerySet helps somewhat, but still loads the entire query result into memory.</p>
+
+<p>Note that the implementation of the iterator does not support ordered query sets.</p>
 
 <p><strong>Why we filter on the <code>pk</code>?</strong></p>
 
