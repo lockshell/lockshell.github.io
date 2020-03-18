@@ -4,19 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Python变量与参数传递 - 络壳 LockShell</title>
+	<title>Django 通过Ajax上传文件 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Python Function Argument">
-	<meta property="og:title" content="Python变量与参数传递" />
-<meta property="og:description" content="Python Function Argument" />
+	<meta name="description" content="Upload File via Ajax to Django Server">
+	<meta property="og:title" content="Django 通过Ajax上传文件" />
+<meta property="og:description" content="Upload File via Ajax to Django Server" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2019/09/10/python-function-argument/" />
-<meta property="article:published_time" content="2019-09-10T18:28:46&#43;08:00"/>
-<meta property="article:modified_time" content="2019-09-10T18:28:46&#43;08:00"/>
+<meta property="og:url" content="https://lockshell.com/2019/09/18/django-file-upload-via-ajax-and-formdata/" />
+<meta property="article:published_time" content="2019-09-18T23:36:49&#43;08:00"/>
+<meta property="article:modified_time" content="2019-09-18T23:36:49&#43;08:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Python变量与参数传递"/>
-<meta name="twitter:description" content="Python Function Argument"/>
+<meta name="twitter:title" content="Django 通过Ajax上传文件"/>
+<meta name="twitter:description" content="Upload File via Ajax to Django Server"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -100,98 +100,138 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Python变量与参数传递</h1>
+			<h1 class="post__title">Django 通过Ajax上传文件</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-09-10T18:28:46">2019-09-10</time>
+	<time class="meta__text" datetime="2019-09-18T23:36:49">2019-09-18</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/python/" rel="category">Python</a>
+	<span class="meta__text"><a class="meta__link" href="/categories/django/" rel="category">Django</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 717 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 336 words</span>
 </div>
-		</header><div class="content post__content clearfix">
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#前端代码">前端代码</a>
+<ul>
+<li><a href="#file-upload-html">file_upload.html</a></li>
+<li><a href="#ajax-request">Ajax Request</a></li>
+</ul></li>
+<li><a href="#后端代码">后端代码</a>
+<ul>
+<li><a href="#form-py">form.py</a></li>
+<li><a href="#view-py">view.py</a></li>
+</ul></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
 			
 
-<h2 id="python变量">Python变量</h2>
+<p>在上传文件到<code>Django</code> Server时，如果前端页面依赖<code>Django</code> form模板，耦合会较多，不便于异常处理和前后端分离。</p>
 
-<p>变量的赋值，只是表示让变量指向了某个对象，并不表示拷贝对象给变量；而一个对象，可以被多个变量所指向。</p>
+<p>我们可以通过新建<code>FormData</code>，用<code>Ajax</code>请求上传文件到<code>Django</code>后端，实现文件上传的前后端分离。</p>
 
-<pre><code class="language-python">a = 1
-b = a
-a = a + 1 # a = 2, b = 1
+<h2 id="前端代码">前端代码</h2>
+
+<h3 id="file-upload-html">file_upload.html</h3>
+
+<pre><code>  &lt;!-- with semantic UI and jQuery--&gt;
+  &lt;form id=&quot;id_ajax_upload_form&quot; class=&quot;ui form&quot; method=&quot;post&quot; onkeypress=&quot;return event.keyCode !== 13;&quot;&gt;
+        &lt;div class=&quot;field&quot;&gt;
+            &lt;label&gt;User IDs:&lt;/label&gt;
+            &lt;input type=&quot;file&quot; id=&quot;user_ids&quot; name=&quot;user_ids&quot;/&gt;
+        &lt;/div&gt;
+      {% csrf_token %}
+      &lt;button class=&quot;upload ui teal button&quot;&gt;Upload&lt;/button&gt;
+  &lt;/form&gt;
 </code></pre>
 
-<p>可变对象（列表，字典，集合等等）的改变，会影响所有指向该对象的变量。</p>
+<h3 id="ajax-request">Ajax Request</h3>
 
-<pre><code>a = [1, 2, 3]
-b = a
-a[0] = 0
-print b  # [0, 2, 3]
+<pre><code>    $('.upload').click(function (e) {
+        var form = $('form')[0];
+        var formData = new FormData(form);
+
+        if (form.checkValidity()) {
+            e.preventDefault();
+            $.ajax({
+                url: '/upload',
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    if (data.success) {
+                        console.log(data);
+                        alert('Success');
+                    } else alert('Fail ' + data.errors);
+                },
+                enctype: 'multipart/form-data',
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        }
+    }
 </code></pre>
 
-<p>对于不可变对象（字符串，整型，元祖等等），所有指向该对象的变量的值总是一样的，也不会改变。但是通过某些操作（+= 等等）更新不可变对象的值时，会返回一个新的对象。</p>
+<h2 id="后端代码">后端代码</h2>
 
-<pre><code class="language-python">a = '1'
-b = '1'
+<p>在Django后端，可以直接从<code>request.FILES</code>读取上传的文件，示例如下：</p>
 
-id(a)  # 4467286984
-id(b)  # 4467286984
-
-c = a + b
-id(c)  # 4455971336 返回了新的对象
+<pre><code class="language-python">def upload(request):
+    my_file = request.FILES.get('my_file')  # File object
+    ...
+    return {'success': True}
 </code></pre>
 
-<p>变量可以被删除，但是对象无法被删除。</p>
+<p>或者是基于form对象来处理，示例如下：</p>
 
-<pre><code class="language-python">l = [1, 2, 3]
-del l
+<h3 id="form-py">form.py</h3>
+
+<pre><code class="language-python">from django import forms
+
+
+class MyForm(forms.Form):
+    my_file = forms.FileField(allow_empty_file=False)
 </code></pre>
 
-<h2 id="值传递-or-引用传递">值传递 or 引用传递</h2>
+<h3 id="view-py">view.py</h3>
 
-<p>其他语言不同的是，Python 中参数的传递既不是值传递，也不是引用传递，而是<strong>赋值传递</strong>，或者是叫<strong>对象的引用传递</strong>。</p>
+<pre><code class="language-python">from django.shortcuts import render
+from django.http import JsonResponse
+from .forms import MyForm
 
-<blockquote>
-<p>“Remember that arguments are passed by assignment in Python. Since assignment just creates references to objects, there’s no alias between an argument name in the caller and callee, and so no call-by-reference per Se.”</p>
-</blockquote>
 
-<p>Python 的参数传递是赋值传递（pass by assignment），或者叫作对象的引用传递（pass by object reference）。</p>
-
-<p>Python 里所有的数据类型都是对象，所以参数传递时，只是让新变量与原变量指向相同的对象而已，并不存在值传递或是引用传递一说。</p>
-
-<h2 id="用函数来改变变量的值">用函数来改变变量的值</h2>
-
-<p>如果你想通过一个函数来改变某个变量的值，通常有两种方法。</p>
-
-<p>一种是创建一个新变量，来保存修改后的值，然后将其返回给原变量。</p>
-
-<pre><code class="language-python">arg = 1
-
-def change_arg_val(arg):
-    new_val = arg + 1
-    return new_val
-
-arg = change_arg_val(arg)
-
+def upload(request):
+    if request.method == 'POST':
+       form = MyForm(request.POST, request.FILES)
+       if form.is_valid():
+           form.save()
+           return JsonResponse({'success': True, 'message': 'Uploaded Successfully'})
+       else:
+           return JsonResponse({'success': False, 'errors': form.errors})
+    else:
+        return render(request, 'file_upload.html', {'form': MyForm})
 </code></pre>
 
-<p>这里<code>arg</code>不是指向一个具体的地址，而是一个具体的对象，当<code>new_val = arg + 1</code>执行，new_val就指向了一个新的对象。</p>
+<h2 id="参考">参考</h2>
 
-<p>第二种是直接将可变数据类型（比如列表，字典，集合）当作参数传入，直接在其上修改；</p>
-
-<pre><code class="language-python">def change_arg_val(arg):
-    arg[0] += 1
-
-arg = [1]
-change_arg_val(arg)
-</code></pre>
-
-<p>在实际工作中，我们更倾向于使用前者；逻辑更清晰，减少耦合，不容易出错。</p>
+<ul>
+<li><a href="https://learnbatta.com/blog/django-image-and-file-upload-using-ajax-21/">django-image-and-file-upload-using-ajax</a></li>
+</ul>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
@@ -201,7 +241,8 @@ change_arg_val(arg)
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/python/" rel="tag">Python</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/ajax/" rel="tag">Ajax</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/django/" rel="tag">Django</a></li>
 	</ul>
 </div>
 		</footer>
@@ -222,10 +263,10 @@ change_arg_val(arg)
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2019/08/28/django-db-connection-pool/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Django数据库连接池</p></a>
+		<a class="post-nav__link" href="/2019/09/17/django-fetch-huge-data-by-queryset/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Django QuerySet高效读取百万行数据</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2019/09/16/django-queryset-cache-and-iterator/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Django QuerySet缓存和迭代器</p></a>
+		<a class="post-nav__link" href="/2019/10/12/programmer-self-discipline2/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">程序员的自我修养2</p></a>
 	</div>
 </nav>
 
