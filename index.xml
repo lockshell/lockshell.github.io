@@ -116,7 +116,16 @@
       <pubDate>Wed, 25 Dec 2019 18:01:32 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</guid>
-      <description>在AWS EC2上搭建VPN服务主要有3种比较便捷的方式：一是搭建IPSec VPN；二是安装Shadowsocks；三是安装v2ray 用AWS</description>
+      <description>在AWS EC2上搭建VPN服务主要有3种比较便捷的方式：一是搭建L2TP/IPSec VPN；二是安装Shadowsocks；三是安装v2ra</description>
+    </item>
+    
+    <item>
+      <title>在AWS EC2上搭建shadowsocks服务</title>
+      <link>https://lockshell.com/2019/12/24/vpn-ss-setup-on-aws-ec2/</link>
+      <pubDate>Tue, 24 Dec 2019 18:01:32 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/12/24/vpn-ss-setup-on-aws-ec2/</guid>
+      <description>shadowsocks原理 shadowsocks可以指一种SOCKS5的加密传输协议，也可以指基于这种加密协议的各种数据传输包。 shadow</description>
     </item>
     
     <item>
@@ -323,7 +332,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了59篇日志，继续加油哦！ 2020-03 2020-03-20 决定你一生的投资哲学 2020-03-15 及时止损 2020-03-14 股票亏损的原因 2020-03-14 从错误中学习 2020-03-01 [转]巴菲特佛罗里达大学商学院演讲 2020-02</description>
+      <description>很好，总共写了60篇日志，继续加油哦！ 2020-03 2020-03-20 决定你一生的投资哲学 2020-03-15 及时止损 2020-03-14 股票亏损的原因 2020-03-14 从错误中学习 2020-03-01 [转]巴菲特佛罗里达大学商学院演讲 2020-02</description>
     </item>
     
     <item>
