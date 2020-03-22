@@ -58,18 +58,18 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/git/</loc>
-    <lastmod>2020-02-14T23:07:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://lockshell.com/2020/02/14/mutiple-github-accout-on-mac/</loc>
     <lastmod>2020-02-14T23:07:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lockshell.com/tags/tools/</loc>
+    <lastmod>2020-02-14T23:07:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/git/</loc>
     <lastmod>2020-02-14T23:07:57+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -138,23 +138,13 @@
   
   <url>
     <loc>https://lockshell.com/tags/vpn/</loc>
-    <lastmod>2019-12-26T11:27:45+08:00</lastmod>
+    <lastmod>2019-12-25T18:01:32+08:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/2019/12/26/v2ay-setup-on-aws-ec2/</loc>
-    <lastmod>2019-12-26T11:27:45+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</loc>
     <lastmod>2019-12-25T18:01:32+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/2019/12/24/vpn-ss-setup-on-aws-ec2/</loc>
-    <lastmod>2019-12-24T18:01:32+08:00</lastmod>
   </url>
   
   <url>
