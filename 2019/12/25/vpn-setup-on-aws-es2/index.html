@@ -112,16 +112,52 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 898 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 902 words</span>
 </div>
-		</header><div class="content post__content clearfix">
-			<p>在AWS EC2上搭建VPN服务主要有3种比较便捷的方式：一是搭建IPSec VPN；二是安装Shadowsocks；三是安装v2ray</p>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#搭建l2tp-vpn">搭建L2TP VPN</a>
+<ul>
+<li><a href="#下载脚本">下载脚本</a></li>
+<li><a href="#修改配置">修改配置</a></li>
+<li><a href="#启动服务">启动服务</a></li>
+<li><a href="#开放aws端口">开放AWS端口</a></li>
+<li><a href="#客户端访问">客户端访问</a>
+<ul>
+<li><a href="#mac">Mac</a></li>
+<li><a href="#ios">iOS</a></li>
+</ul></li>
+<li><a href="#添加更多用户">添加更多用户</a></li>
+</ul></li>
+<li><a href="#搭建shadowsocks-vpn">搭建Shadowsocks VPN</a>
+<ul>
+<li><a href="#安装shadowsocks">安装shadowsocks</a></li>
+<li><a href="#修改配置-1">修改配置</a></li>
+<li><a href="#启动shadowsocks">启动shadowsocks</a></li>
+<li><a href="#客户端访问-1">客户端访问</a></li>
+</ul></li>
+<li><a href="#搭建v2ay-vpn">搭建v2ay VPN</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<p>在AWS EC2上搭建VPN服务主要有3种比较便捷的方式：一是搭建IPSec VPN；二是安装Shadowsocks；三是安装v2ray</p>
 
 <p>用的AWS的相对其他VPS的好处是支持弹性IP，即使IP被封了，后台重新申请一个弹性公网IP绑定到对应的实例，可以很方便的更换IP。但AWS相对价格略贵。</p>
 
-<h1 id="搭建l2tp-vpn">搭建L2TP VPN</h1>
+<h2 id="搭建l2tp-vpn">搭建L2TP VPN</h2>
 
-<h2 id="下载安装">下载安装</h2>
+<h3 id="下载脚本">下载脚本</h3>
 
 <p>ubuntu</p>
 
@@ -133,25 +169,25 @@ if (!doNotTrack) {
 <pre><code>wget https://git.io/vpnsetup-centos -O vpnsetup.sh &amp;&amp; sudo sh vpnsetup.sh
 </code></pre>
 
-<h2 id="修改配置">修改配置</h2>
+<h3 id="修改配置">修改配置</h3>
 
 <pre><code>YOUR_IPSEC_PSK='lockshell.com'
 YOUR_USERNAME='lockshell'
 YOUR_PASSWORD='1234567'
 </code></pre>
 
-<h2 id="启动">启动</h2>
+<h3 id="启动服务">启动服务</h3>
 
 <pre><code>sudo sh vpnsetup.sh
 </code></pre>
 
-<h2 id="开放端口">开放端口</h2>
+<h3 id="开放aws端口">开放AWS端口</h3>
 
 <p>现在 vpn 服务还不能直接访问，需要将 vpn 服务端口对外网开放。vpn 服务使用到的端口有 500/4500/50/51/1701，通过配置AWS安全组可以开放这些端口。</p>
 
-<h2 id="客户端访问">客户端访问</h2>
+<h3 id="客户端访问">客户端访问</h3>
 
-<h3 id="mac">Mac</h3>
+<h4 id="mac">Mac</h4>
 
 <ul>
 <li>打开系统偏好设置 → 网络</li>
@@ -160,7 +196,7 @@ YOUR_PASSWORD='1234567'
 <li>点击 连接 即可</li>
 </ul>
 
-<h3 id="ios">iOS</h3>
+<h4 id="ios">iOS</h4>
 
 <ul>
 <li>设置 → 通用 → vpn</li>
@@ -169,7 +205,7 @@ YOUR_PASSWORD='1234567'
 
 <p>更详细的说明，请参考：<a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-zh.md">配置 IPsec/L2TP VPN 客户端</a></p>
 
-<h2 id="添加更多用户">添加更多用户</h2>
+<h3 id="添加更多用户">添加更多用户</h3>
 
 <p>直接编辑<code>/etc/ppp/chap-secrets</code>文件，新增用户即可，无需重启服务。</p>
 
@@ -183,9 +219,9 @@ YOUR_PASSWORD='1234567'
 &quot;user3&quot; l2tpd &quot;password3&quot; *
 </code></pre>
 
-<h1 id="搭建shadowsocks-vpn">搭建Shadowsocks VPN</h1>
+<h2 id="搭建shadowsocks-vpn">搭建Shadowsocks VPN</h2>
 
-<h2 id="安装shadowsocks">安装shadowsocks</h2>
+<h3 id="安装shadowsocks">安装shadowsocks</h3>
 
 <pre><code># 更新apt-get
 sudo apt-get update
@@ -198,7 +234,7 @@ sudo apt-get install python-pip
 sudo pip install shadowsocks
 </code></pre>
 
-<h2 id="修改配置-1">修改配置</h2>
+<h3 id="修改配置-1">修改配置</h3>
 
 <pre><code>vim /etc/shadowsocks/ss.json
 </code></pre>
@@ -233,7 +269,7 @@ sudo pip install shadowsocks
 }
 </code></pre>
 
-<h2 id="启动shadowsocks">启动shadowsocks</h2>
+<h3 id="启动shadowsocks">启动shadowsocks</h3>
 
 <ul>
 <li>启动：sudo /usr/local/bin/ssserver -c /etc/shadowsocks/ss.json -d start</li>
@@ -241,17 +277,18 @@ sudo pip install shadowsocks
 <li>重启：sudo /usr/local/bin/ssserver -c /etc/shadowsocks/ss.json -d restart</li>
 </ul>
 
-<h2 id="客户端访问-1">客户端访问</h2>
+<h3 id="客户端访问-1">客户端访问</h3>
 
 <p>Shadowsocks客户端可从Github上下载，<a href="https://github.com/shadowsocks/shadowsocks-android">shadowsocks-android</a>，或者<a href="https://shadowsocks.org/en/download/clients.html">Shadowsocks官网</a>下载。</p>
 
 <p>本地设备通过Shadowsocks客户端连接VPN服务器，即可实现翻墙。添加服务器，地址即为AmazonEC2的公网IP，端口为配置文件中设置的9000，密码为配置中的123456。</p>
 
-<h1 id="安装配置v2ay">安装配置v2ay</h1>
+<h2 id="搭建v2ay-vpn">搭建v2ay VPN</h2>
 
 <ul>
 <li><a href="https://lockshell.com/2019/12/26/v2ay-setup-on-aws-es2/">在AWS EC2上搭建v2ay服务</a></li>
 </ul>
+
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
 		</div>
