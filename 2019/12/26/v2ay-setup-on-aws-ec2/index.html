@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>在AWS EC2上搭建v2ay服务 - 络壳 LockShell</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Setup v2ay VPN Service on AWS EC2, VPN搭建，翻墙上网">
+	<meta property="og:title" content="在AWS EC2上搭建v2ay服务" />
+<meta property="og:description" content="Setup v2ay VPN Service on AWS EC2, VPN搭建，翻墙上网" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lockshell.com/2019/12/26/v2ay-setup-on-aws-ec2/" />
+<meta property="article:published_time" content="2019-12-26T11:27:45&#43;08:00"/>
+<meta property="article:modified_time" content="2019-12-26T11:27:45&#43;08:00"/>
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="在AWS EC2上搭建v2ay服务"/>
+<meta name="twitter:description" content="Setup v2ay VPN Service on AWS EC2, VPN搭建，翻墙上网"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-131513582-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="络壳 LockShell" rel="home">
+				<div class="logo__title">络壳 LockShell</div>
+				<div class="logo__tagline">A coder&#39;s thinking</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">关于络壳</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/links/">
+				
+				<span class="menu__text">友情链接</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/archives/">
+				
+				<span class="menu__text">文章归档</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+
+	
+	<script data-ad-client="ca-pub-1242672487226703" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	
+
+	<script type="text/javascript" src="//tajs.qq.com/stats?sId=66505732" charset="UTF-8"></script>
+</header>
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">在AWS EC2上搭建v2ay服务</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-12-26T11:27:45&#43;08:00">2019-12-26</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
+	</span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1306 words</span>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#安装v2ray">安装v2ray</a></li>
+<li><a href="#配置v2ay">配置v2ay</a></li>
+<li><a href="#配置nginx">配置Nginx</a></li>
+<li><a href="#配置ssl">配置SSL</a></li>
+<li><a href="#配置v2ay客户端">配置v2ay客户端</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<p>v2ray的安装配置比前两种略复杂一些，但理论上来讲更安全可靠。还可以加一层Nginx用https代理，这样请求更安全。</p>
+
+<h2 id="安装v2ray">安装v2ray</h2>
+
+<pre><code class="language-shell">bash &lt;(curl -L -s https://install.direct/go.sh) # 直接使用脚本
+service v2ray start # 启动
+vim /etc/v2ray/config.json # 修改配置文件
+</code></pre>
+
+<p>此脚本会自动安装以下文件：</p>
+
+<ul>
+<li>/usr/bin/v2ray/v2ray：V2Ray 程序；</li>
+<li>/usr/bin/v2ray/v2ctl：V2Ray 工具；</li>
+<li>/etc/v2ray/config.json：配置文件；</li>
+<li>/usr/bin/v2ray/geoip.dat：IP 数据文件</li>
+<li>/usr/bin/v2ray/geosite.dat：域名数据文件 此脚本会配置自动运行脚本。自动运行脚本会在系统重启之后，自动运行 V2Ray。目前自动运行脚本只支持带有 Systemd 的系统，以及 Debian / Ubuntu 全系列。</li>
+</ul>
+
+<p>运行脚本位于系统的以下位置：</p>
+
+<ul>
+<li>/etc/systemd/system/v2ray.service: Systemd</li>
+<li>/etc/init.d/v2ray: SysV</li>
+</ul>
+
+<p>脚本运行完成后，你需要：</p>
+
+<ul>
+<li>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</li>
+<li>运行 service v2ray start 来启动 V2Ray 进程；</li>
+</ul>
+
+<p>之后可以使用 <code>service v2ray start|stop|status|reload|restart|force-reload</code> 控制 V2Ray 的运行。</p>
+
+<h2 id="配置v2ay">配置v2ay</h2>
+
+<pre><code class="language-json">{
+  &quot;log&quot; : {
+    &quot;access&quot;: &quot;/var/log/v2ray/access.log&quot;,
+    &quot;error&quot;: &quot;/var/log/v2ray/error.log&quot;,
+    &quot;loglevel&quot;: &quot;warning&quot;
+  },
+  &quot;inbound&quot;: {
+    &quot;port&quot;: 8080, //(此端口与nginx配置相关)
+    &quot;listen&quot;: &quot;127.0.0.1&quot;,
+    &quot;protocol&quot;: &quot;vmess&quot;,
+    &quot;settings&quot;: {
+      &quot;clients&quot;: [
+        {
+          &quot;id&quot;: &quot;zhangsan&quot;, //你的UUID， 此ID需与客户端保持一致
+          &quot;level&quot;: 1,
+          &quot;alterId&quot;: 64 //此ID也需与客户端保持一致
+        }
+      ]
+    },
+   &quot;streamSettings&quot;:{
+      &quot;network&quot;: &quot;ws&quot;,
+      &quot;wsSettings&quot;: {
+           &quot;path&quot;: &quot;/v2ray&quot; //与nginx配置相关
+      }
+   }
+  },
+  &quot;outbound&quot;: {
+    &quot;protocol&quot;: &quot;freedom&quot;,
+    &quot;settings&quot;: {}
+  },
+  &quot;outboundDetour&quot;: [
+    {
+      &quot;protocol&quot;: &quot;blackhole&quot;,
+      &quot;settings&quot;: {},
+      &quot;tag&quot;: &quot;blocked&quot;
+    }
+  ],
+  &quot;routing&quot;: {
+    &quot;strategy&quot;: &quot;rules&quot;,
+    &quot;settings&quot;: {
+      &quot;rules&quot;: [
+        {
+          &quot;type&quot;: &quot;field&quot;,
+          &quot;ip&quot;: [
+            &quot;0.0.0.0/8&quot;,
+            &quot;10.0.0.0/8&quot;,
+            &quot;100.64.0.0/10&quot;,
+            &quot;127.0.0.0/8&quot;,
+            &quot;169.254.0.0/16&quot;,
+            &quot;172.16.0.0/12&quot;,
+            &quot;192.0.0.0/24&quot;,
+            &quot;192.0.2.0/24&quot;,
+            &quot;192.168.0.0/16&quot;,
+            &quot;198.18.0.0/15&quot;,
+            &quot;198.51.100.0/24&quot;,
+            &quot;203.0.113.0/24&quot;,
+            &quot;::1/128&quot;,
+            &quot;fc00::/7&quot;,
+            &quot;fe80::/10&quot;
+          ],
+          &quot;outboundTag&quot;: &quot;blocked&quot;
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+
+<h2 id="配置nginx">配置Nginx</h2>
+
+<pre><code>server {
+    # SSL configuration
+    listen 443 ssl http2 default_server;
+    listen [::]:443 ssl http2 default_server;
+    ssl_certificate /ssl.pem; #你的ssl证书， 如果第一次，可能还需要自签一下，
+    ssl_certificate_key /ssl.key; #你的ssl key
+ 
+    root /var/www/html;
+ 
+    # Add index.php to the list if you are using PHP
+    index index.html index.htm index.nginx-debian.html;
+ 
+    server_name test.v2ray.com; # 你的服务器域名
+ 
+    location /ray { #/ray 路径需要和v2ray服务器端，客户端保持一致
+        proxy_redirect off;
+        proxy_pass http://127.0.0.1:8081; #此IP地址和端口需要和v2ray服务器保持一致，
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &quot;upgrade&quot;;
+        proxy_set_header Host $http_host;
+    }
+}
+</code></pre>
+
+<h2 id="配置ssl">配置SSL</h2>
+
+<p>关于域名SSL证书，使用certbot自动签一个let’s encrypt证书就行了。很简单，参考链接: <a href="https://certbot.eff.org/">https://certbot.eff.org/</a></p>
+
+<p>成功后， 在crontab 中添加一条任务计划每三个月执行一次，因为let’s encrypt证书三个月过期：</p>
+
+<pre><code class="language-shell">0 0 15 */3 * /root/certbot/certbot-auto renew  # 在3，6，9，12月份的15号零点零分执行更新
+</code></pre>
+
+<h2 id="配置v2ay客户端">配置v2ay客户端</h2>
+
+<pre><code class="language-json">{
+  &quot;log&quot;: {
+    &quot;loglevel&quot;: &quot;warning&quot;
+  },
+  &quot;inbound&quot;: {
+    &quot;port&quot;: 1080,
+    &quot;listen&quot;: &quot;127.0.0.1&quot;,
+    &quot;protocol&quot;: &quot;socks&quot;,
+    &quot;settings&quot;: {
+      &quot;auth&quot;: &quot;noauth&quot;,
+      &quot;udp&quot;: false
+    }
+  },
+  &quot;inboundDetour&quot;: [
+    {
+        &quot;port&quot;: 8123,
+        &quot;listen&quot;: &quot;127.0.0.1&quot;,
+        &quot;protocol&quot;: &quot;http&quot;,
+        &quot;settings&quot;: {}
+    }
+  ],
+  &quot;outbound&quot;: {
+    &quot;protocol&quot;: &quot;vmess&quot;,
+    &quot;settings&quot;: {
+      &quot;vnext&quot;: [{
+        &quot;address&quot;: &quot;test.v2ray.com&quot;, // 服务器地址，请修改为你自己的服务器 ip 或域名
+        &quot;port&quot;: 443,  // 服务器端口
+        &quot;users&quot;: [{
+            &quot;id&quot;: &quot;zhangsan&quot;, //你的UUID， 此ID需与服务端保持一致
+            &quot;level&quot;: 1,
+            &quot;alterId&quot;: 64,  //此ID也需与客户端保持一致
+            &quot;security&quot;: &quot;aes-128-gcm&quot;
+        }]
+      }]
+    },
+    &quot;streamSettings&quot;:{
+        &quot;network&quot;: &quot;ws&quot;,
+        &quot;security&quot;: &quot;tls&quot;,
+        &quot;tlsSettings&quot;: {
+            &quot;serverName&quot;: &quot;test.v2ray.com&quot; //此域名是你服务器的域名
+        },
+        &quot;wsSettings&quot;: {
+            &quot;path&quot;: &quot;/ray&quot; //与服务器配置及nginx配置相关
+        }
+    },
+    &quot;tag&quot;: &quot;forgin&quot;
+  },
+  &quot;outboundDetour&quot;: [
+    {
+        &quot;protocol&quot;: &quot;freedom&quot;,
+        &quot;settings&quot;: {},
+        &quot;tag&quot;: &quot;direct&quot;
+    }
+  ],
+  &quot;routing&quot;: { //此路由配置是自动分流， 国内IP和网站直连
+    &quot;strategy&quot;: &quot;rules&quot;,
+    &quot;settings&quot;: {
+        &quot;domainStrategy&quot;: &quot;IPIfNonMatch&quot;,
+        &quot;rules&quot;: [
+            {
+                &quot;type&quot;: &quot;chinaip&quot;,
+                &quot;outboundTag&quot;: &quot;direct&quot;
+            },
+            {
+                &quot;type&quot;: &quot;chinasites&quot;,
+                &quot;outboundTag&quot;: &quot;direct&quot;
+            },
+            {
+                &quot;type&quot;: &quot;field&quot;,
+                &quot;ip&quot;: [
+                    &quot;0.0.0.0/8&quot;,
+                    &quot;10.0.0.0/8&quot;,
+                    &quot;100.64.0.0/10&quot;,
+                    &quot;127.0.0.0/8&quot;,
+                    &quot;169.254.0.0/16&quot;,
+                    &quot;172.16.0.0/12&quot;,
+                    &quot;192.0.0.0/24&quot;,
+                    &quot;192.0.2.0/24&quot;,
+                    &quot;192.168.0.0/16&quot;,
+                    &quot;198.18.0.0/15&quot;,
+                    &quot;198.51.100.0/24&quot;,
+                    &quot;203.0.113.0/24&quot;,
+                    &quot;::1/128&quot;,
+                    &quot;fc00::/7&quot;,
+                    &quot;fe80::/10&quot;
+                ],
+                &quot;outboundTag&quot;: &quot;direct&quot;
+            }
+        ]
+    }
+  },
+  &quot;policy&quot;: {
+    &quot;levels&quot;: {
+      &quot;0&quot;: {&quot;uplinkOnly&quot;: 0}
+    }
+  }
+}
+</code></pre>
+
+<p>填上你设置的对应数据，如服务器ip、端口、UUID（服务端和客户端必须一致），加密方式一般为aes-128-gcm，协议为ws，伪装域名留空，路径为/ray，开启tls和不安全传输，设置完保存。</p>
+
+<p>右键V2RayN的系统栏小图标，点击启用Http代理，Http代理模式选择第二个PAC模式，最后再打开V2RayN软件面板，在检查更新里选择更新PAC。</p>
+
+			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
+			<hr>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/vpn/" rel="tag">VPN</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/vps/" rel="tag">VPS</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/aws/" rel="tag">AWS</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="络壳-LockShell avatar" src="/lockshell.jpeg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 络壳-LockShell</span>
+	</div>
+	<div class="authorbox__description">
+		穿越网络的壳，整个世界，都是你的舞台
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2019/12/25/vpn-setup-on-aws-es2/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">在AWS EC2上搭建VPN服务</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2020/01/05/block-bt-via-iptables-on-vps/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">在VPS上禁止BT下载</p></a>
+	</div>
+</nav>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '41b3bd5685f4310306a5',
+    clientSecret: '4b943ef7620d478481ffd403f08bb951e01e22b8',
+    repo: 'stackuncle.github.io',
+    owner: 'stackuncle',
+    admin: ['stackuncle'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	
+	<script async src="//cdn.busuanzi.ibruce.info/cdn/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<script>
+		$(document).ready(function() {
+			var int = setInterval(fixCount, 100);
+			var busuanziSiteOffset =  0 
+			function fixCount() {
+				if ($("#busuanzi_container_site_pv").css("display") != "none") {
+					clearInterval(int);
+					$("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+				}
+			}
+		});
+	</script>
+	
+
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 LockShell.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+			<span id="busuanzi_container_site_pv">本站访问量：<span id="busuanzi_value_site_pv"></span>次</span>
+			&nbsp;
+			<span id="busuanzi_container_site_uv">您是本站第 <span id="busuanzi_value_site_uv"></span> 位访问者
+        </span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

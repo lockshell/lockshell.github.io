@@ -112,11 +112,11 @@
     
     <item>
       <title>在AWS EC2上搭建v2ay服务</title>
-      <link>https://lockshell.com/2019/12/26/v2ay-setup-on-aws-es2/</link>
+      <link>https://lockshell.com/2019/12/26/v2ay-setup-on-aws-ec2/</link>
       <pubDate>Thu, 26 Dec 2019 11:27:45 +0800</pubDate>
       
-      <guid>https://lockshell.com/2019/12/26/v2ay-setup-on-aws-es2/</guid>
-      <description>安装v2ray bash &amp;lt;(curl -L -s https://install.direct/go.sh) # 直接使用脚本 service v2ray start # 启动 vim /etc/v2ray/config.json # 修改配置文件 此脚本会自动安装以下文件： /usr/bin/v2ray/v2ray：V2</description>
+      <guid>https://lockshell.com/2019/12/26/v2ay-setup-on-aws-ec2/</guid>
+      <description>v2ray的安装配置比前两种略复杂一些，但理论上来讲更安全可靠。还可以加一层Nginx用https代理，这样请求更安全。 安装v2ray bash &amp;lt;(curl -L</description>
     </item>
     
     <item>
@@ -125,13 +125,7 @@
       <pubDate>Wed, 25 Dec 2019 18:01:32 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</guid>
-      <description>&lt;p&gt;在AWS ES2上搭建VPN服务主要有3种比较便捷的方式：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;一是搭建IPSec VPN&lt;/li&gt;
-&lt;li&gt;二是安装Shadowsock&lt;/li&gt;
-&lt;li&gt;三是安装v2ray&lt;/li&gt;
-&lt;/ul&gt;</description>
+      <description>&lt;p&gt;在AWS ES2上搭建VPN服务主要有3种比较便捷的方式：一是搭建IPSec VPN；二是安装Shadowsock；三是安装v2ray&lt;/p&gt;</description>
     </item>
     
     <item>
