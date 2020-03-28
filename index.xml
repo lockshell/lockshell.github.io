@@ -314,7 +314,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了58篇日志，继续加油哦！ 2020-03 2020-03-20 决定你一生的投资哲学 2020-03-15 及时止损 2020-03-14 股票亏损的原因 2020-03-14 从错误中学习 2020-03-01 [转]巴菲特佛罗里达大学商学院演讲 2020-02</description>
+      <description>很好，总共写了62篇日志，继续加油哦！ 2020-03 2020-03-20 决定你一生的投资哲学 2020-03-15 及时止损 2020-03-14 股票亏损的原因 2020-03-14 从错误中学习 2020-03-01 [转]巴菲特佛罗里达大学商学院演讲 2020-02</description>
     </item>
     
     <item>
@@ -570,6 +570,42 @@
       
       <guid>https://lockshell.com/2016/02/29/python-pip-source-config/</guid>
       <description>在连接pip官网的时候状况不是很稳定。很多国内镜像站可以使用，加速下载。使用镜像源很简单，用-i指定就行了： easy_install -i http://pypi.douban.com/simple/ gevent pip install -i http://pypi.douban.com/simple/ gevent 如果觉得太麻烦</description>
+    </item>
+    
+    <item>
+      <title>[LeetCode][98]判断二叉搜索树</title>
+      <link>https://lockshell.com/2015/03/28/leetcode-98-validate-binary-search-tree/</link>
+      <pubDate>Sat, 28 Mar 2015 16:24:11 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2015/03/28/leetcode-98-validate-binary-search-tree/</guid>
+      <description>题目描述 请实现一个函数，检查一棵二叉树是否为二叉查找树。 给定树的根结点指针TreeNode* root，请返回一个bool，代表该树是否为二叉</description>
+    </item>
+    
+    <item>
+      <title>[LeetCode][104]二叉树的最大深度</title>
+      <link>https://lockshell.com/2015/03/28/leetcode-104-maximum-depth-of-binary-tree/</link>
+      <pubDate>Sat, 28 Mar 2015 16:18:37 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2015/03/28/leetcode-104-maximum-depth-of-binary-tree/</guid>
+      <description>题目描述 给定一个二叉树，找出其最大深度。二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。 说明: 叶子节点是指没有子节点的节点。 Solution /** * Definition</description>
+    </item>
+    
+    <item>
+      <title>[LeetCode][110]判断二叉树是否平衡</title>
+      <link>https://lockshell.com/2015/03/28/leetcode-110-balanced-binary-tree/</link>
+      <pubDate>Sat, 28 Mar 2015 16:15:43 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2015/03/28/leetcode-110-balanced-binary-tree/</guid>
+      <description>题目描述 输入一棵二叉树，判断该二叉树是否是平衡二叉树。 Solution /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) { val = x; } * } */ class Solution { public int height(TreeNode node) { if(node</description>
+    </item>
+    
+    <item>
+      <title>[LeetCode][102]二叉树层次遍历</title>
+      <link>https://lockshell.com/2015/03/28/leetcode-102-binary-tree-level-order-traversal/</link>
+      <pubDate>Sat, 28 Mar 2015 16:10:24 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2015/03/28/leetcode-102-binary-tree-level-order-traversal/</guid>
+      <description>题目描述 给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。 Solution /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) {</description>
     </item>
     
   </channel>

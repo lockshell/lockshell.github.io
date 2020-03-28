@@ -30,7 +30,7 @@
     </item>
     
     <item>
-      <title>tools</title>
+      <title>Tools</title>
       <link>https://lockshell.com/tags/tools/</link>
       <pubDate>Fri, 14 Feb 2020 23:07:57 +0800</pubDate>
       
@@ -206,6 +206,15 @@
       <pubDate>Thu, 19 May 2016 13:43:57 +0800</pubDate>
       
       <guid>https://lockshell.com/tags/flask/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>leetcode</title>
+      <link>https://lockshell.com/tags/leetcode/</link>
+      <pubDate>Sat, 28 Mar 2015 16:24:11 +0800</pubDate>
+      
+      <guid>https://lockshell.com/tags/leetcode/</guid>
       <description></description>
     </item>
     
