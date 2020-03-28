@@ -6,19 +6,10 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 28 Mar 2020 16:36:31 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2020 21:24:50 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>[LeetCode][236]二叉树的最近公共祖先</title>
-      <link>https://lockshell.com/2020/03/28/leetcode-236-lowest-common-ancestor-of-a-binary-tree/</link>
-      <pubDate>Sat, 28 Mar 2020 16:36:31 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2020/03/28/leetcode-236-lowest-common-ancestor-of-a-binary-tree/</guid>
-      <description>题目描述 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表</description>
-    </item>
     
     <item>
       <title>决定你一生的投资哲学</title>
@@ -323,7 +314,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了63篇日志，继续加油哦！ 2020-03 2020-03-28 [LeetCode][236]二叉树的最近公共祖先 2020-03-20 决定你一生的投资哲学 2020-03-15 及时止损 2020-03-14 股票亏损的原因</description>
+      <description>很好，总共写了63篇日志，继续加油哦！ 2020-03 2020-03-20 决定你一生的投资哲学 2020-03-15 及时止损 2020-03-14 股票亏损的原因 2020-03-14 从错误中学习 2020-03-01 [转]巴菲特佛罗里达大学商学院演讲 2020-02</description>
     </item>
     
     <item>
@@ -579,6 +570,15 @@
       
       <guid>https://lockshell.com/2016/02/29/python-pip-source-config/</guid>
       <description>在连接pip官网的时候状况不是很稳定。很多国内镜像站可以使用，加速下载。使用镜像源很简单，用-i指定就行了： easy_install -i http://pypi.douban.com/simple/ gevent pip install -i http://pypi.douban.com/simple/ gevent 如果觉得太麻烦</description>
+    </item>
+    
+    <item>
+      <title>[LeetCode][236]二叉树的最近公共祖先</title>
+      <link>https://lockshell.com/2015/03/28/leetcode-236-lowest-common-ancestor-of-a-binary-tree/</link>
+      <pubDate>Sat, 28 Mar 2015 16:36:31 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2015/03/28/leetcode-236-lowest-common-ancestor-of-a-binary-tree/</guid>
+      <description>题目描述 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表</description>
     </item>
     
     <item>
