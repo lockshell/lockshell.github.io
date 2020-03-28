@@ -314,7 +314,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了63篇日志，继续加油哦！ 2020-03 2020-03-20 决定你一生的投资哲学 2020-03-15 及时止损 2020-03-14 股票亏损的原因 2020-03-14 从错误中学习 2020-03-01 [转]巴菲特佛罗里达大学商学院演讲 2020-02</description>
+      <description>很好，总共写了64篇日志，继续加油哦！ 2020-03 2020-03-20 决定你一生的投资哲学 2020-03-15 及时止损 2020-03-14 股票亏损的原因 2020-03-14 从错误中学习 2020-03-01 [转]巴菲特佛罗里达大学商学院演讲 2020-02</description>
     </item>
     
     <item>
@@ -582,12 +582,12 @@
     </item>
     
     <item>
-      <title>[LeetCode][98]判断二叉搜索树</title>
-      <link>https://lockshell.com/2015/03/28/leetcode-98-validate-binary-search-tree/</link>
-      <pubDate>Sat, 28 Mar 2015 16:24:11 +0800</pubDate>
+      <title>[LeetCode][113]二叉树中和为某一值的路径</title>
+      <link>https://lockshell.com/2015/03/28/leetcode-113-path-sum-ii/</link>
+      <pubDate>Sat, 28 Mar 2015 16:34:26 +0800</pubDate>
       
-      <guid>https://lockshell.com/2015/03/28/leetcode-98-validate-binary-search-tree/</guid>
-      <description>题目描述 请实现一个函数，检查一棵二叉树是否为二叉查找树。 给定树的根结点指针TreeNode* root，请返回一个bool，代表该树是否为二叉</description>
+      <guid>https://lockshell.com/2015/03/28/leetcode-113-path-sum-ii/</guid>
+      <description>题目描述 输入一颗二叉树的跟节点和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结</description>
     </item>
     
     <item>
@@ -615,6 +615,15 @@
       
       <guid>https://lockshell.com/2015/03/28/leetcode-102-binary-tree-level-order-traversal/</guid>
       <description>题目描述 给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。 Solution /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) {</description>
+    </item>
+    
+    <item>
+      <title>[LeetCode][98]判断二叉搜索树</title>
+      <link>https://lockshell.com/2015/03/28/leetcode-98-validate-binary-search-tree/</link>
+      <pubDate>Sat, 28 Mar 2015 15:24:11 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2015/03/28/leetcode-98-validate-binary-search-tree/</guid>
+      <description>题目描述 请实现一个函数，检查一棵二叉树是否为二叉查找树。 给定树的根结点指针TreeNode* root，请返回一个bool，代表该树是否为二叉</description>
     </item>
     
   </channel>
