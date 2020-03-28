@@ -12,13 +12,12 @@
     
     
     <item>
-      <title>Leetcode-112-Path-Sum</title>
+      <title>[LeetCode][112]判断二叉树中路径和是否存在</title>
       <link>https://lockshell.com/2015/03/28/leetcode-112-path-sum/</link>
       <pubDate>Sat, 28 Mar 2015 16:51:47 +0800</pubDate>
       
       <guid>https://lockshell.com/2015/03/28/leetcode-112-path-sum/</guid>
-      <description>112. Path Sum  Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
- Solution /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) { val = x; } * } */ class Solution { public static boolean isLeaf(TreeNode node){ if (node !</description>
+      <description>112. Path Sum Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum. Solution /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) { val = x; } * } */ class Solution { public</description>
     </item>
     
     <item>
