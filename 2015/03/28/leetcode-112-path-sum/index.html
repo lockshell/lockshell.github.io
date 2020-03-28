@@ -4,19 +4,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>[LeetCode][108]将排序数组转为二叉搜索树 - 络壳 LockShell</title>
+	<title>Leetcode-112-Path-Sum - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Leetcode 108 Convert-Sorted-Array-Binary-Tree">
-	<meta property="og:title" content="[LeetCode][108]将排序数组转为二叉搜索树" />
-<meta property="og:description" content="Leetcode 108 Convert-Sorted-Array-Binary-Tree" />
+	<meta name="description" content="">
+	<meta property="og:title" content="Leetcode-112-Path-Sum" />
+<meta property="og:description" content="112. Path Sum  Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
+ Solution /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) { val = x; } * } */ class Solution { public static boolean isLeaf(TreeNode node){ if (node !" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2015/03/28/leetcode-108-convert-sorted-array-binary-tree/" />
-<meta property="article:published_time" content="2015-03-28T16:36:07&#43;08:00"/>
-<meta property="article:modified_time" content="2015-03-28T16:36:07&#43;08:00"/>
+<meta property="og:url" content="https://lockshell.com/2015/03/28/leetcode-112-path-sum/" />
+<meta property="article:published_time" content="2015-03-28T16:51:47&#43;08:00"/>
+<meta property="article:modified_time" content="2015-03-28T16:51:47&#43;08:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[LeetCode][108]将排序数组转为二叉搜索树"/>
-<meta name="twitter:description" content="Leetcode 108 Convert-Sorted-Array-Binary-Tree"/>
+<meta name="twitter:title" content="Leetcode-112-Path-Sum"/>
+<meta name="twitter:description" content="112. Path Sum  Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
+ Solution /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) { val = x; } * } */ class Solution { public static boolean isLeaf(TreeNode node){ if (node !"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -100,11 +102,11 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">[LeetCode][108]将排序数组转为二叉搜索树</h1>
+			<h1 class="post__title">Leetcode-112-Path-Sum</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2015-03-28T16:36:07&#43;08:00">2015-03-28</time>
+	<time class="meta__text" datetime="2015-03-28T16:51:47&#43;08:00">2015-03-28</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -112,15 +114,15 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/leetcode/" rel="category">LeetCode</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 129 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 140 words</span>
 </div>
 		</header><div class="content post__content clearfix">
 			
 
-<h2 id="108-convert-sorted-array-to-binary-search-tree">108. Convert Sorted Array to Binary Search Tree</h2>
+<h2 id="112-path-sum">112. Path Sum</h2>
 
 <blockquote>
-<p>将排序数组转为二叉搜索树</p>
+<p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
 </blockquote>
 
 <h2 id="solution">Solution</h2>
@@ -135,23 +137,25 @@ if (!doNotTrack) {
  * }
  */
 class Solution {
-    public static TreeNode solve(int low, int high, int[]nums){
-        if(low &lt; 0 || high &gt;= nums.length || low &gt; high) return null;
-        if(low == high) {
-            return new TreeNode(nums[low]);
-        }
+    public static boolean isLeaf(TreeNode node){
+        if (node != null &amp;&amp; node.left == null &amp;&amp; node.right == null)
+            return true;
         
-        int mid = (low + high)/2;
-        TreeNode n = new TreeNode(nums[mid]);
-        n.left = solve(low, mid-1, nums);
-        n.right = solve(mid+1, high, nums);
-        
-        return n;
+        return false;
     }
     
-    public TreeNode sortedArrayToBST(int[] nums) {
-        if (nums == null || nums.length==0) return null;
-        return solve(0, nums.length-1, nums);
+    public static boolean solve(TreeNode node, int sum){
+        if(node == null) return false;
+        if(sum == node.val &amp;&amp; isLeaf(node)){
+            return true;
+        }
+        
+        return solve(node.left, sum - node.val) || solve(node.right, sum - node.val);
+    }
+    
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if (root == null) return false;
+        return solve(root, sum);
     }
 }
 </code></pre>
@@ -185,10 +189,10 @@ class Solution {
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2015/03/28/leetcode-113-path-sum-ii/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">[LeetCode][113]二叉树中和为某一值的路径</p></a>
+		<a class="post-nav__link" href="/2015/03/28/leetcode-236-lowest-common-ancestor-of-a-binary-tree/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">[LeetCode][236]二叉树的最近公共祖先</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2015/03/28/leetcode-236-lowest-common-ancestor-of-a-binary-tree/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">[LeetCode][236]二叉树的最近公共祖先</p></a>
+		<a class="post-nav__link" href="/2016/02/29/python-pip-source-config/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Python pip配置默认镜像源</p></a>
 	</div>
 </nav>
 
