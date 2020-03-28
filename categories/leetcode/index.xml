@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>leetcode on 络壳 LockShell</title>
+    <title>LeetCode on 络壳 LockShell</title>
     <link>https://lockshell.com/categories/leetcode/</link>
-    <description>Recent content in leetcode on 络壳 LockShell</description>
+    <description>Recent content in LeetCode on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 28 Mar 2015 16:24:11 +0800</lastBuildDate>
