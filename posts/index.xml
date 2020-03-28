@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>[LeetCode][108]将排序数组转为二叉搜索树</title>
+      <link>https://lockshell.com/2020/03/28/leetcode-108-convert-sorted-array-binary-tree/</link>
+      <pubDate>Sat, 28 Mar 2020 16:36:07 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/03/28/leetcode-108-convert-sorted-array-binary-tree/</guid>
+      <description>题目描述 将排序数组转为二叉搜索树 Solution /** * Definition for a binary tree node. * public class TreeNode { * int val; * TreeNode left; * TreeNode right; * TreeNode(int x) { val = x; } * } */ class Solution { public static TreeNode solve(int low, int high, int[]nums){ if(low &amp;lt; 0 || high &amp;gt;= nums.length || low</description>
+    </item>
+    
+    <item>
       <title>决定你一生的投资哲学</title>
       <link>https://lockshell.com/2020/03/20/strategies-that-will-shake-up-the-way-you-invest/</link>
       <pubDate>Fri, 20 Mar 2020 21:24:50 +0800</pubDate>
