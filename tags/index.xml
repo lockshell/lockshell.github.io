@@ -6,7 +6,7 @@
     <description>Recent content in Tags on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 29 Mar 2020 09:05:24 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2020 13:38:32 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>reading</title>
       <link>https://lockshell.com/tags/reading/</link>
-      <pubDate>Sun, 29 Mar 2020 09:05:24 +0800</pubDate>
+      <pubDate>Sun, 29 Mar 2020 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/tags/reading/</guid>
       <description></description>
@@ -30,7 +30,7 @@
     </item>
     
     <item>
-      <title>git</title>
+      <title>Git</title>
       <link>https://lockshell.com/tags/git/</link>
       <pubDate>Fri, 14 Feb 2020 23:07:57 +0800</pubDate>
       

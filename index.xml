@@ -6,10 +6,19 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 29 Mar 2020 09:05:24 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2020 13:38:32 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>书籍推荐</title>
+      <link>https://lockshell.com/books/</link>
+      <pubDate>Sun, 29 Mar 2020 13:38:32 +0800</pubDate>
+      
+      <guid>https://lockshell.com/books/</guid>
+      <description>你所读过的书和你接触的人，决定了你以后能走什么样的路。 注： 推荐指数：从低到高 0-5。 有些记不清的，暂用减号&amp;rsquo;-&amp;lsquo;替代</description>
+    </item>
     
     <item>
       <title>读书的功利之用</title>
