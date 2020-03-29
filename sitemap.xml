@@ -98,14 +98,14 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/2020/02/12/speech-of-chinese-teacher-from-chengdu-7th-middle-school/</loc>
-    <lastmod>2020-02-12T13:36:51+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://lockshell.com/tags/life/</loc>
     <lastmod>2020-02-12T13:36:51+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/2020/02/12/speech-of-chinese-teacher-from-chengdu-7th-middle-school/</loc>
+    <lastmod>2020-02-12T13:36:51+08:00</lastmod>
   </url>
   
   <url>
@@ -457,11 +457,6 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/2018/11/27/skill-and-income/</loc>
-    <lastmod>2018-11-27T20:52:28+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://lockshell.com/2018/08/17/nginx-forward-proxy-config/</loc>
     <lastmod>2018-08-17T11:20:19+08:00</lastmod>
   </url>
@@ -489,11 +484,6 @@
   <url>
     <loc>https://lockshell.com/2017/07/05/python-lru-cache/</loc>
     <lastmod>2017-07-05T13:26:07+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/2017/05/29/move-house/</loc>
-    <lastmod>2017-05-29T21:26:14+08:00</lastmod>
   </url>
   
   <url>
