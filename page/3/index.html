@@ -100,7 +100,16 @@ if (!doNotTrack) {
 	<script>hljs.initHighlightingOnLoad();</script>
 	
 
-	<script type="text/javascript" src="//tajs.qq.com/stats?sId=66505732" charset="UTF-8"></script>
+	<script type="text/javascript" async src="//tajs.qq.com/stats?sId=66505732" charset="UTF-8"></script>
+
+	<script>
+		
+		document.onselectstart = function() { return false; };
+		
+		document.oncopy = function() { return false; };
+		
+		document.oncut = function() { return false; };
+	</script>
 </header>
 
 		<div class="wrapper flex">
