@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web前端 on 络壳 LockShell</title>
+    <link>https://lockshell.com/categories/web%E5%89%8D%E7%AB%AF/</link>
+    <description>Recent content in Web前端 on 络壳 LockShell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 04 Apr 2019 11:05:13 +0800</lastBuildDate>
+    
+	<atom:link href="https://lockshell.com/categories/web%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JS 实现禁止复制粘贴</title>
+      <link>https://lockshell.com/2019/04/04/js-disable-copy/</link>
+      <pubDate>Thu, 04 Apr 2019 11:05:13 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/04/04/js-disable-copy/</guid>
+      <description>个人博客里的文章容易被复制，转到其他平台，本站禁止了浏览器页面复制粘贴。本站的禁止复制是基于如下代码实现的： &amp;lt;script&amp;gt; // 禁止文字选择 document.onselectstart = function() { return false; }; //</description>
+    </item>
+    
+  </channel>
+</rss>

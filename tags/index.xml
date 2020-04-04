@@ -39,7 +39,7 @@
     </item>
     
     <item>
-      <title>Tools</title>
+      <title>tools</title>
       <link>https://lockshell.com/tags/tools/</link>
       <pubDate>Fri, 14 Feb 2020 23:07:57 +0800</pubDate>
       
@@ -48,7 +48,7 @@
     </item>
     
     <item>
-      <title>life</title>
+      <title>Life</title>
       <link>https://lockshell.com/tags/life/</link>
       <pubDate>Wed, 12 Feb 2020 13:36:51 +0800</pubDate>
       
@@ -188,6 +188,15 @@
       <pubDate>Sat, 10 Aug 2019 11:12:00 +0800</pubDate>
       
       <guid>https://lockshell.com/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://lockshell.com/tags/javascript/</link>
+      <pubDate>Thu, 04 Apr 2019 11:05:13 +0800</pubDate>
+      
+      <guid>https://lockshell.com/tags/javascript/</guid>
       <description></description>
     </item>
     

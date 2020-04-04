@@ -4,19 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Display Your Github Chart in Blog - 络壳 LockShell</title>
+	<title>JS 实现禁止复制粘贴 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Display Your Github Chart in Blog">
-	<meta property="og:title" content="Display Your Github Chart in Blog" />
-<meta property="og:description" content="Display Your Github Chart in Blog" />
+	<meta name="description" content="JavaScript disable copy">
+	<meta property="og:title" content="JS 实现禁止复制粘贴" />
+<meta property="og:description" content="JavaScript disable copy" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2019/08/10/display-your-github-chart-in-blog/" />
-<meta property="article:published_time" content="2019-08-10T10:23:28&#43;08:00"/>
-<meta property="article:modified_time" content="2019-08-10T10:23:28&#43;08:00"/>
+<meta property="og:url" content="https://lockshell.com/2019/04/04/js-disable-copy/" />
+<meta property="article:published_time" content="2019-04-04T11:05:13&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-04T11:05:13&#43;08:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Display Your Github Chart in Blog"/>
-<meta name="twitter:description" content="Display Your Github Chart in Blog"/>
+<meta name="twitter:title" content="JS 实现禁止复制粘贴"/>
+<meta name="twitter:description" content="JavaScript disable copy"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -116,40 +116,39 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Display Your Github Chart in Blog</h1>
+			<h1 class="post__title">JS 实现禁止复制粘贴</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-10T10:23:28&#43;08:00">2019-08-10</time>
+	<time class="meta__text" datetime="2019-04-04T11:05:13&#43;08:00">2019-04-04</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/hugo/" rel="category">Hugo</a>
+	<span class="meta__text"><a class="meta__link" href="/categories/web%E5%89%8D%E7%AB%AF/" rel="category">Web前端</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 67 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 231 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>There is an interesting api on <a href="https://ghchart.rshah.org/">https://ghchart.rshah.org/</a></p>
+			<p>个人博客里的文章容易被复制，转到其他平台，本站禁止了浏览器页面复制粘贴。本站的禁止复制是基于如下代码实现的：</p>
 
-<p>It can display your Github chart information as an image.</p>
-
-<p>e.g. the Github chart of <code>Flask</code>:</p>
-
-<p><img src="https://ghchart.rshah.org/flask" alt="GitHub Chart" /></p>
-
-<p>It&rsquo;s very easy to use it. Append your Github username behind the domain <a href="https://ghchart.rshah.org/">https://ghchart.rshah.org/</a></p>
-
-<p>For example, in html page, you can put the URL in an <code>img</code> tag.</p>
-
-<pre><code>&lt;img alt=&quot;GitHub Chart&quot; src=&quot;https://ghchart.rshah.org/flask&quot; &gt;
+<pre><code class="language-javascript">&lt;script&gt;
+    // 禁止文字选择
+    document.onselectstart = function() { return false; };
+    // 禁止复制
+    document.oncopy = function() { return false; };
+    // 禁止剪切
+    document.oncut = function() { return false; };
+    // 禁止粘贴
+    document.onpaste = function() { return false; };
+&lt;/script&gt;
 </code></pre>
 
-<p>In the markdown file, you can do like below.</p>
+<p>知道如何禁止了，那破解这个限制就容易多了。绝大部分限制都是采用JS实现的，直接禁用JS就OK了。</p>
 
-<pre><code>![GitHub Chart](https://ghchart.rshah.org/flask)
-</code></pre>
+<p>使用Chrome浏览器，按下F12弹出开发者工具，再按下F1弹出设置，勾选Disable JavaScript，再按下ESC键关闭设置，然后可以继续复制了。</p>
+
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
 		</div>
@@ -158,8 +157,7 @@ if (!doNotTrack) {
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/git/" rel="tag">Git</a></li>
-		<li class="tags__item"><a class="tags__link btn" href="/tags/hugo/" rel="tag">Hugo</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/javascript/" rel="tag">JavaScript</a></li>
 	</ul>
 </div>
 		</footer>
@@ -180,10 +178,10 @@ if (!doNotTrack) {
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2019/04/04/js-disable-copy/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">JS 实现禁止复制粘贴</p></a>
+		<a class="post-nav__link" href="/2019/03/28/career-planning/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">[转]职业规划的方法</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2019/08/10/display-word-count-in-hugo-blog/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Display Word Count in Hugo Blog</p></a>
+		<a class="post-nav__link" href="/2019/08/10/display-your-github-chart-in-blog/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Display Your Github Chart in Blog</p></a>
 	</div>
 </nav>
 
