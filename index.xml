@@ -305,7 +305,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了56篇日志，继续加油哦！ 2020-03 2020-03-29 读书的功利之用 2020-03-20 [码农理财系列]决定你一生的投资哲学 2020-03-14 [码农理财系列]股票亏损的原因 2020-03-01 [码农理财系</description>
+      <description>很好，总共写了54篇日志，继续加油哦！ 2020-03 2020-03-29 读书的功利之用 2020-03-20 [码农理财系列]决定你一生的投资哲学 2020-03-14 [码农理财系列]股票亏损的原因 2020-03-01 [码农理财系</description>
     </item>
     
     <item>
@@ -350,15 +350,6 @@
 &lt;p&gt;之前在&lt;a href=&#34;https://coolshell.cn&#34;&gt;CoolShell&lt;/a&gt;的博客上学到了不少，于是也想建一个自己的站点。&lt;/p&gt;
 
 &lt;p&gt;2019-08，动手撸了一个新的博客，来记录一些技术和生活上的思考。在此之前的几篇笔记和旧文，是从其他地方迁移过来的，方便查阅。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>JS 实现禁止复制粘贴</title>
-      <link>https://lockshell.com/2019/04/04/js-disable-copy/</link>
-      <pubDate>Thu, 04 Apr 2019 11:05:13 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/04/04/js-disable-copy/</guid>
-      <description>个人博客里的文章容易被复制，转到其他平台，本站禁止了浏览器页面复制粘贴。本站的禁止复制是基于如下代码实现的： &amp;lt;script&amp;gt; // 禁止文字选择 document.onselectstart = function() { return false; }; //</description>
     </item>
     
     <item>
@@ -425,12 +416,12 @@
     </item>
     
     <item>
-      <title>2019年第七天</title>
-      <link>https://lockshell.com/2019/01/07/thinking-on-the-seventh-day/</link>
+      <title>我的2019 流水账</title>
+      <link>https://lockshell.com/2019/01/07/my-2019/</link>
       <pubDate>Mon, 07 Jan 2019 18:40:36 +0800</pubDate>
       
-      <guid>https://lockshell.com/2019/01/07/thinking-on-the-seventh-day/</guid>
-      <description>小时候，吃奶奶做的咸鸭蛋，我只喜欢金黄泛着油香的蛋黄，不喜欢咸咸的蛋白。我把蛋黄挖出来吃掉，总是奶奶就剩下的蛋白下饭。奶奶爱我，所以把蛋黄让</description>
+      <guid>https://lockshell.com/2019/01/07/my-2019/</guid>
+      <description>2019-01 小时候，吃奶奶做的咸鸭蛋，我只喜欢金黄泛着油香的蛋黄，不喜欢咸咸的蛋白。我把蛋黄挖出来吃掉，总是奶奶就剩下的蛋白下饭。奶奶爱我，所以把蛋黄</description>
     </item>
     
     <item>
@@ -440,15 +431,6 @@
       
       <guid>https://lockshell.com/2018/12/29/my-2018/</guid>
       <description>01-01 哇哦，不经意间，又是一年过去。这个元旦没有出去溜达，只是在屋里刷一刷算法题。然后，有点感触，为啥在学校的时候没有好好学，现在工作了该补的还</description>
-    </item>
-    
-    <item>
-      <title>主动学习</title>
-      <link>https://lockshell.com/2018/12/03/active-learning/</link>
-      <pubDate>Mon, 03 Dec 2018 21:02:04 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2018/12/03/active-learning/</guid>
-      <description>在《程序员思维修炼》一书中，作者提到：教育Education来自于拉丁文educare，字面意思是被引出，即引导出一些东西。而有趣的是，当我</description>
     </item>
     
     <item>
