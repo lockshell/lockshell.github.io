@@ -4,19 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>读书的功利之用 - 络壳 LockShell</title>
+	<title>Go TCP Server示例 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Benefit from reading">
-	<meta property="og:title" content="读书的功利之用" />
-<meta property="og:description" content="Benefit from reading" />
+	<meta name="description" content="Go Tcp Server Example">
+	<meta property="og:title" content="Go TCP Server示例" />
+<meta property="og:description" content="Go Tcp Server Example" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2020/03/29/benefit-from-reading/" />
-<meta property="article:published_time" content="2020-03-29T09:05:24&#43;08:00"/>
-<meta property="article:modified_time" content="2020-03-29T09:05:24&#43;08:00"/>
+<meta property="og:url" content="https://lockshell.com/2020/04/11/go-tcp-server/" />
+<meta property="article:published_time" content="2020-04-11T21:26:43&#43;08:00"/>
+<meta property="article:modified_time" content="2020-04-11T21:26:43&#43;08:00"/>
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="读书的功利之用"/>
-<meta name="twitter:description" content="Benefit from reading"/>
+<meta name="twitter:title" content="Go TCP Server示例"/>
+<meta name="twitter:description" content="Go Tcp Server Example"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -116,79 +116,117 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">读书的功利之用</h1>
+			<h1 class="post__title">Go TCP Server示例</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2020-03-29T09:05:24&#43;08:00">2020-03-29</time>
+	<time class="meta__text" datetime="2020-04-11T21:26:43&#43;08:00">2020-04-11</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
+	<span class="meta__text"><a class="meta__link" href="/categories/go%E8%AF%AD%E8%A8%80/" rel="category">Go语言</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1367 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 262 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			
+			<pre><code class="language-go">package main
 
-<h2 id="为什么读">为什么读</h2>
+import (
+	&quot;bufio&quot;
+	&quot;fmt&quot;
+	&quot;net&quot;
+	&quot;os&quot;
+	&quot;strings&quot;
+)
 
-<p>人成年之后容易变得现实，不现实的，被社会捶打之后也变的现实了。读书也须得有些作用，才能让之成为一项可以持续下去的活动。</p>
+const (
+	CONN_HOST = &quot;localhost&quot;
+	CONN_PORT = &quot;8888&quot;
+	CONN_TYPE = &quot;tcp&quot;
+)
 
-<p>古人说：书中自有黄金屋，书中自有颜如玉。他们是冲着金榜题名去的，科考成功当了官，自然会有钱，有娇妻美妾。但是古代考上进士或者中举，按概率来看，比如今考上清北是更低的。从现代的眼光来看，这就是一锅鸡汤。但古往今来，鸡汤总归是汤，不是毒药，也是有些作用，在漫漫千年的封建社会里，也激励了成千上万的读书人。</p>
+func main() {
+	// Listen for incoming connections
+	listener, err := net.Listen(CONN_TYPE, CONN_HOST+&quot;:&quot;+CONN_PORT)
+	if err != nil {
+		fmt.Println(&quot;Error listening:&quot;, err.Error())
+		os.Exit(1)
+	}
 
-<p>人性都是一样的，外国人的想法也没啥不同，你看看培根说的多么漂亮：</p>
+	// Close the listener when the function exit
+	defer listener.Close()
 
-<blockquote>
-<p>读史使人明智，读诗使人灵秀，数学使人周密，科学使人深刻，伦理学使人庄重，逻辑修辞之学使人善辩；凡有所学，皆成性格。</p>
-</blockquote>
+	fmt.Println(&quot;Start listening on &quot; + CONN_HOST + &quot;:&quot; + CONN_PORT)
+	for {
+		// Listen for an incoming connection
+		conn, err := listener.Accept()
+		if err != nil {
+			fmt.Println(&quot;Error accepting:&quot;, err.Error())
+			os.Exit(1)
+		}
+		// Handle connection in a new goroutine
+		go handleRequest2(conn)
+	}
+}
 
-<h2 id="读书与实践">读书与实践</h2>
+// Handle incoming requests
+func handleRequest(conn net.Conn) {
+	fmt.Printf(&quot;Serving %s\n&quot;, conn.RemoteAddr().String())
 
-<p>按照培根的说法，读书真是至宝，简直只有优点，没有缺点；读啥都能有收获。但我们知道，现实不是这个样子的。古有秀才造反，十年不成；孔乙己知道回字的四种写法，但付不起一碗酒钱；革命时期有可怕的教条主义；改革开放最开始讨论的就是：实践是检验真理的唯一标准。</p>
+	// Close tbe connection when the function ends
+	defer func() {
+		fmt.Println(&quot;Closing connection...&quot;)
+		conn.Close()
+	}()
 
-<p>看书其实是通过看作者的思想，结合自己的经历，拓展、强化、完善自己的认知，所以一本书是否受用主要取决于读者自己，其次取决于老师。</p>
+	// Make a buffer to store incoming data
+	buf := make([]byte, 1024)
 
-<p>毛爷爷是500年来，顶厉害丁牛逼的人物；但是毛概课上打瞌睡的人不在少数。因为这部分教师大都是混口饭吃，照本宣科，完成任务。抹杀的99%学生的兴趣，还有1%装作有兴趣，也只是为了好看的分数。我觉得让学生们，去看看《西行漫记》也比课上昏昏欲睡好。</p>
+	// Read the incoming connection into the buffer
+	reqLen, err := conn.Read(buf)
+	if err != nil {
+		fmt.Println(&quot;Error reading:&quot;, err.Error())
+		return
+	}
 
-<h2 id="怎样阅读">怎样阅读</h2>
+	fmt.Println(&quot;Receive data length:&quot;, reqLen, &quot;content:&quot;, string(buf[:reqLen]))
+	// Send a response back
+	conn.Write([]byte(&quot;Hello, World!\n&quot;))
+}
 
-<p>读书也是讲究方法，怎么样才能读得又快又好呢？</p>
+// Handle incoming requests
+func handleRequest2(conn net.Conn) {
+	fmt.Printf(&quot;Serving %s\n&quot;, conn.RemoteAddr().String())
 
-<ol>
-<li>经典书，买纸制，反复读；其他的，文档+电子书，快速学习入门。但收集一大堆电子书屯着没什么用，屯的越多，前期屯书花的时间多，后期读不了反而心理负担越重，越发容易放弃。</li>
-<li>读书技巧：精读（算法)；查读（Python CookBook)；扫读（小说）；略读（新闻）。</li>
-<li>读书要快， 趁着热情还在秒掉， 最后， 要做笔记，哪怕只是摘录。</li>
-<li>市面上绝大多数，90%，可以算是入门书籍；剩下7%，算是进阶；然后，3%才是经典。（豆瓣评分8以上的书）。</li>
-</ol>
+	// Close tbe connection when the function ends
+	defer func() {
+		fmt.Println(&quot;Closing connection...&quot;)
+		conn.Close()
+	}()
 
-<p>尤其是技术书籍，很多书上的信息都过时了，善用搜索来更新自己的知识库；另外，记得踩过的坑，以及，深挖和扩展。</p>
+	// The for loop makes sure that the TCP client will be served for as long as the TCP client desires.
+	for {
+		recvData, err := bufio.NewReader(conn).ReadString('\n')
+		if err != nil {
+			fmt.Println(&quot;Error reading:&quot;, err.Error())
+			return
+		}
 
-<p>自己总结：最佳的策略应该是，从日常工作入手，工作中接触的各种事情，遇到的各种问题，涉及的各种技术栈，以书本为脉络，配合搜索，以点带面，深挖和发散。这就会占用掉大部分时间和经历了，而事实也证明，目前自己受益最大的，反而是这些东西。</p>
+		temp := strings.TrimSpace(string(recvData))
+		if temp == &quot;STOP&quot; {
+			fmt.Println(&quot;Received STOP msg, will exit...&quot;)
+			break
+		}
 
-<h2 id="读什么书">读什么书</h2>
+		fmt.Println(&quot;Received content:&quot;, temp)
+		// Send a response back
+		conn.Write([]byte(&quot;Hello, World!\n&quot;))
+	}
+}
 
-<p>没有一本书可以解决所有问题，这就需要广读书。</p>
-
-<h2 id="后记">后记</h2>
-
-<p>也许，读书也不仅仅是为了功利之用。</p>
-
-<p>书让诗文穿越了时间的界限。不用去月下寻李白，不用去草堂寻杜甫，不用山间寻王维，不用去酒肆寻杜牧。从短短的几句诗里，从字里行间，我们依稀体味到诗人们当时何等心境。这是文化的底蕴，这是炎黄子孙才能感受到的味道。</p>
-
-<blockquote>
-<p>床前明月光，疑是地上霜。举头望明月，低头思故乡。-李白</p>
-
-<p>两个黄鹂鸣翠柳，一行白鹭上青天。窗含西岭千秋雪，门泊东吴万里船。-杜甫</p>
-
-<p>中岁颇好道，晚家南山陲。兴来每独往，胜事空自知。行到水穷处，坐看云起时。偶然值林叟，谈笑无还期。-王维</p>
-
-<p>清明时节雨纷纷，路上行人欲断魂。借问酒家何处有？牧童遥指杏花村。-杜牧</p>
-</blockquote>
-
-<p>2020年的春天，疫后的春天，一年之计在于春的春天；希望天灾人祸都早点过去，让我收拾好行囊，继续的阅读之旅。</p>
+</code></pre>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
@@ -198,7 +236,7 @@ if (!doNotTrack) {
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/reading/" rel="tag">reading</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/golang/" rel="tag">Golang</a></li>
 	</ul>
 </div>
 		</footer>
@@ -219,10 +257,7 @@ if (!doNotTrack) {
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2020/03/20/strategies-that-will-shake-up-the-way-you-invest/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">[码农理财系列]决定你一生的投资哲学</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2020/04/11/go-tcp-server/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">Go TCP Server示例</p></a>
+		<a class="post-nav__link" href="/2020/03/29/benefit-from-reading/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">读书的功利之用</p></a>
 	</div>
 </nav>
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go语言 on 络壳 LockShell</title>
+    <link>https://lockshell.com/categories/go%E8%AF%AD%E8%A8%80/</link>
+    <description>Recent content in Go语言 on 络壳 LockShell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 11 Apr 2020 21:26:43 +0800</lastBuildDate>
+    
+	<atom:link href="https://lockshell.com/categories/go%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go TCP Server示例</title>
+      <link>https://lockshell.com/2020/04/11/go-tcp-server/</link>
+      <pubDate>Sat, 11 Apr 2020 21:26:43 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/04/11/go-tcp-server/</guid>
+      <description>package main import ( &amp;quot;bufio&amp;quot; &amp;quot;fmt&amp;quot; &amp;quot;net&amp;quot; &amp;quot;os&amp;quot; &amp;quot;strings&amp;quot; ) const ( CONN_HOST = &amp;quot;localhost&amp;quot; CONN_PORT = &amp;quot;8888&amp;quot; CONN_TYPE = &amp;quot;tcp&amp;quot; ) func main() { // Listen for incoming connections listener, err := net.Listen(CONN_TYPE, CONN_HOST+&amp;quot;:&amp;quot;+CONN_PORT) if err != nil { fmt.Println(&amp;quot;Error listening:&amp;quot;, err.Error()) os.Exit(1) } // Close the listener when the function exit defer listener.Close() fmt.Println(&amp;quot;Start listening on &amp;quot; + CONN_HOST + &amp;quot;:&amp;quot; + CONN_PORT) for { // Listen for</description>
+    </item>
+    
+  </channel>
+</rss>

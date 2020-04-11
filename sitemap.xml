@@ -4,18 +4,41 @@
   
   <url>
     <loc>https://lockshell.com/categories/</loc>
-    <lastmod>2020-03-29T13:38:32+08:00</lastmod>
+    <lastmod>2020-04-11T21:26:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/other/</loc>
-    <lastmod>2020-03-29T13:38:32+08:00</lastmod>
+    <loc>https://lockshell.com/2020/04/11/go-tcp-server/</loc>
+    <lastmod>2020-04-11T21:26:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/golang/</loc>
+    <lastmod>2020-04-11T21:26:43+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/categories/go%E8%AF%AD%E8%A8%80/</loc>
+    <lastmod>2020-04-11T21:26:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://lockshell.com/tags/</loc>
+    <lastmod>2020-04-11T21:26:43+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/</loc>
+    <lastmod>2020-04-11T21:26:43+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/categories/other/</loc>
     <lastmod>2020-03-29T13:38:32+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -29,12 +52,6 @@
   <url>
     <loc>https://lockshell.com/books/</loc>
     <lastmod>2020-03-29T13:38:32+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/</loc>
-    <lastmod>2020-03-29T13:38:32+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -76,14 +93,14 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/git/</loc>
+    <loc>https://lockshell.com/2020/02/14/mutiple-github-accout-on-mac/</loc>
     <lastmod>2020-02-14T23:07:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/2020/02/14/mutiple-github-accout-on-mac/</loc>
+    <loc>https://lockshell.com/tags/git/</loc>
     <lastmod>2020-02-14T23:07:57+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -99,14 +116,14 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/2020/02/12/speech-of-chinese-teacher-from-chengdu-7th-middle-school/</loc>
-    <lastmod>2020-02-12T13:36:51+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://lockshell.com/tags/life/</loc>
     <lastmod>2020-02-12T13:36:51+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/2020/02/12/speech-of-chinese-teacher-from-chengdu-7th-middle-school/</loc>
+    <lastmod>2020-02-12T13:36:51+08:00</lastmod>
   </url>
   
   <url>
