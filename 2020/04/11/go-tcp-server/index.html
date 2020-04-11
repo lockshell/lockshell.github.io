@@ -95,6 +95,7 @@ if (!doNotTrack) {
 	
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+	<script async src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 	
 
@@ -128,104 +129,117 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/go%E8%AF%AD%E8%A8%80/" rel="category">Go语言</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 262 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 449 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			<pre><code class="language-go">package main
+			<p>4月开始了Go语言的学习。</p>
+
+<p>在五年的工作生涯中，主要用过C、Shell、Python、Java。体验过Java的臃肿，C的简陋，Python的性能；Go的一些改进，给我带来了惊喜。</p>
+
+<p>我觉得是我深入学习的倒数第二门编程语言，以后很难有精力和机会去学习更多的编程语言了。为什么是倒数第二，也许我还期待着一门更好的语言。</p>
+
+<p>参照网上的资料，实现一个Go TCP Server例子。</p>
+
+<pre><code class="language-go">package main
 
 import (
-	&quot;bufio&quot;
-	&quot;fmt&quot;
-	&quot;net&quot;
-	&quot;os&quot;
-	&quot;strings&quot;
+    &quot;bufio&quot;
+    &quot;fmt&quot;
+    &quot;net&quot;
+    &quot;os&quot;
+    &quot;strings&quot;
 )
 
 const (
-	CONN_HOST = &quot;localhost&quot;
-	CONN_PORT = &quot;8888&quot;
-	CONN_TYPE = &quot;tcp&quot;
+    CONN_HOST = &quot;localhost&quot;
+    CONN_PORT = &quot;8888&quot;
+    CONN_TYPE = &quot;tcp&quot;
 )
 
 func main() {
-	// Listen for incoming connections
-	listener, err := net.Listen(CONN_TYPE, CONN_HOST+&quot;:&quot;+CONN_PORT)
-	if err != nil {
-		fmt.Println(&quot;Error listening:&quot;, err.Error())
-		os.Exit(1)
-	}
+    // Listen for incoming connections
+    listener, err := net.Listen(CONN_TYPE, CONN_HOST+&quot;:&quot;+CONN_PORT)
+    if err != nil {
+        fmt.Println(&quot;Error listening:&quot;, err.Error())
+        os.Exit(1)
+    }
 
-	// Close the listener when the function exit
-	defer listener.Close()
+    // Close the listener when the function exit
+    defer listener.Close()
 
-	fmt.Println(&quot;Start listening on &quot; + CONN_HOST + &quot;:&quot; + CONN_PORT)
-	for {
-		// Listen for an incoming connection
-		conn, err := listener.Accept()
-		if err != nil {
-			fmt.Println(&quot;Error accepting:&quot;, err.Error())
-			os.Exit(1)
-		}
-		// Handle connection in a new goroutine
-		go handleRequest2(conn)
-	}
+    fmt.Println(&quot;Start listening on &quot; + CONN_HOST + &quot;:&quot; + CONN_PORT)
+    for {
+        // Listen for an incoming connection
+        conn, err := listener.Accept()
+        if err != nil {
+            fmt.Println(&quot;Error accepting:&quot;, err.Error())
+            os.Exit(1)
+        }
+        // Handle connection in a new goroutine
+        go handleRequest2(conn)
+    }
 }
 
 // Handle incoming requests
 func handleRequest(conn net.Conn) {
-	fmt.Printf(&quot;Serving %s\n&quot;, conn.RemoteAddr().String())
+    fmt.Printf(&quot;Serving %s\n&quot;, conn.RemoteAddr().String())
 
-	// Close tbe connection when the function ends
-	defer func() {
-		fmt.Println(&quot;Closing connection...&quot;)
-		conn.Close()
-	}()
+    // Close tbe connection when the function ends
+    defer func() {
+        fmt.Println(&quot;Closing connection...&quot;)
+        conn.Close()
+    }()
 
-	// Make a buffer to store incoming data
-	buf := make([]byte, 1024)
+    // Make a buffer to store incoming data
+    buf := make([]byte, 1024)
 
-	// Read the incoming connection into the buffer
-	reqLen, err := conn.Read(buf)
-	if err != nil {
-		fmt.Println(&quot;Error reading:&quot;, err.Error())
-		return
-	}
+    // Read the incoming connection into the buffer
+    reqLen, err := conn.Read(buf)
+    if err != nil {
+        fmt.Println(&quot;Error reading:&quot;, err.Error())
+        return
+    }
 
-	fmt.Println(&quot;Receive data length:&quot;, reqLen, &quot;content:&quot;, string(buf[:reqLen]))
-	// Send a response back
-	conn.Write([]byte(&quot;Hello, World!\n&quot;))
+    fmt.Println(&quot;Receive data length:&quot;, reqLen, &quot;content:&quot;, string(buf[:reqLen]))
+    // Send a response back
+    conn.Write([]byte(&quot;Hello, World!\n&quot;))
 }
 
 // Handle incoming requests
 func handleRequest2(conn net.Conn) {
-	fmt.Printf(&quot;Serving %s\n&quot;, conn.RemoteAddr().String())
+    fmt.Printf(&quot;Serving %s\n&quot;, conn.RemoteAddr().String())
 
-	// Close tbe connection when the function ends
-	defer func() {
-		fmt.Println(&quot;Closing connection...&quot;)
-		conn.Close()
-	}()
+    // Close tbe connection when the function ends
+    defer func() {
+        fmt.Println(&quot;Closing connection...&quot;)
+        conn.Close()
+    }()
 
-	// The for loop makes sure that the TCP client will be served for as long as the TCP client desires.
-	for {
-		recvData, err := bufio.NewReader(conn).ReadString('\n')
-		if err != nil {
-			fmt.Println(&quot;Error reading:&quot;, err.Error())
-			return
-		}
+    // The for loop makes sure that the TCP client will be served for as long as the TCP client desires.
+    for {
+        recvData, err := bufio.NewReader(conn).ReadString('\n')
+        if err != nil {
+            fmt.Println(&quot;Error reading:&quot;, err.Error())
+            return
+        }
 
-		temp := strings.TrimSpace(string(recvData))
-		if temp == &quot;STOP&quot; {
-			fmt.Println(&quot;Received STOP msg, will exit...&quot;)
-			break
-		}
+        temp := strings.TrimSpace(string(recvData))
+        if temp == &quot;STOP&quot; {
+            fmt.Println(&quot;Received STOP msg, will exit...&quot;)
+            break
+        }
 
-		fmt.Println(&quot;Received content:&quot;, temp)
-		// Send a response back
-		conn.Write([]byte(&quot;Hello, World!\n&quot;))
-	}
+        fmt.Println(&quot;Received content:&quot;, temp)
+        // Send a response back
+        conn.Write([]byte(&quot;Hello, World!\n&quot;))
+    }
 }
 
+</code></pre>
+
+<p>测试TCP</p>
+
+<pre><code>nc localhost 8888
 </code></pre>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>

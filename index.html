@@ -97,6 +97,7 @@ if (!doNotTrack) {
 	
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+	<script async src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 	
 
@@ -134,11 +135,11 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/go%E8%AF%AD%E8%A8%80/" rel="category">Go语言</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 262 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 449 words</span>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		package main import ( &quot;bufio&quot; &quot;fmt&quot; &quot;net&quot; &quot;os&quot; &quot;strings&quot; ) const ( CONN_HOST = &quot;localhost&quot; CONN_PORT = &quot;8888&quot; CONN_TYPE = &quot;tcp&quot; ) func main() { // Listen for incoming connections listener, err := net.Listen(CONN_TYPE, CONN_HOST+&quot;:&quot;+CONN_PORT) if err != nil { fmt.Println(&quot;Error listening:&quot;, err.Error()) os.Exit(1) } // Close the listener when the function exit defer listener.Close() fmt.Println(&quot;Start listening on &quot; + CONN_HOST + &quot;:&quot; + CONN_PORT) for { // Listen for
+		4月开始了Go语言的学习。 在五年的工作生涯中，主要用过C、Shell、Python、Java。体验过Java的臃肿，C的简陋，Python的
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2020/04/11/go-tcp-server/">Read more…</a>
@@ -721,7 +722,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/reading/" title="reading">reading (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/shopee/" title="Shopee">Shopee (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/thrift/" title="Thrift">Thrift (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/tools/" title="tools">tools (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tools/" title="Tools">Tools (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn/" title="VPN">VPN (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vps/" title="VPS">VPS (2)</a>
 	</div>

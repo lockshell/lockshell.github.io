@@ -17,7 +17,7 @@
       <pubDate>Sat, 11 Apr 2020 21:26:43 +0800</pubDate>
       
       <guid>https://lockshell.com/2020/04/11/go-tcp-server/</guid>
-      <description>package main import ( &amp;quot;bufio&amp;quot; &amp;quot;fmt&amp;quot; &amp;quot;net&amp;quot; &amp;quot;os&amp;quot; &amp;quot;strings&amp;quot; ) const ( CONN_HOST = &amp;quot;localhost&amp;quot; CONN_PORT = &amp;quot;8888&amp;quot; CONN_TYPE = &amp;quot;tcp&amp;quot; ) func main() { // Listen for incoming connections listener, err := net.Listen(CONN_TYPE, CONN_HOST+&amp;quot;:&amp;quot;+CONN_PORT) if err != nil { fmt.Println(&amp;quot;Error listening:&amp;quot;, err.Error()) os.Exit(1) } // Close the listener when the function exit defer listener.Close() fmt.Println(&amp;quot;Start listening on &amp;quot; + CONN_HOST + &amp;quot;:&amp;quot; + CONN_PORT) for { // Listen for</description>
+      <description>4月开始了Go语言的学习。 在五年的工作生涯中，主要用过C、Shell、Python、Java。体验过Java的臃肿，C的简陋，Python的</description>
     </item>
     
   </channel>
