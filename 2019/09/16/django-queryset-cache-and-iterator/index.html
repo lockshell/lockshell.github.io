@@ -290,30 +290,11 @@ for i in Article.objects.all().iterator():
 			
 		</div>
 		<footer class="footer">
-	
-	<script async src="//cdn.busuanzi.ibruce.info/cdn/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<script>
-		$(document).ready(function() {
-			var int = setInterval(fixCount, 100);
-			var busuanziSiteOffset =  0 
-			function fixCount() {
-				if ($("#busuanzi_container_site_pv").css("display") != "none") {
-					clearInterval(int);
-					$("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
-				}
-			}
-		});
-	</script>
-	
-
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
 			&copy; 2020 LockShell.
 			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
-			<span id="busuanzi_container_site_pv">本站访问量：<span id="busuanzi_value_site_pv"></span>次</span>
-			&nbsp;
-			<span id="busuanzi_container_site_uv">您是本站第 <span id="busuanzi_value_site_uv"></span> 位访问者
         </span>
 		</div>
 	</div>
