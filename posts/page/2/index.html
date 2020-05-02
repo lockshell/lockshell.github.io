@@ -121,6 +121,33 @@ if (!doNotTrack) {
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/2019/09/17/django-fetch-huge-data-by-queryset/" rel="bookmark">
+			Django QuerySet高效读取百万行数据
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-09-17T21:21:27&#43;08:00">2019-09-17</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/django/" rel="category">Django</a>
+	</span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 291 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		How to fetch millions of rows from DataBase by Django Queryset in a memory efficient way? Below is a solution that chunks the QuerySets so they&rsquo;re only keeping a small subset in memory.While this is somewhat heavier on the database (multiple queries) it seriously reduces the memory usage. Example import gc def lazy_fetch_iterator(table, start_pk=0, chunk_size=1000, *args, **kwargs): &quot;&quot;&quot; Get the entire rows of a table by iterating over Django QuerySets
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/09/17/django-fetch-huge-data-by-queryset/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/2019/09/16/django-queryset-cache-and-iterator/" rel="bookmark">
 			Django QuerySet缓存和迭代器
 			</a>
@@ -635,33 +662,6 @@ if (!doNotTrack) {
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2019/02/23/investment-of-oil/">Read more…</a>
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2019/01/18/school-district-house-paradox/" rel="bookmark">
-			学区房悖论
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-01-18T10:36:31&#43;08:00">2019-01-18</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
-	</span>
-</div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1166 words</span>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		学区房悖论 买学区房是为了孩子好好学习，最好以后能考上清北，但是考上清北的，大多数毕业了还是买不起学区房。 从投资的角度看，读书就是一种投资。学
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2019/01/18/school-district-house-paradox/">Read more…</a>
-	</div>
 </article>
 </main>
 
@@ -687,6 +687,7 @@ if (!doNotTrack) {
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2020/05/02/shopee-and-it-companies-from-china/">Shopee与中国互联网公司的恩怨情仇</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/04/26/investment-tips-of-duan-yong-ping/">段永平投资语录</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/04/11/go-tcp-server/">Go TCP Server示例</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2020/03/29/benefit-from-reading/">读书的功利之用</a></li>
@@ -701,7 +702,6 @@ if (!doNotTrack) {
 			<li class="widget__item"><a class="widget__link" href="/2019/12/10/python-generate-random-password/">Python生成随机密码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2019/12/04/python-requests-http-connection-pool/">Python Http连接池</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2019/12/04/python-function-return-value/">Python函数返回值设计</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2019/11/30/working-in-shopee/">在Shopee工作是怎样一种体验?</a></li>
 		</ul>
 	</div>
 </div>
@@ -715,7 +715,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/django/" title="Django">Django (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/education/" title="Education">Education (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/flask/" title="Flask">Flask (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/http/" title="HTTP">HTTP (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="Hugo">Hugo (3)</a>
@@ -727,7 +727,7 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/other/" title="Other">Other (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="Python">Python (13)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/reading/" title="reading">reading (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/shopee/" title="Shopee">Shopee (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/shopee/" title="shopee">shopee (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/thrift/" title="Thrift">Thrift (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/tools/" title="tools">tools (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn/" title="VPN">VPN (1)</a>

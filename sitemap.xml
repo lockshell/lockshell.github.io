@@ -4,13 +4,36 @@
   
   <url>
     <loc>https://lockshell.com/categories/</loc>
-    <lastmod>2020-04-26T09:51:19+08:00</lastmod>
+    <lastmod>2020-05-02T19:08:44+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://lockshell.com/2020/05/02/shopee-and-it-companies-from-china/</loc>
+    <lastmod>2020-05-02T19:08:44+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://lockshell.com/tags/</loc>
-    <lastmod>2020-04-26T09:51:19+08:00</lastmod>
+    <lastmod>2020-05-02T19:08:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/shopee/</loc>
+    <lastmod>2020-05-02T19:08:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</loc>
+    <lastmod>2020-05-02T19:08:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/</loc>
+    <lastmod>2020-05-02T19:08:44+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -29,12 +52,6 @@
   <url>
     <loc>https://lockshell.com/2020/04/26/investment-tips-of-duan-yong-ping/</loc>
     <lastmod>2020-04-26T09:51:19+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/</loc>
-    <lastmod>2020-04-26T09:51:19+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -72,12 +89,6 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</loc>
-    <lastmod>2020-03-29T09:05:24+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://lockshell.com/2020/03/29/benefit-from-reading/</loc>
     <lastmod>2020-03-29T09:05:24+08:00</lastmod>
   </url>
@@ -98,14 +109,14 @@
   </url>
   
   <url>
-    <loc>https://lockshell.com/tags/git/</loc>
+    <loc>https://lockshell.com/2020/02/14/mutiple-github-accout-on-mac/</loc>
     <lastmod>2020-02-14T23:07:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lockshell.com/2020/02/14/mutiple-github-accout-on-mac/</loc>
+    <loc>https://lockshell.com/tags/git/</loc>
     <lastmod>2020-02-14T23:07:57+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -211,12 +222,6 @@
   
   <url>
     <loc>https://lockshell.com/tags/career/</loc>
-    <lastmod>2019-11-30T17:46:55+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/shopee/</loc>
     <lastmod>2019-11-30T17:46:55+08:00</lastmod>
     <priority>0</priority>
   </url>
