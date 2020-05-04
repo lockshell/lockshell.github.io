@@ -6,10 +6,19 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 02 May 2020 19:08:44 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2020 23:37:00 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>股票交易策略</title>
+      <link>https://lockshell.com/2020/05/02/stock-trade-rules/</link>
+      <pubDate>Sat, 02 May 2020 23:37:00 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/05/02/stock-trade-rules/</guid>
+      <description>风险意识 无风险的投资是不存在的 4%-20%，收益率会在这个附近波动；过高的必是陷阱（P2P） 余额宝: 3% risk free: 5年期国债4% 巴菲特50年平均年化</description>
+    </item>
     
     <item>
       <title>Shopee与中国互联网公司的恩怨情仇</title>
@@ -26,7 +35,7 @@
       <pubDate>Sun, 26 Apr 2020 09:51:19 +0800</pubDate>
       
       <guid>https://lockshell.com/2020/04/26/investment-tips-of-duan-yong-ping/</guid>
-      <description>有所不为 不借钱 反正你借不借钱一生当中都会失去无穷机会的，但借钱可能会让你再也没机会了。 要对自己有信心，未来还会有的是机会的，不要因为一次错误</description>
+      <description>有所不为 不借钱 我们也不负债。负债的好处是可以发展快些。不负债的好处是可以活得长些。反正你借不借钱一生当中都会失去无穷机会的，但借钱可能会让你</description>
     </item>
     
     <item>
@@ -99,15 +108,6 @@
       
       <guid>https://lockshell.com/2020/02/12/speech-of-chinese-teacher-from-chengdu-7th-middle-school/</guid>
       <description>成都七中网校高三年级学生昨天开课，这是语文老师的开学致辞。 林荫校区的同学们，高新校区的同学们，网校的同学们：你们好！在这个非常时期，我很荣幸</description>
-    </item>
-    
-    <item>
-      <title>投资收益与风险</title>
-      <link>https://lockshell.com/2020/01/12/investment-income-and-risk/</link>
-      <pubDate>Sun, 12 Jan 2020 10:56:24 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2020/01/12/investment-income-and-risk/</guid>
-      <description>近两年很多P2P暴雷，不少投资者血本无归。 一方面是平台和监管不规范，让不法分子有机可乘；另一方面投资者自己也缺乏常识，被眼前的高收益蒙蔽的双</description>
     </item>
     
     <item>
@@ -323,7 +323,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了55篇日志，继续加油哦！ 2020-05 2020-05-02 Shopee与中国互联网公司的恩怨情仇 2020-04 2020-04-26 段永平投资语录 2020-04-11 Go TCP Server示例 2020-03 2020-03-29 读书的功利之用 2020-03-20</description>
+      <description>很好，总共写了53篇日志，继续加油哦！ 2020-05 2020-05-02 股票交易策略 2020-05-02 Shopee与中国互联网公司的恩怨情仇 2020-04 2020-04-26 段永平投资语录 2020-04-11 Go TCP Server示例 2020-03 2020-03-29 读</description>
     </item>
     
     <item>
@@ -377,24 +377,6 @@
       
       <guid>https://lockshell.com/2019/03/28/career-planning/</guid>
       <description>记得大学刚毕业那会，周围很多同学包括我自己，都开始变得迷茫和彷徨。当初雄纠纠气昂昂跨进社会的时候，对前方可能会遇到的绞肉机般的残酷与艰辛多少</description>
-    </item>
-    
-    <item>
-      <title>慢慢变富</title>
-      <link>https://lockshell.com/2019/03/15/getting-rich-slowly/</link>
-      <pubDate>Fri, 15 Mar 2019 13:13:47 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/03/15/getting-rich-slowly/</guid>
-      <description>没有人愿意慢慢变富。 在2000年的一个早上，杰夫·贝佐斯给巴菲特打电话，问巴菲特：“你的投资体系这么简单，为什么你是全世界第二富有的人，别人</description>
-    </item>
-    
-    <item>
-      <title>港股各券商打新费用对比</title>
-      <link>https://lockshell.com/2019/03/01/investment-fee-of-hk-ipo/</link>
-      <pubDate>Fri, 01 Mar 2019 18:13:50 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/03/01/investment-fee-of-hk-ipo/</guid>
-      <description>参与过港股打新的投资者都知道，港股比较照顾小散，经常申购1手都能中签，还可以多账户一手打新来提高中签率。港股打新&amp;rdquo;摩擦&amp;rdqu</description>
     </item>
     
     <item>
