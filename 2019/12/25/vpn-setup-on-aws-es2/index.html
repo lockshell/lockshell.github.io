@@ -120,7 +120,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2497 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2530 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -154,7 +154,7 @@ if (!doNotTrack) {
 <ul>
 <li><a href="#安装v2ray">安装v2ray</a></li>
 <li><a href="#配置v2ray">配置v2ray</a></li>
-<li><a href="#配置nginx">配置Nginx</a></li>
+<li><a href="#配置nginx代理">配置Nginx代理</a></li>
 <li><a href="#配置ssl">配置SSL</a></li>
 <li><a href="#配置v2ray客户端">配置v2ray客户端</a></li>
 </ul></li>
@@ -313,8 +313,6 @@ sudo pip install shadowsocks
 <h3 id="安装v2ray">安装v2ray</h3>
 
 <pre><code class="language-shell">bash &lt;(curl -L -s https://install.direct/go.sh) # 直接使用脚本
-service v2ray start # 启动
-vim /etc/v2ray/config.json # 修改配置文件
 </code></pre>
 
 <p>此脚本会自动安装以下文件：</p>
@@ -325,13 +323,6 @@ vim /etc/v2ray/config.json # 修改配置文件
 <li>/etc/v2ray/config.json：配置文件；</li>
 <li>/usr/bin/v2ray/geoip.dat：IP 数据文件</li>
 <li>/usr/bin/v2ray/geosite.dat：域名数据文件 此脚本会配置自动运行脚本。自动运行脚本会在系统重启之后，自动运行 V2Ray。目前自动运行脚本只支持带有 Systemd 的系统，以及 Debian / Ubuntu 全系列。</li>
-</ul>
-
-<p>运行脚本位于系统的以下位置：</p>
-
-<ul>
-<li>/etc/systemd/system/v2ray.service: Systemd</li>
-<li>/etc/init.d/v2ray: SysV</li>
 </ul>
 
 <p>脚本运行完成后，你需要：</p>
@@ -381,39 +372,11 @@ vim /etc/v2ray/config.json # 修改配置文件
       &quot;settings&quot;: {},
       &quot;tag&quot;: &quot;blocked&quot;
     }
-  ],
-  &quot;routing&quot;: {
-    &quot;strategy&quot;: &quot;rules&quot;,
-    &quot;settings&quot;: {
-      &quot;rules&quot;: [
-        {
-          &quot;type&quot;: &quot;field&quot;,
-          &quot;ip&quot;: [
-            &quot;0.0.0.0/8&quot;,
-            &quot;10.0.0.0/8&quot;,
-            &quot;100.64.0.0/10&quot;,
-            &quot;127.0.0.0/8&quot;,
-            &quot;169.254.0.0/16&quot;,
-            &quot;172.16.0.0/12&quot;,
-            &quot;192.0.0.0/24&quot;,
-            &quot;192.0.2.0/24&quot;,
-            &quot;192.168.0.0/16&quot;,
-            &quot;198.18.0.0/15&quot;,
-            &quot;198.51.100.0/24&quot;,
-            &quot;203.0.113.0/24&quot;,
-            &quot;::1/128&quot;,
-            &quot;fc00::/7&quot;,
-            &quot;fe80::/10&quot;
-          ],
-          &quot;outboundTag&quot;: &quot;blocked&quot;
-        }
-      ]
-    }
-  }
+  ]
 }
 </code></pre>
 
-<h3 id="配置nginx">配置Nginx</h3>
+<h3 id="配置nginx代理">配置Nginx代理</h3>
 
 <pre><code>server {
     # SSL configuration
@@ -431,7 +394,7 @@ vim /etc/v2ray/config.json # 修改配置文件
  
     location /ray { #/ray 路径需要和v2ray服务器端，客户端保持一致
         proxy_redirect off;
-        proxy_pass http://127.0.0.1:8081; #此IP地址和端口需要和v2ray服务器保持一致，
+        proxy_pass http://127.0.0.1:8080; #此IP地址和端口需要和v2ray服务器保持一致，
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection &quot;upgrade&quot;;
@@ -448,6 +411,8 @@ vim /etc/v2ray/config.json # 修改配置文件
 
 <pre><code class="language-shell">0 0 15 */3 * /root/certbot/certbot-auto renew  # 在3，6，9，12月份的15号零点零分执行更新
 </code></pre>
+
+<p>如果觉得Nginx+SSL的配置组合比较麻烦，可以考虑使用Caddy作为Proxy，省去的生成和配置SSL证书的步骤。- <a href="https://lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/">在AWS EC2上搭建V2ray+Caddy代理</a></p>
 
 <h3 id="配置v2ray客户端">配置v2ray客户端</h3>
 
@@ -550,9 +515,26 @@ vim /etc/v2ray/config.json # 修改配置文件
 }
 </code></pre>
 
-<p>填上你设置的对应数据，如服务器ip、端口、UUID（服务端和客户端必须一致），加密方式一般为aes-128-gcm，协议为ws，伪装域名留空，路径为/ray，开启tls和不安全传输，设置完保存。</p>
+<p>如果在Window下使用，建议使用V2rayN客户端</p>
 
-<p>右键V2RayN的系统栏小图标，点击启用Http代理，Http代理模式选择第二个PAC模式，最后再打开V2RayN软件面板，在检查更新里选择更新PAC。</p>
+<ul>
+<li>填上你设置的对应数据，如服务器地址、端口</li>
+<li>UUID alterId（服务端和客户端必须一致)</li>
+<li>加密方式一般为aes-128-gcm</li>
+<li>协议为ws</li>
+<li>伪装域名留空</li>
+<li>路径为 /ray</li>
+<li>开启tls和不安全传输</li>
+</ul>
+
+<p>设置完保存。</p>
+
+<ul>
+<li>右键V2RayN的系统栏小图标</li>
+<li>点击启用Http代理</li>
+<li>Http代理模式选择第二个PAC模式</li>
+<li>最后再打开V2RayN软件面板，在检查更新里选择更新PAC</li>
+</ul>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
