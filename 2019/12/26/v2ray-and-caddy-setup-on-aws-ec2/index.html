@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>在AWS EC2上搭建V2ray&#43;Caddy代理 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="V2ray and Caddy proxy Setup on Aws Ec2">
+	<meta name="description" content="V2ray and Caddy2 proxy Setup on Aws Ec2">
 	<meta property="og:title" content="在AWS EC2上搭建V2ray&#43;Caddy代理" />
-<meta property="og:description" content="V2ray and Caddy proxy Setup on Aws Ec2" />
+<meta property="og:description" content="V2ray and Caddy2 proxy Setup on Aws Ec2" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/" />
 <meta property="article:published_time" content="2019-12-26T10:30:37&#43;08:00"/>
@@ -16,7 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="在AWS EC2上搭建V2ray&#43;Caddy代理"/>
-<meta name="twitter:description" content="V2ray and Caddy proxy Setup on Aws Ec2"/>
+<meta name="twitter:description" content="V2ray and Caddy2 proxy Setup on Aws Ec2"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -120,7 +120,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1443 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2019 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -138,6 +138,7 @@ if (!doNotTrack) {
 <li><a href="#启动v2ray">启动V2ray</a></li>
 <li><a href="#服务端配置">服务端配置</a></li>
 <li><a href="#客户端配置">客户端配置</a></li>
+<li><a href="#客户端运行">客户端运行</a></li>
 </ul></li>
 <li><a href="#配置代理">配置代理</a>
 <ul>
@@ -145,6 +146,7 @@ if (!doNotTrack) {
 <li><a href="#安装caddy">安装Caddy</a></li>
 <li><a href="#配置caddy">配置Caddy</a></li>
 <li><a href="#启动caddy">启动Caddy</a></li>
+<li><a href="#检查证书">检查证书</a></li>
 <li><a href="#更新客户端配置">更新客户端配置</a></li>
 </ul></li>
 </ul></li>
@@ -203,10 +205,12 @@ if (!doNotTrack) {
 
 <p>修改完成后要运行<code>service v2ray restart</code>重启 V2Ray，才会使修改的配置生效。</p>
 
-<pre><code class="language-json">{
+<p>启动后，V2ray会以 Vmess + WS 方式监听 8888 端口。</p>
+
+<pre><code>{
     &quot;inbound&quot;: {
-        &quot;port&quot;: 8888,
-        &quot;listen&quot;: &quot;127.0.0.1&quot;,
+        &quot;port&quot;: 8888, // 服务器监听端口
+        &quot;listen&quot;: &quot;127.0.0.1&quot;, // 只监听 127.0.0.1，避免除本机外的机器探测到开放了8888端口 
         &quot;protocol&quot;: &quot;vmess&quot;,
         &quot;settings&quot;: {
             &quot;clients&quot;: [
@@ -217,14 +221,14 @@ if (!doNotTrack) {
             ]
         },
         &quot;streamSettings&quot;: {
-            &quot;network&quot;: &quot;ws&quot;,
+            &quot;network&quot;: &quot;ws&quot;, // WebSocket 方式
             &quot;wsSettings&quot;: {
                 &quot;path&quot;: &quot;/ray&quot;
             }
         }
     },
     &quot;outbound&quot;: {
-        &quot;protocol&quot;: &quot;freedom&quot;,
+        &quot;protocol&quot;: &quot;freedom&quot;, // 主传出协议 这里是直接转发所以流量
         &quot;settings&quot;: {}
     }
 }
@@ -234,7 +238,7 @@ if (!doNotTrack) {
 
 <p>将客户端的 config.json 文件修改成下面的内容，修改完成后要重启 V2Ray 才会使修改的配置生效。</p>
 
-<pre><code class="language-json">{
+<pre><code>{
   &quot;inbounds&quot;: [
     {
       &quot;port&quot;: 1080, // 本地监听端口
@@ -266,7 +270,6 @@ if (!doNotTrack) {
         ],
         &quot;streamSettings&quot;: {
           &quot;network&quot;: &quot;ws&quot;,
-          &quot;security&quot;: &quot;tls&quot;,
           &quot;wsSettings&quot;: {
             &quot;path&quot;: &quot;/ray&quot;
           }
@@ -277,15 +280,30 @@ if (!doNotTrack) {
 }
 </code></pre>
 
+<h3 id="客户端运行">客户端运行</h3>
+
+<ul>
+<li>在 Windows 和 macOS 中，配置文件通常是 V2Ray 同目录下的 config.json 文件。直接运行 v2ray 或 v2ray.exe 即可。</li>
+<li>在 Linux 中，配置文件通常位于 /etc/v2ray/config.json 文件。运行 v2ray &ndash;config=/etc/v2ray/config.json，或使用 systemd 等工具把 V2Ray 作为服务在后台运行。</li>
+</ul>
+
 <h2 id="配置代理">配置代理</h2>
 
 <h3 id="为啥选caddy">为啥选Caddy</h3>
 
-<p>完成前面的配置后，V2ray就基本可以使用了，但依然不够安全，存在被封的风险。WALL不知道你做了什么，但知道你使用加密协议在访问外网。通常的做法是将V2ray放在Nginx或Caddy代理的后面，伪装成普通http服务。</p>
+<p>完成前面V2Ray + Websocket 模式的配置后，V2ray就基本可以正常使用了，但依然不够安全，存在被封的风险。WALL不知道你做了什么，但知道你使用加密协议在访问外网。通常的做法是将V2ray放在Nginx或Caddy或Apache代理的后面，伪装成普通http服务。</p>
 
 <p>目前 Vmess + WebSocket + TLS （以下简称 wss）方式，因其特征如同 HTTPS 流量，可以隐藏 V2Ray 路径，主动侦测会得到正常 HTTP 网站响应，具有良好的伪装能力，目前被广泛用于反审查。</p>
 
-<p>Nginx需要手动生成一个SSL证书，添加到配置里。Caddy不需要（它能自动生成一个证书），我们选择更简单的Caddy。</p>
+<ul>
+<li>使用 Nginx/Caddy/Apache 是因为 VPS 已经有 Nginx/Caddy/Apache 可以将 V2Ray 稍作隐藏</li>
+<li>使用 WebSocket 是因为搭配 Nginx/Caddy/Apache 只能用 WebSocket</li>
+<li>使用 TLS 是因为可以流量加密，看起来更像 HTTPS</li>
+<li>使用 TLS 需要使用域名和证书</li>
+<li>域名需要添加A记录，将域名解析到Caddy所在的服务器</li>
+</ul>
+
+<p>Nginx需要手动生成一个SSL证书，添加到配置里。Caddy 会自动申请证书并自动更新，所以使用 Caddy 不用指定证书、密钥。我们选择更简单的Caddy。</p>
 
 <h3 id="安装caddy">安装Caddy</h3>
 
@@ -300,11 +318,12 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 
 <h3 id="配置caddy">配置Caddy</h3>
 
-<p>新建一个Caddyfile，添加如下内容</p>
+<p>新建一个Caddyfile，添加如下内容：</p>
 
 <pre><code>yourdomain.com:443 {
     log /home/ubuntu/caddy/access.log
-    reverse_proxy /ray localhost:9010 {
+    tls test@abc.com
+    reverse_proxy /ray localhost:8888 {
         header_up Host {http.request.host}
         header_up X-Real-IP {http.request.remote}
         header_up X-Forwarded-For {http.request.remote}
@@ -315,8 +334,10 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 </code></pre>
 
 <ul>
-<li>Caddy监听 443 端口，处理 TLS 之后，将流量交由 V2Ray 按 Vmess 处理。</li>
-<li>Caddy v1.x 和 v2.x 的配置文件是不兼容的，这里我们采用的是最新的v2。</li>
+<li>Caddy v1.x 和 v2.x 的配置文件是不兼容的，这里我们采用的是最新的v2</li>
+<li>Caddy监听 443 端口（可以是其他端口）</li>
+<li>Caddy处理 TLS 之后，将流量转发到 V2Ray 的 WebSocket 所监听的内网端口，本例是8888</li>
+<li>V2Ray收到请求后依然 按 Vmess 处理，V2ray服务器端不需要配置 TLS</li>
 </ul>
 
 <h3 id="启动caddy">启动Caddy</h3>
@@ -324,9 +345,16 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 <pre><code>sudo caddy run --config &amp;
 </code></pre>
 
+<h3 id="检查证书">检查证书</h3>
+
+<p>直接用浏览器访问这个地址，这里示例域名: yourdomain.com</p>
+
+<pre><code>https://crt.sh/?q=yourdomain.com
+</code></pre>
+
 <h3 id="更新客户端配置">更新客户端配置</h3>
 
-<pre><code class="language-json">{
+<pre><code>{
   &quot;inbounds&quot;: [
     {
       &quot;port&quot;: 1080, // 监听端口
@@ -349,7 +377,7 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
       &quot;settings&quot;: {
         &quot;vnext&quot;: [
           {
-            &quot;address&quot;: &quot;your_domain.com&quot;, // 服务器地址，请修改为你自己的服务器域名
+            &quot;address&quot;: &quot;yourdomain.com&quot;, // 服务器地址，请修改为你自己的服务器域名
             &quot;port&quot;: 443, // 服务器端口 443是https使用的端口
             &quot;users&quot;: [
               {
@@ -361,9 +389,9 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
         ],
         &quot;streamSettings&quot;: {
           &quot;network&quot;: &quot;ws&quot;,
-          &quot;security&quot;: &quot;tls&quot;,
+          &quot;security&quot;: &quot;tls&quot;, // 客户端的 security 要设置为 tls
           &quot;wsSettings&quot;: {
-            &quot;path&quot;: &quot;/ray&quot;
+            &quot;path&quot;: &quot;/ray&quot; // 注意：对于 V2Ray，/ray 和 /ray/ 是不一样的
           }
         }
       }
@@ -372,11 +400,20 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 }
 </code></pre>
 
-<p>新的配置修改了2个地方：</p>
+<p>新的配置修改了3个地方：</p>
 
 <ul>
-<li>address：ip -&gt; your_domain，把ip修改为你的域名</li>
+<li>address：ip -&gt; your_domain，把ip修改为你的域名，tls需要使用域名</li>
 <li>port：8888 -&gt; 443，443是https使用的端口，也是Caddy监听的端口</li>
+<li>streamSettings添加 <code>&quot;security&quot;: &quot;tls&quot;</code>；服务端不用配，是因为tls交给Caddy处理了</li>
+</ul>
+
+<p>注意：</p>
+
+<ul>
+<li>开启了 TLS 之后 path 参数是被加密的，WALL看不到</li>
+<li>主动探测一个 path 产生 Bad request 不能证明是 V2Ray</li>
+<li>使用 Header 分流并不比 path 安全，不要迷信 (不懂，反正教程里这么说的)</li>
 </ul>
 
 <p>然后重启V2ray客户端，这样访问代理的流量就跟访问普通网站一样，比较难以被WALL检查出来了。</p>
