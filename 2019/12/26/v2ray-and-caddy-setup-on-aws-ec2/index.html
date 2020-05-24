@@ -120,7 +120,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1429 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1443 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -317,7 +317,7 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 
 <ul>
 <li>Caddy监听 443 端口，处理 TLS 之后，将流量交由 V2Ray 按 Vmess 处理。</li>
-<li>Caddy v1.x 和 v2.x 的配置文件是不兼容的，这里我们才用的是最新的v2</li>
+<li>Caddy v1.x 和 v2.x 的配置文件是不兼容的，这里我们采用的是最新的v2。</li>
 </ul>
 
 <h3 id="启动caddy">启动Caddy</h3>
@@ -377,7 +377,7 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 
 <ul>
 <li>address：ip -&gt; your_domain，把ip修改为你的域名</li>
-<li>port：8888 -&gt; 443， 443是https使用的端口</li>
+<li>port：8888 -&gt; 443，443是https使用的端口，也是Caddy监听的端口</li>
 </ul>
 
 <p>然后重启V2ray客户端，这样访问代理的流量就跟访问普通网站一样，比较难以被WALL检查出来了。</p>
