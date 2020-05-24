@@ -120,7 +120,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2019 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2138 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -293,17 +293,16 @@ if (!doNotTrack) {
 
 <p>完成前面V2Ray + Websocket 模式的配置后，V2ray就基本可以正常使用了，但依然不够安全，存在被封的风险。WALL不知道你做了什么，但知道你使用加密协议在访问外网。通常的做法是将V2ray放在Nginx或Caddy或Apache代理的后面，伪装成普通http服务。</p>
 
-<p>目前 Vmess + WebSocket + TLS （以下简称 wss）方式，因其特征如同 HTTPS 流量，可以隐藏 V2Ray 路径，主动侦测会得到正常 HTTP 网站响应，具有良好的伪装能力，目前被广泛用于反审查。</p>
+<p>目前比较流行的是 Vmess + WebSocket + TLS （以下简称 wss）方式，WSS三件套的思路其实就是，本地v2ray客户端出口(outBound)访问代理服务器，然后通过代理服务器将请求转发到服务端的v2ray入口(inBound)。由于使用TLS协议加密，且整个过程看起来就是普通的https请求，降低被WALL的几率。</p>
 
 <ul>
 <li>使用 Nginx/Caddy/Apache 是因为 VPS 已经有 Nginx/Caddy/Apache 可以将 V2Ray 稍作隐藏</li>
 <li>使用 WebSocket 是因为搭配 Nginx/Caddy/Apache 只能用 WebSocket</li>
 <li>使用 TLS 是因为可以流量加密，看起来更像 HTTPS</li>
-<li>使用 TLS 需要使用域名和证书</li>
-<li>域名需要添加A记录，将域名解析到Caddy所在的服务器</li>
+<li>使用域名是因为 TLS 需要使用域名和证书，域名需要添加A记录，将域名解析到Caddy所在的服务器</li>
 </ul>
 
-<p>Nginx需要手动生成一个SSL证书，添加到配置里。Caddy 会自动申请证书并自动更新，所以使用 Caddy 不用指定证书、密钥。我们选择更简单的Caddy。</p>
+<p>Nginx需要手动生成一个SSL证书，添加到配置里。Caddy 会自动申请证书并自动更新，所以使用 Caddy 不用指定证书、密钥。我们选择更简单的 Caddy。</p>
 
 <h3 id="安装caddy">安装Caddy</h3>
 
@@ -411,6 +410,7 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 <p>注意：</p>
 
 <ul>
+<li>我们的客户端现在对接的是caddy了，端口啥的都要和caddy配置文件对应</li>
 <li>开启了 TLS 之后 path 参数是被加密的，WALL看不到</li>
 <li>主动探测一个 path 产生 Bad request 不能证明是 V2Ray</li>
 <li>使用 Header 分流并不比 path 安全，不要迷信 (不懂，反正教程里这么说的)</li>
