@@ -134,8 +134,8 @@ if (!doNotTrack) {
 <li><a href="#配置v2ray">配置V2ray</a>
 <ul>
 <li><a href="#v2ray安装">V2ray安装</a></li>
-<li><a href="#启动v2ray">启动V2ray</a></li>
 <li><a href="#修改配置">修改配置</a></li>
+<li><a href="#启动v2ray">启动V2ray</a></li>
 <li><a href="#服务端配置">服务端配置</a></li>
 <li><a href="#客户端配置">客户端配置</a></li>
 </ul></li>
@@ -181,21 +181,27 @@ if (!doNotTrack) {
 <li>/usr/bin/v2ray/geosite.dat：域名数据文件 此脚本会配置自动运行脚本。<br>自动运行脚本会在系统重启之后，自动运行 V2Ray。目前自动运行脚本只支持带有 Systemd 的系统，以及 Debian / Ubuntu 全系列。</li>
 </ul>
 
+<h3 id="修改配置">修改配置</h3>
+
+<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式。</p>
+
+<pre><code>vim /etc/v2ray/config.json 
+</code></pre>
+
 <h3 id="启动v2ray">启动V2ray</h3>
 
 <pre><code>service v2ray start
 </code></pre>
 
-<h3 id="修改配置">修改配置</h3>
-
-<pre><code>vim /etc/v2ray/config.json 
-</code></pre>
+<ul>
+<li>之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行</li>
+</ul>
 
 <h3 id="服务端配置">服务端配置</h3>
 
 <p>将服务器 /etc/v2ray/config.json 文件修改成下面的内容。这里是一个最基本的服务端配置，我们尽量保持简单，太复杂的东西总是难以维护，最后就放弃了。</p>
 
-<p>修改完成后要运行<code>service v2ray start</code>重启 V2Ray，才会使修改的配置生效。</p>
+<p>修改完成后要运行<code>service v2ray restart</code>重启 V2Ray，才会使修改的配置生效。</p>
 
 <pre><code class="language-json">{
     &quot;inbound&quot;: {
@@ -223,13 +229,6 @@ if (!doNotTrack) {
     }
 }
 </code></pre>
-
-<p>配置完成后：</p>
-
-<ul>
-<li>运行 service v2ray restart 来重新启动 V2Ray 进程</li>
-<li>之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行</li>
-</ul>
 
 <h3 id="客户端配置">客户端配置</h3>
 
