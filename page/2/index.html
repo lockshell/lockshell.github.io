@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.55.6" />
+	<meta name="generator" content="Hugo 0.71.0" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,8 +12,7 @@
 <meta property="og:description" content="Python,Django,MySQL,程序员,博客,思考,编程,投资,invest" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://lockshell.com/" />
-
-<meta property="og:updated_time" content="2020-05-02T23:37:00&#43;08:00"/>
+<meta property="og:updated_time" content="2020-03-29T13:38:32+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="络壳 LockShell"/>
@@ -153,11 +152,11 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/django/" rel="category">Django</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 291 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 296 words</span>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		How to fetch millions of rows from DataBase by Django Queryset in a memory efficient way? Below is a solution that chunks the QuerySets so they&rsquo;re only keeping a small subset in memory.While this is somewhat heavier on the database (multiple queries) it seriously reduces the memory usage. Example import gc def lazy_fetch_iterator(table, start_pk=0, chunk_size=1000, *args, **kwargs): &quot;&quot;&quot; Get the entire rows of a table by iterating over Django QuerySets
+		How to fetch millions of rows from DataBase by Django Queryset in a memory efficient way? Below is a solution that chunks the QuerySets so they&rsquo;re only keeping a small subset in memory. While this is somewhat heavier on the database (multiple queries) it seriously reduces the memory usage. Example import gc def lazy_fetch_iterator(table, start_pk=0, chunk_size=1000, *args, **kwargs): &#34;&#34;&#34; Get the entire rows of a table by iterating over Django
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2019/09/17/django-fetch-huge-data-by-queryset/">Read more…</a>
@@ -180,7 +179,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/django/" rel="category">Django</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 527 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 535 words</span>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
@@ -238,7 +237,7 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		数据库长连接 长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销。 先看看官方文档是怎么讲Djan
+		数据库长连接 长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销。先看看官方文档是怎么讲Djan
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2019/08/28/django-db-connection-pool/">Read more…</a>
@@ -265,7 +264,7 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		为了解决单个数据库的性能问题，除了使用性能更好的硬件之外，另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的
+		为了解决单个数据库的性能问题，除了使用性能更好的硬件之外， 另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2019/08/26/django-database-partition/">Read more…</a>
@@ -315,11 +314,11 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1862 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1868 words</span>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		基本思路 首先是如何定位性能瓶颈？ 一般使用show命令、慢查询日志、explain、profiling等进行分析。 当服务器的负载增加时，使用S
+		基本思路 **首先是如何定位性能瓶颈？**一般使用show命令、慢查询日志、explain、profiling等进行分析。 当服务器的负载增加时
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2019/08/23/mysql-optimization-of-backend/">Read more…</a>
@@ -400,7 +399,7 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。域名解析就是域名到IP地址的转换过程。域名的解析工作由
+		IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。 域名解析就是域名到IP地址的转换过程。 域名的解析工作由
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2019/08/18/how-to-find-dns-ip/">Read more…</a>
@@ -427,7 +426,7 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		现在互联网用到的很多技术都相当成熟了。不必高估技术，技术是为业务服务的，认清自己作为研发人员在公司的位置。比如小米号称黑科技、为发烧而生，实
+		现在互联网用到的很多技术都相当成熟了。不必高估技术，技术是为业务服务的，认清自己作为研发人员在公司的位置。 比如小米号称黑科技、为发烧而生，实
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2019/08/13/programmer-self-discipline/">Read more…</a>
@@ -450,7 +449,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/nginx/" rel="category">Nginx</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 362 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 363 words</span>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
@@ -477,13 +476,14 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/hugo/" rel="category">Hugo</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 351 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 354 words</span>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><code>Gitalk</code> is a comment plug based on Github issue api.<code>Hugo</code> can compile the Markdown files with themes and templates into static web files, such as CSS, HTML and JavaScript.</p>
-
-<p>To use <code>Gitalk</code> in the <code>Hugo</code> blog, we need to add Gitalk related code as <code>&lt;div&gt;</code> into the HTML template.Then update the config.toml for <code>Gitalk</code>.</p>
+		<p><code>Gitalk</code> is a comment plug based on Github issue api.
+<code>Hugo</code> can compile the Markdown files with themes and templates into static web files, such as CSS, HTML and JavaScript.</p>
+<p>To use <code>Gitalk</code> in the <code>Hugo</code> blog, we need to add Gitalk related code as <code>&lt;div&gt;</code> into the HTML template.
+Then update the config.toml for <code>Gitalk</code>.</p>
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2019/08/10/add-gitalk-for-hugo-blog/">Read more…</a>
@@ -538,7 +538,6 @@ if (!doNotTrack) {
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>There is an interesting api on <a href="https://ghchart.rshah.org/">https://ghchart.rshah.org/</a></p>
-
 <p>It can display your Github chart information as an image.</p>
 	</div>
 	<div class="list__footer clearfix">
@@ -566,7 +565,7 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		记得大学刚毕业那会，周围很多同学包括我自己，都开始变得迷茫和彷徨。当初雄纠纠气昂昂跨进社会的时候，对前方可能会遇到的绞肉机般的残酷与艰辛多少
+		记得大学刚毕业那会，周围很多同学包括我自己，都开始变得迷茫和彷徨。 当初雄纠纠气昂昂跨进社会的时候，对前方可能会遇到的绞肉机般的残酷与艰辛多少
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2019/03/28/career-planning/">Read more…</a>
@@ -616,11 +615,11 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2/" rel="category">投资理财</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 701 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 698 words</span>
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		一切大宗品底价都是其采掘炼化成本。以原油为例： 美国原油开采商的盈利平衡成本对应的原油区间为47-55美元，美国页岩油成本为45至55美元。海
+		一切大宗品底价都是其采掘炼化成本。以原油为例： 美国原油开采商的盈利平衡成本对应的原油区间为47-55美元， 美国页岩油成本为45至55美元。 海
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2019/02/23/investment-of-oil/">Read more…</a>
@@ -647,7 +646,7 @@ if (!doNotTrack) {
 </div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		学区房悖论 买学区房是为了孩子好好学习，最好以后能考上清北，但是考上清北的，大多数毕业了还是买不起学区房。 从投资的角度看，读书就是一种投资。学
+		学区房悖论 买学区房是为了孩子好好学习，最好以后能考上清北，但是考上清北的，大多数毕业了还是买不起学区房。 从投资的角度看，读书就是一种投资。 学
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2019/01/18/school-district-house-paradox/">Read more…</a>
@@ -704,21 +703,21 @@ if (!doNotTrack) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/django/" title="Django">Django (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/education/" title="Education">Education (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/flask/" title="Flask">Flask (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/http/" title="HTTP">HTTP (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="Hugo">Hugo (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/invest/" title="invest">invest (7)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/life/" title="Life">Life (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/life/" title="life">life (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="MySQL">MySQL (5)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/other/" title="Other">Other (4)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="Python">Python (13)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/reading/" title="reading">reading (2)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/shopee/" title="Shopee">Shopee (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/shopee/" title="shopee">shopee (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/thrift/" title="Thrift">Thrift (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/tools/" title="tools">tools (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/tools/" title="Tools">Tools (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vpn/" title="VPN">VPN (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vps/" title="VPS">VPS (3)</a>
 	</div>

@@ -11,8 +11,8 @@
 <meta property="og:description" content="Setting Mutiple Github Accouts on Mac" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2020/02/14/mutiple-github-accout-on-mac/" />
-<meta property="article:published_time" content="2020-02-14T23:07:57&#43;08:00"/>
-<meta property="article:modified_time" content="2020-02-14T23:07:57&#43;08:00"/>
+<meta property="article:published_time" content="2020-02-14T23:07:57+08:00" />
+<meta property="article:modified_time" content="2020-02-14T23:07:57+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mac设置多个GitHub账号"/>
@@ -123,12 +123,9 @@ if (!doNotTrack) {
 <span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 354 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			
-
-<h2 id="为多个账号设置-ssh-keys">为多个账号设置 ssh keys</h2>
-
-<p>假定我们有两个账号，一个lockshell，一个zhangsan。分别用不同 github 账号对应的邮箱生成 ssh key，示例：</p>
-
+			<h2 id="为多个账号设置-ssh-keys">为多个账号设置 ssh keys</h2>
+<p>假定我们有两个账号，一个lockshell，一个zhangsan。
+分别用不同 github 账号对应的邮箱生成 ssh key，示例：</p>
 <pre><code>$ ssh-keygen -t rsa -C &quot;lockshell@foxmail.com&quot;
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/lockshell/.ssh/id_rsa): id_rsa_lockshell
@@ -138,18 +135,12 @@ $ ssh-keygen -t rsa -C &quot;zhangsan@xxx.com&quot;
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/lockshell/.ssh/id_rsa): id_rsa_zhangsan
 ...
-</code></pre>
-
-<h2 id="将公钥添加到对应的-github-账号">将公钥添加到对应的 github 账号</h2>
-
+</code></pre><h2 id="将公钥添加到对应的-github-账号">将公钥添加到对应的 github 账号</h2>
 <blockquote>
 <p>略</p>
 </blockquote>
-
 <h2 id="添加配置文件管理私钥">添加配置文件管理私钥</h2>
-
 <p>在<code>.ssh</code>目录下新建<code>config</code>文件，添加如下配置：</p>
-
 <pre><code>### Github
 Host lockshell
     HostName github.com
@@ -160,43 +151,30 @@ Host zhangsan
     HostName github.com
     User zhangsan
     IdentityFile ~/.ssh/id_rsa_zhangsan
-</code></pre>
-
-<h2 id="更新-identities">更新<code>Identities</code></h2>
-
+</code></pre><h2 id="更新identities">更新<code>Identities</code></h2>
 <h3 id="清除缓存">清除缓存</h3>
-
 <pre><code>$ ssh-add -D
 
 All identities removed.
-</code></pre>
-
-<h3 id="添加keys">添加keys</h3>
-
+</code></pre><h3 id="添加keys">添加keys</h3>
 <pre><code>$ ssh-add id_rsa_lockshell
 Identity added: id_rsa_lockshell (lockshell@foxmail.com)
-</code></pre>
-
-<h3 id="查看keys">查看keys</h3>
-
+</code></pre><h3 id="查看keys">查看keys</h3>
 <pre><code>$ ssh-add -l
 2048 SHA256:w0XXyh0hy/2yHSazwYerQ+8yKQ9LVxKWtEs3sl8RFq0 zhangsan@xxx.com (RSA)
 2048 SHA256:QgaUvrNlbuwm9B2yRLzc5/eug4VjQxoToh3E6U+xq58 lockshell@foxmail.com (RSA)
-</code></pre>
-
-<h3 id="测试key是否可用">测试key是否可用</h3>
-
+</code></pre><h3 id="测试key是否可用">测试key是否可用</h3>
 <pre><code>$ ssh -T git@github.com
 Warning: Permanently added the RSA host key for IP address '13.250.177.223' to the list of known hosts.
 Hi lockshell! You've successfully authenticated, but GitHub does not provide shell access.
-</code></pre>
-
-<h2 id="备注">备注</h2>
-
+</code></pre><h2 id="备注">备注</h2>
 <ul>
-<li><p>git clone git@github.com:lockshell/blog.git</p></li>
-
-<li><p>如果公司账号和GitHub账号使用不同的域名，当clone一个新 Repos 时，如果其 ssh 地址为 git@github.com:username/xxx.git，使用 git@company:username/xxx.git 即可</p></li>
+<li>
+<p>git clone <a href="mailto:git@github.com">git@github.com</a>:lockshell/blog.git</p>
+</li>
+<li>
+<p>如果公司账号和GitHub账号使用不同的域名，当clone一个新 Repos 时，如果其 ssh 地址为 <a href="mailto:git@github.com">git@github.com</a>:username/xxx.git，使用 git@company:username/xxx.git 即可</p>
+</li>
 </ul>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>

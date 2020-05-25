@@ -11,8 +11,8 @@
 <meta property="og:description" content="Nginx Security Configurations" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2019/08/12/nginx-security-configs/" />
-<meta property="article:published_time" content="2019-08-12T15:35:37&#43;08:00"/>
-<meta property="article:modified_time" content="2019-08-12T15:35:37&#43;08:00"/>
+<meta property="article:published_time" content="2019-08-12T15:35:37+08:00" />
+<meta property="article:modified_time" content="2019-08-12T15:35:37+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Nginx安全相关配置"/>
@@ -120,13 +120,11 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/nginx/" rel="category">Nginx</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 362 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 363 words</span>
 </div>
 		</header><div class="content post__content clearfix">
 			<p>A summary of Nginx security configuration.</p>
-
 <h3 id="limit-connections">Limit connections</h3>
-
 <pre><code>http {
     limit_conn_zone $binary_remote_addr zone=zclient:10m;
     limit_conn_zone $server_name zone=zserver:10m;
@@ -146,45 +144,29 @@ if (!doNotTrack) {
         access_log  /tmp/nginx_access.log  main;
     }
 }
-</code></pre>
-
-<p>The ngx_http_limit_conn_module module can limit a IP&rsquo;s connections.</p>
-
+</code></pre><p>The ngx_http_limit_conn_module module can limit a IP&rsquo;s connections.</p>
 <p>According to the config above, an IP can have 20 connections.</p>
-
-<p>The maximum connections number of the client is 20.Meanwhile, the maximum connections number of the server is 1000.</p>
-
-<h3 id="add-user-passwd-auth">Add user&amp;passwd auth</h3>
-
+<p>The maximum connections number of the client is 20.
+Meanwhile, the maximum connections number of the server is 1000.</p>
+<h3 id="add-userpasswd-auth">Add user&amp;passwd auth</h3>
 <pre><code>server {
     location / {
         auth_basic &quot;please input user&amp;passwd&quot;;
         auth_basic_user_file key/auth.key;
     }
 }
-</code></pre>
-
-<h3 id="add-blacklist-or-whitelist">Add blacklist or whitelist</h3>
-
+</code></pre><h3 id="add-blacklist-or-whitelist">Add blacklist or whitelist</h3>
 <pre><code>location /admin/ {
     allow   192.168.1.0/24;
     deny    all;
 }
-</code></pre>
-
-<p>Allow clients from 192.168.1.0/24 subnet to access.</p>
-
+</code></pre><p>Allow clients from 192.168.1.0/24 subnet to access.</p>
 <h3 id="limit-request-type">Limit request type</h3>
-
 <pre><code>if ($request_method !~ ^(GET|POST)$ ) {
     return 405;
 }
-</code></pre>
-
-<p><code>$request_method</code> can get the method of requests to Nginx, the configuration only allows the GET/POST methods&rsquo; access, other methods would return 405.</p>
-
+</code></pre><p><code>$request_method</code> can get the method of requests to Nginx, the configuration only allows the GET/POST methods&rsquo; access, other methods would return 405.</p>
 <h3 id="open-https">Open Https</h3>
-
 <pre><code>server {
     listen 443;
     server_name ops-coffee.cn;
@@ -195,40 +177,25 @@ if (!doNotTrack) {
     ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
     ssl_ciphers         HIGH:!aNULL:!MD5;
 }
-</code></pre>
-
-<h3 id="hide-version-info">Hide version info</h3>
-
+</code></pre><h3 id="hide-version-info">Hide version info</h3>
 <pre><code>http {
     server_tokens off;
 }
-</code></pre>
-
-<p>When there is security vulnerability in a version of the Nginx , hiding the nginx version info is one of the main security optimization ways, of course, the most important is to timely upgrade the vulnerability.</p>
-
+</code></pre><p>When there is security vulnerability in a version of the Nginx , hiding the nginx version info is one of the main security optimization ways, of course, the most important is to timely upgrade the vulnerability.</p>
 <h3 id="deny-user-agent">Deny user-agent</h3>
-
 <pre><code>if ($http_user_agent ~* LWP::Simple|BBBike|wget|curl) {
     return 444;
 }
-</code></pre>
-
-<p>Somebody may use <code>curl</code> or <code>wget</code> to scan our website, We can simply prevent it by denying the corresponding user-agent.</p>
-
+</code></pre><p>Somebody may use <code>curl</code> or <code>wget</code> to scan our website, We can simply prevent it by denying the corresponding user-agent.</p>
 <p>Nginx&rsquo;s 444 state is special. If you return 444, the client will not receive the information returned by the server, just like the website can&rsquo;t connect.</p>
-
 <h3 id="picture-anti-theft-link">Picture anti-theft link</h3>
-
 <pre><code>location /images/ {
     valid_referers none blocked www.lockshell.com lockshell.com;
     if ($invalid_referer) {
         return  403;
     }
 }
-</code></pre>
-
-<h3 id="set-buffer-size-and-timeout">Set buffer size and timeout</h3>
-
+</code></pre><h3 id="set-buffer-size-and-timeout">Set buffer size and timeout</h3>
 <pre><code>client_body_buffer_size  1K;
 client_header_buffer_size 1k;
 client_max_body_size 1k;
@@ -238,24 +205,13 @@ client_body_timeout   10;
 client_header_timeout 10;
 keepalive_timeout     5 5;
 send_timeout          10;
-</code></pre>
-
-<h3 id="set-strict-transport-security">Set Strict-Transport-Security</h3>
-
+</code></pre><h3 id="set-strict-transport-security">Set Strict-Transport-Security</h3>
 <pre><code>add_header Strict-Transport-Security &quot;max-age=31536000; includeSubDomains&quot;;
-</code></pre>
-
-<p>It will tell the browser to use HTTPS instead of HTTP to access the target site.</p>
-
+</code></pre><p>It will tell the browser to use HTTPS instead of HTTP to access the target site.</p>
 <h3 id="set-content-security-policy">Set Content-Security-Policy</h3>
-
 <pre><code>add_header Content-Security-Policy &quot;default-src 'self'&quot;;
-</code></pre>
-
-<p>It defines what resources can be loaded on the page.</p>
-
+</code></pre><p>It defines what resources can be loaded on the page.</p>
 <h3 id="prevent-xss-attack">Prevent XSS attack</h3>
-
 <pre><code>add_header X-Frame-Options &quot;SAMEORIGIN&quot;;
 add_header X-XSS-Protection &quot;1; mode=block&quot;;
 add_header X-Content-Type-Options &quot;nosniff&quot;;

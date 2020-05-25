@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>络壳 LockShell</title>
@@ -6,7 +6,7 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 02 May 2020 23:37:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2020 13:38:32 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -35,7 +35,7 @@
       <pubDate>Sun, 26 Apr 2020 09:51:19 +0800</pubDate>
       
       <guid>https://lockshell.com/2020/04/26/investment-tips-of-duan-yong-ping/</guid>
-      <description>有所不为 不借钱 我们也不负债。负债的好处是可以发展快些。不负债的好处是可以活得长些。反正你借不借钱一生当中都会失去无穷机会的，但借钱可能会让你</description>
+      <description>有所不为 不借钱 我们也不负债。负债的好处是可以发展快些。不负债的好处是可以活得长些。 反正你借不借钱一生当中都会失去无穷机会的，但借钱可能会让你</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Sat, 11 Apr 2020 21:26:43 +0800</pubDate>
       
       <guid>https://lockshell.com/2020/04/11/go-tcp-server/</guid>
-      <description>4月开始了Go语言的学习。 在五年的工作生涯中，主要用过C、Shell、Python、Java。体验过Java的臃肿，C的简陋，Python的</description>
+      <description>4月开始了Go语言的学习。 在五年的工作生涯中，主要用过C、Shell、Python、Java。 体验过Java的臃肿，C的简陋，Python的</description>
     </item>
     
     <item>
@@ -71,7 +71,7 @@
       <pubDate>Fri, 20 Mar 2020 21:24:50 +0800</pubDate>
       
       <guid>https://lockshell.com/2020/03/20/strategies-that-will-shake-up-the-way-you-invest/</guid>
-      <description>三月全球股指平均下降了25%，人们不禁感叹：熊市又来了。股市风雨飘摇，看看账上的余额，只有投资者自己清楚这熊有多大分量。 面对经济下行，央行放</description>
+      <description>三月全球股指平均下降了25%，人们不禁感叹：熊市又来了。 股市风雨飘摇，看看账上的余额，只有投资者自己清楚这熊有多大分量。 面对经济下行，央行放</description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@
       <pubDate>Sat, 14 Mar 2020 15:47:46 +0800</pubDate>
       
       <guid>https://lockshell.com/2020/03/14/reasons-of-loss-in-stock/</guid>
-      <description>最牛逼的投资者，如巴菲特，能从别人的错误和失败中学习。普通人能做到从自己犯的错误学习，已经难能可贵。&amp;ldquo;纸上得来终觉浅&amp;rdquo</description>
+      <description>最牛逼的投资者，如巴菲特，能从别人的错误和失败中学习。 普通人能做到从自己犯的错误学习，已经难能可贵。 &amp;ldquo;纸上得来终觉浅&amp;rdquo</description>
     </item>
     
     <item>
@@ -98,7 +98,7 @@
       <pubDate>Fri, 14 Feb 2020 23:07:57 +0800</pubDate>
       
       <guid>https://lockshell.com/2020/02/14/mutiple-github-accout-on-mac/</guid>
-      <description>为多个账号设置 ssh keys 假定我们有两个账号，一个lockshell，一个zhangsan。分别用不同 github 账号对应的邮箱生成 ssh key，示例： $ ssh-keygen -t rsa -C</description>
+      <description>为多个账号设置 ssh keys 假定我们有两个账号，一个lockshell，一个zhangsan。 分别用不同 github 账号对应的邮箱生成 ssh key，示例： $ ssh-keygen -t rsa -C</description>
     </item>
     
     <item>
@@ -107,7 +107,7 @@
       <pubDate>Wed, 12 Feb 2020 13:36:51 +0800</pubDate>
       
       <guid>https://lockshell.com/2020/02/12/speech-of-chinese-teacher-from-chengdu-7th-middle-school/</guid>
-      <description>成都七中网校高三年级学生昨天开课，这是语文老师的开学致辞。 林荫校区的同学们，高新校区的同学们，网校的同学们：你们好！在这个非常时期，我很荣幸</description>
+      <description>成都七中网校高三年级学生昨天开课，这是语文老师的开学致辞。 林荫校区的同学们，高新校区的同学们，网校的同学们： 你们好！ 在这个非常时期，我很荣幸</description>
     </item>
     
     <item>
@@ -152,7 +152,7 @@
       <pubDate>Wed, 04 Dec 2019 20:28:00 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/12/04/python-requests-http-connection-pool/</guid>
-      <description>HTTP是建立在TCP上面的，一次HTTP请求要经历TCP三次握手阶段，然后发送请求，得到相应数据，最后TCP断开连接。如果我们要发出多个H</description>
+      <description>HTTP是建立在TCP上面的，一次HTTP请求要经历TCP三次握手阶段，然后发送请求，得到相应数据，最后TCP断开连接。 如果我们要发出多个H</description>
     </item>
     
     <item>
@@ -188,7 +188,7 @@
       <pubDate>Sun, 27 Oct 2019 13:43:59 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/10/27/about-time/</guid>
-      <description>路上的时间 刚开始工作的时候，为了节省房租，有的人会住在离公司比较远的小区。这样算下来，房租加上交通费，一个月能省掉两三百块钱。但是，在这个思</description>
+      <description>路上的时间 刚开始工作的时候，为了节省房租，有的人会住在离公司比较远的小区。这样算下来，房租加上交通费，一个月能省掉两三百块钱。 但是，在这个思</description>
     </item>
     
     <item>
@@ -215,7 +215,7 @@
       <pubDate>Tue, 17 Sep 2019 21:21:27 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/09/17/django-fetch-huge-data-by-queryset/</guid>
-      <description>How to fetch millions of rows from DataBase by Django Queryset in a memory efficient way? Below is a solution that chunks the QuerySets so they&amp;rsquo;re only keeping a small subset in memory.While this is somewhat heavier on the database (multiple queries) it seriously reduces the memory usage. Example import gc def lazy_fetch_iterator(table, start_pk=0, chunk_size=1000, *args, **kwargs): &amp;quot;&amp;quot;&amp;quot; Get the entire rows of a table by iterating over Django QuerySets</description>
+      <description>How to fetch millions of rows from DataBase by Django Queryset in a memory efficient way? Below is a solution that chunks the QuerySets so they&amp;rsquo;re only keeping a small subset in memory. While this is somewhat heavier on the database (multiple queries) it seriously reduces the memory usage. Example import gc def lazy_fetch_iterator(table, start_pk=0, chunk_size=1000, *args, **kwargs): &amp;#34;&amp;#34;&amp;#34; Get the entire rows of a table by iterating over Django</description>
     </item>
     
     <item>
@@ -242,7 +242,7 @@
       <pubDate>Wed, 28 Aug 2019 02:40:57 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/28/django-db-connection-pool/</guid>
-      <description>数据库长连接 长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销。 先看看官方文档是怎么讲Djan</description>
+      <description>数据库长连接 长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销。先看看官方文档是怎么讲Djan</description>
     </item>
     
     <item>
@@ -251,7 +251,7 @@
       <pubDate>Mon, 26 Aug 2019 20:47:37 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/26/django-database-partition/</guid>
-      <description>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外，另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的</description>
+      <description>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外， 另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的</description>
     </item>
     
     <item>
@@ -269,7 +269,7 @@
       <pubDate>Fri, 23 Aug 2019 22:42:49 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/23/mysql-optimization-of-backend/</guid>
-      <description>基本思路 首先是如何定位性能瓶颈？ 一般使用show命令、慢查询日志、explain、profiling等进行分析。 当服务器的负载增加时，使用S</description>
+      <description>基本思路 **首先是如何定位性能瓶颈？**一般使用show命令、慢查询日志、explain、profiling等进行分析。 当服务器的负载增加时</description>
     </item>
     
     <item>
@@ -296,7 +296,7 @@
       <pubDate>Sun, 18 Aug 2019 14:48:06 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/18/how-to-find-dns-ip/</guid>
-      <description>IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。域名解析就是域名到IP地址的转换过程。域名的解析工作由</description>
+      <description>IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。 域名解析就是域名到IP地址的转换过程。 域名的解析工作由</description>
     </item>
     
     <item>
@@ -305,7 +305,7 @@
       <pubDate>Tue, 13 Aug 2019 21:08:08 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/13/programmer-self-discipline/</guid>
-      <description>现在互联网用到的很多技术都相当成熟了。不必高估技术，技术是为业务服务的，认清自己作为研发人员在公司的位置。比如小米号称黑科技、为发烧而生，实</description>
+      <description>现在互联网用到的很多技术都相当成熟了。不必高估技术，技术是为业务服务的，认清自己作为研发人员在公司的位置。 比如小米号称黑科技、为发烧而生，实</description>
     </item>
     
     <item>
@@ -341,9 +341,10 @@
       <pubDate>Sat, 10 Aug 2019 11:12:00 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/10/add-gitalk-for-hugo-blog/</guid>
-      <description>&lt;p&gt;&lt;code&gt;Gitalk&lt;/code&gt; is a comment plug based on Github issue api.&lt;code&gt;Hugo&lt;/code&gt; can compile the Markdown files with themes and templates into static web files, such as CSS, HTML and JavaScript.&lt;/p&gt;
-
-&lt;p&gt;To use &lt;code&gt;Gitalk&lt;/code&gt; in the &lt;code&gt;Hugo&lt;/code&gt; blog, we need to add Gitalk related code as &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; into the HTML template.Then update the config.toml for &lt;code&gt;Gitalk&lt;/code&gt;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;code&gt;Gitalk&lt;/code&gt; is a comment plug based on Github issue api.
+&lt;code&gt;Hugo&lt;/code&gt; can compile the Markdown files with themes and templates into static web files, such as CSS, HTML and JavaScript.&lt;/p&gt;
+&lt;p&gt;To use &lt;code&gt;Gitalk&lt;/code&gt; in the &lt;code&gt;Hugo&lt;/code&gt; blog, we need to add Gitalk related code as &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; into the HTML template.
+Then update the config.toml for &lt;code&gt;Gitalk&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -362,7 +363,6 @@
       
       <guid>https://lockshell.com/2019/08/10/display-your-github-chart-in-blog/</guid>
       <description>&lt;p&gt;There is an interesting api on &lt;a href=&#34;https://ghchart.rshah.org/&#34;&gt;https://ghchart.rshah.org/&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;It can display your Github chart information as an image.&lt;/p&gt;</description>
     </item>
     
@@ -373,9 +373,7 @@
       
       <guid>https://lockshell.com/about/</guid>
       <description>&lt;h2 id=&#34;关于络壳&#34;&gt;关于络壳&lt;/h2&gt;
-
 &lt;p&gt;之前在&lt;a href=&#34;https://coolshell.cn&#34;&gt;CoolShell&lt;/a&gt;的博客上学到了不少，于是也想建一个自己的站点。&lt;/p&gt;
-
 &lt;p&gt;2019-08，动手撸了一个新的博客，来记录一些技术和生活上的思考。在此之前的几篇笔记和旧文，是从其他地方迁移过来的，方便查阅。&lt;/p&gt;</description>
     </item>
     
@@ -385,7 +383,7 @@
       <pubDate>Thu, 28 Mar 2019 17:38:15 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/03/28/career-planning/</guid>
-      <description>记得大学刚毕业那会，周围很多同学包括我自己，都开始变得迷茫和彷徨。当初雄纠纠气昂昂跨进社会的时候，对前方可能会遇到的绞肉机般的残酷与艰辛多少</description>
+      <description>记得大学刚毕业那会，周围很多同学包括我自己，都开始变得迷茫和彷徨。 当初雄纠纠气昂昂跨进社会的时候，对前方可能会遇到的绞肉机般的残酷与艰辛多少</description>
     </item>
     
     <item>
@@ -403,7 +401,7 @@
       <pubDate>Sat, 23 Feb 2019 15:40:49 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/02/23/investment-of-oil/</guid>
-      <description>一切大宗品底价都是其采掘炼化成本。以原油为例： 美国原油开采商的盈利平衡成本对应的原油区间为47-55美元，美国页岩油成本为45至55美元。海</description>
+      <description>一切大宗品底价都是其采掘炼化成本。以原油为例： 美国原油开采商的盈利平衡成本对应的原油区间为47-55美元， 美国页岩油成本为45至55美元。 海</description>
     </item>
     
     <item>
@@ -412,7 +410,7 @@
       <pubDate>Fri, 18 Jan 2019 10:36:31 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/01/18/school-district-house-paradox/</guid>
-      <description>学区房悖论 买学区房是为了孩子好好学习，最好以后能考上清北，但是考上清北的，大多数毕业了还是买不起学区房。 从投资的角度看，读书就是一种投资。学</description>
+      <description>学区房悖论 买学区房是为了孩子好好学习，最好以后能考上清北，但是考上清北的，大多数毕业了还是买不起学区房。 从投资的角度看，读书就是一种投资。 学</description>
     </item>
     
     <item>
@@ -421,7 +419,7 @@
       <pubDate>Mon, 07 Jan 2019 18:40:36 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/01/07/my-2019/</guid>
-      <description>2019-01 小时候，吃奶奶做的咸鸭蛋，我只喜欢金黄泛着油香的蛋黄，不喜欢咸咸的蛋白。我把蛋黄挖出来吃掉，总是奶奶就剩下的蛋白下饭。奶奶爱我，所以把蛋黄</description>
+      <description>2019-01 小时候，吃奶奶做的咸鸭蛋，我只喜欢金黄泛着油香的蛋黄，不喜欢咸咸的蛋白。我把蛋黄挖出来吃掉，总是奶奶就剩下的蛋白下饭。 奶奶爱我，所以把蛋黄</description>
     </item>
     
     <item>
@@ -440,7 +438,6 @@
       
       <guid>https://lockshell.com/2018/08/17/nginx-forward-proxy-config/</guid>
       <description>&lt;p&gt;Nginx不仅可以做反向代理，实现负载均衡。还能用作正向代理来进行上网等功能。&lt;/p&gt;
-
 &lt;p&gt;正向代理：如果把局域网外的Internet想象成一个巨大的资源库，局域网中的客户端要访问Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理。&lt;/p&gt;</description>
     </item>
     
@@ -450,7 +447,8 @@
       <pubDate>Mon, 12 Feb 2018 11:31:48 +0800</pubDate>
       
       <guid>https://lockshell.com/2018/02/12/nginx-as-static-file-server/</guid>
-      <description>&lt;p&gt;Nginx一大经典使用场景就是用来提供静态文件服务，例如图片、html、脚本、样式文件等，这些文件没有必要交给 tomcat、jboss等应用服务器处理，使用 Nginx 直接处理将大大提高性能。用 Nginx 来提供静态文件服务十分简单，只需要添加一个 server块指令即可。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Nginx一大经典使用场景就是用来提供静态文件服务，例如图片、html、脚本、样式文件等，这些文件没有必要交给 tomcat、jboss等应用服务器处理，使用 Nginx 直接处理将大大提高性能。
+用 Nginx 来提供静态文件服务十分简单，只需要添加一个 server块指令即可。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -460,7 +458,6 @@
       
       <guid>https://lockshell.com/2018/02/12/nginx-reverse-proxy-config/</guid>
       <description>&lt;h2 id=&#34;nginx反向代理&#34;&gt;Nginx反向代理&lt;/h2&gt;
-
 &lt;p&gt;Nginx是一个轻量级的、高性能的WebServer，主要可以干下面两件事：作为http服务器（和apache的功能一样）；作为反向代理服务器实现负载均衡。&lt;/p&gt;</description>
     </item>
     
@@ -470,7 +467,7 @@
       <pubDate>Fri, 29 Dec 2017 10:55:23 +0800</pubDate>
       
       <guid>https://lockshell.com/2017/12/29/my-2017/</guid>
-      <description>01-01 新年第一天，天降瑞雪，真是好兆头。看BBC地球脉动的纪录片，知道了世上有如此美景，常恨此身局限于一城一地，不能翱翔于天地间，领略异域的风光</description>
+      <description>01-01 新年第一天，天降瑞雪，真是好兆头。 看BBC地球脉动的纪录片，知道了世上有如此美景，常恨此身局限于一城一地，不能翱翔于天地间，领略异域的风光</description>
     </item>
     
     <item>
@@ -488,7 +485,7 @@
       <pubDate>Wed, 05 Jul 2017 13:26:07 +0800</pubDate>
       
       <guid>https://lockshell.com/2017/07/05/python-lru-cache/</guid>
-      <description>LRU: 最近最少使用算法。 使用场景：在有限的空间存储对象时，当空间满时，按照一定的原则删除原有对象。常用的算法有LRU，FIFO，LFU。如mem</description>
+      <description>LRU: 最近最少使用算法。 使用场景：在有限的空间存储对象时，当空间满时，按照一定的原则删除原有对象。 常用的算法有LRU，FIFO，LFU。如mem</description>
     </item>
     
     <item>
@@ -506,7 +503,7 @@
       <pubDate>Thu, 19 May 2016 13:43:57 +0800</pubDate>
       
       <guid>https://lockshell.com/2016/05/19/python-gunicorn-gevent-server-for-flask/</guid>
-      <description>Flask，Django都自带WSGI server，当然性能都一般，自带的web server更多的是测试用途。线上发布时，则使用高性能的WS</description>
+      <description>Flask，Django都自带WSGI server，当然性能都一般，自带的web server更多的是测试用途。 线上发布时，则使用高性能的WS</description>
     </item>
     
     <item>
@@ -542,7 +539,7 @@
       <pubDate>Mon, 29 Feb 2016 10:01:16 +0800</pubDate>
       
       <guid>https://lockshell.com/2016/02/29/python-pip-source-config/</guid>
-      <description>在连接pip官网的时候状况不是很稳定。很多国内镜像站可以使用，加速下载。使用镜像源很简单，用-i指定就行了： easy_install -i http://pypi.douban.com/simple/ gevent pip install -i http://pypi.douban.com/simple/ gevent 如果觉得太麻烦</description>
+      <description>在连接pip官网的时候状况不是很稳定。很多国内镜像站可以使用，加速下载。 使用镜像源很简单，用-i指定就行了： easy_install -i http://pypi.douban.com/simple/ gevent pip install -i http://pypi.douban.com/simple/ gevent 如果觉得太麻烦</description>
     </item>
     
   </channel>

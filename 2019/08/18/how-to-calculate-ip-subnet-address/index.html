@@ -11,8 +11,8 @@
 <meta property="og:description" content="How to Calculate Ip Subnet Address" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2019/08/18/how-to-calculate-ip-subnet-address/" />
-<meta property="article:published_time" content="2019-08-18T15:08:15&#43;08:00"/>
-<meta property="article:modified_time" content="2019-08-18T15:08:15&#43;08:00"/>
+<meta property="article:published_time" content="2019-08-18T15:08:15+08:00" />
+<meta property="article:modified_time" content="2019-08-18T15:08:15+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="怎样计算子网IP地址"/>
@@ -123,31 +123,17 @@ if (!doNotTrack) {
 <span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 212 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			
-
-<p>工作中遇到这样的子网ip和掩码：<code>192.168.20.0/24</code>，得在脑海中用二进制去算IP范围是多少，子网掩码是多少；有时还得在纸上画一画，耗时费力。后来发现ipcalc这个神器，麻麻再也不用担心我算不动了。</p>
-
+			<p>工作中遇到这样的子网ip和掩码：<code>192.168.20.0/24</code>，得在脑海中用二进制去算IP范围是多少，子网掩码是多少；有时还得在纸上画一画，耗时费力。
+后来发现ipcalc这个神器，麻麻再也不用担心我算不动了。</p>
 <p>一条命令，搞定网络类型、广播地址、子网IP范围等的计算，也很方便给小伙伴演示。</p>
-
 <h2 id="安装ipcalc">安装ipcalc</h2>
-
 <p>Mac OS</p>
-
 <pre><code>brew install ipcalc
-</code></pre>
-
-<p>Linux</p>
-
+</code></pre><p>Linux</p>
 <pre><code>sudo apt install ipcalc  
-</code></pre>
-
-<h2 id="使用ipcalc">使用ipcalc</h2>
-
+</code></pre><h2 id="使用ipcalc">使用ipcalc</h2>
 <pre><code>ipcalc 192.168.20.0/24
-</code></pre>
-
-<h2 id="结果示例">结果示例</h2>
-
+</code></pre><h2 id="结果示例">结果示例</h2>
 <pre><code>Address:   192.168.20.0         11000000.10101000.00010100. 00000000
 Netmask:   255.255.255.0 = 24   11111111.11111111.11111111. 00000000
 Wildcard:  0.0.0.255            00000000.00000000.00000000. 11111111
@@ -158,7 +144,6 @@ HostMax:   192.168.20.254       11000000.10101000.00010100. 11111110
 Broadcast: 192.168.20.255       11000000.10101000.00010100. 11111111
 Hosts/Net: 254                   Class C, Private Internet
 </code></pre>
-
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
 		</div>

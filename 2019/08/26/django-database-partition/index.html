@@ -11,8 +11,8 @@
 <meta property="og:description" content="Django MySQL Database Partition and Read/Write Separation" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2019/08/26/django-database-partition/" />
-<meta property="article:published_time" content="2019-08-26T20:47:37&#43;08:00"/>
-<meta property="article:modified_time" content="2019-08-26T20:47:37&#43;08:00"/>
+<meta property="article:published_time" content="2019-08-26T20:47:37+08:00" />
+<meta property="article:modified_time" content="2019-08-26T20:47:37+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Django数据库分库&#43;读写分离"/>
@@ -127,45 +127,39 @@ if (!doNotTrack) {
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#如何配置分库">如何配置分库</a>
-<ul>
-<li><a href="#配置db地址">配置DB地址</a></li>
-<li><a href="#定义-model">定义<code>Model</code></a></li>
-<li><a href="#执行-migrate">执行<code>migrate</code></a></li>
-</ul></li>
-<li><a href="#如何访问分库">如何访问分库</a>
-<ul>
-<li><a href="#using-方法"><code>using()</code>方法</a></li>
-<li><a href="#配置db路由">配置DB路由</a></li>
-</ul></li>
-<li><a href="#如何配置读写分离">如何配置读写分离</a>
-<ul>
-<li><a href="#主库写从库读">主库写从库读</a></li>
-<li><a href="#多个app读写分离">多个app读写分离</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#如何配置分库">如何配置分库</a>
+      <ul>
+        <li><a href="#配置db地址">配置DB地址</a></li>
+        <li><a href="#定义model">定义<code>Model</code></a></li>
+        <li><a href="#执行migrate">执行<code>migrate</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#如何访问分库">如何访问分库</a>
+      <ul>
+        <li><a href="#using方法"><code>using()</code>方法</a></li>
+        <li><a href="#配置db路由">配置DB路由</a></li>
+      </ul>
+    </li>
+    <li><a href="#如何配置读写分离">如何配置读写分离</a>
+      <ul>
+        <li><a href="#主库写从库读">主库写从库读</a></li>
+        <li><a href="#多个app读写分离">多个app读写分离</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<p>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外，另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的性能问题。</p>
-
+			<p>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外，
+另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的性能问题。</p>
 <p><code>Django ORM</code>提供了默认的分库功能，只需要在<code>settings.py</code>文件中添加相应的数据库配置。</p>
-
-<p>例如我们在<code>Django</code>项目有<code>users</code>, <code>book</code>, <code>blog</code>三个app，对应<code>user</code>，<code>book</code>，<code>blog</code>三个DB，下面就探究一下如何在Django实现这三个库的分库？</p>
-
+<p>例如我们在<code>Django</code>项目有<code>users</code>, <code>book</code>, <code>blog</code>三个app，
+对应<code>user</code>，<code>book</code>，<code>blog</code>三个DB，下面就探究一下如何在Django实现这三个库的分库？</p>
 <h2 id="如何配置分库">如何配置分库</h2>
-
 <h3 id="配置db地址">配置DB地址</h3>
-
 <p>在<code>settings.py</code> <code>DATABASES</code>中配置需要连接的多个数据库地址。</p>
-
 <pre><code>DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -188,14 +182,9 @@ DATABASE_APPS_MAPPING = {
     'book': 'db_book',
     'users': 'default',
 }
-</code></pre>
-
-<p>这里我们定义了三个库和地址，<code>default</code>, <code>db_blog</code>和<code>db_book</code>；以及app name到db name的映射。</p>
-
-<h3 id="定义-model">定义<code>Model</code></h3>
-
+</code></pre><p>这里我们定义了三个库和地址，<code>default</code>, <code>db_blog</code>和<code>db_book</code>；以及app name到db name的映射。</p>
+<h3 id="定义model">定义<code>Model</code></h3>
 <p>对应的，在book app的models中，我们定义如下Book类。</p>
-
 <pre><code># -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
@@ -212,10 +201,7 @@ class Book(models.Model):
     class Meta:
         app_label = 'book'
         db_table = 'book_tab'
-</code></pre>
-
-<p>在blog app的models中，我们定义如下Blog类。</p>
-
+</code></pre><p>在blog app的models中，我们定义如下Blog类。</p>
 <pre><code># -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
@@ -232,95 +218,68 @@ class Blog(models.Model):
     class Meta:
         app_label = 'blog'
         db_table = 'blog_tab'
-</code></pre>
-
-<p>类似的，在users app中定义User类。</p>
-
-<h3 id="执行-migrate">执行<code>migrate</code></h3>
-
+</code></pre><p>类似的，在users app中定义User类。</p>
+<h3 id="执行migrate">执行<code>migrate</code></h3>
 <p><code>migrate</code>命令在同步变更时，每次操作一个数据库，默认操作<code>default</code>数据库。通过<code>--database</code>选项，可以指定操作的数据库。</p>
-
 <pre><code>python manage.py migrate
 python manage.py migrate --database=db_book
 python manage.py migrate --database=db_blog
-</code></pre>
-
-<p>通过上面的命令，把models里定义的信息，同步到数据库。</p>
-
+</code></pre><p>通过上面的命令，把models里定义的信息，同步到数据库。</p>
 <h2 id="如何访问分库">如何访问分库</h2>
-
-<p>通过前面几步，就完成了Django数据库分库的配置。那配置完了怎样使用呢？有两种方法来使用分库：</p>
-
+<p>通过前面几步，就完成了Django数据库分库的配置。那配置完了怎样使用呢？
+有两种方法来使用分库：</p>
 <ol>
 <li><code>using()</code>方法</li>
 <li>指定<code>Database Router</code></li>
 </ol>
-
-<h3 id="using-方法"><code>using()</code>方法</h3>
-
+<h3 id="using方法"><code>using()</code>方法</h3>
 <p>在没有配置路由前，我们需要通过<code>using</code>方法指定需要访问的数据库，<strong>代码入侵比较强</strong>。示例：</p>
-
 <ul>
-<li><p>指定保存的数据库</p>
-
+<li>指定保存的数据库</li>
+</ul>
 <pre><code>b = Blog(content='test')
 b.save(using='db_blog')
-</code></pre></li>
-
-<li><p>指定读取的数据库</p>
-
-<pre><code>Book.objects.using('db_book').all()
-</code></pre></li>
+</code></pre><ul>
+<li>指定读取的数据库</li>
 </ul>
-
-<h3 id="配置db路由">配置DB路由</h3>
-
+<pre><code>Book.objects.using('db_book').all()
+</code></pre><h3 id="配置db路由">配置DB路由</h3>
 <p>配置<code>Database routers</code>需要新建一个<code>db_router.py</code>文件，添加自定义的数据库路由类<code>DbRouter</code>。</p>
+<p>这个类里需要实现四个方法：<code>db_for_read</code>、<code>db_for_write</code>、<code>allow_relation</code>以及<code>allow_migrate</code>来定义路由规则，
+我们可以根据<code>app_label</code>来指定访问的DB。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.conf <span style="color:#f92672">import</span> settings
 
-<p>这个类里需要实现四个方法：<code>db_for_read</code>、<code>db_for_write</code>、<code>allow_relation</code>以及<code>allow_migrate</code>来定义路由规则，我们可以根据<code>app_label</code>来指定访问的DB。</p>
-
-<pre><code class="language-python">from django.conf import settings
-
-DATABASE_MAPPING = settings.DATABASE_APPS_MAPPING
+DATABASE_MAPPING <span style="color:#f92672">=</span> settings<span style="color:#f92672">.</span>DATABASE_APPS_MAPPING
 
 
-class DbRouter(object):
-    def db_for_read(self, model, **hints):
-        if model._meta.app_label in DATABASE_MAPPING:
-            return DATABASE_MAPPING[model._meta.app_label]
-        return None
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DbRouter</span>(object):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">db_for_read</span>(self, model, <span style="color:#f92672">**</span>hints):
+        <span style="color:#66d9ef">if</span> model<span style="color:#f92672">.</span>_meta<span style="color:#f92672">.</span>app_label <span style="color:#f92672">in</span> DATABASE_MAPPING:
+            <span style="color:#66d9ef">return</span> DATABASE_MAPPING[model<span style="color:#f92672">.</span>_meta<span style="color:#f92672">.</span>app_label]
+        <span style="color:#66d9ef">return</span> None
 
-    def db_for_write(self, model, **hints):
-        if model._meta.app_label in DATABASE_MAPPING:
-            return DATABASE_MAPPING[model._meta.app_label]
-        return None
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">db_for_write</span>(self, model, <span style="color:#f92672">**</span>hints):
+        <span style="color:#66d9ef">if</span> model<span style="color:#f92672">.</span>_meta<span style="color:#f92672">.</span>app_label <span style="color:#f92672">in</span> DATABASE_MAPPING:
+            <span style="color:#66d9ef">return</span> DATABASE_MAPPING[model<span style="color:#f92672">.</span>_meta<span style="color:#f92672">.</span>app_label]
+        <span style="color:#66d9ef">return</span> None
 
-    def allow_relation(self, obj1, obj2, **hints):
-        pass
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">allow_relation</span>(self, obj1, obj2, <span style="color:#f92672">**</span>hints):
+        <span style="color:#66d9ef">pass</span>
 
-    def allow_migrate(self, db, app_label, model=None, **hints):
-        pass
-</code></pre>
-
-<p>然后，在<code>settings.py</code>文件添加数据库路由的配置<code>DATABASE_ROUTERS</code>，如下：</p>
-
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">allow_migrate</span>(self, db, app_label, model<span style="color:#f92672">=</span>None, <span style="color:#f92672">**</span>hints):
+        <span style="color:#66d9ef">pass</span>
+</code></pre></div><p>然后，在<code>settings.py</code>文件添加数据库路由的配置<code>DATABASE_ROUTERS</code>，如下：</p>
 <pre><code>DATABASE_ROUTERS = ['partition.db_router.DbRouter']  # partition是项目名
-</code></pre>
-
-<p>配置在<code>DATABASE_ROUTERS</code>中的路由规则才会生效，能被<code>django.db.router</code>使用。</p>
-
+</code></pre><p>配置在<code>DATABASE_ROUTERS</code>中的路由规则才会生效，能被<code>django.db.router</code>使用。</p>
 <blockquote>
 <p>我们可以指定多个数据库路由规则，比如对于读操作，Django将会循环所有路由中的<code>db_for_read()</code>方法，直到其中一个有返回值，然后使用这个数据库进行当前操作。</p>
 </blockquote>
-
-<p>按完成了上述的路由配置后，<code>Django ORM</code>会根据路由规则来选择访问的DB。按照上面<code>DbRouter</code>的配置，user会访问default库，book访问db_book库，blog访问db_blog库。例如：<code>Book.objects.all()</code>会自动访问<code>db_book</code>数据库，无需再通过<code>using</code>来指定数据库。</p>
-
+<p>按完成了上述的路由配置后，<code>Django ORM</code>会根据路由规则来选择访问的DB。
+按照上面<code>DbRouter</code>的配置，user会访问default库，book访问db_book库，blog访问db_blog库。
+例如：<code>Book.objects.all()</code>会自动访问<code>db_book</code>数据库，无需再通过<code>using</code>来指定数据库。</p>
 <h2 id="如何配置读写分离">如何配置读写分离</h2>
-
 <p>数据库<code>读写分离</code>是只是数据库分库的一种特殊情况，在现有的基础上，我们只需要调整下配置就可以实现读写分离了。<code>DbRouter</code>示例：</p>
-
 <h3 id="主库写从库读">主库写从库读</h3>
-
 <pre><code>class DbRouter:
     def db_for_read(self, model, **hints):
         &quot;&quot;&quot;
@@ -334,10 +293,7 @@ class DbRouter(object):
         写入时选择主库
         &quot;&quot;&quot;
         return 'default'
-</code></pre>
-
-<h3 id="多个app读写分离">多个app读写分离</h3>
-
+</code></pre><h3 id="多个app读写分离">多个app读写分离</h3>
 <pre><code>class DbRouter:
     def db_for_read(self, model, **hints):
         if model._meta.app_label == 'book':
@@ -351,7 +307,6 @@ class DbRouter(object):
        if model._meta.app_label == 'blog':
             return 'db_blog_master'
 </code></pre>
-
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
 		</div>

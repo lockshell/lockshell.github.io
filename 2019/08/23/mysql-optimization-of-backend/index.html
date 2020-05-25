@@ -11,8 +11,8 @@
 <meta property="og:description" content="Mysql Optimization of Backend" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2019/08/23/mysql-optimization-of-backend/" />
-<meta property="article:published_time" content="2019-08-23T22:42:49&#43;08:00"/>
-<meta property="article:modified_time" content="2019-08-23T22:42:49&#43;08:00"/>
+<meta property="article:published_time" content="2019-08-23T22:42:49+08:00" />
+<meta property="article:modified_time" content="2019-08-23T22:42:49+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MySQL优化思路-后端"/>
@@ -120,53 +120,50 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1862 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1868 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			
-
-<h2 id="基本思路">基本思路</h2>
-
-<p><strong>首先是如何定位性能瓶颈？</strong><br>一般使用show命令、慢查询日志、explain、profiling等进行分析。</p>
-
+			<h2 id="基本思路">基本思路</h2>
+<p>**首先是如何定位性能瓶颈？**<!-- raw HTML omitted -->
+一般使用show命令、慢查询日志、explain、profiling等进行分析。</p>
 <ul>
 <li>当服务器的负载增加时，使用<code>SHOW PROCESSLIST</code>来查看有问题的查询</li>
 <li>打印慢查询日志，找出执行慢的查询</li>
 <li><code>EXPLAIN</code>查看<code>SELECT</code>时索引命中的情况，分析查询语句和表结构</li>
 </ul>
-
 <p>根据分析结果，优化索引和查询，优化表结构；这是后端小伙伴可以着手的部分。然后，还可以找DBA优化MySQL配置和硬件。</p>
-
 <h2 id="查询优化">查询优化</h2>
-
 <ol>
-<li><p><strong>为搜索字段建索引，合理使用</strong> （第一条，因为它最关键）</p>
-
+<li>
+<p><strong>为搜索字段建索引，合理使用</strong> （第一条，因为它最关键）</p>
 <ul>
 <li>在 <code>WHERE</code>、<code>GROUP BY</code> 和 <code>ORDER BY</code> 的列上加上索引</li>
 <li>尽量保证索引简单，避免在同一列上加多个索引</li>
 <li>有时<code>MySQL</code>会选择错误的索引，可考虑使用<code>USE INDEX</code></li>
 <li>查询字段存在索引中，考虑<code>Cover Index</code></li>
-</ul></li>
-
-<li><p>当只要一行数据时使用 <code>LIMIT 1</code></p></li>
-
-<li><p>避免 <code>SELECT *</code></p>
-
+</ul>
+</li>
+<li>
+<p>当只要一行数据时使用 <code>LIMIT 1</code></p>
+</li>
+<li>
+<p>避免 <code>SELECT *</code></p>
 <ul>
 <li>从数据库里读出越多的数据，那么查询就会变得越慢</li>
 <li>数据多会增加网络传输的负载</li>
-</ul></li>
-
-<li><p>利用MySQL的查询缓存</p>
-
+</ul>
+</li>
+<li>
+<p>利用MySQL的查询缓存</p>
 <ul>
 <li>使用像<code>NOW()</code>和<code>RAND()</code>或是其它类似的SQL函数，都不会开启查询缓存</li>
-<li>保持查询条件次序一致<br>第一次查<code>select col from tab where a = 'x' and b = 'y'</code><br>下次查是<code>select col from tab where b = 'y' and a = 'x'</code>，就无法利用查询缓存了</li>
-</ul></li>
-
-<li><p><code>WHERE</code> 子句</p>
-
+<li>保持查询条件次序一致<!-- raw HTML omitted -->
+第一次查<code>select col from tab where a = 'x' and b = 'y'</code><!-- raw HTML omitted -->
+下次查是<code>select col from tab where b = 'y' and a = 'x'</code>，就无法利用查询缓存了</li>
+</ul>
+</li>
+<li>
+<p><code>WHERE</code> 子句</p>
 <ul>
 <li>避免对于null的判断，否则会导致全表扫描</li>
 <li>避免使用 <code>!=</code> 或 <code>&lt;&gt;</code> 操作符，否则会造成后面的索引字段失效</li>
@@ -174,128 +171,135 @@ if (!doNotTrack) {
 <ul>
 <li>例如<code>like “%name”</code> 或者<code>like “%name%”</code>，这种查询会导致索引失效</li>
 <li>但是可以使用<code>like “name%”</code></li>
-</ul></li>
+</ul>
+</li>
 <li>避免进行表达式操作
 <ul>
 <li><code>select uid from user where age*2=36;</code>会导致索引失效</li>
-</ul></li>
+</ul>
+</li>
 <li>使用同类型进行比较，比如用 &lsquo;123&rsquo; 和 &lsquo;123&rsquo; 比，123 和 123 比</li>
-</ul></li>
-
-<li><p><code>LIMIT M,N</code>节制使用</p>
-
+</ul>
+</li>
+<li>
+<p><code>LIMIT M,N</code>节制使用</p>
 <ul>
 <li>随着表数据量的增加，使用<code>LIMIT</code>分页会越来越慢</li>
 <li>可以采用记录上次查询结果ID的方法实现翻页</li>
-</ul></li>
-
-<li><p><code>IN</code>和<code>OR</code></p>
-
+</ul>
+</li>
+<li>
+<p><code>IN</code>和<code>OR</code></p>
 <ul>
 <li>OR 改写成 IN：OR的效率是<code>O(n)</code>级别，IN 的效率是<code>log(n)</code>级别</li>
 <li><code>IN</code>包含的值不应过多，如果较多，产生的消耗也是比较大的，IN 的个数建议控制在 200 以内</li>
-</ul></li>
-
-<li><p><code>COUNT()</code></p>
-
+</ul>
+</li>
+<li>
+<p><code>COUNT()</code></p>
 <ul>
 <li>采用<code>InnoDB</code>时避免在整个表上使用<code>count(*)</code>，它可能会导致整个表hang住，因为count操作太耗时了</li>
 <li><code>InnoDB</code>是没有保存rows count的，因为在不同transaction中，看到的行可能不一样</li>
 <li><code>InnoDB</code>通过扫描索引来计数，count全表时，需要遍历全部索引；当索引不再内存中时，还需要从磁盘读取，会更慢更消耗资源</li>
 <li>如果只需要一个大概的行数，可以用<code>SHOW TABLE STATUS</code></li>
 <li><code>MyISAM</code>引擎不一样，维护了count值，<code>SELECT COUNT(*)</code>能马上返回</li>
-</ul></li>
-
-<li><p><code>JOIN</code></p>
-
+</ul>
+</li>
+<li>
+<p><code>JOIN</code></p>
 <ul>
 <li>尽可能避免复杂的join和子查询</li>
 <li>建议减少对大表的 join 查询，<code>InnoDB</code> 引擎会产生行锁；<code>MyISAM</code> 引擎会产生表锁，会导致其他写操作被阻塞</li>
 <li>尽量使用inner join，避免left join；没有其他过滤条件时，MySQL默认会自动选择小表作为驱动表</li>
-</ul></li>
+</ul>
+</li>
 </ol>
-
 <h2 id="设计优化">设计优化</h2>
-
 <ol>
-<li><p>每张表都设置一个ID做为其主键</p>
-
+<li>
+<p>每张表都设置一个ID做为其主键</p>
 <ul>
 <li>推荐使用<code>UNSIGNED INT</code>，设置上<code>AUTO_INCREMENT</code>标志</li>
-</ul></li>
-
-<li><p>把IP地址存成 <code>UNSIGNED INT</code></p>
-
+</ul>
+</li>
+<li>
+<p>把IP地址存成 <code>UNSIGNED INT</code></p>
 <ul>
 <li>用<code>VARCHAR(15)</code>字段的字符串来存IP不划算</li>
 <li>如果用整形来存放只需要4个字节，并且可以有定长的字段</li>
-</ul></li>
-
-<li><p>固定长度的表会更快</p>
-
+</ul>
+</li>
+<li>
+<p>固定长度的表会更快</p>
 <ul>
 <li>固定的长度是很容易计算下一个数据的偏移量的，所以读取的自然也会很快</li>
 <li>有<code>VARCHAR，TEXT，BLOB字</code>字段；这个表就不是“固定长度静态表”了</li>
-</ul></li>
-
-<li><p>越小的列会越快</p>
-
+</ul>
+</li>
+<li>
+<p>越小的列会越快</p>
 <ul>
 <li>对于大多数的数据库引擎来说，硬盘操作可能是最重大的瓶颈</li>
 <li>数据变得紧凑会，在一个内存页可以读取更多行数据，可以减少了对硬盘的访问</li>
-</ul></li>
-
-<li><p>尽可能的使用 <code>NOT NULL</code></p>
-
+</ul>
+</li>
+<li>
+<p>尽可能的使用 <code>NOT NULL</code></p>
 <ul>
 <li>NULL无法利用索引，且需要额外的空间</li>
 <li>NULL在业务逻辑层需要额外的处理</li>
-</ul></li>
-
-<li><p>选择正确的存储引擎</p>
-
+</ul>
+</li>
+<li>
+<p>选择正确的存储引擎</p>
 <ul>
 <li>OLTP业界用<code>InnoDB</code>比较多，<code>InnoDB</code>支持行锁</li>
 <li><code>MyISAM</code>使用Cluster Index, 不支持行锁，适合于一些需要大量查询的应用</li>
-</ul></li>
-
-<li><p>大表水平分拆</p>
-
+</ul>
+</li>
+<li>
+<p>大表水平分拆</p>
 <ul>
 <li>降低每个表的行数，加快查询</li>
 <li>比如可以按<code>user_id%100</code>分100个表</li>
-</ul></li>
-
-<li><p>多字段表垂直分拆</p>
-
+</ul>
+</li>
+<li>
+<p>多字段表垂直分拆</p>
 <ul>
 <li>把数据库中的表按列变成几张表</li>
 <li>降低表的复杂度和字段的数目</li>
-</ul></li>
-
-<li><p>不适合建索引的情况</p>
-
+</ul>
+</li>
+<li>
+<p>不适合建索引的情况</p>
 <ul>
 <li>区分度不高的字段，不适合建索引；消耗资源，对性能提升不大</li>
 <li>乱序的字段不适合作为索引，如<code>MD5</code>, <code>UUID</code>；否则，在插入数据时，更新索引需在B+树中大量移动结点，导致较多硬盘IO</li>
 <li>更新非常频繁的字段不适合创建索引；原因同上</li>
-</ul></li>
-
-<li><p>适度冗余，让Query尽量减少Join</p></li>
-
-<li><p>不推荐使用外键<code>Foreign Key</code></p></li>
+</ul>
+</li>
+<li>
+<p>适度冗余，让Query尽量减少Join</p>
+</li>
+<li>
+<p>不推荐使用外键<code>Foreign Key</code></p>
+</li>
 </ol>
-
 <h2 id="其他优化">其他优化</h2>
-
 <ol>
-<li><p>重启MySQL时，记得预热数据库，确保将数据加载到内存，提高查询效率</p></li>
-
-<li><p>使用Redis等分布式缓存或本地缓存，减少对数据库的访问</p></li>
-
-<li><p>考虑持久连接或连接池，而不是多次建立连接，以减少资源的消耗</p></li>
-
-<li><p>进行分表时，可以考虑双写，以平稳过渡，防止数据丢失</p></li>
+<li>
+<p>重启MySQL时，记得预热数据库，确保将数据加载到内存，提高查询效率</p>
+</li>
+<li>
+<p>使用Redis等分布式缓存或本地缓存，减少对数据库的访问</p>
+</li>
+<li>
+<p>考虑持久连接或连接池，而不是多次建立连接，以减少资源的消耗</p>
+</li>
+<li>
+<p>进行分表时，可以考虑双写，以平稳过渡，防止数据丢失</p>
+</li>
 </ol>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>

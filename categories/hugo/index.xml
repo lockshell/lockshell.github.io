@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on 络壳 LockShell</title>
@@ -17,9 +17,10 @@
       <pubDate>Sat, 10 Aug 2019 11:12:00 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/10/add-gitalk-for-hugo-blog/</guid>
-      <description>&lt;p&gt;&lt;code&gt;Gitalk&lt;/code&gt; is a comment plug based on Github issue api.&lt;code&gt;Hugo&lt;/code&gt; can compile the Markdown files with themes and templates into static web files, such as CSS, HTML and JavaScript.&lt;/p&gt;
-
-&lt;p&gt;To use &lt;code&gt;Gitalk&lt;/code&gt; in the &lt;code&gt;Hugo&lt;/code&gt; blog, we need to add Gitalk related code as &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; into the HTML template.Then update the config.toml for &lt;code&gt;Gitalk&lt;/code&gt;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;code&gt;Gitalk&lt;/code&gt; is a comment plug based on Github issue api.
+&lt;code&gt;Hugo&lt;/code&gt; can compile the Markdown files with themes and templates into static web files, such as CSS, HTML and JavaScript.&lt;/p&gt;
+&lt;p&gt;To use &lt;code&gt;Gitalk&lt;/code&gt; in the &lt;code&gt;Hugo&lt;/code&gt; blog, we need to add Gitalk related code as &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; into the HTML template.
+Then update the config.toml for &lt;code&gt;Gitalk&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -38,7 +39,6 @@
       
       <guid>https://lockshell.com/2019/08/10/display-your-github-chart-in-blog/</guid>
       <description>&lt;p&gt;There is an interesting api on &lt;a href=&#34;https://ghchart.rshah.org/&#34;&gt;https://ghchart.rshah.org/&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;It can display your Github chart information as an image.&lt;/p&gt;</description>
     </item>
     

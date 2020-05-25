@@ -11,8 +11,8 @@
 <meta property="og:description" content="Go Tcp Server Example" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2020/04/11/go-tcp-server/" />
-<meta property="article:published_time" content="2020-04-11T21:26:43&#43;08:00"/>
-<meta property="article:modified_time" content="2020-04-11T21:26:43&#43;08:00"/>
+<meta property="article:published_time" content="2020-04-11T21:26:43+08:00" />
+<meta property="article:modified_time" content="2020-04-11T21:26:43+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Go TCP Server示例"/>
@@ -124,115 +124,109 @@ if (!doNotTrack) {
 </div>
 		</header><div class="content post__content clearfix">
 			<p>4月开始了Go语言的学习。</p>
-
-<p>在五年的工作生涯中，主要用过C、Shell、Python、Java。体验过Java的臃肿，C的简陋，Python的性能；Go的一些改进，给我带来了惊喜。</p>
-
-<p>我觉得是我深入学习的倒数第二门编程语言，以后很难有精力和机会去学习更多的编程语言了。为什么是倒数第二，也许我还期待着一门更好的语言。</p>
-
+<p>在五年的工作生涯中，主要用过C、Shell、Python、Java。
+体验过Java的臃肿，C的简陋，Python的性能；Go的一些改进，给我带来了惊喜。</p>
+<p>我觉得是我深入学习的倒数第二门编程语言，以后很难有精力和机会去学习更多的编程语言了。
+为什么是倒数第二，也许我还期待着一门更好的语言。</p>
 <p>参照网上的资料，实现一个Go TCP Server例子。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
-<pre><code class="language-go">package main
-
-import (
-    &quot;bufio&quot;
-    &quot;fmt&quot;
-    &quot;net&quot;
-    &quot;os&quot;
-    &quot;strings&quot;
+<span style="color:#f92672">import</span> (
+    <span style="color:#e6db74">&#34;bufio&#34;</span>
+    <span style="color:#e6db74">&#34;fmt&#34;</span>
+    <span style="color:#e6db74">&#34;net&#34;</span>
+    <span style="color:#e6db74">&#34;os&#34;</span>
+    <span style="color:#e6db74">&#34;strings&#34;</span>
 )
 
-const (
-    CONN_HOST = &quot;localhost&quot;
-    CONN_PORT = &quot;8888&quot;
-    CONN_TYPE = &quot;tcp&quot;
+<span style="color:#66d9ef">const</span> (
+    <span style="color:#a6e22e">CONN_HOST</span> = <span style="color:#e6db74">&#34;localhost&#34;</span>
+    <span style="color:#a6e22e">CONN_PORT</span> = <span style="color:#e6db74">&#34;8888&#34;</span>
+    <span style="color:#a6e22e">CONN_TYPE</span> = <span style="color:#e6db74">&#34;tcp&#34;</span>
 )
 
-func main() {
-    // Listen for incoming connections
-    listener, err := net.Listen(CONN_TYPE, CONN_HOST+&quot;:&quot;+CONN_PORT)
-    if err != nil {
-        fmt.Println(&quot;Error listening:&quot;, err.Error())
-        os.Exit(1)
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#75715e">// Listen for incoming connections
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">listener</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Listen</span>(<span style="color:#a6e22e">CONN_TYPE</span>, <span style="color:#a6e22e">CONN_HOST</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;:&#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">CONN_PORT</span>)
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Error listening:&#34;</span>, <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>())
+        <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#ae81ff">1</span>)
     }
 
-    // Close the listener when the function exit
-    defer listener.Close()
+    <span style="color:#75715e">// Close the listener when the function exit
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">listener</span>.<span style="color:#a6e22e">Close</span>()
 
-    fmt.Println(&quot;Start listening on &quot; + CONN_HOST + &quot;:&quot; + CONN_PORT)
-    for {
-        // Listen for an incoming connection
-        conn, err := listener.Accept()
-        if err != nil {
-            fmt.Println(&quot;Error accepting:&quot;, err.Error())
-            os.Exit(1)
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Start listening on &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">CONN_HOST</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;:&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">CONN_PORT</span>)
+    <span style="color:#66d9ef">for</span> {
+        <span style="color:#75715e">// Listen for an incoming connection
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">conn</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">listener</span>.<span style="color:#a6e22e">Accept</span>()
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Error accepting:&#34;</span>, <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>())
+            <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#ae81ff">1</span>)
         }
-        // Handle connection in a new goroutine
-        go handleRequest2(conn)
+        <span style="color:#75715e">// Handle connection in a new goroutine
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">go</span> <span style="color:#a6e22e">handleRequest2</span>(<span style="color:#a6e22e">conn</span>)
     }
 }
 
-// Handle incoming requests
-func handleRequest(conn net.Conn) {
-    fmt.Printf(&quot;Serving %s\n&quot;, conn.RemoteAddr().String())
+<span style="color:#75715e">// Handle incoming requests
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">handleRequest</span>(<span style="color:#a6e22e">conn</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Conn</span>) {
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Serving %s\n&#34;</span>, <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">RemoteAddr</span>().<span style="color:#a6e22e">String</span>())
 
-    // Close tbe connection when the function ends
-    defer func() {
-        fmt.Println(&quot;Closing connection...&quot;)
-        conn.Close()
+    <span style="color:#75715e">// Close tbe connection when the function ends
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Closing connection...&#34;</span>)
+        <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>()
     }()
 
-    // Make a buffer to store incoming data
-    buf := make([]byte, 1024)
+    <span style="color:#75715e">// Make a buffer to store incoming data
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">buf</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">byte</span>, <span style="color:#ae81ff">1024</span>)
 
-    // Read the incoming connection into the buffer
-    reqLen, err := conn.Read(buf)
-    if err != nil {
-        fmt.Println(&quot;Error reading:&quot;, err.Error())
-        return
+    <span style="color:#75715e">// Read the incoming connection into the buffer
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">reqLen</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Read</span>(<span style="color:#a6e22e">buf</span>)
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Error reading:&#34;</span>, <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>())
+        <span style="color:#66d9ef">return</span>
     }
 
-    fmt.Println(&quot;Receive data length:&quot;, reqLen, &quot;content:&quot;, string(buf[:reqLen]))
-    // Send a response back
-    conn.Write([]byte(&quot;Hello, World!\n&quot;))
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Receive data length:&#34;</span>, <span style="color:#a6e22e">reqLen</span>, <span style="color:#e6db74">&#34;content:&#34;</span>, string(<span style="color:#a6e22e">buf</span>[:<span style="color:#a6e22e">reqLen</span>]))
+    <span style="color:#75715e">// Send a response back
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Write</span>([]byte(<span style="color:#e6db74">&#34;Hello, World!\n&#34;</span>))
 }
 
-// Handle incoming requests
-func handleRequest2(conn net.Conn) {
-    fmt.Printf(&quot;Serving %s\n&quot;, conn.RemoteAddr().String())
+<span style="color:#75715e">// Handle incoming requests
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">handleRequest2</span>(<span style="color:#a6e22e">conn</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Conn</span>) {
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Serving %s\n&#34;</span>, <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">RemoteAddr</span>().<span style="color:#a6e22e">String</span>())
 
-    // Close tbe connection when the function ends
-    defer func() {
-        fmt.Println(&quot;Closing connection...&quot;)
-        conn.Close()
+    <span style="color:#75715e">// Close tbe connection when the function ends
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() {
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Closing connection...&#34;</span>)
+        <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>()
     }()
 
-    // The for loop makes sure that the TCP client will be served for as long as the TCP client desires.
-    for {
-        recvData, err := bufio.NewReader(conn).ReadString('\n')
-        if err != nil {
-            fmt.Println(&quot;Error reading:&quot;, err.Error())
-            return
+    <span style="color:#75715e">// The for loop makes sure that the TCP client will be served for as long as the TCP client desires.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> {
+        <span style="color:#a6e22e">recvData</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bufio</span>.<span style="color:#a6e22e">NewReader</span>(<span style="color:#a6e22e">conn</span>).<span style="color:#a6e22e">ReadString</span>(<span style="color:#e6db74">&#39;\n&#39;</span>)
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Error reading:&#34;</span>, <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>())
+            <span style="color:#66d9ef">return</span>
         }
 
-        temp := strings.TrimSpace(string(recvData))
-        if temp == &quot;STOP&quot; {
-            fmt.Println(&quot;Received STOP msg, will exit...&quot;)
-            break
+        <span style="color:#a6e22e">temp</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">TrimSpace</span>(string(<span style="color:#a6e22e">recvData</span>))
+        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">temp</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;STOP&#34;</span> {
+            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Received STOP msg, will exit...&#34;</span>)
+            <span style="color:#66d9ef">break</span>
         }
 
-        fmt.Println(&quot;Received content:&quot;, temp)
-        // Send a response back
-        conn.Write([]byte(&quot;Hello, World!\n&quot;))
+        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Received content:&#34;</span>, <span style="color:#a6e22e">temp</span>)
+        <span style="color:#75715e">// Send a response back
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Write</span>([]byte(<span style="color:#e6db74">&#34;Hello, World!\n&#34;</span>))
     }
 }
 
-</code></pre>
-
-<p>测试TCP</p>
-
+</code></pre></div><p>测试TCP</p>
 <pre><code>nc localhost 8888
 </code></pre>
-
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
 		</div>

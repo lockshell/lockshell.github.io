@@ -11,8 +11,8 @@
 <meta property="og:description" content="Python Requests urllib3 Http Connection Pool" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2019/12/04/python-requests-http-connection-pool/" />
-<meta property="article:published_time" content="2019-12-04T20:28:00&#43;08:00"/>
-<meta property="article:modified_time" content="2019-12-04T20:28:00&#43;08:00"/>
+<meta property="article:published_time" content="2019-12-04T20:28:00+08:00" />
+<meta property="article:modified_time" content="2019-12-04T20:28:00+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python Http连接池"/>
@@ -127,41 +127,33 @@ if (!doNotTrack) {
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#requests-session">requests.Session</a></li>
-<li><a href="#requests-adapter">requests.Adapter</a></li>
-<li><a href="#urllib3-httpconnectionpool">urllib3.HTTPConnectionPool</a></li>
-<li><a href="#urllib3-poolmanager">urllib3.PoolManager</a></li>
-<li><a href="#recentlyusedcontainer">RecentlyUsedContainer</a></li>
-<li><a href="#request-session封装例子">request Session封装例子</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#requestssession">requests.Session</a></li>
+    <li><a href="#requestsadapter">requests.Adapter</a></li>
+    <li><a href="#urllib3httpconnectionpool">urllib3.HTTPConnectionPool</a></li>
+    <li><a href="#urllib3poolmanager">urllib3.PoolManager</a></li>
+    <li><a href="#recentlyusedcontainer">RecentlyUsedContainer</a></li>
+    <li><a href="#request-session封装例子">request Session封装例子</a></li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<p>HTTP是建立在TCP上面的，一次HTTP请求要经历TCP三次握手阶段，然后发送请求，得到相应数据，最后TCP断开连接。如果我们要发出多个HTTP请求，每次都这么搞，那每次要握手、请求、断开，就比较浪费资源。所以如果我们在HTTP(S)连接建立之后，可以复用已经建立的连接传输数据，就能省反复新建连接的开销。这样有HTTP(S)连接池的用武之地。</p>
-
+			<p>HTTP是建立在TCP上面的，一次HTTP请求要经历TCP三次握手阶段，然后发送请求，得到相应数据，最后TCP断开连接。
+如果我们要发出多个HTTP请求，每次都这么搞，那每次要握手、请求、断开，就比较浪费资源。
+所以如果我们在HTTP(S)连接建立之后，可以复用已经建立的连接传输数据，就能省反复新建连接的开销。
+这样有HTTP(S)连接池的用武之地。</p>
 <p>在Python中最常用的是requests库，这个库依赖的是urllib，下面基于urllib3分析一下Http连接池的使用与实现。</p>
-
-<h2 id="requests-session">requests.Session</h2>
-
+<h2 id="requestssession">requests.Session</h2>
 <p>requests使用极为方便，三行代码就能搞定。那在这种简洁的后面，requests到底做了哪些事情呢？</p>
-
 <pre><code>Basic Usage::
 
   &gt;&gt;&gt; import requests
   &gt;&gt;&gt; s = requests.Session()
   &gt;&gt;&gt; s.get('https://httpbin.org/get')
   &lt;Response [200]&gt;
-</code></pre>
-
-<p>在get请求中，函数的调用链是：<code>get() -&gt; request() -&gt; send() -&gt; adapter.send()</code>。可见在requests.Session中，所有的请求都是通过HTTPAdapter发出去的。</p>
-
+</code></pre><p>在get请求中，函数的调用链是：<code>get() -&gt; request() -&gt; send() -&gt; adapter.send()</code>。
+可见在requests.Session中，所有的请求都是通过HTTPAdapter发出去的。</p>
 <pre><code>    def send(self, request, **kwargs):
         &quot;&quot;&quot;Send a given PreparedRequest.
 
@@ -192,129 +184,115 @@ if (!doNotTrack) {
 
         # Send the request
         r = adapter.send(request, **kwargs)
-</code></pre>
+</code></pre><h2 id="requestsadapter">requests.Adapter</h2>
+<p>requests.Adapter实际上是对urllib3的封装。
+如果我们想给一个域名加代理，都可以amount一个自定义的Adapter。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HTTPAdapter</span>(BaseAdapter):
+    <span style="color:#e6db74">&#34;&#34;&#34;The built-in HTTP Adapter for urllib3.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Provides a general-case interface for Requests sessions to contact HTTP and
+</span><span style="color:#e6db74">    HTTPS urls by implementing the Transport Adapter interface. This class will
+</span><span style="color:#e6db74">    usually be created by the :class:`Session &lt;Session&gt;` class under the
+</span><span style="color:#e6db74">    covers.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    :param pool_connections: The number of urllib3 connection pools to cache.
+</span><span style="color:#e6db74">    :param pool_maxsize: The maximum number of connections to save in the pool.
+</span><span style="color:#e6db74">    :param max_retries: The maximum number of retries each connection
+</span><span style="color:#e6db74">        should attempt. Note, this applies only to failed DNS lookups, socket
+</span><span style="color:#e6db74">        connections and connection timeouts, never to requests where data has
+</span><span style="color:#e6db74">        made it to the server. By default, Requests does not retry failed
+</span><span style="color:#e6db74">        connections. If you need granular control over the conditions under
+</span><span style="color:#e6db74">        which we retry a request, import urllib3&#39;s ``Retry`` class and pass
+</span><span style="color:#e6db74">        that instead.
+</span><span style="color:#e6db74">    :param pool_block: Whether the connection pool should block for connections.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Usage::
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">      &gt;&gt;&gt; import requests
+</span><span style="color:#e6db74">      &gt;&gt;&gt; s = requests.Session()
+</span><span style="color:#e6db74">      &gt;&gt;&gt; a = requests.adapters.HTTPAdapter(max_retries=3)
+</span><span style="color:#e6db74">      &gt;&gt;&gt; s.mount(&#39;http://&#39;, a)
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    __attrs__ <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;max_retries&#39;</span>, <span style="color:#e6db74">&#39;config&#39;</span>, <span style="color:#e6db74">&#39;_pool_connections&#39;</span>, <span style="color:#e6db74">&#39;_pool_maxsize&#39;</span>,
+                 <span style="color:#e6db74">&#39;_pool_block&#39;</span>]
 
-<h2 id="requests-adapter">requests.Adapter</h2>
+    <span style="color:#66d9ef">def</span> __init__(self, pool_connections<span style="color:#f92672">=</span>DEFAULT_POOLSIZE,
+                 pool_maxsize<span style="color:#f92672">=</span>DEFAULT_POOLSIZE, max_retries<span style="color:#f92672">=</span>DEFAULT_RETRIES,
+                 pool_block<span style="color:#f92672">=</span>DEFAULT_POOLBLOCK):
+        <span style="color:#66d9ef">if</span> max_retries <span style="color:#f92672">==</span> DEFAULT_RETRIES:
+            self<span style="color:#f92672">.</span>max_retries <span style="color:#f92672">=</span> Retry(<span style="color:#ae81ff">0</span>, read<span style="color:#f92672">=</span>False)
+        <span style="color:#66d9ef">else</span>:
+            self<span style="color:#f92672">.</span>max_retries <span style="color:#f92672">=</span> Retry<span style="color:#f92672">.</span>from_int(max_retries)
+        self<span style="color:#f92672">.</span>config <span style="color:#f92672">=</span> {}
+        self<span style="color:#f92672">.</span>proxy_manager <span style="color:#f92672">=</span> {}
 
-<p>requests.Adapter实际上是对urllib3的封装。如果我们想给一个域名加代理，都可以amount一个自定义的Adapter。</p>
+        super(HTTPAdapter, self)<span style="color:#f92672">.</span>__init__()
 
-<pre><code class="language-python">class HTTPAdapter(BaseAdapter):
-    &quot;&quot;&quot;The built-in HTTP Adapter for urllib3.
+        self<span style="color:#f92672">.</span>_pool_connections <span style="color:#f92672">=</span> pool_connections
+        self<span style="color:#f92672">.</span>_pool_maxsize <span style="color:#f92672">=</span> pool_maxsize
+        self<span style="color:#f92672">.</span>_pool_block <span style="color:#f92672">=</span> pool_block
 
-    Provides a general-case interface for Requests sessions to contact HTTP and
-    HTTPS urls by implementing the Transport Adapter interface. This class will
-    usually be created by the :class:`Session &lt;Session&gt;` class under the
-    covers.
-
-    :param pool_connections: The number of urllib3 connection pools to cache.
-    :param pool_maxsize: The maximum number of connections to save in the pool.
-    :param max_retries: The maximum number of retries each connection
-        should attempt. Note, this applies only to failed DNS lookups, socket
-        connections and connection timeouts, never to requests where data has
-        made it to the server. By default, Requests does not retry failed
-        connections. If you need granular control over the conditions under
-        which we retry a request, import urllib3's ``Retry`` class and pass
-        that instead.
-    :param pool_block: Whether the connection pool should block for connections.
-
-    Usage::
-
-      &gt;&gt;&gt; import requests
-      &gt;&gt;&gt; s = requests.Session()
-      &gt;&gt;&gt; a = requests.adapters.HTTPAdapter(max_retries=3)
-      &gt;&gt;&gt; s.mount('http://', a)
-    &quot;&quot;&quot;
-    __attrs__ = ['max_retries', 'config', '_pool_connections', '_pool_maxsize',
-                 '_pool_block']
-
-    def __init__(self, pool_connections=DEFAULT_POOLSIZE,
-                 pool_maxsize=DEFAULT_POOLSIZE, max_retries=DEFAULT_RETRIES,
-                 pool_block=DEFAULT_POOLBLOCK):
-        if max_retries == DEFAULT_RETRIES:
-            self.max_retries = Retry(0, read=False)
-        else:
-            self.max_retries = Retry.from_int(max_retries)
-        self.config = {}
-        self.proxy_manager = {}
-
-        super(HTTPAdapter, self).__init__()
-
-        self._pool_connections = pool_connections
-        self._pool_maxsize = pool_maxsize
-        self._pool_block = pool_block
-
-        self.init_poolmanager(pool_connections, pool_maxsize, block=pool_block)
-</code></pre>
-
-<ul>
+        self<span style="color:#f92672">.</span>init_poolmanager(pool_connections, pool_maxsize, block<span style="color:#f92672">=</span>pool_block)
+</code></pre></div><ul>
 <li>pool_connections: 会传给PoolManager控制Pool的数量。</li>
 <li>pool_maxsize: 是HTTPConnectionPool缓存的连接的数量。</li>
 </ul>
-
-<h2 id="urllib3-httpconnectionpool">urllib3.HTTPConnectionPool</h2>
-
-<p>HTTPSConnectionPool是连接池类，继承自ConnectionPool, RequestMethods。HTTP连接池缓存的是TCP连接，这个链接是相对于客户端和服务器的，说简单点，就是针对一个URL(IP)的，所以连接池建立的时候要指定对哪一个host缓存连接。所以对于多个域名，就需要建立多个ConnectionPool。</p>
-
-<pre><code class="language-python">class HTTPConnectionPool(ConnectionPool, RequestMethods):
-    &quot;&quot;&quot;
-    :param maxsize:
-        Number of connections to save that can be reused. More than 1 is useful
-        in multithreaded situations. If ``block`` is set to False, more
-        connections will be created but they will not be saved once they've
-        been used.
-
-    :param block:
-        If set to True, no more than ``maxsize`` connections will be used at
-        a time. When no free connections are available, the call will block
-        until a connection has been released. This is a useful side effect for
-        particular multithreaded situations where one does not want to use more
-        than maxsize connections per host to prevent flooding.
-    &quot;&quot;&quot;
-    def __init__(self, host, port=None, strict=False,
-                timeout=Timeout.DEFAULT_TIMEOUT, maxsize=1, block=False,
-                headers=None, retries=None,
-                _proxy=None, _proxy_headers=None,
-                **conn_kw):
-        pass
-</code></pre>
-
-<p>需要注意的参数：</p>
-
+<h2 id="urllib3httpconnectionpool">urllib3.HTTPConnectionPool</h2>
+<p>HTTPSConnectionPool是连接池类，继承自ConnectionPool, RequestMethods。
+HTTP连接池缓存的是TCP连接，这个链接是相对于客户端和服务器的，说简单点，就是针对一个URL(IP)的，所以连接池建立的时候要指定对哪一个host缓存连接。
+所以对于多个域名，就需要建立多个ConnectionPool。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HTTPConnectionPool</span>(ConnectionPool, RequestMethods):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    :param maxsize:
+</span><span style="color:#e6db74">        Number of connections to save that can be reused. More than 1 is useful
+</span><span style="color:#e6db74">        in multithreaded situations. If ``block`` is set to False, more
+</span><span style="color:#e6db74">        connections will be created but they will not be saved once they&#39;ve
+</span><span style="color:#e6db74">        been used.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    :param block:
+</span><span style="color:#e6db74">        If set to True, no more than ``maxsize`` connections will be used at
+</span><span style="color:#e6db74">        a time. When no free connections are available, the call will block
+</span><span style="color:#e6db74">        until a connection has been released. This is a useful side effect for
+</span><span style="color:#e6db74">        particular multithreaded situations where one does not want to use more
+</span><span style="color:#e6db74">        than maxsize connections per host to prevent flooding.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">def</span> __init__(self, host, port<span style="color:#f92672">=</span>None, strict<span style="color:#f92672">=</span>False,
+                timeout<span style="color:#f92672">=</span>Timeout<span style="color:#f92672">.</span>DEFAULT_TIMEOUT, maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, block<span style="color:#f92672">=</span>False,
+                headers<span style="color:#f92672">=</span>None, retries<span style="color:#f92672">=</span>None,
+                _proxy<span style="color:#f92672">=</span>None, _proxy_headers<span style="color:#f92672">=</span>None,
+                <span style="color:#f92672">**</span>conn_kw):
+        <span style="color:#66d9ef">pass</span>
+</code></pre></div><p>需要注意的参数：</p>
 <ul>
 <li>maxsize: maxsize指定的是每个pool中连接的数量。</li>
 <li>block: 如果blcok参数是False（默认），不会创建超过maxsize数量的连接，如果pool中没有可用的连接，那么调用会一直阻塞，直到有一个连接被释放。</li>
 </ul>
-
 <p>HTTPConnectionPool例子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># coding: utf-8</span>
+<span style="color:#f92672">import</span> threading
+<span style="color:#f92672">from</span> urllib3 <span style="color:#f92672">import</span> HTTPConnectionPool
 
-<pre><code class="language-python"># coding: utf-8
-import threading
-from urllib3 import HTTPConnectionPool
-
-pool = HTTPConnectionPool('baidu.com', maxsize=2, block=True)
+pool <span style="color:#f92672">=</span> HTTPConnectionPool(<span style="color:#e6db74">&#39;baidu.com&#39;</span>, maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, block<span style="color:#f92672">=</span>True)
 
 
-def http_get():
-    for _ in range(3):
-        r = pool.request('GET', '/', redirect=False)
-        print(&quot;Request Status: {}; Connections: {}; Requests: {}; Thread Name: {}&quot;.format(
-            r.status, pool.num_connections, pool.num_requests, threading.current_thread().getName(),
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">http_get</span>():
+    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>):
+        r <span style="color:#f92672">=</span> pool<span style="color:#f92672">.</span>request(<span style="color:#e6db74">&#39;GET&#39;</span>, <span style="color:#e6db74">&#39;/&#39;</span>, redirect<span style="color:#f92672">=</span>False)
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Request Status: {}; Connections: {}; Requests: {}; Thread Name: {}&#34;</span><span style="color:#f92672">.</span>format(
+            r<span style="color:#f92672">.</span>status, pool<span style="color:#f92672">.</span>num_connections, pool<span style="color:#f92672">.</span>num_requests, threading<span style="color:#f92672">.</span>current_thread()<span style="color:#f92672">.</span>getName(),
         ))
 
 
-# 三个线程共用一个连接池
-t1 = threading.Thread(target=http_get, name='t1')
-t2 = threading.Thread(target=http_get, name='t2')
-t3 = threading.Thread(target=http_get, name='t3')
+<span style="color:#75715e"># 三个线程共用一个连接池</span>
+t1 <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Thread(target<span style="color:#f92672">=</span>http_get, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;t1&#39;</span>)
+t2 <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Thread(target<span style="color:#f92672">=</span>http_get, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;t2&#39;</span>)
+t3 <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>Thread(target<span style="color:#f92672">=</span>http_get, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;t3&#39;</span>)
 
-t1.start()
-t2.start()
-t3.start()
+t1<span style="color:#f92672">.</span>start()
+t2<span style="color:#f92672">.</span>start()
+t3<span style="color:#f92672">.</span>start()
 
-</code></pre>
-
-<p>输出：</p>
-
+</code></pre></div><p>输出：</p>
 <pre><code>Request Status: 200; Connections: 2; Requests: 2; Thread Name: t1
 Request Status: 200; Connections: 2; Requests: 3; Thread Name: t2
 Request Status: 200; Connections: 2; Requests: 4; Thread Name: t3
@@ -324,10 +302,7 @@ Request Status: 200; Connections: 2; Requests: 7; Thread Name: t2
 Request Status: 200; Connections: 2; Requests: 8; Thread Name: t1
 Request Status: 200; Connections: 2; Requests: 9; Thread Name: t1
 Request Status: 200; Connections: 2; Requests: 9; Thread Name: t3
-</code></pre>
-
-<p>如果将block参数改为False，maxsize=2时，实际创建的Connections可以达到3。</p>
-
+</code></pre><p>如果将block参数改为False，maxsize=2时，实际创建的Connections可以达到3。</p>
 <pre><code>Request Status: 200; Connections: 3; Requests: 3; Thread Name: t3
 Request Status: 200; Connections: 3; Requests: 4; Thread Name: t2
 Request Status: 200; Connections: 3; Requests: 5; Thread Name: t1
@@ -337,38 +312,30 @@ Request Status: 200; Connections: 3; Requests: 8; Thread Name: t1
 Request Status: 200; Connections: 3; Requests: 9; Thread Name: t3
 Request Status: 200; Connections: 3; Requests: 9; Thread Name: t1
 Request Status: 200; Connections: 3; Requests: 10; Thread Name: t2
-</code></pre>
-
-<p>在多线程的环境中，多缓存一些连接可能带来性能上的提升，一般连接数等于线程数，这样保证所有的线程都有缓存的连接可用。如果在程序中使用了协程，那么连接数应该设定呢？（TODO）</p>
-
-<h2 id="urllib3-poolmanager">urllib3.PoolManager</h2>
-
+</code></pre><p>在多线程的环境中，多缓存一些连接可能带来性能上的提升，一般连接数等于线程数，这样保证所有的线程都有缓存的连接可用。
+如果在程序中使用了协程，那么连接数应该设定呢？（TODO）</p>
+<h2 id="urllib3poolmanager">urllib3.PoolManager</h2>
 <p>如果要向不同的域名发请求，希望缓存多个域名的连接，就要有多个连接池。urllib3提供了PoolManager管理自己的ConnectionPool。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PoolManager</span>(RequestMethods):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    :param num_pools:
+</span><span style="color:#e6db74">        Number of connection pools to cache before discarding the least
+</span><span style="color:#e6db74">        recently used pool.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">def</span> __init__(self, num_pools<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, headers<span style="color:#f92672">=</span>None, <span style="color:#f92672">**</span>connection_pool_kw):
+        RequestMethods<span style="color:#f92672">.</span>__init__(self, headers)
+        self<span style="color:#f92672">.</span>connection_pool_kw <span style="color:#f92672">=</span> connection_pool_kw
+        self<span style="color:#f92672">.</span>pools <span style="color:#f92672">=</span> RecentlyUsedContainer(num_pools, dispose_func<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> p: p<span style="color:#f92672">.</span>close())
 
-<pre><code class="language-python">class PoolManager(RequestMethods):
-    &quot;&quot;&quot;
-    :param num_pools:
-        Number of connection pools to cache before discarding the least
-        recently used pool.
-    &quot;&quot;&quot;
-    def __init__(self, num_pools=10, headers=None, **connection_pool_kw):
-        RequestMethods.__init__(self, headers)
-        self.connection_pool_kw = connection_pool_kw
-        self.pools = RecentlyUsedContainer(num_pools, dispose_func=lambda p: p.close())
-
-        # Locally set the pool classes and keys so other PoolManagers can
-        # override them.
-        self.pool_classes_by_scheme = pool_classes_by_scheme
-        self.key_fn_by_scheme = key_fn_by_scheme.copy()
-</code></pre>
-
-<ul>
+        <span style="color:#75715e"># Locally set the pool classes and keys so other PoolManagers can</span>
+        <span style="color:#75715e"># override them.</span>
+        self<span style="color:#f92672">.</span>pool_classes_by_scheme <span style="color:#f92672">=</span> pool_classes_by_scheme
+        self<span style="color:#f92672">.</span>key_fn_by_scheme <span style="color:#f92672">=</span> key_fn_by_scheme<span style="color:#f92672">.</span>copy()
+</code></pre></div><ul>
 <li>num_pools：参数num_pools表示连接池的数量，其余参数将会传给Pool初始化。</li>
 <li>pools: 是一个RecentlyUsedContainer。</li>
 </ul>
-
 <p>从PoolManager获取pool实际就是根据pool_key从pools中get一下，没有get到就创建一个新的ConnectionPool。</p>
-
 <pre><code>    def connection_from_pool_key(self, pool_key, request_context=None):
         &quot;&quot;&quot;
         Get a :class:`ConnectionPool` based on the provided pool key.
@@ -392,24 +359,18 @@ Request Status: 200; Connections: 3; Requests: 10; Thread Name: t2
             self.pools[pool_key] = pool
 
         return pool
-</code></pre>
-
-<p>PoolManager例子</p>
-
+</code></pre><p>PoolManager例子</p>
 <pre><code>from urllib3 import PoolManager
 
 manager = PoolManager(3)
 
 r = manager.request('GET', 'http://baidu.com/')
 print(r.status)
-</code></pre>
-
-<h2 id="recentlyusedcontainer">RecentlyUsedContainer</h2>
-
-<p>RecentlyUsedContainer的代码非常漂亮，是一个线程安全类字典的container，基于OrderedDict实现了RecentlyUsed算法。OrderedDict是按添加次序排序的字典。RecentlyUsedContainer中声明了一个名为ContainerCls的OrderDict类变量。</p>
-
-<p>RecentlyUsed具体实现就是，在get的时候，从ContainerCls中pop出对应的pool，放到最前面去；在set的时候，如果初始化的maxsize大小设置为10，那么需要建立第11个连接池的时候，最旧的一个连接池就被销毁。</p>
-
+</code></pre><h2 id="recentlyusedcontainer">RecentlyUsedContainer</h2>
+<p>RecentlyUsedContainer的代码非常漂亮，是一个线程安全类字典的container，基于OrderedDict实现了RecentlyUsed算法。
+OrderedDict是按添加次序排序的字典。RecentlyUsedContainer中声明了一个名为ContainerCls的OrderDict类变量。</p>
+<p>RecentlyUsed具体实现就是，在get的时候，从ContainerCls中pop出对应的pool，放到最前面去；
+在set的时候，如果初始化的maxsize大小设置为10，那么需要建立第11个连接池的时候，最旧的一个连接池就被销毁。</p>
 <pre><code>class RecentlyUsedContainer(MutableMapping):
     &quot;&quot;&quot;
     Provides a thread-safe dict-like container which maintains up to
@@ -482,14 +443,10 @@ print(r.status)
     def keys(self):
         with self.lock:
             return list(iterkeys(self._container))
-</code></pre>
-
-<h2 id="request-session封装例子">request Session封装例子</h2>
-
+</code></pre><h2 id="request-session封装例子">request Session封装例子</h2>
 <p>实际使用中，我们也可以通过继承封装一下requests.Session，方便设置一些个性化的参数。</p>
-
-<p>需要特别注意的是，<code>pool_connections</code>指定的不是连接的数量，而是连接池的数量，一般默认的10就够用了。<code>pool_maxsize</code>指定的才是每个pool中最大连接数量。</p>
-
+<p>需要特别注意的是，<code>pool_connections</code>指定的不是连接的数量，而是连接池的数量，一般默认的10就够用了。
+<code>pool_maxsize</code>指定的才是每个pool中最大连接数量。</p>
 <pre><code>import uuid
 
 from requests import adapters
@@ -517,7 +474,6 @@ class MySession(Session):
         return super(MySession, self).request('POST', url, headers=headers, timeout=timeout, **kwargs)
 
 </code></pre>
-
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
 		</div>

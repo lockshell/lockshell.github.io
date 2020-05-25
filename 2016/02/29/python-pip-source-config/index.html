@@ -11,8 +11,8 @@
 <meta property="og:description" content="Python Pip pypi Source Config" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2016/02/29/python-pip-source-config/" />
-<meta property="article:published_time" content="2016-02-29T10:01:16&#43;08:00"/>
-<meta property="article:modified_time" content="2016-02-29T10:01:16&#43;08:00"/>
+<meta property="article:published_time" content="2016-02-29T10:01:16+08:00" />
+<meta property="article:modified_time" content="2016-02-29T10:01:16+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python pip配置默认镜像源"/>
@@ -123,29 +123,21 @@ if (!doNotTrack) {
 <span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 202 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>在连接pip官网的时候状况不是很稳定。很多国内镜像站可以使用，加速下载。使用镜像源很简单，用-i指定就行了：</p>
-
+			<p>在连接pip官网的时候状况不是很稳定。很多国内镜像站可以使用，加速下载。
+使用镜像源很简单，用-i指定就行了：</p>
 <pre><code>easy_install -i http://pypi.douban.com/simple/ gevent
 pip install -i http://pypi.douban.com/simple/ gevent
-</code></pre>
-
-<p>如果觉得太麻烦，可以配制成默认：</p>
-
+</code></pre><p>如果觉得太麻烦，可以配制成默认：</p>
 <p>linux下,修改<code>~/.pip/pip.conf</code>，如果没这文件则创建。</p>
-
 <p>windows下，修改<code>%HOMEPATH%\pip\pip.ini</code>，内容为：</p>
-
 <pre><code>[global]
 index-url = http://pypi.douban.com/simple
-</code></pre>
-
-<p>新的版本中会在非https传输的镜像站上报错。解决办法就是pip.conf的内容改为：</p>
-
+</code></pre><p>新的版本中会在非https传输的镜像站上报错。
+解决办法就是pip.conf的内容改为：</p>
 <pre><code>[global]
 trusted-host=mirrors.aliyun.com
 index-url=http://mirrors.aliyun.com/pypi/simple/
 </code></pre>
-
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
 		</div>

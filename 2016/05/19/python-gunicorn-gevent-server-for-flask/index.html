@@ -11,8 +11,8 @@
 <meta property="og:description" content="Python Gunicorn Gevent as Server for Flask Application" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2016/05/19/python-gunicorn-gevent-server-for-flask/" />
-<meta property="article:published_time" content="2016-05-19T13:43:57&#43;08:00"/>
-<meta property="article:modified_time" content="2016-05-19T13:43:57&#43;08:00"/>
+<meta property="article:published_time" content="2016-05-19T13:43:57+08:00" />
+<meta property="article:modified_time" content="2016-05-19T13:43:57+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python Gunicorn&#43;gevent模式启动Flask应用"/>
@@ -120,43 +120,34 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/python/" rel="category">Python</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1164 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1113 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			
-
-<p>Flask，Django都自带WSGI server，当然性能都一般，自带的web server更多的是测试用途。线上发布时，则使用高性能的WSGI server或者是联合Nginx做UWSGI。</p>
-
+			<p>Flask，Django都自带WSGI server，当然性能都一般，自带的web server更多的是测试用途。
+线上发布时，则使用高性能的WSGI server或者是联合Nginx做UWSGI。</p>
 <p>greenlet是一个轻量级的协程库。gevent是基于greenlet的网络库。</p>
-
-<p>guincorn是支持WSGI协议的HTTP server，gevent只是它支持的模式之一，可以解决Django、Flask这些Web框架自带WSGI Server性能低下的问题。它的特点是与各个Web框架结合紧密，部署相对方便。</p>
-
+<p>guincorn是支持WSGI协议的HTTP server，gevent只是它支持的模式之一，可以解决Django、Flask这些Web框架自带WSGI Server性能低下的问题。
+它的特点是与各个Web框架结合紧密，部署相对方便。</p>
 <h2 id="gunicorn安装和使用">gunicorn安装和使用</h2>
-
 <h3 id="安装">安装</h3>
-
 <p><code>pip install gunicorn</code></p>
-
 <h3 id="启动">启动</h3>
-
-<p><code>gunicorn code:application</code>其中code就是指python程序代码code.py，application就是那个wsgi func的名字。这样运行的话， gunicorn 默认作为一个监听 127.0.0.1:8000 的web server，可以在本机通过： <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> 访问。###设置监听端口如果要通过网络访问，则需要绑定不同的地址（也可以同时设置监听端口）。<code>gunicorn -b 127.0.0.1:8080</code></p>
-
+<p><code>gunicorn code:application</code>
+其中code就是指python程序代码code.py，application就是那个wsgi func的名字。这样运行的话， gunicorn 默认作为一个监听 127.0.0.1:8000 的web server，可以在本机通过： http://127.0.0.1:8000 访问。
+###设置监听端口
+如果要通过网络访问，则需要绑定不同的地址（也可以同时设置监听端口）。
+<code>gunicorn -b 127.0.0.1:8080 </code></p>
 <h3 id="使用多进程">使用多进程</h3>
-
-<p>在多核服务器上，为了支持更多的并发访问并充分利用资源，可以使用更多的 gunicorn 进程。<code>gunicorn -w 8 code:application</code>这样就可以启动8个进程同时处理HTTP请求，提高系统的使用效率及性能。</p>
-
+<p>在多核服务器上，为了支持更多的并发访问并充分利用资源，可以使用更多的 gunicorn 进程。
+<code>gunicorn -w 8 code:application</code>
+这样就可以启动8个进程同时处理HTTP请求，提高系统的使用效率及性能。</p>
 <h3 id="配合gevent">配合gevent</h3>
-
 <p>另外， gunicorn 默认使用同步阻塞的网络模型(-k sync)，对于大并发的访问可能表现不够好， 它还支持其它更好的模式，比如：gevent或meinheld。</p>
-
 <pre><code># gevent
 gunicorn -k gevent code:application
-</code></pre>
-
-<h3 id="指定配置文件">指定配置文件</h3>
-
-<p>以上设置还可以通过 -c 参数传入一个配置文件实现。<code>gunicorn - gun.conf code:application</code></p>
-
+</code></pre><h3 id="指定配置文件">指定配置文件</h3>
+<p>以上设置还可以通过 -c 参数传入一个配置文件实现。
+<code>gunicorn - gun.conf code:application</code></p>
 <pre><code># cat gun.conf
 import os
 bind = '127.0.0.1:5000'
@@ -168,20 +159,15 @@ proc_name = 'gunicorn.proc'
 pidfile = '/tmp/gunicorn.pid'
 logfile = '/var/log/gunicorn/debug.log'
 loglevel = 'debug'
-</code></pre>
-
-<h2 id="关于gevent">关于gevent</h2>
-
+</code></pre><h2 id="关于gevent">关于gevent</h2>
 <ul>
 <li>gevent是一个基于libev的并发库。它为各种并发和网络相关的任务提供了整洁的API。gunicorn对于“协程”也就是Gevent的支持非常好。</li>
 <li>gevent程序员指南：<a href="http://xlambda.com/gevent-tutorial/#">gevnet指南</a></li>
 <li>gevent.monkey介绍详见：<a href="http://www.gevent.org/gevent.monkey.html">关于gevent monkey</a>。</li>
 </ul>
-
 <h2 id="简单的flask应用">简单的Flask应用</h2>
-
-<p>Flask是一个轻量级的Web框架，核心简单而易于扩展。Flask介绍详见：<a href="http://docs.jinkan.org/docs/flask/">Flask文档</a>。用Flask简单写了一个web例子，如下：</p>
-
+<p>Flask是一个轻量级的Web框架，核心简单而易于扩展。Flask介绍详见：<a href="http://docs.jinkan.org/docs/flask/">Flask文档</a>。
+用Flask简单写了一个web例子，如下：</p>
 <pre><code>from flask import Flask
 app = Flask(__name__)
 
@@ -191,12 +177,8 @@ def hello_world():
 
 if __name__ == '__main__':
     app.run()
-</code></pre>
-
-<h2 id="用gunicorn启动flask应用">用gunicorn启动Flask应用</h2>
-
-<h3 id="配置文件gun-py">配置文件gun.py</h3>
-
+</code></pre><h2 id="用gunicorn启动flask应用">用gunicorn启动Flask应用</h2>
+<h3 id="配置文件gunpy">配置文件gun.py</h3>
 <pre><code>import os
 import gevent.monkey
 gevent.monkey.patch_all()
@@ -214,15 +196,11 @@ workers = multiprocessing.cpu_count() * 2 + 1
 worker_class = 'gunicorn.workers.ggevent.GeventWorker'
 
 x_forwarded_for_header = 'X-FORWARDED-FOR'
-</code></pre>
-
-<h3 id="使用gunicorn来启动">使用gunicorn来启动</h3>
-
+</code></pre><h3 id="使用gunicorn来启动">使用gunicorn来启动</h3>
 <p><code>gunicorn -c gun.py hello:app</code></p>
-
 <p>单纯的flask 自带的web服务器做下测试，会看到压力大的时候出现socket的问题，因为他是单进程单线程的。</p>
-
-<p>使用gunicorn来启动，响应速度和能力提升显著。配置中workers指定启动的进程数。cpu的损耗是平均到各个进程。workers的值一定不要过大，毕竟多进程对于系统的调度消耗比较大。</p>
+<p>使用gunicorn来启动，响应速度和能力提升显著。
+配置中workers指定启动的进程数。cpu的损耗是平均到各个进程。workers的值一定不要过大，毕竟多进程对于系统的调度消耗比较大。</p>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on 络壳 LockShell</title>
@@ -26,7 +26,7 @@
       <pubDate>Wed, 04 Dec 2019 20:28:00 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/12/04/python-requests-http-connection-pool/</guid>
-      <description>HTTP是建立在TCP上面的，一次HTTP请求要经历TCP三次握手阶段，然后发送请求，得到相应数据，最后TCP断开连接。如果我们要发出多个H</description>
+      <description>HTTP是建立在TCP上面的，一次HTTP请求要经历TCP三次握手阶段，然后发送请求，得到相应数据，最后TCP断开连接。 如果我们要发出多个H</description>
     </item>
     
     <item>
@@ -62,7 +62,7 @@
       <pubDate>Wed, 28 Aug 2019 02:40:57 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/28/django-db-connection-pool/</guid>
-      <description>数据库长连接 长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销。 先看看官方文档是怎么讲Djan</description>
+      <description>数据库长连接 长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销。先看看官方文档是怎么讲Djan</description>
     </item>
     
     <item>
@@ -71,7 +71,7 @@
       <pubDate>Mon, 26 Aug 2019 20:47:37 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/26/django-database-partition/</guid>
-      <description>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外，另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的</description>
+      <description>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外， 另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的</description>
     </item>
     
     <item>
@@ -98,7 +98,7 @@
       <pubDate>Wed, 05 Jul 2017 13:26:07 +0800</pubDate>
       
       <guid>https://lockshell.com/2017/07/05/python-lru-cache/</guid>
-      <description>LRU: 最近最少使用算法。 使用场景：在有限的空间存储对象时，当空间满时，按照一定的原则删除原有对象。常用的算法有LRU，FIFO，LFU。如mem</description>
+      <description>LRU: 最近最少使用算法。 使用场景：在有限的空间存储对象时，当空间满时，按照一定的原则删除原有对象。 常用的算法有LRU，FIFO，LFU。如mem</description>
     </item>
     
     <item>
@@ -116,7 +116,7 @@
       <pubDate>Thu, 19 May 2016 13:43:57 +0800</pubDate>
       
       <guid>https://lockshell.com/2016/05/19/python-gunicorn-gevent-server-for-flask/</guid>
-      <description>Flask，Django都自带WSGI server，当然性能都一般，自带的web server更多的是测试用途。线上发布时，则使用高性能的WS</description>
+      <description>Flask，Django都自带WSGI server，当然性能都一般，自带的web server更多的是测试用途。 线上发布时，则使用高性能的WS</description>
     </item>
     
     <item>
@@ -125,7 +125,7 @@
       <pubDate>Mon, 29 Feb 2016 10:01:16 +0800</pubDate>
       
       <guid>https://lockshell.com/2016/02/29/python-pip-source-config/</guid>
-      <description>在连接pip官网的时候状况不是很稳定。很多国内镜像站可以使用，加速下载。使用镜像源很简单，用-i指定就行了： easy_install -i http://pypi.douban.com/simple/ gevent pip install -i http://pypi.douban.com/simple/ gevent 如果觉得太麻烦</description>
+      <description>在连接pip官网的时候状况不是很稳定。很多国内镜像站可以使用，加速下载。 使用镜像源很简单，用-i指定就行了： easy_install -i http://pypi.douban.com/simple/ gevent pip install -i http://pypi.douban.com/simple/ gevent 如果觉得太麻烦</description>
     </item>
     
   </channel>

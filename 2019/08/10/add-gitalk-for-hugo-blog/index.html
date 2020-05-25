@@ -11,8 +11,8 @@
 <meta property="og:description" content="Add Gitalk for comments in Hugo Blog" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2019/08/10/add-gitalk-for-hugo-blog/" />
-<meta property="article:published_time" content="2019-08-10T11:12:00&#43;08:00"/>
-<meta property="article:modified_time" content="2019-08-10T11:12:00&#43;08:00"/>
+<meta property="article:published_time" content="2019-08-10T11:12:00+08:00" />
+<meta property="article:modified_time" content="2019-08-10T11:12:00+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Add Gitalk for comments in Hugo Blog"/>
@@ -120,26 +120,22 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/hugo/" rel="category">Hugo</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 351 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 354 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			<p><code>Gitalk</code> is a comment plug based on Github issue api.<code>Hugo</code> can compile the Markdown files with themes and templates into static web files, such as CSS, HTML and JavaScript.</p>
-
-<p>To use <code>Gitalk</code> in the <code>Hugo</code> blog, we need to add Gitalk related code as <code>&lt;div&gt;</code> into the HTML template.Then update the config.toml for <code>Gitalk</code>.</p>
-
+			<p><code>Gitalk</code> is a comment plug based on Github issue api.
+<code>Hugo</code> can compile the Markdown files with themes and templates into static web files, such as CSS, HTML and JavaScript.</p>
+<p>To use <code>Gitalk</code> in the <code>Hugo</code> blog, we need to add Gitalk related code as <code>&lt;div&gt;</code> into the HTML template.
+Then update the config.toml for <code>Gitalk</code>.</p>
 <h2 id="create-github-application">Create Github Application</h2>
-
-<p>Firstly, you should create Github Application on Github.Yon can refer to the official sites below for more information.</p>
-
+<p>Firstly, you should create Github Application on Github.
+Yon can refer to the official sites below for more information.</p>
 <ul>
 <li><a href="https://github.com/gitalk/gitalk/">https://github.com/gitalk/gitalk/</a></li>
 <li><a href="https://gitalk.github.io/">https://gitalk.github.io/</a></li>
 </ul>
-
 <p>Then you can get Client ID and Client Secret.</p>
-
 <h2 id="create-gitalk-comments-template">Create Gitalk Comments Template</h2>
-
 <pre><code>{{ if .Site.Params.enableGitalk }}
 &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/gitalk/dist/gitalk.css&quot;&gt;
@@ -163,12 +159,8 @@ if (!doNotTrack) {
   })();
 &lt;/script&gt;
 {{ end }}
-</code></pre>
-
-<p>I&rsquo;m using the <code>Mainroad</code> theme, so I just overwrite the <code>comments.html</code> with the code above.</p>
-
-<h2 id="update-config-toml">Update config.toml</h2>
-
+</code></pre><p>I&rsquo;m using the <code>Mainroad</code> theme, so I just overwrite the <code>comments.html</code> with the code above.</p>
+<h2 id="update-configtoml">Update config.toml</h2>
 <pre><code>[params]
   enableGitalk = true
   
@@ -184,9 +176,7 @@ if (!doNotTrack) {
     pagerDirection= &quot;last&quot; # Comment sorting direction, available values are 'last' and 'first'.
     createIssueManually= false # If it is 'false', it is auto to make a Github issue when the administrators login.
     distractionFreeMode= false # Enable hot key (cmd|ctrl + enter) submit comment.
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>replace [Client ID] with Github Application&rsquo;s Client ID</li>
 <li>replace [Client Secret] with Github Application&rsquo;s Client Secret</li>
 <li>set repo to your blog address</li>

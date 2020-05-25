@@ -11,8 +11,8 @@
 <meta property="og:description" content="Block BT Download and Upload via iptables on VPS" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2020/01/05/block-bt-via-iptables-on-vps/" />
-<meta property="article:published_time" content="2020-01-05T11:16:56&#43;08:00"/>
-<meta property="article:modified_time" content="2020-01-05T11:16:56&#43;08:00"/>
+<meta property="article:published_time" content="2020-01-05T11:16:56+08:00" />
+<meta property="article:modified_time" content="2020-01-05T11:16:56+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="在VPS上禁止BT下载"/>
@@ -127,38 +127,29 @@ if (!doNotTrack) {
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#为什么要禁止bt下载">为什么要禁止BT下载？</a></li>
-<li><a href="#如何在服务器屏蔽bt上传下载">如何在服务器屏蔽BT上传下载？</a></li>
-<li><a href="#检查iptables配置">检查iptables配置</a></li>
-<li><a href="#iptables备份与重新加载">iptables备份与重新加载</a>
-<ul>
-<li><a href="#备份规则">备份规则</a></li>
-<li><a href="#重新加载">重新加载</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#为什么要禁止bt下载">为什么要禁止BT下载？</a></li>
+    <li><a href="#如何在服务器屏蔽bt上传下载">如何在服务器屏蔽BT上传下载？</a></li>
+    <li><a href="#检查iptables配置">检查iptables配置</a></li>
+    <li><a href="#iptables备份与重新加载">iptables备份与重新加载</a>
+      <ul>
+        <li><a href="#备份规则">备份规则</a></li>
+        <li><a href="#重新加载">重新加载</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<h2 id="为什么要禁止bt下载">为什么要禁止BT下载？</h2>
-
+			<h2 id="为什么要禁止bt下载">为什么要禁止BT下载？</h2>
 <ol>
 <li>BT下载受版权保护的资源在国外是非法的。同时管理员还会收到侵权投诉信，甚至可能吃官司。</li>
 <li>BT下载会大量占用服务器带宽，消耗流量；一不小心AWS账单爆表。</li>
 </ol>
-
 <h2 id="如何在服务器屏蔽bt上传下载">如何在服务器屏蔽BT上传下载？</h2>
-
 <p>如今的BT客户端很智能，以往封杀某个端口的方法不能用了，BT软件会自动更换其他端口，使得防火墙无可奈何。</p>
-
 <p>但可以利用iptables屏蔽常见的BT关键词。原理：不封锁端口，而是阻止BT软件发出的特定请求，定向 kill request。</p>
-
 <pre><code>iptables -A INPUT -m string --string &quot;BitTorrent&quot; --algo bm -j DROP
 iptables -A INPUT -m string --string &quot;BitTorrent protocol&quot; --algo bm -j DROP
 iptables -A INPUT -m string --string &quot;peer_id=&quot; --algo bm -j DROP
@@ -184,16 +175,10 @@ iptables -A FORWARD -m string --string &quot;tracker&quot; --algo bm -j DROP
 iptables -A FORWARD -m string --string &quot;get_peers&quot; --algo bm -j DROP
 iptables -A FORWARD -m string --string &quot;announce_peer&quot; --algo bm -j DROP
 iptables -A FORWARD -m string --string &quot;find_node&quot; --algo bm -j DROP
-</code></pre>
-
-<h2 id="检查iptables配置">检查iptables配置</h2>
-
+</code></pre><h2 id="检查iptables配置">检查iptables配置</h2>
 <p>更新完之后，查看<code>iptables</code>，检查防火墙规则是否已经生效。</p>
-
 <pre><code>sudo iptables -L -n -v
-</code></pre>
-
-<pre><code>Chain INPUT (policy ACCEPT 4 packets, 416 bytes)
+</code></pre><pre><code>Chain INPUT (policy ACCEPT 4 packets, 416 bytes)
 ...
     0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            STRING match  &quot;BitTorrent&quot; ALGO name bm TO 65535
     0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            STRING match  &quot;BitTorrent protocol&quot; ALGO name bm TO 65535
@@ -207,22 +192,13 @@ iptables -A FORWARD -m string --string &quot;find_node&quot; --algo bm -j DROP
     0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            STRING match  &quot;get_peers&quot; ALGO name bm TO 65535
     0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            STRING match  &quot;announce_peer&quot; ALGO name bm TO 65535
     0     0 DROP       all  --  *      *       0.0.0.0/0            0.0.0.0/0            STRING match  &quot;find_node&quot; ALGO name bm TO 65535
-</code></pre>
-
-<h2 id="iptables备份与重新加载">iptables备份与重新加载</h2>
-
+</code></pre><h2 id="iptables备份与重新加载">iptables备份与重新加载</h2>
 <p>如果有多台服务器需要配置同样的规则，在一台机器上配置好后，备份iptables，然后在其他服务器重新加载即可。</p>
-
 <h3 id="备份规则">备份规则</h3>
-
 <pre><code>sudo iptables-save &gt; firewall.txt
-</code></pre>
-
-<h3 id="重新加载">重新加载</h3>
-
+</code></pre><h3 id="重新加载">重新加载</h3>
 <pre><code>sudo iptables-restore &lt; firewall.txt
 </code></pre>
-
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
 		</div>

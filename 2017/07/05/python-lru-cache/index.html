@@ -11,8 +11,8 @@
 <meta property="og:description" content="Python LRU Cache" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2017/07/05/python-lru-cache/" />
-<meta property="article:published_time" content="2017-07-05T13:26:07&#43;08:00"/>
-<meta property="article:modified_time" content="2017-07-05T13:26:07&#43;08:00"/>
+<meta property="article:published_time" content="2017-07-05T13:26:07+08:00" />
+<meta property="article:modified_time" content="2017-07-05T13:26:07+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python实现LRU Cache"/>
@@ -124,64 +124,59 @@ if (!doNotTrack) {
 </div>
 		</header><div class="content post__content clearfix">
 			<p>LRU: 最近最少使用算法。</p>
-
-<p>使用场景：在有限的空间存储对象时，当空间满时，按照一定的原则删除原有对象。常用的算法有LRU，FIFO，LFU。如memcached缓存系统即使用的LRU。</p>
-
-<p>LRU的算法是比较简单的，当对key进行访问时时，将该key放到队列的最前端（或最后端）就行了，这样就实现了对key按其最后一次访问的时间降序（或升序）排列。当向空间中增加新对象时，如果空间满了，删除队尾（或队首）的对象。</p>
-
+<p>使用场景：在有限的空间存储对象时，当空间满时，按照一定的原则删除原有对象。
+常用的算法有LRU，FIFO，LFU。如memcached缓存系统即使用的LRU。</p>
+<p>LRU的算法是比较简单的，当对key进行访问时时，将该key放到队列的最前端（或最后端）就行了，这样就实现了对key按其最后一次访问的时间降序（或升序）排列。
+当向空间中增加新对象时，如果空间满了，删除队尾（或队首）的对象。</p>
 <p>在Python中，可以使用collections.OrderedDict很方便的实现LRU算法。</p>
-
-<pre><code class="language-python"># coding: utf-8
-import collections
-
-
-class LRUCache(collections.OrderedDict):
-    def __init__(self, size=5):
-        self.size = size
-        self.cache = collections.OrderedDict()
-
-    def get(self, key):
-        if self.cache.has_key(key):
-            val = self.cache.pop(key)
-            self.cache[key] = val
-        else:
-            val = None
-
-        return val
-
-    def set(self, key, val):
-        if self.cache.has_key(key):
-            val = self.cache.pop(key)
-            self.cache[key] = val
-        else:
-            if len(self.cache) == self.size:
-                self.cache.popitem(last=False)
-                self.cache[key] = val
-            else:
-                self.cache[key] = val
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># coding: utf-8</span>
+<span style="color:#f92672">import</span> collections
 
 
-if __name__ == '__main__':
-    &quot;&quot;&quot; test &quot;&quot;&quot;
-    cache = LRUCache(6)
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LRUCache</span>(collections<span style="color:#f92672">.</span>OrderedDict):
+    <span style="color:#66d9ef">def</span> __init__(self, size<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>):
+        self<span style="color:#f92672">.</span>size <span style="color:#f92672">=</span> size
+        self<span style="color:#f92672">.</span>cache <span style="color:#f92672">=</span> collections<span style="color:#f92672">.</span>OrderedDict()
 
-    for i in range(10):
-        cache.set(i, i)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get</span>(self, key):
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>cache<span style="color:#f92672">.</span>has_key(key):
+            val <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>cache<span style="color:#f92672">.</span>pop(key)
+            self<span style="color:#f92672">.</span>cache[key] <span style="color:#f92672">=</span> val
+        <span style="color:#66d9ef">else</span>:
+            val <span style="color:#f92672">=</span> None
 
-    for i in range(10):
-        import random
+        <span style="color:#66d9ef">return</span> val
 
-        i = random.randint(1, 20)
-        print 'cache', cache.cache.keys()
-        if cache.get(i):
-            print 'hit, %s\n' % i
-        else:
-            print 'not hit, %s\n' % i
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set</span>(self, key, val):
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>cache<span style="color:#f92672">.</span>has_key(key):
+            val <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>cache<span style="color:#f92672">.</span>pop(key)
+            self<span style="color:#f92672">.</span>cache[key] <span style="color:#f92672">=</span> val
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">if</span> len(self<span style="color:#f92672">.</span>cache) <span style="color:#f92672">==</span> self<span style="color:#f92672">.</span>size:
+                self<span style="color:#f92672">.</span>cache<span style="color:#f92672">.</span>popitem(last<span style="color:#f92672">=</span>False)
+                self<span style="color:#f92672">.</span>cache[key] <span style="color:#f92672">=</span> val
+            <span style="color:#66d9ef">else</span>:
+                self<span style="color:#f92672">.</span>cache[key] <span style="color:#f92672">=</span> val
 
-</code></pre>
 
-<p>这个实现存在的问题：</p>
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    <span style="color:#e6db74">&#34;&#34;&#34; test &#34;&#34;&#34;</span>
+    cache <span style="color:#f92672">=</span> LRUCache(<span style="color:#ae81ff">6</span>)
 
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+        cache<span style="color:#f92672">.</span>set(i, i)
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+        <span style="color:#f92672">import</span> random
+
+        i <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">20</span>)
+        <span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#39;cache&#39;</span>, cache<span style="color:#f92672">.</span>cache<span style="color:#f92672">.</span>keys()
+        <span style="color:#66d9ef">if</span> cache<span style="color:#f92672">.</span>get(i):
+            <span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#39;hit, </span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> i
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#39;not hit, </span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> i
+
+</code></pre></div><p>这个实现存在的问题：</p>
 <ol>
 <li>cache的value是能是不可变对象。</li>
 <li>在并发时，多个线程对缓存进行读写，那么必须对set()操作加锁。<code>TODO 实现一个支持并发访问的LRU cache</code></li>

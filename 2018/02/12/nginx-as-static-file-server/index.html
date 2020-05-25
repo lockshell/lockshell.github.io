@@ -11,8 +11,8 @@
 <meta property="og:description" content="Nginx as Static File Server" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2018/02/12/nginx-as-static-file-server/" />
-<meta property="article:published_time" content="2018-02-12T11:31:48&#43;08:00"/>
-<meta property="article:modified_time" content="2018-02-12T11:31:48&#43;08:00"/>
+<meta property="article:published_time" content="2018-02-12T11:31:48+08:00" />
+<meta property="article:modified_time" content="2018-02-12T11:31:48+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Nginx静态文件服务配置"/>
@@ -120,15 +120,13 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/nginx/" rel="category">Nginx</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 601 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 598 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			<p>Nginx一大经典使用场景就是用来提供静态文件服务，例如图片、html、脚本、样式文件等，这些文件没有必要交给 tomcat、jboss等应用服务器处理，使用 Nginx 直接处理将大大提高性能。用 Nginx 来提供静态文件服务十分简单，只需要添加一个 server块指令即可。</p>
-
+			<p>Nginx一大经典使用场景就是用来提供静态文件服务，例如图片、html、脚本、样式文件等，这些文件没有必要交给 tomcat、jboss等应用服务器处理，使用 Nginx 直接处理将大大提高性能。
+用 Nginx 来提供静态文件服务十分简单，只需要添加一个 server块指令即可。</p>
 <h2 id="基本配置">基本配置</h2>
-
 <p>假设我们的静态文件位于 <code>/Users/test</code> 目录下，文件服务基本配置如下：</p>
-
 <pre><code>    server {
         client_max_body_size 4G;
         listen  0.0.0.0:8888;  ## listen for ipv4; this line is default and implied
@@ -137,12 +135,9 @@ if (!doNotTrack) {
         location / {
         }
     }
-</code></pre>
-
-<p>location指令用来映射请求到本地文件系统。root 指令用来指定文件在服务器上的基路径。</p>
-
+</code></pre><p>location指令用来映射请求到本地文件系统。
+root 指令用来指定文件在服务器上的基路径。</p>
 <h2 id="配置索引">配置索引</h2>
-
 <pre><code>    server {
         client_max_body_size 4G;
         listen  8889;  ## listen for ipv4; this line is default and implied
@@ -154,14 +149,9 @@ if (!doNotTrack) {
             autoindex_localtime on;
         } 
     }
-</code></pre>
-
-<p>执行<code>sudo nginx -s reload</code>重新加载配置。在浏览器中访问<code>http://127.0.0.1:8889/</code>，即可显示root指定的<code>/Users/test</code>目录下的内容。</p>
-
+</code></pre><p>执行<code>sudo nginx -s reload</code>重新加载配置。在浏览器中访问<code>http://127.0.0.1:8889/</code>，即可显示root指定的<code>/Users/test</code>目录下的内容。</p>
 <h2 id="设置密码">设置密码</h2>
-
 <p>搭建文件服务器有时候不想让别人任意访问，想做成一个私有的该怎么办呢，这个时候我们可以用到nginx自带的认证模块。 需配置<code>auth_basic</code>和<code>auth_basic_user_file</code>字段。</p>
-
 <pre><code>    server {
         client_max_body_size 4G;
         listen  8890;  ## listen for ipv4; this line is default and implied
@@ -175,17 +165,10 @@ if (!doNotTrack) {
             autoindex_localtime on;
         }
     }
-</code></pre>
-
-<h2 id="生成用户名和密码">生成用户名和密码</h2>
-
+</code></pre><h2 id="生成用户名和密码">生成用户名和密码</h2>
 <pre><code>htpasswd -c -d pass_file test
-</code></pre>
-
-<p>这样就在<code>/usr/local/etc/nginx/pass_file</code>文件中添加了一个用户。在访问<code>http://localhost:8890/</code>时，会弹窗提示输入用户名和密码进行验证，然后就可以正常访问了。</p>
-
+</code></pre><p>这样就在<code>/usr/local/etc/nginx/pass_file</code>文件中添加了一个用户。在访问<code>http://localhost:8890/</code>时，会弹窗提示输入用户名和密码进行验证，然后就可以正常访问了。</p>
 <h2 id="参考">参考</h2>
-
 <ul>
 <li><a href="http://lockshell.com">深入理解Nginx</a></li>
 </ul>

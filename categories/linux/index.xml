@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on 络壳 LockShell</title>
@@ -35,7 +35,7 @@
       <pubDate>Sun, 18 Aug 2019 14:48:06 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/18/how-to-find-dns-ip/</guid>
-      <description>IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。域名解析就是域名到IP地址的转换过程。域名的解析工作由</description>
+      <description>IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。 域名解析就是域名到IP地址的转换过程。 域名的解析工作由</description>
     </item>
     
   </channel>

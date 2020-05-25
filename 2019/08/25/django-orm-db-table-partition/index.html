@@ -11,8 +11,8 @@
 <meta property="og:description" content="Python Django ORM MySQL DataBase Table partition" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2019/08/25/django-orm-db-table-partition/" />
-<meta property="article:published_time" content="2019-08-25T10:37:30&#43;08:00"/>
-<meta property="article:modified_time" content="2019-08-25T10:37:30&#43;08:00"/>
+<meta property="article:published_time" content="2019-08-25T10:37:30+08:00" />
+<meta property="article:modified_time" content="2019-08-25T10:37:30+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Django数据库分表"/>
@@ -127,326 +127,262 @@ if (!doNotTrack) {
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#分析django-orm">分析Django ORM</a></li>
-<li><a href="#简单方案-穷举-model-类分表">简单方案-穷举<code>Model</code>类分表</a></li>
-<li><a href="#改进方案-动态创建-model-类">改进方案-动态创建<code>Model</code>类</a></li>
-<li><a href="#改进-动态创建-本地缓存">改进-动态创建+本地缓存</a></li>
-<li><a href="#改进-hack-model-类的创建">改进-<code>Hack Model</code>类的创建</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#分析django-orm">分析Django ORM</a></li>
+    <li><a href="#简单方案-穷举model类分表">简单方案-穷举<code>Model</code>类分表</a></li>
+    <li><a href="#改进方案-动态创建model类">改进方案-动态创建<code>Model</code>类</a></li>
+    <li><a href="#改进-动态创建本地缓存">改进-动态创建+本地缓存</a></li>
+    <li><a href="#改进-hack-model类的创建">改进-<code>Hack Model</code>类的创建</a></li>
+  </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			
-
-<p><code>Django ORM</code>没有提供默认的分表功能，给访问分表的数据库带来的不变。那么<code>Django</code>分表怎么实现呢？</p>
-
+			<p><code>Django ORM</code>没有提供默认的分表功能，给访问分表的数据库带来的不变。那么<code>Django</code>分表怎么实现呢？</p>
 <h2 id="分析django-orm">分析Django ORM</h2>
-
 <p>在实现具体的方案之前，我们先看看<code>Django ORM</code>是如何访问数据表的。</p>
-
 <p>在<code>Django</code>中，数据库访问的逻辑基本上是在<code>Queryset</code>中完成的。假设我们有如下一个<code>User Model</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>(models<span style="color:#f92672">.</span>Model):
+    user_id <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>IntegerField()
+    user_name <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
+    password <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
 
-<pre><code class="language-python">class User(models.Model):
-    user_id = models.IntegerField()
-    user_name = models.CharField(max_length=256)
-    password = models.CharField(max_length=256)
-
-    class Meta:
-        db_table = 'user'
-</code></pre>
-
-<p>当根据<code>user_id</code>查询用户数据时，比如：<code>User.objects.filter(user_id=10).first()</code>。</p>
-
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>:
+        db_table <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;user&#39;</span>
+</code></pre></div><p>当根据<code>user_id</code>查询用户数据时，比如：<code>User.objects.filter(user_id=10).first()</code>。</p>
 <p>其中的<code>objects</code>就是<code>models.Manager</code>，我们看看<code>Manager</code>的源码：</p>
-
-<pre><code class="language-python">class Manager(BaseManager.from_queryset(QuerySet)):
-    pass
-</code></pre>
-
-<p><code>from_queryset</code>的源码如下</p>
-
-<pre><code class="language-python">    @classmethod
-    def from_queryset(cls, queryset_class, class_name=None):
-        if class_name is None:
-            class_name = '%sFrom%s' % (cls.__name__, queryset_class.__name__)
-        return type(class_name, (cls,), {
-            '_queryset_class': queryset_class,
-            **cls._get_queryset_methods(queryset_class),
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Manager</span>(BaseManager<span style="color:#f92672">.</span>from_queryset(QuerySet)):
+    <span style="color:#66d9ef">pass</span>
+</code></pre></div><p><code>from_queryset</code>的源码如下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#a6e22e">@classmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">from_queryset</span>(cls, queryset_class, class_name<span style="color:#f92672">=</span>None):
+        <span style="color:#66d9ef">if</span> class_name <span style="color:#f92672">is</span> None:
+            class_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">From</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (cls<span style="color:#f92672">.</span>__name__, queryset_class<span style="color:#f92672">.</span>__name__)
+        <span style="color:#66d9ef">return</span> type(class_name, (cls,), {
+            <span style="color:#e6db74">&#39;_queryset_class&#39;</span>: queryset_class,
+            <span style="color:#f92672">**</span>cls<span style="color:#f92672">.</span>_get_queryset_methods(queryset_class),
         })
-</code></pre>
-
-<p>这里可以看出<code>Manager</code>是对<code>QuerySet</code>的一个包装。<code>QuerySet</code>是最终要转换为SQL的一个中间层，这其实就是ORM的核心功能，把Model操作转换为SQL语句的部分。</p>
-
+</code></pre></div><p>这里可以看出<code>Manager</code>是对<code>QuerySet</code>的一个包装。<code>QuerySet</code>是最终要转换为SQL的一个中间层，这其实就是ORM的核心功能，把Model操作转换为SQL语句的部分。</p>
 <p>所以当我们调用<code>User.objects()</code>的时候，就已经决定了要访问的数据表了。</p>
-
 <p>实际访问哪个表是由<code>models.Model</code>中的内部类<code>class Meta</code>中的<code>db_table</code>字段决定的。</p>
-
-<h2 id="简单方案-穷举-model-类分表">简单方案-穷举<code>Model</code>类分表</h2>
-
-<p>有了上面背景知识，假如我们要根据user_id给user表分三个表。在<code>Django</code> <code>models</code>里如何支持呢？最直接的思路就是声明三个<code>User Model</code>，然后在<code>Meta</code>类中，指定不同的<code>db_table</code>。在查询的时候，根据user_id返回具体的Model。</p>
-
+<h2 id="简单方案-穷举model类分表">简单方案-穷举<code>Model</code>类分表</h2>
+<p>有了上面背景知识，假如我们要根据user_id给user表分三个表。在<code>Django</code> <code>models</code>里如何支持呢？
+最直接的思路就是声明三个<code>User Model</code>，然后在<code>Meta</code>类中，指定不同的<code>db_table</code>。在查询的时候，根据user_id返回具体的Model。</p>
 <p>实现方法如下：</p>
-
-<pre><code class="language-python">class User(models.Model):
-    user_id = models.IntegerField(primary_key=True)
-    user_name = models.CharField(max_length=256)
-    password = models.CharField(max_length=256)
-
-
-class User0(User):
-
-    class Meta:
-        db_table = 'user_0'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>(models<span style="color:#f92672">.</span>Model):
+    user_id <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>IntegerField(primary_key<span style="color:#f92672">=</span>True)
+    user_name <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
+    password <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
 
 
-class User1(User):
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User0</span>(User):
 
-    class Meta:
-        db_table = 'user_1'
-
-
-class User2(User):
-
-    class Meta:
-        db_table = 'user_2'
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>:
+        db_table <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;user_0&#39;</span>
 
 
-user_model_map = {
-    0: User0,
-    1: User1,
-    2: User2,
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User1</span>(User):
+
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>:
+        db_table <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;user_1&#39;</span>
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User2</span>(User):
+
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>:
+        db_table <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;user_2&#39;</span>
+
+
+user_model_map <span style="color:#f92672">=</span> {
+    <span style="color:#ae81ff">0</span>: User0,
+    <span style="color:#ae81ff">1</span>: User1,
+    <span style="color:#ae81ff">2</span>: User2,
 }
 
-table_num = 3
+table_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
 
 
-def get_user_db_model(user_id):
-    key = user_id % table_num
-    return user_model_map[key]
-</code></pre>
-
-<p>然后，在实际查询时，先获取user model，再根据user_id查询数据。</p>
-
-<pre><code class="language-python">def get_user_by_id(user_id):
-    db_model = models.get_user_db_model(user_id)
-    user = db_model.objects.get(user_id=user_id)
-    return model_to_dict(user)
-</code></pre>
-
-<p>这样就可以支持访问分表的数据库了。</p>
-
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_db_model</span>(user_id):
+    key <span style="color:#f92672">=</span> user_id <span style="color:#f92672">%</span> table_num
+    <span style="color:#66d9ef">return</span> user_model_map[key]
+</code></pre></div><p>然后，在实际查询时，先获取user model，再根据user_id查询数据。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_by_id</span>(user_id):
+    db_model <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>get_user_db_model(user_id)
+    user <span style="color:#f92672">=</span> db_model<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>get(user_id<span style="color:#f92672">=</span>user_id)
+    <span style="color:#66d9ef">return</span> model_to_dict(user)
+</code></pre></div><p>这样就可以支持访问分表的数据库了。</p>
 <p>但是，聪明的大家都能看出来，要是user分100个表，甚至1000个表的时候怎么办呢？难道定义1000个User类？</p>
-
 <p>Python这么牛逼的语言，怎么可以这么糟蹋呢？下面继续探究一下更好的方法吧。</p>
-
-<h2 id="改进方案-动态创建-model-类">改进方案-动态创建<code>Model</code>类</h2>
-
+<h2 id="改进方案-动态创建model类">改进方案-动态创建<code>Model</code>类</h2>
 <p>既然不通过复制粘贴来定义1000个类，那么就需要动态去创建这1000个类。</p>
-
 <blockquote>
-<p>学过Java的同学都知道反射，Java的框架和ORM必然是用到反射的，需要动态处理一些类信息。而Python作为一门动态语言，天生就支持<code>Java 反射</code>里各种黑科技的功能，对，我们不需要反射，原生Python已经自带了。</p>
+<p>学过Java的同学都知道反射，Java的框架和ORM必然是用到反射的，需要动态处理一些类信息。
+而Python作为一门动态语言，天生就支持<code>Java 反射</code>里各种黑科技的功能，对，我们不需要反射，原生Python已经自带了。</p>
 </blockquote>
-
 <p>下面看看在<code>Django</code>里怎样去动态创建我们需要的1000个User类。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.db <span style="color:#f92672">import</span> models
 
-<pre><code class="language-python">from django.db import models
-
-TABLE_NUM = 3
+TABLE_NUM <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
 
 
-class User(models.Model):
-    @classmethod
-    def get_user_db_model(cls, user_id=None):
-        suffix = user_id % TABLE_NUM
-        table_name = 'user_%s' % suffix
-        if table_name in cls._user_model_dict:
-            return cls._user_model_dict[table_name]
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>(models<span style="color:#f92672">.</span>Model):
+    <span style="color:#a6e22e">@classmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_db_model</span>(cls, user_id<span style="color:#f92672">=</span>None):
+        suffix <span style="color:#f92672">=</span> user_id <span style="color:#f92672">%</span> TABLE_NUM
+        table_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;user_</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> suffix
+        <span style="color:#66d9ef">if</span> table_name <span style="color:#f92672">in</span> cls<span style="color:#f92672">.</span>_user_model_dict:
+            <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>_user_model_dict[table_name]
 
-        class Meta:
-            db_table = table_name
+        <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>:
+            db_table <span style="color:#f92672">=</span> table_name
 
-        attrs = {
-            '__module__': cls.__module__,
-            'Meta': Meta,
+        attrs <span style="color:#f92672">=</span> {
+            <span style="color:#e6db74">&#39;__module__&#39;</span>: cls<span style="color:#f92672">.</span>__module__,
+            <span style="color:#e6db74">&#39;Meta&#39;</span>: Meta,
         }
 
-        user_db_model = type(str('User_%s' % suffix), (cls,), attrs)
-        cls._user_model_dict[table_name] = user_db_model
-        return user_db_model
+        user_db_model <span style="color:#f92672">=</span> type(str(<span style="color:#e6db74">&#39;User_</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> suffix), (cls,), attrs)
+        cls<span style="color:#f92672">.</span>_user_model_dict[table_name] <span style="color:#f92672">=</span> user_db_model
+        <span style="color:#66d9ef">return</span> user_db_model
 
-    _user_model_dict = {}
-    user_id = models.IntegerField()
-    user_name = models.CharField(max_length=256)
-    password = models.CharField(max_length=256)
+    _user_model_dict <span style="color:#f92672">=</span> {}
+    user_id <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>IntegerField()
+    user_name <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
+    password <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
 
-    class Meta:
-        abstract = True
-</code></pre>
-
-<p>嗯，看起来不错，我们已经不需要用复制粘贴来定义1000个类了，而且实现同样的功能代码短了不少。</p>
-
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>:
+        abstract <span style="color:#f92672">=</span> True
+</code></pre></div><p>嗯，看起来不错，我们已经不需要用复制粘贴来定义1000个类了，而且实现同样的功能代码短了不少。</p>
 <p>依然可通过如下的方式获取数据：</p>
-
 <pre><code>db_model = User.get_user_db_model(user_id)
 user = db_model.objects().get(user_id=user_id)
-</code></pre>
-
-<p>但是这里还有优化的空间，因为每次查询我们都创建了一个User Model对象，岂不是很浪费资源，那这些对象可以复用嘛？</p>
-
-<h2 id="改进-动态创建-本地缓存">改进-动态创建+本地缓存</h2>
-
+</code></pre><p>但是这里还有优化的空间，因为每次查询我们都创建了一个User Model对象，岂不是很浪费资源，那这些对象可以复用嘛？</p>
+<h2 id="改进-动态创建本地缓存">改进-动态创建+本地缓存</h2>
 <p>怎么复用呢？自然是用字典把已经创建过的Model缓存下来，虽然这会消耗一部分本地内存，但为了提高性能还是值得的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.db <span style="color:#f92672">import</span> models
 
-<pre><code class="language-python">from django.db import models
+TABLE_NUM <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
 
-TABLE_NUM = 3
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>(models<span style="color:#f92672">.</span>Model):
+    <span style="color:#a6e22e">@classmethod</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_db_model</span>(cls, user_id<span style="color:#f92672">=</span>None):
+        suffix <span style="color:#f92672">=</span> user_id <span style="color:#f92672">%</span> TABLE_NUM
+        table_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;user_</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> suffix
+        <span style="color:#66d9ef">if</span> table_name <span style="color:#f92672">in</span> cls<span style="color:#f92672">.</span>_user_model_dict:
+            <span style="color:#66d9ef">return</span> cls<span style="color:#f92672">.</span>_user_model_dict[table_name]
 
-class User(models.Model):
-    @classmethod
-    def get_user_db_model(cls, user_id=None):
-        suffix = user_id % TABLE_NUM
-        table_name = 'user_%s' % suffix
-        if table_name in cls._user_model_dict:
-            return cls._user_model_dict[table_name]
+        <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>:
+            db_table <span style="color:#f92672">=</span> table_name
 
-        class Meta:
-            db_table = table_name
-
-        attrs = {
-            '__module__': cls.__module__,
-            'Meta': Meta,
+        attrs <span style="color:#f92672">=</span> {
+            <span style="color:#e6db74">&#39;__module__&#39;</span>: cls<span style="color:#f92672">.</span>__module__,
+            <span style="color:#e6db74">&#39;Meta&#39;</span>: Meta,
         }
 
-        user_db_model = type(str('User%s' % suffix), (cls,), attrs)
-        cls._user_model_dict[table_name] = user_db_model
-        return user_db_model
+        user_db_model <span style="color:#f92672">=</span> type(str(<span style="color:#e6db74">&#39;User</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> suffix), (cls,), attrs)
+        cls<span style="color:#f92672">.</span>_user_model_dict[table_name] <span style="color:#f92672">=</span> user_db_model
+        <span style="color:#66d9ef">return</span> user_db_model
 
-    _user_model_dict = {}
+    _user_model_dict <span style="color:#f92672">=</span> {}
     
-    user_id = models.IntegerField(primary_key=True)
-    user_name = models.CharField(max_length=256)
-    password = models.CharField(max_length=256)
+    user_id <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>IntegerField(primary_key<span style="color:#f92672">=</span>True)
+    user_name <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
+    password <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
     
-    class Meta:
-        abstract = True
-</code></pre>
-
-<p>我们定义了一个私有变量<code>_user_model_dict</code>，以table_name作为key，model对象作为值，把已经创建的Model类都缓存下来。</p>
-
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>:
+        abstract <span style="color:#f92672">=</span> True
+</code></pre></div><p>我们定义了一个私有变量<code>_user_model_dict</code>，以table_name作为key，model对象作为值，把已经创建的Model类都缓存下来。</p>
 <p>但到了这里还是有点麻烦。</p>
-
 <ol>
-<li><p>这里获取<code>db_model</code>，在访问数据库时，还是没有直接<code>objects.get()</code>来的方便。</p>
-
-<pre><code class="language-python">db_model = User.get_user_db_model(user_id)
-user = db_model.objects().get(user_id=user_id)
-</code></pre>
-
-<p>VS</p>
-
-<pre><code class="language-python">user = User.objects().get(user_id=user_id)
-</code></pre></li>
-
-<li><p>我们的分表只支持了User一个表，其他表分表还得再写一个<code>get_xx_db_model</code>，可不可以做的更通用些呢？</p></li>
+<li>这里获取<code>db_model</code>，在访问数据库时，还是没有直接<code>objects.get()</code>来的方便。</li>
 </ol>
-
-<h2 id="改进-hack-model-类的创建">改进-<code>Hack Model</code>类的创建</h2>
-
-<p>针对上面的问题，可以hack Django Model的创建，在动态创建生成<code>Model</code>类时修改一些属性，把分表需要的信息填充进去。我们可以创建一个基类来实现动态创建的功能，不仅支持<code>User Model</code>分表，还能方便的让<code>X Model</code>， <code>Y Model</code>通过继承也支持分表。</p>
-
-<pre><code class="language-python">from django.db import models
-
-
-class Object:
-    def __init__(self, **kwargs):
-        self.__dict__.update(kwargs)
-
-
-def _model_new(cls, *args, **kwargs):
-    return cls(*args, **kwargs)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">db_model <span style="color:#f92672">=</span> User<span style="color:#f92672">.</span>get_user_db_model(user_id)
+user <span style="color:#f92672">=</span> db_model<span style="color:#f92672">.</span>objects()<span style="color:#f92672">.</span>get(user_id<span style="color:#f92672">=</span>user_id)
+</code></pre></div><p>VS</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">user <span style="color:#f92672">=</span> User<span style="color:#f92672">.</span>objects()<span style="color:#f92672">.</span>get(user_id<span style="color:#f92672">=</span>user_id)
+</code></pre></div><ol start="2">
+<li>我们的分表只支持了User一个表，其他表分表还得再写一个<code>get_xx_db_model</code>，可不可以做的更通用些呢？</li>
+</ol>
+<h2 id="改进-hack-model类的创建">改进-<code>Hack Model</code>类的创建</h2>
+<p>针对上面的问题，可以hack Django Model的创建，在动态创建生成<code>Model</code>类时修改一些属性，把分表需要的信息填充进去。
+我们可以创建一个基类来实现动态创建的功能，不仅支持<code>User Model</code>分表，还能方便的让<code>X Model</code>， <code>Y Model</code>通过继承也支持分表。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> django.db <span style="color:#f92672">import</span> models
 
 
-class ShardModel(object):
-    &quot;&quot;&quot;
-    ShardModel support table horizontal partition.
-    &quot;&quot;&quot;
-    _shard_db_models = {}
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Object</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, <span style="color:#f92672">**</span>kwargs):
+        self<span style="color:#f92672">.</span>__dict__<span style="color:#f92672">.</span>update(kwargs)
 
-    def __new__(cls, *args, **kwargs):
-        shard_key = kwargs.pop('shard_key', 0) % cls.Config.table_num
-        model_name = cls.__name__
-        model_name += '_%s' % shard_key
 
-        model_class = cls._shard_db_models.get(model_name)
-        if model_class is not None:
-            return model_class
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_model_new</span>(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+    <span style="color:#66d9ef">return</span> cls(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
 
-        # Deep copy attrs
-        attrs = dict()
-        attrs.update(cls.__dict__)
-        if 'objects' in attrs:
-            attrs['objects'] = attrs['objects'].__class__()
 
-        # Set table name with shard_key
-        meta = Object(**cls.Meta.__dict__)
-        meta.db_table = meta.db_table % shard_key
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ShardModel</span>(object):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    ShardModel support table horizontal partition.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    _shard_db_models <span style="color:#f92672">=</span> {}
 
-        attrs['Meta'] = meta
-        attrs['new'] = classmethod(_model_new)
+    <span style="color:#66d9ef">def</span> __new__(cls, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+        shard_key <span style="color:#f92672">=</span> kwargs<span style="color:#f92672">.</span>pop(<span style="color:#e6db74">&#39;shard_key&#39;</span>, <span style="color:#ae81ff">0</span>) <span style="color:#f92672">%</span> cls<span style="color:#f92672">.</span>Config<span style="color:#f92672">.</span>table_num
+        model_name <span style="color:#f92672">=</span> cls<span style="color:#f92672">.</span>__name__
+        model_name <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;_</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> shard_key
 
-        # Create model class dynamically
-        model_class = type(model_name, tuple([models.Model] + list(cls.__bases__[1:])), attrs)
-        cls._shard_db_models[model_name] = model_class
-        return model_class
+        model_class <span style="color:#f92672">=</span> cls<span style="color:#f92672">.</span>_shard_db_models<span style="color:#f92672">.</span>get(model_name)
+        <span style="color:#66d9ef">if</span> model_class <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+            <span style="color:#66d9ef">return</span> model_class
+
+        <span style="color:#75715e"># Deep copy attrs</span>
+        attrs <span style="color:#f92672">=</span> dict()
+        attrs<span style="color:#f92672">.</span>update(cls<span style="color:#f92672">.</span>__dict__)
+        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;objects&#39;</span> <span style="color:#f92672">in</span> attrs:
+            attrs[<span style="color:#e6db74">&#39;objects&#39;</span>] <span style="color:#f92672">=</span> attrs[<span style="color:#e6db74">&#39;objects&#39;</span>]<span style="color:#f92672">.</span>__class__()
+
+        <span style="color:#75715e"># Set table name with shard_key</span>
+        meta <span style="color:#f92672">=</span> Object(<span style="color:#f92672">**</span>cls<span style="color:#f92672">.</span>Meta<span style="color:#f92672">.</span>__dict__)
+        meta<span style="color:#f92672">.</span>db_table <span style="color:#f92672">=</span> meta<span style="color:#f92672">.</span>db_table <span style="color:#f92672">%</span> shard_key
+
+        attrs[<span style="color:#e6db74">&#39;Meta&#39;</span>] <span style="color:#f92672">=</span> meta
+        attrs[<span style="color:#e6db74">&#39;new&#39;</span>] <span style="color:#f92672">=</span> classmethod(_model_new)
+
+        <span style="color:#75715e"># Create model class dynamically</span>
+        model_class <span style="color:#f92672">=</span> type(model_name, tuple([models<span style="color:#f92672">.</span>Model] <span style="color:#f92672">+</span> list(cls<span style="color:#f92672">.</span>__bases__[<span style="color:#ae81ff">1</span>:])), attrs)
+        cls<span style="color:#f92672">.</span>_shard_db_models[model_name] <span style="color:#f92672">=</span> model_class
+        <span style="color:#66d9ef">return</span> model_class
 
    
-class User(ShardModel):
-    user_id = models.IntegerField()
-    user_name = models.CharField(max_length=256)
-    password = models.CharField(max_length=256)
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>(ShardModel):
+    user_id <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>IntegerField()
+    user_name <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
+    password <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
 
-    class Config:
-        table_num = 3
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Config</span>:
+        table_num <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
 
-    class Meta:
-        app_label = 'default'
-        db_table = 'user_%s'
-</code></pre>
-
-<p>通过继承<code>ShardModel</code>，<code>User</code>类就具备的自动分表的功能。在<code>views</code>中可通过如下方法获取user info:</p>
-
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>:
+        app_label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;default&#39;</span>
+        db_table <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;user_</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span>
+</code></pre></div><p>通过继承<code>ShardModel</code>，<code>User</code>类就具备的自动分表的功能。
+在<code>views</code>中可通过如下方法获取user info:</p>
 <pre><code>def get_user_info(request):
     user_id = int(request.GET.get('user_id'))
     user = models.User(shard_key=user_id).objects.get(user_id=user_id)
     return HttpResponse(json.dumps(model_to_dict(user)))
-</code></pre>
-
-<p>配置好<code>Django urls</code>，在浏览器访问<code>http://127.0.0.1:8000/user/get?user_id=32</code>，得到下面的结果：</p>
-
+</code></pre><p>配置好<code>Django urls</code>，在浏览器访问<code>http://127.0.0.1:8000/user/get?user_id=32</code>，得到下面的结果：</p>
 <pre><code>{
   &quot;user_name&quot;: &quot;test32&quot;,
   &quot;password&quot;: &quot;test32&quot;,
   &quot;user_id&quot;: 32,
   &quot;id&quot;: 1
 }
-</code></pre>
-
-<p>nice, it works!</p>
-
+</code></pre><p>nice, it works!</p>
 <p>如果我们有一个<code>Book</code>表也需要分表，这样只需要简单的继承就行了。</p>
-
-<pre><code class="language-python">class Book(ShardModel):
-    book_id = models.IntegerField()
-    book_name = models.CharField(max_length=256)
-    book_author = models.CharField(max_length=256)
-</code></pre>
-
-<p>这样我们就通过层层深入，不断改进我们的方案，得到了一个比较优雅实现Django分表的方法。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Book</span>(ShardModel):
+    book_id <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>IntegerField()
+    book_name <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
+    book_author <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
+</code></pre></div><p>这样我们就通过层层深入，不断改进我们的方案，得到了一个比较优雅实现Django分表的方法。</p>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>

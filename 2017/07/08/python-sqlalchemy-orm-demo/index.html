@@ -11,8 +11,8 @@
 <meta property="og:description" content="Python SQLAlchemy ORM Demo" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2017/07/08/python-sqlalchemy-orm-demo/" />
-<meta property="article:published_time" content="2017-07-08T01:20:04&#43;08:00"/>
-<meta property="article:modified_time" content="2017-07-08T01:20:04&#43;08:00"/>
+<meta property="article:published_time" content="2017-07-08T01:20:04+08:00" />
+<meta property="article:modified_time" content="2017-07-08T01:20:04+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python SQLAlchemy ORM示例"/>
@@ -120,35 +120,22 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/python/" rel="category">Python</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1977 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1966 words</span>
 </div>
 		</header><div class="content post__content clearfix">
-			
-
-<p>SQLAlchemy的是Python的SQL工具包和对象关系映射，给应用程序开发者提供SQL的强大功能和灵活性。</p>
-
+			<p>SQLAlchemy的是Python的SQL工具包和对象关系映射，给应用程序开发者提供SQL的强大功能和灵活性。</p>
 <h1 id="安装">安装</h1>
-
 <pre><code>pip install mysql-python
 pip install sqlalchemy
-</code></pre>
-
-<h1 id="初始化">初始化</h1>
-
+</code></pre><h1 id="初始化">初始化</h1>
 <p>SQLAlchemy ORM提供了一个连接数据库表和用户自定义Python类的方法。 在使用ORM时，我们要初始化一些基本的变量。</p>
-
 <h2 id="定义映射基类">定义映射基类</h2>
-
-<p>类的映射(Mapping)使用已经在基类中定义的声明式系统，declarative_base类维持了一个从类到表的关系，通常一个应用使用一个base实例，所有实体类都应该继承此类对象。我们的应用在一般导入的模块中将只有一个这个基类的实例，使用declarative_base()创建这个基类的实例。</p>
-
+<p>类的映射(Mapping)使用已经在基类中定义的声明式系统，declarative_base类维持了一个从类到表的关系，通常一个应用使用一个base实例，所有实体类都应该继承此类对象。
+我们的应用在一般导入的模块中将只有一个这个基类的实例，使用declarative_base()创建这个基类的实例。</p>
 <pre><code>from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
-</code></pre>
-
-<h2 id="创建engine">创建engine</h2>
-
+</code></pre><h2 id="创建engine">创建engine</h2>
 <p>ORM操作数据库的句柄就是Session。在创建session前，我们先创建一个engine实例。</p>
-
 <pre><code>from sqlalchemy import create_engine
 mysql_engine = create_engine(&quot;mysql://root:1@127.0.0.1/cms?charset=utf8&quot;,
                              pool_size=1,
@@ -157,18 +144,11 @@ mysql_engine = create_engine(&quot;mysql://root:1@127.0.0.1/cms?charset=utf8&quo
                              encoding='utf-8',
                              pool_recycle=20000
                              )
-</code></pre>
-
-<h2 id="创建session">创建session</h2>
-
+</code></pre><h2 id="创建session">创建session</h2>
 <p>当我们启动我们的应用时，在create_engine()的同时，我们定义了一个Session类将作为一个创建Session实例的工厂。</p>
-
 <pre><code>from sqlalchemy.orm import sessionmaker
 Session = sessionmaker(bind=engine)
-</code></pre>
-
-<p>把上面三部整理到一个base.py文件中，方便后续调用：</p>
-
+</code></pre><p>把上面三部整理到一个base.py文件中，方便后续调用：</p>
 <pre><code># coding: utf-8
 &quot;&quot;&quot;
 base.py
@@ -189,12 +169,8 @@ mysql_engine = create_engine(&quot;mysql://root:1@127.0.0.1/cms?charset=utf8&quo
                              )
 
 Session = sessionmaker(bind=mysql_engine)
-</code></pre>
-
-<h1 id="实体类-model">实体类(model)</h1>
-
-<p>我们基于base.py定义了一个User类。sqlalchemy 就是把Base子类转变为数据库表，定义好User类后，会生成Table和mapper()，分别通过User.<strong>table</strong> 和User.<strong>mapper</strong>返回这两个对象。</p>
-
+</code></pre><h1 id="实体类model">实体类(model)</h1>
+<p>我们基于base.py定义了一个User类。sqlalchemy 就是把Base子类转变为数据库表，定义好User类后，会生成Table和mapper()，分别通过User.<strong>table</strong> 和User.__mapper__返回这两个对象。</p>
 <pre><code># coding: utf-8
 import logging
 from sqlalchemy import *
@@ -276,70 +252,46 @@ if __name__ == '__main__':
 
     session.close()
 
-</code></pre>
-
-<p>执行结果：</p>
-
+</code></pre><p>执行结果：</p>
 <pre><code>{'password': u'123', 'id': 3L, 'name': u'test'}
 True
 {'password': u'456', 'id': 3L, 'name': u'update'}
 True
 None
-</code></pre>
-
-<p>在这个model中基于session，实现了对数据增删查改的方法。</p>
-
+</code></pre><p>在这个model中基于session，实现了对数据增删查改的方法。</p>
 <h1 id="增删查改">增删查改</h1>
-
 <h2 id="add">add</h2>
-
 <pre><code>    user = cls(name=name, password=password)
     session.add(user)
-</code></pre>
-
-<p>在调用add时，user实例是待定的(pending)，不执行任何SQL，不会触发insert，因此也不代表数据库中的一行数据。当使用一个flush过程时，Session将执行SQL来持久化user。</p>
-
+</code></pre><p>在调用add时，user实例是待定的(pending)，不执行任何SQL，不会触发insert，因此也不代表数据库中的一行数据。
+当使用一个flush过程时，Session将执行SQL来持久化user。</p>
 <p>对象状态 对象实例有四种状态，分别是：</p>
-
 <ol>
 <li>Transient（瞬时的）：这个状态的对象还不在session中，也不会保存到数据库中，主键为None（不是绝对的，如果Persistent对象rollback后虽然主键id有值，但还是Transient状态的）。</li>
 <li>Pending（挂起的）：调用session.add()后，Transient对象就会变成Pending，这个时候它还是不会保存到数据库中，只有等到触发了flush动作才会存在数据库，比如query操作就可以出发flush。同样这个时候的实例的主键一样为None</li>
 <li>Persistent（持久的）：session中，数据库中都有对应的一条记录存在，主键有值了。</li>
 <li>Detached（游离的）：数据库中有记录，但是session中不存在，对这个状态的对象进行操作时，不会触发任何SQL语句。</li>
 </ol>
-
 <p>Session是真正与数据库通信的handler，我们告诉Session我们想要将所有的改变（add，delete，update）存入到数据库，提交事务；然后通过commit()来执行。</p>
-
 <h2 id="query">query</h2>
-
 <p>查询 Query对象通过Session.query获取，query接收类或属性参数，以及多个类。</p>
-
 <pre><code>    row = session.query(cls).filter(and_(cls.name == name, cls.password == password)).first()
-</code></pre>
-
-<p>执行query时，session返回同一行(对象)就是我们刚刚在session内部的类的字典持久化的对象，所以我们事实上获得的就是我们加入Session中的实例。Session 使用 connection发送query，把返回的result row 填充到一个Python object中，该对象同时还会保存在Session中，Session内部有一个叫 Identity Map的数据结构，为每一个对象维持了唯一的副本。</p>
-
-<p><code>filter()</code>方法通常接收的是Python操作符，而filter_by()方法使用关键字参数。filter可以接收更加灵活的SQL表达式结构，一般情况下，基本够用了。查询返回结果有多种：</p>
-
+</code></pre><p>执行query时，session返回同一行(对象)就是我们刚刚在session内部的类的字典持久化的对象，所以我们事实上获得的就是我们加入Session中的实例。
+Session 使用 connection发送query，把返回的result row 填充到一个Python object中，该对象同时还会保存在Session中，Session内部有一个叫 Identity Map的数据结构，为每一个对象维持了唯一的副本。</p>
+<p><code>filter()</code>方法通常接收的是Python操作符，而filter_by()方法使用关键字参数。
+filter可以接收更加灵活的SQL表达式结构，一般情况下，基本够用了。查询返回结果有多种：</p>
 <ol>
 <li>query.all()，all()返回列表</li>
 <li>query.first()，返回第一个元素</li>
 <li>query.one()，有且只有一个元素时才正确返回</li>
 </ol>
-
 <h2 id="delete">delete</h2>
-
 <pre><code>    session.query(cls.id == user_id).delete()
-</code></pre>
-
-<h2 id="update">update</h2>
-
+</code></pre><h2 id="update">update</h2>
 <pre><code>    session.query(cls.id == user_id).update({cls.name: name, cls.password: password})
-</code></pre>
-
-<h1 id="小结">小结</h1>
-
-<p>本文记录了使用SQLAlchemy实现常见的CRUD操作，后续会继续记录使用中踩到的坑和一些使用技巧。SQLAlchemy 在构建在 WSGI 规范上的Python Web 框架中得到了广泛应用，在我司的生产环境中久经考验，配合Flask和Tornado一起开发效率极高。</p>
+</code></pre><h1 id="小结">小结</h1>
+<p>本文记录了使用SQLAlchemy实现常见的CRUD操作，后续会继续记录使用中踩到的坑和一些使用技巧。
+SQLAlchemy 在构建在 WSGI 规范上的Python Web 框架中得到了广泛应用，在我司的生产环境中久经考验，配合Flask和Tornado一起开发效率极高。</p>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>

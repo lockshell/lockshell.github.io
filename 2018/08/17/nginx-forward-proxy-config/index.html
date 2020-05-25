@@ -11,8 +11,8 @@
 <meta property="og:description" content="Nginx Forward Proxy Config" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2018/08/17/nginx-forward-proxy-config/" />
-<meta property="article:published_time" content="2018-08-17T11:20:19&#43;08:00"/>
-<meta property="article:modified_time" content="2018-08-17T11:20:19&#43;08:00"/>
+<meta property="article:published_time" content="2018-08-17T11:20:19+08:00" />
+<meta property="article:modified_time" content="2018-08-17T11:20:19+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Nginx正向代理配置"/>
@@ -124,11 +124,8 @@ if (!doNotTrack) {
 </div>
 		</header><div class="content post__content clearfix">
 			<p>Nginx不仅可以做反向代理，实现负载均衡。还能用作正向代理来进行上网等功能。</p>
-
 <p>正向代理：如果把局域网外的Internet想象成一个巨大的资源库，局域网中的客户端要访问Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理。</p>
-
 <h2 id="配置代理">配置代理</h2>
-
 <pre><code>
 server {  
     resolver 114.114.114.114;       #指定DNS服务器IP地址  
@@ -158,17 +155,10 @@ server {
        proxy_next_upstream error timeout invalid_header http_502;
     }  
 }  
-</code></pre>
-
-<p>配置两个SERVER节点，一个处理HTTP转发，另一个处理HTTPS转发，而客户端都通过HTTP来访问代理，通过访问代理不同的端口，来区分HTTP和HTTPS请求。</p>
-
+</code></pre><p>配置两个SERVER节点，一个处理HTTP转发，另一个处理HTTPS转发，而客户端都通过HTTP来访问代理，通过访问代理不同的端口，来区分HTTP和HTTPS请求。</p>
 <h2 id="加载配置">加载配置</h2>
-
 <pre><code>nginx -s reload
-</code></pre>
-
-<h2 id="测试访问">测试访问</h2>
-
+</code></pre><h2 id="测试访问">测试访问</h2>
 <pre><code>server {   
     resolver 114.114.114.114;       #指定DNS服务器IP地址  
     listen 8000;  
@@ -176,10 +166,7 @@ server {
         proxy_pass http://$http_host$request_uri;     #设定代理服务器的协议和地址  
     }   
 } 
-</code></pre>
-
-<p>在本地的Nginx设置了一个通过8000端口的http代理。用代理访问淘宝，不过被重定向了。</p>
-
+</code></pre><p>在本地的Nginx设置了一个通过8000端口的http代理。用代理访问淘宝，不过被重定向了。</p>
 <pre><code>➜  curl -l --proxy 127.0.0.1:8000 http://www.taobao.com/   
 &lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
 &lt;html&gt;
@@ -189,17 +176,11 @@ server {
 &lt;p&gt;The requested resource resides temporarily under a different URI.&lt;/p&gt;
 &lt;hr/&gt;Powered by Tengine&lt;/body&gt;
 &lt;/html&gt;
-</code></pre>
-
-<p>试试访问百度，可以的呐。</p>
-
+</code></pre><p>试试访问百度，可以的呐。</p>
 <pre><code>➜ curl -l --proxy 127.0.0.1:8000 &quot;www.baidu.com&quot;
 &lt;!DOCTYPE html&gt;
 &lt;!--STATUS OK--&gt;&lt;html&gt; &lt;head&gt;&lt;meta http-equiv=content-type content=text/html;charset=utf-8&gt;&lt;meta http-equiv=X-UA-Compatible content=IE=Edge&gt;&lt;meta content=always name=referrer&gt;&lt;link rel=stylesheet type=text/css href=http://s1.bdstatic.com/r/www/cache/bdorz/baidu.min.css&gt;&lt;title&gt;百度一下，你就知道&lt;/title&gt;&lt;/head&gt; &lt;body link=#0000cc&gt; &lt;div id=wrapper&gt; &lt;div id=head&gt; &lt;div class=head_wrapper&gt; &lt;div class=s_form&gt; &lt;div class=s_form_wrapper&gt; &lt;div id=lg&gt; &lt;img hidefocus=true src=//www.baidu.com/img/bd_logo1.png width=270 height=129&gt; &lt;/div&gt; &lt;form id=form name=f action=//www.baidu.com/s class=fm&gt; &lt;input type=hidden name=bdorz_come value=1&gt; &lt;input type=hidden name=ie value=utf-8&gt; &lt;input type=hidden name=f value=8&gt; &lt;input type=hidden name=rsv_bp value=1&gt; &lt;input type=hidden name=rsv_idx value=1&gt; &lt;input type=hidden name=tn value=baidu&gt;&lt;span class=&quot;bg s_ipt_wr&quot;&gt;&lt;input id=kw name=wd class=s_ipt value maxlength=255 autocomplete=off autofocus&gt;&lt;/span&gt;&lt;span class=&quot;bg s_btn_wr&quot;&gt;&lt;input type=submit id=su value=百度一下 class=&quot;bg s_btn&quot;&gt;&lt;/span&gt; &lt;/form&gt; &lt;/div&gt; &lt;/div&gt; &lt;div id=u1&gt; &lt;a href=http://news.baidu.com name=tj_trnews class=mnav&gt;新闻&lt;/a&gt; &lt;a href=http://www.hao123.com name=tj_trhao123 class=mnav&gt;hao123&lt;/a&gt; &lt;a href=http://map.baidu.com name=tj_trmap class=mnav&gt;地图&lt;/a&gt; &lt;a href=http://v.baidu.com name=tj_trvideo class=mnav&gt;视频&lt;/a&gt; &lt;a href=http://tieba.baidu.com name=tj_trtieba class=mnav&gt;贴吧&lt;/a&gt; &lt;noscript&gt; &lt;a href=http://www.baidu.com/bdorz/login.gif?login&amp;amp;tpl=mn&amp;amp;u=http%3A%2F%2Fwww.baidu.com%2f%3fbdorz_come%3d1 name=tj_login class=lb&gt;登录&lt;/a&gt; &lt;/noscript&gt; &lt;script&gt;document.write('&lt;a href=&quot;http://www.baidu.com/bdorz/login.gif?login&amp;tpl=mn&amp;u='+ encodeURIComponent(window.location.href+ (window.location.search === &quot;&quot; ? &quot;?&quot; : &quot;&amp;&quot;)+ &quot;bdorz_come=1&quot;)+ '&quot; name=&quot;tj_login&quot; class=&quot;lb&quot;&gt;登录&lt;/a&gt;');&lt;/script&gt; &lt;a href=//www.baidu.com/more/ name=tj_briicon class=bri style=&quot;display: block;&quot;&gt;更多产品&lt;/a&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;div id=ftCon&gt; &lt;div id=ftConw&gt; &lt;p id=lh&gt; &lt;a href=http://home.baidu.com&gt;关于百度&lt;/a&gt; &lt;a href=http://ir.baidu.com&gt;About Baidu&lt;/a&gt; &lt;/p&gt; &lt;p id=cp&gt;&amp;copy;2017&amp;nbsp;Baidu&amp;nbsp;&lt;a href=http://www.baidu.com/duty/&gt;使用百度前必读&lt;/a&gt;&amp;nbsp; &lt;a href=http://jianyi.baidu.com/ class=cp-feedback&gt;意见反馈&lt;/a&gt;&amp;nbsp;京ICP证030173号&amp;nbsp; &lt;img src=//www.baidu.com/img/gs.gif&gt; &lt;/p&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/body&gt; &lt;/html&gt;
-</code></pre>
-
-<h2 id="参考">参考</h2>
-
+</code></pre><h2 id="参考">参考</h2>
 <ul>
 <li><a href="http://lockshell.com">深入理解Nginx</a></li>
 </ul>

@@ -11,8 +11,8 @@
 <meta property="og:description" content="Nginx Reverse Proxy Config" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2018/02/12/nginx-reverse-proxy-config/" />
-<meta property="article:published_time" content="2018-02-12T11:03:42&#43;08:00"/>
-<meta property="article:modified_time" content="2018-02-12T11:03:42&#43;08:00"/>
+<meta property="article:published_time" content="2018-02-12T11:03:42+08:00" />
+<meta property="article:modified_time" content="2018-02-12T11:03:42+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Nginx反向代理配置"/>
@@ -124,40 +124,22 @@ if (!doNotTrack) {
 </div>
 		</header><div class="content post__content clearfix">
 			<h2 id="nginx反向代理">Nginx反向代理</h2>
-
 <p>Nginx是一个轻量级的、高性能的WebServer，主要可以干下面两件事：作为http服务器（和apache的功能一样）；作为反向代理服务器实现负载均衡。</p>
-
 <h3 id="安装nginx">安装Nginx</h3>
-
 <p>Mac上执行</p>
-
 <pre><code>brew install nginx
-</code></pre>
-
-<p>Ubuntu上执行：</p>
-
+</code></pre><p>Ubuntu上执行：</p>
 <pre><code>sudo apt-get install nginx 
-</code></pre>
-
-<h3 id="nginx基本操作">Nginx基本操作</h3>
-
+</code></pre><h3 id="nginx基本操作">Nginx基本操作</h3>
 <pre><code>1) 启动Nginx：start nginx
 2) 停止Nginx：nginx -s stop
 3) 修改配置后重启：nginx -s reload
-</code></pre>
-
-<h2 id="关于代理">关于代理</h2>
-
+</code></pre><h2 id="关于代理">关于代理</h2>
 <h3 id="正向代理">正向代理</h3>
-
 <p>正向代理，作为一个媒介将互联网上获取的资源返回给相关联的客户端。代理和客户端在一个局域网，对于服务端是透明的</p>
-
 <h3 id="反向代理">反向代理</h3>
-
 <p>反向代理，根据客户端的请求，从后端的服务器上获取资源，然后再将这些资源返回给客户端。代理和服务器在一个局域网，对客户端是透明的。</p>
-
 <h3 id="反向代理的作用">反向代理的作用</h3>
-
 <ul>
 <li>提高动态语言的I/O处理能力，Python、PHP、Java这样的动态服务的I/O处理能力不高，反向代理可以缓冲请求，交给后端一个完整的HTTP请求，同样，Nginx也可以缓冲响应，也达到了减轻后端的压力。</li>
 <li>加密和SSL加速。</li>
@@ -166,13 +148,9 @@ if (!doNotTrack) {
 <li>缓存静态内容。代理缓存通常可以满足相当数量的网站请求，大大降低应用服务器上的负载。</li>
 <li>支持压缩。通过压缩优化可以提高网站访问速度，还能大大减少带宽的消耗。</li>
 </ul>
-
 <p>在生产环境中，通常会在多个服务器启动多个tornado进程实例，使用Nginx在前端作为反向代理服务器来分发web请求，同时负载均衡。</p>
-
 <h2 id="反向代理实例">反向代理实例</h2>
-
-<h3 id="tornado服务-demo-py">tornado服务<code>demo.py</code></h3>
-
+<h3 id="tornado服务demopy">tornado服务<code>demo.py</code></h3>
 <pre><code># coding: utf-8
 import tornado.ioloop
 import tornado.web
@@ -198,27 +176,19 @@ if __name__ == &quot;__main__&quot;:
 
     pool = Pool(3)
     pool.map(run, [8001, 8002, 8003])
-</code></pre>
-
-<p>我们运行<code>demo.py</code>，tornado会启动三个进程，分别侦听8001, 8002, 8003三个端口。</p>
-
+</code></pre><p>我们运行<code>demo.py</code>，tornado会启动三个进程，分别侦听8001, 8002, 8003三个端口。</p>
 <h3 id="调整nginx配置">调整Nginx配置</h3>
-
-<p>负载均衡的目的是为了解决单个节点压力过大，造成Web服务响应过慢，严重的情况下导致服务瘫痪，无法正常提供服务的问题。Nginx负载均衡是通过upstream模块来实现的，内置实现了多种负载策略。Mac上Nginx的配置文件位于<code>/usr/local/etc/nginx</code>，用vim打开进行编辑。</p>
-
+<p>负载均衡的目的是为了解决单个节点压力过大，造成Web服务响应过慢，严重的情况下导致服务瘫痪，无法正常提供服务的问题。
+Nginx负载均衡是通过upstream模块来实现的，内置实现了多种负载策略。Mac上Nginx的配置文件位于<code>/usr/local/etc/nginx</code>，用vim打开进行编辑。</p>
 <h4 id="负载均衡配置">负载均衡配置</h4>
-
 <pre><code>upstream tornado.server {
    server 127.0.0.1:8001;
    server 127.0.0.1:8002;
    server 127.0.0.1:8003;
 }
-</code></pre>
-
-<p>upstream指令主要用于负载均衡，设置一系列的后端服务器。nginx 的 upstream默认是以轮询的方式实现负载均衡，这种方式中，每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。此外还有ip_hash、weight、url_hash、fair等负载均衡策略。upstream命名和服务器地址根据实际情况修改。我这里是本地起的三个tornado服务，所以server IP地址都配的是127.0.0.1，默认轮询的负载均衡。</p>
-
+</code></pre><p>upstream指令主要用于负载均衡，设置一系列的后端服务器。nginx 的 upstream默认是以轮询的方式实现负载均衡，这种方式中，每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。此外还有ip_hash、weight、url_hash、fair等负载均衡策略。
+upstream命名和服务器地址根据实际情况修改。我这里是本地起的三个tornado服务，所以server IP地址都配的是127.0.0.1，默认轮询的负载均衡。</p>
 <h4 id="反向代理配置">反向代理配置</h4>
-
 <pre><code>location / {
        proxy_pass_header Server;
        proxy_set_header Host $http_host;
@@ -226,12 +196,8 @@ if __name__ == &quot;__main__&quot;:
        proxy_set_header X-Scheme $scheme;
        proxy_pass http://tornado.server;
     }
-</code></pre>
-
-<p>location部分用于匹配反向代理的网页位置。反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。</p>
-
+</code></pre><p>location部分用于匹配反向代理的网页位置。反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。</p>
 <h3 id="完整配置示例">完整配置示例</h3>
-
 <pre><code>
 worker_processes  1;
 
@@ -273,20 +239,12 @@ http {
     }
 }
 
-</code></pre>
-
-<p>代理地址根据实际情况修改，其他缺省配置项采用默认值就可以。</p>
-
-<h3 id="重新加载ginx-conf">重新加载ginx.conf</h3>
-
+</code></pre><p>代理地址根据实际情况修改，其他缺省配置项采用默认值就可以。</p>
+<h3 id="重新加载ginxconf">重新加载ginx.conf</h3>
 <p>如果已经启动了Nginx，执行<code>sudo nginx -s reload</code>重新加载配置。</p>
-
 <h3 id="访问结果">访问结果</h3>
-
 <p>直接在浏览器中访问<code>http://127.0.0.1/</code>，就可以访问demo应用了。每次刷新都返回了<code>Hello, world! PID：18854</code>，后面跟的pid是交替出现，说明负载均衡生效了。</p>
-
 <h2 id="参考">参考</h2>
-
 <ul>
 <li><a href="http://lockshell.com">Python Web开发实战 董伟明</a></li>
 <li><a href="http://lockshell.com">深入理解Nginx</a></li>
