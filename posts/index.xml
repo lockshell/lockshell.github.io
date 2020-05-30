@@ -116,7 +116,7 @@
       <pubDate>Thu, 26 Dec 2019 18:20:20 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/12/26/v2ray-and-nginx-proxy-setup-on-aws-ec2/</guid>
-      <description>环境及软件版本 服务器: AWS EC2 系统: ubuntu 18.04 Caddy: 2.x V2ray: 4.x 搭建V2ray 安装v2ray bash &amp;lt;(curl -L -s https://install.direct/go.sh) # 直接使用脚本 此脚本会自动安装以下文件： /usr/bin/</description>
+      <description>环境及软件版本 服务器: AWS EC2 系统: ubuntu 18.04 Nginx: nginx/1.14.0 (Ubuntu) V2ray: 4.x 安装Nginx sudo apt-get update sudo apt-get install nginx 安装v2ray bash &amp;lt;(curl -L -s https://install.direct/go.sh) # 直接使用脚本 此脚本会自动安装以下文件： /</description>
     </item>
     
     <item>
