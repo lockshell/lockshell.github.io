@@ -120,7 +120,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2006 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 848 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -128,7 +128,7 @@ if (!doNotTrack) {
 	<div class="toc__menu">
 		<nav id="TableOfContents">
   <ul>
-    <li><a href="#l2tp-vpn">L2TP VPN</a>
+    <li><a href="#搭建l2tp-vpn">搭建L2TP VPN</a>
       <ul>
         <li><a href="#下载脚本">下载脚本</a></li>
         <li><a href="#修改配置">修改配置</a></li>
@@ -138,16 +138,8 @@ if (!doNotTrack) {
         <li><a href="#添加更多用户">添加更多用户</a></li>
       </ul>
     </li>
-    <li><a href="#shadowsocks">Shadowsocks</a></li>
-    <li><a href="#搭建v2ray">搭建v2ray</a>
-      <ul>
-        <li><a href="#安装v2ray">安装v2ray</a></li>
-        <li><a href="#配置v2ray">配置v2ray</a></li>
-        <li><a href="#配置nginx代理">配置Nginx代理</a></li>
-        <li><a href="#配置ssl">配置SSL</a></li>
-        <li><a href="#配置v2ray客户端">配置v2ray客户端</a></li>
-      </ul>
-    </li>
+    <li><a href="#搭建shadowsocks">搭建Shadowsocks</a></li>
+    <li><a href="#搭建v2ray">搭建v2ray</a></li>
   </ul>
 </nav>
 	</div>
@@ -165,7 +157,7 @@ if (!doNotTrack) {
 <p>我使用的是AWS。
 用AWS相对其他VPS的好处是支持弹性IP，即使IP被封了，后台重新申请一个弹性公网IP绑定到对应的实例，可以很方便的更换IP。
 但AWS相对其他机场价格略贵。</p>
-<h2 id="l2tp-vpn">L2TP VPN</h2>
+<h2 id="搭建l2tp-vpn">搭建L2TP VPN</h2>
 <h3 id="下载脚本">下载脚本</h3>
 <p>ubuntu</p>
 <pre><code>wget https://git.io/vpnsetup -O vpnsetup.sh &amp;&amp; sudo sh vpnsetup.sh
@@ -201,214 +193,16 @@ vpn 服务使用到的端口有 500/4500/50/51/1701，通过配置AWS安全组�
 <pre><code>&quot;user1&quot; l2tpd &quot;password1&quot; *
 &quot;user2&quot; l2tpd &quot;password2&quot; *
 &quot;user3&quot; l2tpd &quot;password3&quot; *
-</code></pre><h2 id="shadowsocks">Shadowsocks</h2>
+</code></pre><h2 id="搭建shadowsocks">搭建Shadowsocks</h2>
 <ul>
 <li>详见：<a href="https://lockshell.com/2019/12/26/vpn-shadowsocks-setup-on-aws-ec2/">在AWS EC2上安装配置Shadowsocks</a></li>
 </ul>
 <h2 id="搭建v2ray">搭建v2ray</h2>
-<p>v2ray的安装配置比前两种略复杂一些，但理论上来讲更安全可靠。还可以加一层Nginx用https代理，这样请求更安全。</p>
-<h3 id="安装v2ray">安装v2ray</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">bash &lt;<span style="color:#f92672">(</span>curl -L -s https://install.direct/go.sh<span style="color:#f92672">)</span> <span style="color:#75715e"># 直接使用脚本</span>
-</code></pre></div><p>此脚本会自动安装以下文件：</p>
+<p>v2ray的安装配置比前两种略复杂一些，但理论上来讲更安全可靠。还可以加一层Nginx用https代理，这样请求更安全。
+如果觉得Nginx+SSL的配置组合比较麻烦，可以考虑使用Caddy作为Proxy，省去的生成和配置SSL证书的步骤。</p>
 <ul>
-<li>/usr/bin/v2ray/v2ray：V2Ray 程序；</li>
-<li>/usr/bin/v2ray/v2ctl：V2Ray 工具；</li>
-<li>/etc/v2ray/config.json：配置文件；</li>
-<li>/usr/bin/v2ray/geoip.dat：IP 数据文件</li>
-<li>/usr/bin/v2ray/geosite.dat：域名数据文件 此脚本会配置自动运行脚本。自动运行脚本会在系统重启之后，自动运行 V2Ray。目前自动运行脚本只支持带有 Systemd 的系统，以及 Debian / Ubuntu 全系列。</li>
-</ul>
-<p>脚本运行完成后，你需要：</p>
-<ul>
-<li>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</li>
-<li>运行 service v2ray start 来启动 V2Ray 进程；</li>
-</ul>
-<p>之后可以使用 <code>service v2ray start|stop|status|reload|restart|force-reload</code> 控制 V2Ray 的运行。</p>
-<p>如果觉得Nginx+SSL的配置组合比较麻烦，可以考虑使用Caddy作为Proxy，省去的生成和配置SSL证书的步骤。</p>
-<ul>
+<li><a href="https://lockshell.com/2019/12/26/v2ray-and-nginx-proxy-setup-on-aws-ec2/">在AWS EC2上搭建V2ray+Nginx代理</a></li>
 <li><a href="https://lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/">在AWS EC2上搭建V2ray+Caddy代理</a></li>
-</ul>
-<h3 id="配置v2ray">配置v2ray</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;log&#34;</span> : {
-    <span style="color:#f92672">&#34;access&#34;</span>: <span style="color:#e6db74">&#34;/var/log/v2ray/access.log&#34;</span>,
-    <span style="color:#f92672">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;/var/log/v2ray/error.log&#34;</span>,
-    <span style="color:#f92672">&#34;loglevel&#34;</span>: <span style="color:#e6db74">&#34;warning&#34;</span>
-  },
-  <span style="color:#f92672">&#34;inbound&#34;</span>: {
-    <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">8080</span>, <span style="color:#960050;background-color:#1e0010">//(此端口与nginx配置相关)</span>
-    <span style="color:#f92672">&#34;listen&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
-    <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;vmess&#34;</span>,
-    <span style="color:#f92672">&#34;settings&#34;</span>: {
-      <span style="color:#f92672">&#34;clients&#34;</span>: [
-        {
-          <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;zhangsan&#34;</span>, <span style="color:#960050;background-color:#1e0010">//你的UUID，</span> <span style="color:#960050;background-color:#1e0010">此ID需与客户端保持一致</span>
-          <span style="color:#f92672">&#34;level&#34;</span>: <span style="color:#ae81ff">1</span>,
-          <span style="color:#f92672">&#34;alterId&#34;</span>: <span style="color:#ae81ff">64</span> <span style="color:#960050;background-color:#1e0010">//此ID也需与客户端保持一致</span>
-        }
-      ]
-    },
-   <span style="color:#f92672">&#34;streamSettings&#34;</span>:{
-      <span style="color:#f92672">&#34;network&#34;</span>: <span style="color:#e6db74">&#34;ws&#34;</span>,
-      <span style="color:#f92672">&#34;wsSettings&#34;</span>: {
-           <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/v2ray&#34;</span> <span style="color:#960050;background-color:#1e0010">//与nginx配置相关</span>
-      }
-   }
-  },
-  <span style="color:#f92672">&#34;outbound&#34;</span>: {
-    <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;freedom&#34;</span>,
-    <span style="color:#f92672">&#34;settings&#34;</span>: {}
-  },
-  <span style="color:#f92672">&#34;outboundDetour&#34;</span>: [
-    {
-      <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;blackhole&#34;</span>,
-      <span style="color:#f92672">&#34;settings&#34;</span>: {},
-      <span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;blocked&#34;</span>
-    }
-  ]
-}
-</code></pre></div><h3 id="配置nginx代理">配置Nginx代理</h3>
-<pre><code>server {
-    # SSL configuration
-    listen 443 ssl http2 default_server;
-    listen [::]:443 ssl http2 default_server;
-    ssl_certificate /ssl.pem; # 你的ssl证书， 如果第一次，可能还需要自签一下，
-    ssl_certificate_key /ssl.key; # 你的ssl key
- 
-    root /var/www/html;
- 
-    # Add index.php to the list if you are using PHP
-    index index.html index.htm index.nginx-debian.html;
- 
-    server_name test.v2ray.com; # 你的服务器域名
- 
-    location /ray { #/ray 路径需要和v2ray服务器端，客户端保持一致
-        proxy_redirect off;
-        proxy_pass http://127.0.0.1:8080; #此IP地址和端口需要和v2ray服务器保持一致，
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection &quot;upgrade&quot;;
-        proxy_set_header Host $http_host;
-    }
-}
-</code></pre><h3 id="配置ssl">配置SSL</h3>
-<p>关于域名SSL证书，使用certbot自动签一个let’s encrypt证书就行了。
-很简单，参考链接: <a href="https://certbot.eff.org/">https://certbot.eff.org/</a></p>
-<p>成功后， 在crontab 中添加一条任务计划每三个月执行一次，因为let’s encrypt证书三个月过期：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">15</span> */3 * /root/certbot/certbot-auto renew  <span style="color:#75715e"># 在3，6，9，12月份的15号零点零分执行更新</span>
-</code></pre></div><h3 id="配置v2ray客户端">配置v2ray客户端</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;log&#34;</span>: {
-    <span style="color:#f92672">&#34;loglevel&#34;</span>: <span style="color:#e6db74">&#34;warning&#34;</span>
-  },
-  <span style="color:#f92672">&#34;inbound&#34;</span>: {
-    <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">1080</span>,
-    <span style="color:#f92672">&#34;listen&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
-    <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;socks&#34;</span>,
-    <span style="color:#f92672">&#34;settings&#34;</span>: {
-      <span style="color:#f92672">&#34;auth&#34;</span>: <span style="color:#e6db74">&#34;noauth&#34;</span>,
-      <span style="color:#f92672">&#34;udp&#34;</span>: <span style="color:#66d9ef">false</span>
-    }
-  },
-  <span style="color:#f92672">&#34;inboundDetour&#34;</span>: [
-    {
-        <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">8123</span>,
-        <span style="color:#f92672">&#34;listen&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
-        <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;http&#34;</span>,
-        <span style="color:#f92672">&#34;settings&#34;</span>: {}
-    }
-  ],
-  <span style="color:#f92672">&#34;outbound&#34;</span>: {
-    <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;vmess&#34;</span>,
-    <span style="color:#f92672">&#34;settings&#34;</span>: {
-      <span style="color:#f92672">&#34;vnext&#34;</span>: [{
-        <span style="color:#f92672">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;test.v2ray.com&#34;</span>, <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">服务器地址，请修改为你自己的服务器</span> <span style="color:#960050;background-color:#1e0010">ip</span> <span style="color:#960050;background-color:#1e0010">或域名</span>
-        <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">443</span>,  <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">服务器端口</span>
-        <span style="color:#f92672">&#34;users&#34;</span>: [{
-            <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;zhangsan&#34;</span>, <span style="color:#960050;background-color:#1e0010">//你的UUID，</span> <span style="color:#960050;background-color:#1e0010">此ID需与服务端保持一致</span>
-            <span style="color:#f92672">&#34;level&#34;</span>: <span style="color:#ae81ff">1</span>,
-            <span style="color:#f92672">&#34;alterId&#34;</span>: <span style="color:#ae81ff">64</span>,  <span style="color:#960050;background-color:#1e0010">//此ID也需与客户端保持一致</span>
-            <span style="color:#f92672">&#34;security&#34;</span>: <span style="color:#e6db74">&#34;aes-128-gcm&#34;</span>
-        }]
-      }]
-    },
-    <span style="color:#f92672">&#34;streamSettings&#34;</span>:{
-        <span style="color:#f92672">&#34;network&#34;</span>: <span style="color:#e6db74">&#34;ws&#34;</span>,
-        <span style="color:#f92672">&#34;security&#34;</span>: <span style="color:#e6db74">&#34;tls&#34;</span>,
-        <span style="color:#f92672">&#34;tlsSettings&#34;</span>: {
-            <span style="color:#f92672">&#34;serverName&#34;</span>: <span style="color:#e6db74">&#34;test.v2ray.com&#34;</span> <span style="color:#960050;background-color:#1e0010">//此域名是你服务器的域名</span>
-        },
-        <span style="color:#f92672">&#34;wsSettings&#34;</span>: {
-            <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/ray&#34;</span> <span style="color:#960050;background-color:#1e0010">//与服务器配置及nginx配置相关</span>
-        }
-    },
-    <span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;forgin&#34;</span>
-  },
-  <span style="color:#f92672">&#34;outboundDetour&#34;</span>: [
-    {
-        <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;freedom&#34;</span>,
-        <span style="color:#f92672">&#34;settings&#34;</span>: {},
-        <span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;direct&#34;</span>
-    }
-  ],
-  <span style="color:#f92672">&#34;routing&#34;</span>: { <span style="color:#960050;background-color:#1e0010">//此路由配置是自动分流，</span> <span style="color:#960050;background-color:#1e0010">国内IP和网站直连</span>
-    <span style="color:#f92672">&#34;strategy&#34;</span>: <span style="color:#e6db74">&#34;rules&#34;</span>,
-    <span style="color:#f92672">&#34;settings&#34;</span>: {
-        <span style="color:#f92672">&#34;domainStrategy&#34;</span>: <span style="color:#e6db74">&#34;IPIfNonMatch&#34;</span>,
-        <span style="color:#f92672">&#34;rules&#34;</span>: [
-            {
-                <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;chinaip&#34;</span>,
-                <span style="color:#f92672">&#34;outboundTag&#34;</span>: <span style="color:#e6db74">&#34;direct&#34;</span>
-            },
-            {
-                <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;chinasites&#34;</span>,
-                <span style="color:#f92672">&#34;outboundTag&#34;</span>: <span style="color:#e6db74">&#34;direct&#34;</span>
-            },
-            {
-                <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;field&#34;</span>,
-                <span style="color:#f92672">&#34;ip&#34;</span>: [
-                    <span style="color:#e6db74">&#34;0.0.0.0/8&#34;</span>,
-                    <span style="color:#e6db74">&#34;10.0.0.0/8&#34;</span>,
-                    <span style="color:#e6db74">&#34;100.64.0.0/10&#34;</span>,
-                    <span style="color:#e6db74">&#34;127.0.0.0/8&#34;</span>,
-                    <span style="color:#e6db74">&#34;169.254.0.0/16&#34;</span>,
-                    <span style="color:#e6db74">&#34;172.16.0.0/12&#34;</span>,
-                    <span style="color:#e6db74">&#34;192.0.0.0/24&#34;</span>,
-                    <span style="color:#e6db74">&#34;192.0.2.0/24&#34;</span>,
-                    <span style="color:#e6db74">&#34;192.168.0.0/16&#34;</span>,
-                    <span style="color:#e6db74">&#34;198.18.0.0/15&#34;</span>,
-                    <span style="color:#e6db74">&#34;198.51.100.0/24&#34;</span>,
-                    <span style="color:#e6db74">&#34;203.0.113.0/24&#34;</span>,
-                    <span style="color:#e6db74">&#34;::1/128&#34;</span>,
-                    <span style="color:#e6db74">&#34;fc00::/7&#34;</span>,
-                    <span style="color:#e6db74">&#34;fe80::/10&#34;</span>
-                ],
-                <span style="color:#f92672">&#34;outboundTag&#34;</span>: <span style="color:#e6db74">&#34;direct&#34;</span>
-            }
-        ]
-    }
-  },
-  <span style="color:#f92672">&#34;policy&#34;</span>: {
-    <span style="color:#f92672">&#34;levels&#34;</span>: {
-      <span style="color:#f92672">&#34;0&#34;</span>: {<span style="color:#f92672">&#34;uplinkOnly&#34;</span>: <span style="color:#ae81ff">0</span>}
-    }
-  }
-}
-</code></pre></div><p>如果在Window下使用，建议使用V2rayN客户端</p>
-<ul>
-<li>填上你设置的对应数据，如服务器地址、端口</li>
-<li>UUID alterId（服务端和客户端必须一致)</li>
-<li>加密方式一般为aes-128-gcm</li>
-<li>协议为ws</li>
-<li>伪装域名留空</li>
-<li>路径为 /ray</li>
-<li>开启tls和不安全传输</li>
-</ul>
-<p>设置完保存。</p>
-<ul>
-<li>右键V2RayN的系统栏小图标</li>
-<li>点击启用Http代理</li>
-<li>Http代理模式选择第二个PAC模式</li>
-<li>最后再打开V2RayN软件面板，在检查更新里选择更新PAC</li>
 </ul>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
