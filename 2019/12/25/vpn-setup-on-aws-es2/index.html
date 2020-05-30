@@ -120,49 +120,19 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2527 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1883 words</span>
 </div>
-		</header>
-<div class="post__toc toc">
-	<div class="toc__title">Page content</div>
-	<div class="toc__menu">
-		<nav id="TableOfContents">
-  <ul>
-    <li><a href="#搭建l2tp-vpn">搭建L2TP VPN</a>
-      <ul>
-        <li><a href="#下载脚本">下载脚本</a></li>
-        <li><a href="#修改配置">修改配置</a></li>
-        <li><a href="#启动服务">启动服务</a></li>
-        <li><a href="#开放aws端口">开放AWS端口</a></li>
-        <li><a href="#客户端访问">客户端访问</a></li>
-        <li><a href="#添加更多用户">添加更多用户</a></li>
-      </ul>
-    </li>
-    <li><a href="#搭建shadowsocks-vpn">搭建Shadowsocks VPN</a>
-      <ul>
-        <li><a href="#安装shadowsocks">安装shadowsocks</a></li>
-        <li><a href="#修改配置-1">修改配置</a></li>
-        <li><a href="#启动shadowsocks">启动shadowsocks</a></li>
-        <li><a href="#客户端访问-1">客户端访问</a></li>
-      </ul>
-    </li>
-    <li><a href="#搭建v2ray-vpn">搭建v2ray VPN</a>
-      <ul>
-        <li><a href="#安装v2ray">安装v2ray</a></li>
-        <li><a href="#配置v2ray">配置v2ray</a></li>
-        <li><a href="#配置nginx代理">配置Nginx代理</a></li>
-        <li><a href="#配置ssl">配置SSL</a></li>
-        <li><a href="#配置v2ray客户端">配置v2ray客户端</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-	</div>
-</div>
-<div class="content post__content clearfix">
-			<p>在AWS EC2上搭建VPN服务主要有3种比较便捷的方式：一是搭建L2TP/IPSec VPN；二是安装Shadowsocks；三是安装v2ray</p>
-<p>用AWS相对其他VPS的好处是支持弹性IP，即使IP被封了，后台重新申请一个弹性公网IP绑定到对应的实例，可以很方便的更换IP。但AWS相对价格略贵。</p>
-<h2 id="搭建l2tp-vpn">搭建L2TP VPN</h2>
+		</header><div class="content post__content clearfix">
+			<p>在AWS EC2上搭建VPN服务主要有4种比较便捷的方式：</p>
+<ul>
+<li>L2TP/IPSec VPN (不建议，极容易被墙)</li>
+<li>Shadowsocks (不建议，较容易被墙)</li>
+<li>v2ray (推荐 Nginx+WSS)</li>
+<li>Torjan (推荐)</li>
+</ul>
+<p>用AWS相对其他VPS的好处是支持弹性IP，即使IP被封了，后台重新申请一个弹性公网IP绑定到对应的实例，可以很方便的更换IP。
+但AWS相对其他机场价格略贵。</p>
+<h2 id="l2tp-vpn">L2TP VPN</h2>
 <h3 id="下载脚本">下载脚本</h3>
 <p>ubuntu</p>
 <pre><code>wget https://git.io/vpnsetup -O vpnsetup.sh &amp;&amp; sudo sh vpnsetup.sh
@@ -198,62 +168,10 @@ vpn 服务使用到的端口有 500/4500/50/51/1701，通过配置AWS安全组�
 <pre><code>&quot;user1&quot; l2tpd &quot;password1&quot; *
 &quot;user2&quot; l2tpd &quot;password2&quot; *
 &quot;user3&quot; l2tpd &quot;password3&quot; *
-</code></pre><h2 id="搭建shadowsocks-vpn">搭建Shadowsocks VPN</h2>
-<p>shadowsocks可以指一种SOCKS5的加密传输协议，也可以指基于这种加密协议的各种数据传输包。
-shadowsocks正常工作需要服务器端和客户端两端合作实现。</p>
+</code></pre><h2 id="shadowsocks">Shadowsocks</h2>
 <ul>
-<li>首先，客户端（本机）通过ss（shadowsocks）对正常的访问请求进行SOCK5加密，将加密后的访问请求传输给ss服务器端。</li>
-<li>服务器端接收到客户端的加密请求后，解密得到原始的访问请求，根据请求内容访问指定的网站（例如Google，YouTube，Facebook，instagram等），得到网站的返回结果后，再利用SOCKS5加密并返回给客户端。</li>
-<li>客户端通过ss解密后得到正常的访问结果，于是就可以实现你直接访问该网站的“假象”。</li>
+<li>详见：<a href="https://lockshell.com/2019/12/26/vpn-shadowsocks-setup-on-aws-ec2/">在AWS EC2上安装配置Shadowsocks</a></li>
 </ul>
-<h3 id="安装shadowsocks">安装shadowsocks</h3>
-<pre><code># 更新apt-get
-sudo apt-get update
-
-# 安装python包管理工具
-sudo apt-get install python-setuptools
-sudo apt-get install python-pip
-
-# 安装shadowsocks
-sudo pip install shadowsocks
-</code></pre><h3 id="修改配置-1">修改配置</h3>
-<pre><code>vim /etc/shadowsocks/ss.json
-</code></pre><pre><code>{
-    &quot;server&quot;:&quot;0.0.0.0&quot;,
-    &quot;server_port&quot;:9000, //ss连接服务器的端口
-    &quot;local_address&quot;:&quot;127.0.0.1&quot;,
-    &quot;local_port&quot;:1080,
-    &quot;password&quot;:&quot;123456&quot;, // 设置ss连接时的密码
-    &quot;timeout&quot;:300,
-    &quot;method&quot;:&quot;aes-256-cfb&quot;,
-    &quot;fast_open&quot;:false,
-    &quot;workers&quot;: 1
-}
-</code></pre><p>可配置多个端口和密码给不同的用户使用。</p>
-<pre><code>{
-	&quot;server&quot;:&quot;0.0.0.0&quot;,
-	&quot;local_address&quot;:&quot;127.0.0.1&quot;,
-	&quot;local_port&quot;:1080,
-	&quot;port_password&quot;:{
-		&quot;9000&quot;:&quot;123456&quot;,
-		&quot;9001&quot;:&quot;456&quot;,
-		&quot;9002&quot;:&quot;789&quot;,
-	},
-	&quot;timeout&quot;:300,
-	&quot;method&quot;:&quot;aes-128-gcm&quot;,
-	&quot;fast_open&quot;: false
-}
-</code></pre><h3 id="启动shadowsocks">启动shadowsocks</h3>
-<ul>
-<li>启动：sudo /usr/local/bin/ssserver -c /etc/shadowsocks/ss.json -d start</li>
-<li>停止：sudo /usr/local/bin/ssserver -c /etc/shadowsocks/ss.json -d stop</li>
-<li>重启：sudo /usr/local/bin/ssserver -c /etc/shadowsocks/ss.json -d restart</li>
-</ul>
-<h3 id="客户端访问-1">客户端访问</h3>
-<p>Shadowsocks客户端可从Github上下载，<a href="https://github.com/shadowsocks/shadowsocks-android">shadowsocks-android</a>，
-或者<a href="https://shadowsocks.org/en/download/clients.html">Shadowsocks官网</a>下载。</p>
-<p>本地设备通过Shadowsocks客户端连接VPN服务器，即可实现翻墙。
-添加服务器，地址即为AmazonEC2的公网IP，端口为配置文件中设置的9000，密码为配置中的123456。</p>
 <h2 id="搭建v2ray-vpn">搭建v2ray VPN</h2>
 <p>v2ray的安装配置比前两种略复杂一些，但理论上来讲更安全可靠。还可以加一层Nginx用https代理，这样请求更安全。</p>
 <h3 id="安装v2ray">安装v2ray</h3>
@@ -272,6 +190,10 @@ sudo pip install shadowsocks
 <li>运行 service v2ray start 来启动 V2Ray 进程；</li>
 </ul>
 <p>之后可以使用 <code>service v2ray start|stop|status|reload|restart|force-reload</code> 控制 V2Ray 的运行。</p>
+<p>如果觉得Nginx+SSL的配置组合比较麻烦，可以考虑使用Caddy作为Proxy，省去的生成和配置SSL证书的步骤。</p>
+<ul>
+<li><a href="https://lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/">在AWS EC2上搭建V2ray+Caddy代理</a></li>
+</ul>
 <h3 id="配置v2ray">配置v2ray</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;log&#34;</span> : {
@@ -316,8 +238,8 @@ sudo pip install shadowsocks
     # SSL configuration
     listen 443 ssl http2 default_server;
     listen [::]:443 ssl http2 default_server;
-    ssl_certificate /ssl.pem; #你的ssl证书， 如果第一次，可能还需要自签一下，
-    ssl_certificate_key /ssl.key; #你的ssl key
+    ssl_certificate /ssl.pem; # 你的ssl证书， 如果第一次，可能还需要自签一下，
+    ssl_certificate_key /ssl.key; # 你的ssl key
  
     root /var/www/html;
  
@@ -340,11 +262,7 @@ sudo pip install shadowsocks
 很简单，参考链接: <a href="https://certbot.eff.org/">https://certbot.eff.org/</a></p>
 <p>成功后， 在crontab 中添加一条任务计划每三个月执行一次，因为let’s encrypt证书三个月过期：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">15</span> */3 * /root/certbot/certbot-auto renew  <span style="color:#75715e"># 在3，6，9，12月份的15号零点零分执行更新</span>
-</code></pre></div><p>如果觉得Nginx+SSL的配置组合比较麻烦，可以考虑使用Caddy作为Proxy，省去的生成和配置SSL证书的步骤。</p>
-<ul>
-<li><a href="https://lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/">在AWS EC2上搭建V2ray+Caddy代理</a></li>
-</ul>
-<h3 id="配置v2ray客户端">配置v2ray客户端</h3>
+</code></pre></div><h3 id="配置v2ray客户端">配置v2ray客户端</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;log&#34;</span>: {
     <span style="color:#f92672">&#34;loglevel&#34;</span>: <span style="color:#e6db74">&#34;warning&#34;</span>
@@ -494,7 +412,7 @@ sudo pip install shadowsocks
 		<a class="post-nav__link" href="/2019/12/10/python-generate-random-password/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Python生成随机密码</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">在AWS EC2上搭建V2ray&#43;Caddy代理</p></a>
+		<a class="post-nav__link" href="/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">在AWS EC2上部署V2ray&#43;Caddy代理</p></a>
 	</div>
 </nav>
 
