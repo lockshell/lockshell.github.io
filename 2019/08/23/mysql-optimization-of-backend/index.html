@@ -120,11 +120,11 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1868 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1866 words</span>
 </div>
 		</header><div class="content post__content clearfix">
 			<h2 id="基本思路">基本思路</h2>
-<p>**首先是如何定位性能瓶颈？**<!-- raw HTML omitted -->
+<p>**首先是如何定位性能瓶颈？**<br>
 一般使用show命令、慢查询日志、explain、profiling等进行分析。</p>
 <ul>
 <li>当服务器的负载增加时，使用<code>SHOW PROCESSLIST</code>来查看有问题的查询</li>
@@ -157,8 +157,8 @@ if (!doNotTrack) {
 <p>利用MySQL的查询缓存</p>
 <ul>
 <li>使用像<code>NOW()</code>和<code>RAND()</code>或是其它类似的SQL函数，都不会开启查询缓存</li>
-<li>保持查询条件次序一致<!-- raw HTML omitted -->
-第一次查<code>select col from tab where a = 'x' and b = 'y'</code><!-- raw HTML omitted -->
+<li>保持查询条件次序一致<br>
+第一次查<code>select col from tab where a = 'x' and b = 'y'</code><br>
 下次查是<code>select col from tab where b = 'y' and a = 'x'</code>，就无法利用查询缓存了</li>
 </ul>
 </li>

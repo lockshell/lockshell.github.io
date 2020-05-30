@@ -251,7 +251,7 @@
       <pubDate>Wed, 28 Aug 2019 02:40:57 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/28/django-db-connection-pool/</guid>
-      <description>数据库长连接 长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销。先看看官方文档是怎么讲Djan</description>
+      <description>数据库长连接 长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销。 先看看官方文档是怎么讲Djan</description>
     </item>
     
     <item>
@@ -278,7 +278,7 @@
       <pubDate>Fri, 23 Aug 2019 22:42:49 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/23/mysql-optimization-of-backend/</guid>
-      <description>基本思路 **首先是如何定位性能瓶颈？**一般使用show命令、慢查询日志、explain、profiling等进行分析。 当服务器的负载增加时</description>
+      <description>基本思路 **首先是如何定位性能瓶颈？** 一般使用show命令、慢查询日志、explain、profiling等进行分析。 当服务器的负载增加时</description>
     </item>
     
     <item>
