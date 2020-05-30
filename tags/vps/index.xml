@@ -35,7 +35,7 @@
       <pubDate>Wed, 25 Dec 2019 18:01:32 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</guid>
-      <description>在AWS EC2上搭建VPN服务主要有4种比较便捷的方式： L2TP/IPSec VPN (不建议，极容易被墙) Shadowsocks (不建议，较容易被墙) v2ray (推荐 Nginx+WSS) Torjan (推荐) 用AWS相对其</description>
+      <description>狭义的VPN虛拟私人网络（Virtual Private Network，缩写：VPN）是一种常用于连接中、大型企业或团体与团体间的私人网络的通讯方法。 广义</description>
     </item>
     
   </channel>
