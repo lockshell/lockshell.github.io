@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>在AWS EC2上搭建VPN服务 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Setup VPN Service on AWS EC2, L2TP, Shadowsocks, v2ray, VPN搭建, 翻墙上网">
+	<meta name="description" content="Setup VPN Service on AWS EC2, L2TP, Shadowsocks, v2ray, VPN搭建, 翻墙上网, HK">
 	<meta property="og:title" content="在AWS EC2上搭建VPN服务" />
-<meta property="og:description" content="Setup VPN Service on AWS EC2, L2TP, Shadowsocks, v2ray, VPN搭建, 翻墙上网" />
+<meta property="og:description" content="Setup VPN Service on AWS EC2, L2TP, Shadowsocks, v2ray, VPN搭建, 翻墙上网, HK" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2019/12/25/vpn-setup-on-aws-es2/" />
 <meta property="article:published_time" content="2019-12-25T18:01:32+08:00" />
@@ -16,7 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="在AWS EC2上搭建VPN服务"/>
-<meta name="twitter:description" content="Setup VPN Service on AWS EC2, L2TP, Shadowsocks, v2ray, VPN搭建, 翻墙上网"/>
+<meta name="twitter:description" content="Setup VPN Service on AWS EC2, L2TP, Shadowsocks, v2ray, VPN搭建, 翻墙上网, HK"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -120,7 +120,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 837 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 830 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -154,9 +154,8 @@ if (!doNotTrack) {
 <li>v2ray (推荐 Nginx+WSS)</li>
 <li>Torjan (推荐)</li>
 </ul>
-<p>我使用的是AWS。
-用AWS相对其他VPS的好处是支持弹性IP，即使IP被封了，后台重新申请一个弹性公网IP绑定到对应的实例，可以很方便的更换IP。
-但AWS相对其他机场价格略贵。</p>
+<p>用AWS相对其他VPS的好处是支持弹性IP，即使IP被封了，后台重新申请一个弹性公网IP绑定到对应的实例，可以很方便的更换IP。
+但AWS流量相对其他机场价格略贵。</p>
 <h2 id="搭建l2tp-vpn">搭建L2TP VPN</h2>
 <h3 id="下载脚本">下载脚本</h3>
 <p>ubuntu</p>
@@ -201,8 +200,8 @@ vpn 服务使用到的端口有 500/4500/50/51/1701，通过配置AWS安全组�
 <p>v2ray的安装配置比前两种略复杂一些，但理论上来讲更安全可靠。还可以加一层Nginx代理，伪装成网站。</p>
 <p>如果觉得Nginx+SSL的配置组合比较麻烦，可以考虑使用Caddy作为Proxy，省去的生成和配置SSL证书的步骤。</p>
 <ul>
-<li><a href="https://lockshell.com/2019/12/26/v2ray-and-nginx-proxy-setup-on-aws-ec2/">在AWS EC2上搭建V2ray+Nginx代理</a></li>
 <li><a href="https://lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/">在AWS EC2上搭建V2ray+Caddy代理</a></li>
+<li><a href="https://lockshell.com/2019/12/26/v2ray-and-nginx-proxy-setup-on-aws-ec2/">在AWS EC2上搭建V2ray+Nginx代理</a></li>
 </ul>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
