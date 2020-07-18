@@ -3,22 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://lockshell.com/categories/</loc>
+    <lastmod>2020-07-18T21:12:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/invest/</loc>
+    <lastmod>2020-07-18T21:12:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/</loc>
+    <lastmod>2020-07-18T21:12:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/2020/07/18/what-i-learn-from-books-about-investment/</loc>
+    <lastmod>2020-07-18T21:12:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/categories/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2/</loc>
+    <lastmod>2020-07-18T21:12:50+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://lockshell.com/2020/07/17/where-is-chinese-anxiety-from/</loc>
     <lastmod>2020-07-17T23:36:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lockshell.com/tags/career/</loc>
-    <lastmod>2020-07-17T23:36:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/categories/</loc>
-    <lastmod>2020-07-17T23:36:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/</loc>
     <lastmod>2020-07-17T23:36:57+08:00</lastmod>
   </url>
   
@@ -35,16 +50,6 @@
   <url>
     <loc>https://lockshell.com/2020/06/20/sorrows-of-programmer/</loc>
     <lastmod>2020-06-20T10:32:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/invest/</loc>
-    <lastmod>2020-05-02T23:37:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/categories/%E6%8A%95%E8%B5%84%E7%90%86%E8%B4%A2/</loc>
-    <lastmod>2020-05-02T23:37:00+08:00</lastmod>
   </url>
   
   <url>
