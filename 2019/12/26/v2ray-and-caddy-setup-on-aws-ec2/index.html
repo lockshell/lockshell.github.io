@@ -113,36 +113,44 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2142 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2160 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-  <ul>
-    <li><a href="#环境及软件版本">环境及软件版本</a></li>
-    <li><a href="#v2ray">V2ray</a>
-      <ul>
-        <li><a href="#v2ray安装">V2ray安装</a></li>
-        <li><a href="#修改配置">修改配置</a></li>
-        <li><a href="#启动v2ray">启动V2ray</a></li>
-        <li><a href="#服务端配置">服务端配置</a></li>
-        <li><a href="#客户端配置">客户端配置</a></li>
-        <li><a href="#客户端运行">客户端运行</a></li>
-      </ul>
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#环境及软件版本">环境及软件版本</a></li>
+        <li><a href="#v2ay服务端">V2ay服务端</a>
+          <ol>
+            <li><a href="#服务端安装">服务端安装</a></li>
+            <li><a href="#修改配置">修改配置</a></li>
+            <li><a href="#启动v2ray">启动V2ray</a></li>
+            <li><a href="#服务端配置">服务端配置</a></li>
+          </ol>
+        </li>
+        <li><a href="#v2ray客户端">V2Ray客户端</a>
+          <ol>
+            <li><a href="#客户端配置">客户端配置</a></li>
+            <li><a href="#客户端运行">客户端运行</a></li>
+          </ol>
+        </li>
+        <li><a href="#caddy安装与配置">Caddy安装与配置</a>
+          <ol>
+            <li><a href="#为啥选caddy">为啥选Caddy</a></li>
+            <li><a href="#安装caddy">安装Caddy</a></li>
+            <li><a href="#配置caddy">配置Caddy</a></li>
+            <li><a href="#启动caddy">启动Caddy</a></li>
+            <li><a href="#检查证书">检查证书</a></li>
+            <li><a href="#更新客户端配置">更新客户端配置</a></li>
+          </ol>
+        </li>
+      </ol>
     </li>
-    <li><a href="#配置代理">配置代理</a>
-      <ul>
-        <li><a href="#为啥选caddy">为啥选Caddy</a></li>
-        <li><a href="#安装caddy">安装Caddy</a></li>
-        <li><a href="#配置caddy">配置Caddy</a></li>
-        <li><a href="#启动caddy">启动Caddy</a></li>
-        <li><a href="#检查证书">检查证书</a></li>
-        <li><a href="#更新客户端配置">更新客户端配置</a></li>
-      </ul>
-    </li>
-  </ul>
+  </ol>
 </nav>
 	</div>
 </div>
@@ -154,8 +162,8 @@ if (!doNotTrack) {
 <li>Caddy: 2.x</li>
 <li>V2ray: 4.x</li>
 </ul>
-<h2 id="v2ray">V2ray</h2>
-<h3 id="v2ray安装">V2ray安装</h3>
+<h2 id="v2ay服务端">V2ay服务端</h2>
+<h3 id="服务端安装">服务端安装</h3>
 <pre><code>bash &lt;(curl -L -s https://install.direct/go.sh) # 直接使用脚本
 </code></pre><p>此脚本会自动安装以下文件：</p>
 <ul>
@@ -205,7 +213,8 @@ if (!doNotTrack) {
         &quot;settings&quot;: {}
     }
 }
-</code></pre><h3 id="客户端配置">客户端配置</h3>
+</code></pre><h2 id="v2ray客户端">V2Ray客户端</h2>
+<h3 id="客户端配置">客户端配置</h3>
 <p>将客户端的 config.json 文件修改成下面的内容，修改完成后要重启 V2Ray 才会使修改的配置生效。</p>
 <pre><code>{
   &quot;inbounds&quot;: [
@@ -252,7 +261,7 @@ if (!doNotTrack) {
 <li>在 Windows 和 macOS 中，配置文件通常是 V2Ray 同目录下的 config.json 文件。直接运行 v2ray 或 v2ray.exe 即可。</li>
 <li>在 Linux 中，配置文件通常位于 /etc/v2ray/config.json 文件。运行 v2ray &ndash;config=/etc/v2ray/config.json，或使用 systemd 等工具把 V2Ray 作为服务在后台运行。</li>
 </ul>
-<h2 id="配置代理">配置代理</h2>
+<h2 id="caddy安装与配置">Caddy安装与配置</h2>
 <h3 id="为啥选caddy">为啥选Caddy</h3>
 <p>完成前面V2Ray + Websocket 模式的配置后，V2ray就基本可以正常使用了，但依然不够安全，存在被封的风险。
 WALL不知道你做了什么，但知道你使用加密协议在访问外网。

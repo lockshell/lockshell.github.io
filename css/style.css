@@ -765,6 +765,27 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	background: #2a2a2a;
 }
 
+.toc__menu ol {
+	margin: 0;
+	list-style: none;
+}
+
+.toc__menu ol ol ol a {
+	padding-left: 25px;
+}
+
+.toc__menu ol ol ol ol a {
+	padding-left: 45px;
+}
+
+.toc__menu ol ol ol ol ol a {
+	padding-left: 65px;
+}
+
+.toc__menu ol ol ol ol ol ol a {
+	padding-left: 85px;
+}
+
 .toc__menu ul {
 	margin: 0;
 	list-style: none;

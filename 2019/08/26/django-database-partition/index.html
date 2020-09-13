@@ -120,27 +120,31 @@ if (!doNotTrack) {
 	<div class="toc__title">Page content</div>
 	<div class="toc__menu">
 		<nav id="TableOfContents">
-  <ul>
-    <li><a href="#如何配置分库">如何配置分库</a>
-      <ul>
-        <li><a href="#配置db地址">配置DB地址</a></li>
-        <li><a href="#定义model">定义<code>Model</code></a></li>
-        <li><a href="#执行migrate">执行<code>migrate</code></a></li>
-      </ul>
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#如何配置分库">如何配置分库</a>
+          <ol>
+            <li><a href="#配置db地址">配置DB地址</a></li>
+            <li><a href="#定义model">定义<code>Model</code></a></li>
+            <li><a href="#执行migrate">执行<code>migrate</code></a></li>
+          </ol>
+        </li>
+        <li><a href="#如何访问分库">如何访问分库</a>
+          <ol>
+            <li><a href="#using方法"><code>using()</code>方法</a></li>
+            <li><a href="#配置db路由">配置DB路由</a></li>
+          </ol>
+        </li>
+        <li><a href="#如何配置读写分离">如何配置读写分离</a>
+          <ol>
+            <li><a href="#主库写从库读">主库写从库读</a></li>
+            <li><a href="#多个app读写分离">多个app读写分离</a></li>
+          </ol>
+        </li>
+      </ol>
     </li>
-    <li><a href="#如何访问分库">如何访问分库</a>
-      <ul>
-        <li><a href="#using方法"><code>using()</code>方法</a></li>
-        <li><a href="#配置db路由">配置DB路由</a></li>
-      </ul>
-    </li>
-    <li><a href="#如何配置读写分离">如何配置读写分离</a>
-      <ul>
-        <li><a href="#主库写从库读">主库写从库读</a></li>
-        <li><a href="#多个app读写分离">多个app读写分离</a></li>
-      </ul>
-    </li>
-  </ul>
+  </ol>
 </nav>
 	</div>
 </div>

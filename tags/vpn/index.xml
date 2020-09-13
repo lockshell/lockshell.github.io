@@ -53,7 +53,7 @@
       <pubDate>Thu, 26 Dec 2019 10:30:37 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/</guid>
-      <description>环境及软件版本 服务器: AWS EC2 系统: ubuntu 18.04 Caddy: 2.x V2ray: 4.x V2ray V2ray安装 bash &amp;lt;(curl -L -s https://install.direct/go.sh) # 直接使用脚本 此脚本会自动安装以下文件： /usr/bin/v2ray/</description>
+      <description>环境及软件版本 服务器: AWS EC2 系统: ubuntu 18.04 Caddy: 2.x V2ray: 4.x V2ay服务端 服务端安装 bash &amp;lt;(curl -L -s https://install.direct/go.sh) # 直接使用脚本 此脚本会自动安装以下文件： /usr/bin/v2</description>
     </item>
     
     <item>
