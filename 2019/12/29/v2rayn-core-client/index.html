@@ -113,7 +113,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 639 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 893 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -166,30 +166,40 @@ V2RayN的运行需要Microsoft .NET Framework 4.6或以上版本，如果运行�
 <li>传输层安全选: <code>tls</code></li>
 <li>允许不安全连接选: <code>true</code></li>
 </ul>
+<p>示例图如下：</p>
 <p><img src="/v2ray_vmess_setting.jpeg" alt=""></p>
 <h2 id="参数设置">参数设置</h2>
 <ol>
 <li>点击<strong>参数设置</strong>菜单 -&gt; <strong>Core: 基础设置</strong>:</li>
 </ol>
+<p>点击V2RayN菜单中的参数设置项，可以看到，默认情况下V2Ray的Socks代理已经开启，端口为1080。
+本机中的其它软件，可以使用Socks协议，连接127.0.0.1:1080，然后就可以通过V2Ray代理上网了。</p>
 <ul>
 <li>本地端口: 1080</li>
 <li>其中自定义DNS: 8.8.8.8,8.8.4.4,localhost</li>
-<li>请参照下图设置</li>
 </ul>
+<p>示例图如下：</p>
 <p><img src="/v2ray_basic_setting.png" alt=""></p>
 <ol start="2">
-<li>点击<strong>参数设置</strong>菜单 -&gt; <strong>Core: 路由设置</strong>:</li>
+<li>点击<strong>参数设置</strong>菜单 -&gt; <strong>Core: 路由设置</strong>:
+路由设置：可以在此选项下，设置V2Ray是否线绕过大陆地址及大陆IP。</li>
 </ol>
 <ul>
 <li>点击一键默认设置路由规则</li>
 <li>然后解析策略选择: IPOnDemand</li>
 <li>可在编辑框中根据需要添加路由规则</li>
 </ul>
+<p>示例图如下：</p>
 <p><img src="/v2ray_router_setting.png" alt=""></p>
 <ol start="3">
 <li>对于普通用户，参数设置的另外几项，使用默认即可。</li>
 </ol>
+<ul>
+<li>KCP设置：KCP加速相关，一般无需设置。</li>
+<li>v2rayN设置：一般无需设置；可设置V2RayN开机自启，也可设置是否允许局域网连接，将代理共享给内网其它设备。</li>
+</ul>
 <h2 id="测试当前服务">测试当前服务</h2>
+<p>点击<strong>服务器</strong>-&gt;选择<strong>测试服务器状态</strong>:</p>
 <p><img src="/v2ray_testing.png" alt=""></p>
 <h2 id="访问油管">访问油管</h2>
 <p>直接访问油管: <a href="https://www.youtube.com/">https://www.youtube.com/</a> 检查v2ray服务是否可用。</p>
