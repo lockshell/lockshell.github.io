@@ -113,7 +113,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 694 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 858 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -136,6 +136,8 @@ if (!doNotTrack) {
 <p>V2Ray官方发布的Mac OS客户端，仅提供内核，没有图形化界面。
 而V2RayX是一个集成V2Ray内核的图形化界面，安装在Mac OS之后，可以很方便的进行各项参数设置，快速连接V2Ray服务器。</p>
 <h2 id="v2rayx下载">V2RayX下载</h2>
+<p>V2RayX 是一个基于 V2Ray 内核的 Mac OS X 客户端。
+用户可以通过界面生成配置文件，并且可以手动更新 V2Ray 内核。V2RayX 还可以配置系统代理。</p>
 <p>V2RayX目前最新版本为1.5.1，版本随时更新，以实际为准。</p>
 <p>V2RayX 1.5.1下载地址：</p>
 <ul>
@@ -147,9 +149,14 @@ if (!doNotTrack) {
 </ul>
 <h2 id="v2rayx安装和使用">V2RayX安装和使用</h2>
 <ol>
-<li>
-<p>V2RayX下载完成后解压，得到V2RayX.app，将其拖动至程序目录进行安装。</p>
-</li>
+<li>V2RayX下载完成后解压，得到V2RayX.app，将其拖动至程序目录进行安装。</li>
+</ol>
+<p><img src="/v2rayx_install.png" alt=""></p>
+<p>因为软件不是来自于Mac自带的应用商店，打开程序时可能会有安全提示，如下：</p>
+<p><img src="/v2rayx_confirm.png" alt=""></p>
+<p>需要前往“系统偏好设置”－“安全性和隐私”，点“仍要打开”，再点&quot;install&quot;安裝。</p>
+<p><img src="/v2rayx_allow.png" alt=""></p>
+<ol start="2">
 <li>
 <p>安装完成后打开V2RayX，桌面右上角会出现V2RayX图标。</p>
 </li>
@@ -158,15 +165,20 @@ if (!doNotTrack) {
 </li>
 <li>
 <p>在设置界面，点击左下角的+号，添加服务器。
-然后在右侧填入V2Ray服务器的各项参数，红框内为必填项，与服务器端保持一致即可。
-其中alterid这一项如果找不到服务器参数，一般填0。设置完成后，点击OK。</p>
-</li>
-<li>
-<p>点击桌面右上角V2RayX图标，Start V2ray，开始享受科学上网吧。
-另外，菜单中的PAC Mode表示根据V2RayX内置规则，决定是否走代理，这种模式下，一般国内流量直连，部分国外网站走代理。
-而Global Mode则表示所有流量走代理。可以根据自己的使用情况，选择其中一种模式。</p>
+之后填入你 V2Ray 服务器的各项参数即可，包括：</p>
 </li>
 </ol>
+<ul>
+<li>Address (服务器域名和端口号，例子: test.com 443)</li>
+<li>User ID</li>
+<li>alterId</li>
+<li>Security</li>
+<li>以及 Network（你的伪装类型）</li>
+</ul>
+<p>这些都是必填项跟你的 V2Ray 服务器一致。
+最后点击 OK 保存你的 V2Ray 服务器配置，再次点击右上角通知栏的 V2RayX 的图标，点击<code>Start V2Ray</code>即可连接你的 V2Ray 服务器。</p>
+<p>另外，菜单中的PAC Mode表示根据V2RayX内置规则，决定是否走代理，这种模式下，一般国内流量直连，部分国外网站走代理。
+而Global Mode则表示所有流量走代理。可以根据自己的使用情况，选择其中一种模式。</p>
 <p>示例图如下：</p>
 <p><img src="/v2rayx_menu.jpg" alt=""></p>
 <p>服务器的各项参数:</p>
