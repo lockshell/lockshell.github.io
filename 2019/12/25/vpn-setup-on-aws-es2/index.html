@@ -116,7 +116,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1104 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 767 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -126,23 +126,9 @@ if (!doNotTrack) {
   <ol>
     <li><a href="#点击购买服务httpspaypalmepaybowenlocalexen_gb"><a href="https://paypal.me/paybowen?locale.x=en_GB">点击购买服务</a></a>
       <ol>
-        <li><a href="#搭建v2ray">搭建v2ray</a></li>
+        <li><a href="#搭建v2ray">搭建V2Ray</a></li>
         <li><a href="#搭建shadowsocks">搭建Shadowsocks</a></li>
-        <li><a href="#搭建l2tp-vpn">搭建L2TP VPN</a>
-          <ol>
-            <li><a href="#下载脚本">下载脚本</a></li>
-            <li><a href="#修改配置">修改配置</a></li>
-            <li><a href="#启动服务">启动服务</a></li>
-            <li><a href="#开放aws端口">开放AWS端口</a></li>
-            <li><a href="#客户端访问">客户端访问</a>
-              <ol>
-                <li><a href="#mac">Mac</a></li>
-                <li><a href="#ios">iOS</a></li>
-              </ol>
-            </li>
-            <li><a href="#添加更多用户">添加更多用户</a></li>
-          </ol>
-        </li>
+        <li><a href="#搭建l2tp-vpn">搭建L2TP VPN</a></li>
       </ol>
     </li>
   </ol>
@@ -161,13 +147,13 @@ if (!doNotTrack) {
 </ul>
 <p>用AWS相对其他VPS的好处是支持弹性IP，即使IP被封了，后台重新申请一个弹性公网IP绑定到对应的实例，可以很方便的更换IP。
 但AWS流量相对其他机场价格略贵。</p>
-<p>博主在新加坡和日本的VPS上搭建了v2ray，需要购买的服务的小伙伴可以点击下面的paypal链接支付：</p>
+<p>博主在新加坡和日本的VPS上搭建了v2ray，嫌自己维护VPS和域名麻烦小伙伴，可以通过下面的paypal链接购买V2ray服务：</p>
 <ul>
 <li>收费情况：50美刀 年 （或者 70 新币）每月60G流量，每天不到一块钱，畅享高速国际网络，油管1080P无压力。</li>
 <li>
 <h1 id="点击购买服务httpspaypalmepaybowenlocalexen_gb"><a href="https://paypal.me/paybowen?locale.x=en_GB">点击购买服务</a></h1>
 </li>
-<li>转账完成后发送截图到邮箱: <code>nanyangbuyi@hotmail.com</code>，账号密码 及客户端邮件发送</li>
+<li>转账完成后发送截图到邮箱: <code>nanyangbuyi@hotmail.com</code>，V2Ray账号密码 及客户端邮件发送</li>
 <li>在收到账号信息之后，可参照下面的教程安装配置客户端：
 <ul>
 <li>V2Ray Mac客户端: <a href="https://lockshell.com/2019/12/31/v2rayx-mac-client/">V2Ray MAC客户端V2RayX安装和使用</a></li>
@@ -176,7 +162,7 @@ if (!doNotTrack) {
 </ul>
 </li>
 </ul>
-<h2 id="搭建v2ray">搭建v2ray</h2>
+<h2 id="搭建v2ray">搭建V2Ray</h2>
 <p>V2Ray的安装配置比L2TP和SS略复杂一些，但理论上来讲更安全可靠。还可以加一层Nginx代理，伪装成网站。</p>
 <p>如果觉得Nginx+SSL的配置组合比较麻烦，可以考虑使用Caddy作为Proxy，省去的生成和配置SSL证书的步骤。</p>
 <ul>
@@ -188,42 +174,10 @@ if (!doNotTrack) {
 <li><a href="https://lockshell.com/2019/12/26/vpn-shadowsocks-setup-on-aws-ec2/">在AWS EC2上安装配置Shadowsocks</a></li>
 </ul>
 <h2 id="搭建l2tp-vpn">搭建L2TP VPN</h2>
-<h3 id="下载脚本">下载脚本</h3>
-<p>ubuntu</p>
-<pre><code>wget https://git.io/vpnsetup -O vpnsetup.sh &amp;&amp; sudo sh vpnsetup.sh
-</code></pre><p>centos</p>
-<pre><code>wget https://git.io/vpnsetup-centos -O vpnsetup.sh &amp;&amp; sudo sh vpnsetup.sh
-</code></pre><h3 id="修改配置">修改配置</h3>
-<pre><code>YOUR_IPSEC_PSK='lockshell.com'
-YOUR_USERNAME='lockshell'
-YOUR_PASSWORD='1234567'
-</code></pre><h3 id="启动服务">启动服务</h3>
-<pre><code>sudo sh vpnsetup.sh
-</code></pre><h3 id="开放aws端口">开放AWS端口</h3>
-<p>现在 vpn 服务还不能直接访问，需要将 vpn 服务端口对外网开放。
-vpn 服务使用到的端口有 500/4500/50/51/1701，通过配置AWS安全组可以开放这些端口。</p>
-<h3 id="客户端访问">客户端访问</h3>
-<h4 id="mac">Mac</h4>
 <ul>
-<li>打开系统偏好设置 → 网络</li>
-<li>点 + 添加网络，接口选 vpn，vpn 类型选 IPSec 上的 L2TP，服务名称随意</li>
-<li>选中刚刚创建的网络，将上面生成的 vpn 凭证填入，服务器地址填 Server Ip，账户名称填 Username，点开鉴定设置，密码填 Password，共享的秘钥填 IPsec PSK</li>
-<li>点击 连接 即可</li>
+<li><a href="https://lockshell.com/2019/12/14/vpn-l2tp-setup/">一键安装L2TP VPN</a></li>
 </ul>
-<h4 id="ios">iOS</h4>
-<ul>
-<li>设置 → 通用 → vpn</li>
-<li>添加 vpn 配置 → 类型选择 L2TP → 填入上述 vpn 凭证即可</li>
-</ul>
-<p>更详细的说明，请参考：<a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-zh.md">配置 IPsec/L2TP VPN 客户端</a></p>
-<h3 id="添加更多用户">添加更多用户</h3>
-<p>直接编辑<code>/etc/ppp/chap-secrets</code>文件，新增用户即可，无需重启服务。</p>
-<pre><code>sudo vim /etc/ppp/chap-secrets
-</code></pre><p>例子如下：</p>
-<pre><code>&quot;user1&quot; l2tpd &quot;password1&quot; *
-&quot;user2&quot; l2tpd &quot;password2&quot; *
-&quot;user3&quot; l2tpd &quot;password3&quot; *
-</code></pre>
+
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
 		</div>
@@ -255,7 +209,7 @@ vpn 服务使用到的端口有 500/4500/50/51/1701，通过配置AWS安全组�
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2019/12/10/python-generate-random-password/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Python生成随机密码</p></a>
+		<a class="post-nav__link" href="/2019/12/14/vpn-l2tp-setup/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">一键安装L2TP VPN</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
 		<a class="post-nav__link" href="/2019/12/26/vpn-shadowsocks-setup-on-aws-ec2/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">在AWS EC2上搭建Shadowsocks</p></a>

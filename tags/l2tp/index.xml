@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>L2TP on 络壳 LockShell</title>
+    <link>https://lockshell.com/tags/l2tp/</link>
+    <description>Recent content in L2TP on 络壳 LockShell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 14 Dec 2019 23:27:05 +0800</lastBuildDate>
+    
+	<atom:link href="https://lockshell.com/tags/l2tp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>一键安装L2TP VPN</title>
+      <link>https://lockshell.com/2019/12/14/vpn-l2tp-setup/</link>
+      <pubDate>Sat, 14 Dec 2019 23:27:05 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/12/14/vpn-l2tp-setup/</guid>
+      <description>警告 虽然本文介绍了安装L2TP VPN的方法，但已不推荐使用基于L2TP的VPN，非常容易被GFW检测到并封杀。 搭建L2TP VPN 下载脚本 ubuntu wget https://git.io/vpnsetup -O</description>
+    </item>
+    
+  </channel>
+</rss>

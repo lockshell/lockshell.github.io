@@ -29,5 +29,14 @@
       <description>狭义的VPN虛拟私人网络（Virtual Private Network，缩写：VPN）是一种常用于连接中、大型企业或团体与团体间的私人网络的通讯方法。 广义</description>
     </item>
     
+    <item>
+      <title>一键安装L2TP VPN</title>
+      <link>https://lockshell.com/2019/12/14/vpn-l2tp-setup/</link>
+      <pubDate>Sat, 14 Dec 2019 23:27:05 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/12/14/vpn-l2tp-setup/</guid>
+      <description>警告 虽然本文介绍了安装L2TP VPN的方法，但已不推荐使用基于L2TP的VPN，非常容易被GFW检测到并封杀。 搭建L2TP VPN 下载脚本 ubuntu wget https://git.io/vpnsetup -O</description>
+    </item>
+    
   </channel>
 </rss>
