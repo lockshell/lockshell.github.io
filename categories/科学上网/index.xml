@@ -6,10 +6,19 @@
     <description>Recent content in 科学上网 on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 31 Dec 2019 22:17:33 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2020 23:49:23 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>V2Ray多用户配置</title>
+      <link>https://lockshell.com/2020/01/01/v2ray-multiple-users/</link>
+      <pubDate>Wed, 01 Jan 2020 23:49:23 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/01/v2ray-multiple-users/</guid>
+      <description>自行搭建好v2ray科学上网环境后，可以设置一个不同的端口或者id再分享。 v2ray一键脚本 运行完后，会输出配置文件路径，默认是 /etc/v</description>
+    </item>
     
     <item>
       <title>V2Ray Mac客户端V2RayX安装和使用</title>

@@ -165,6 +165,15 @@
     </item>
     
     <item>
+      <title>V2Ray多用户配置</title>
+      <link>https://lockshell.com/2020/01/01/v2ray-multiple-users/</link>
+      <pubDate>Wed, 01 Jan 2020 23:49:23 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/01/v2ray-multiple-users/</guid>
+      <description>自行搭建好v2ray科学上网环境后，可以设置一个不同的端口或者id再分享。 v2ray一键脚本 运行完后，会输出配置文件路径，默认是 /etc/v</description>
+    </item>
+    
+    <item>
       <title>V2Ray Mac客户端V2RayX安装和使用</title>
       <link>https://lockshell.com/2019/12/31/v2rayx-mac-client/</link>
       <pubDate>Tue, 31 Dec 2019 22:17:33 +0800</pubDate>
@@ -431,7 +440,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了64篇日志，继续加油哦！ 2020-08 2020-08-23 [转]价值投资要点 2020-08-22 [转]冯柳: 投资观与是非心 2020-08-22 [转]王大磊: 投资洞见 2020-08-22 [转]怎样成功 2020-07 2020-07-17 [转]茅</description>
+      <description>很好，总共写了65篇日志，继续加油哦！ 2020-08 2020-08-23 [转]价值投资要点 2020-08-22 [转]冯柳: 投资观与是非心 2020-08-22 [转]王大磊: 投资洞见 2020-08-22 [转]怎样成功 2020-07 2020-07-17 [转]茅</description>
     </item>
     
     <item>
