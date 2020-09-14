@@ -770,20 +770,24 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	list-style: none;
 }
 
+.toc__menu ol ol a {
+	padding-left: 1.2em;
+}
+
 .toc__menu ol ol ol a {
-	padding-left: 25px;
+	padding-left: 2.4em;
 }
 
 .toc__menu ol ol ol ol a {
-	padding-left: 45px;
+	padding-left: 3.6em;
 }
 
 .toc__menu ol ol ol ol ol a {
-	padding-left: 65px;
+	padding-left: 4.8em;
 }
 
 .toc__menu ol ol ol ol ol ol a {
-	padding-left: 85px;
+	padding-left: 6em;
 }
 
 .toc__menu ul {
@@ -792,19 +796,19 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 }
 
 .toc__menu ul ul ul a {
-	padding-left: 25px;
+	padding-left: 2.4em;
 }
 
 .toc__menu ul ul ul ul a {
-	padding-left: 45px;
+	padding-left: 3.6em;
 }
 
 .toc__menu ul ul ul ul ul a {
-	padding-left: 65px;
+	padding-left: 4.8em;
 }
 
 .toc__menu ul ul ul ul ul ul a {
-	padding-left: 85px;
+	padding-left: 6em;
 }
 
 .toc__menu li {
