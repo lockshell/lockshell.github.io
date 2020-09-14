@@ -113,7 +113,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2160 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2287 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -145,7 +145,9 @@ if (!doNotTrack) {
             <li><a href="#配置caddy">配置Caddy</a></li>
             <li><a href="#启动caddy">启动Caddy</a></li>
             <li><a href="#检查证书">检查证书</a></li>
-            <li><a href="#更新客户端配置">更新客户端配置</a></li>
+            <li><a href="#v2ray客户端-1">V2Ray客户端</a></li>
+            <li><a href="#客户端配置-1">客户端配置</a></li>
+            <li><a href="#更多v2ray客户端">更多V2Ray客户端</a></li>
           </ol>
         </li>
       </ol>
@@ -309,7 +311,8 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 </code></pre><h3 id="检查证书">检查证书</h3>
 <p>直接用浏览器访问这个地址，这里示例域名: yourdomain.com</p>
 <pre><code>https://crt.sh/?q=yourdomain.com
-</code></pre><h3 id="更新客户端配置">更新客户端配置</h3>
+</code></pre><h3 id="v2ray客户端-1">V2Ray客户端</h3>
+<h3 id="客户端配置-1">客户端配置</h3>
 <pre><code>{
   &quot;inbounds&quot;: [
     {
@@ -367,7 +370,14 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 <li>主动探测一个 path 产生 Bad request 不能证明是 V2Ray</li>
 <li>使用 Header 分流并不比 path 安全，不要迷信 (不懂，反正教程里这么说的)</li>
 </ul>
-<p>然后重启V2ray客户端，这样访问代理的流量就跟访问普通网站一样，比较难以被WALL检查出来了。</p>
+<p>然后重启V2Ray客户端，这样访问代理的流量就跟访问普通网站一样，比较难以被WALL检查出来了。</p>
+<h3 id="更多v2ray客户端">更多V2Ray客户端</h3>
+<p>可参照下面的教程安装配置不同平台的V2Ray客户端：</p>
+<ul>
+<li>V2Ray Mac客户端: <a href="https://lockshell.com/2019/12/31/v2rayx-mac-client/">V2Ray MAC客户端V2RayX安装和使用</a></li>
+<li>V2Ray 安卓客户端: <a href="https://lockshell.com/2019/12/30/v2ray-ng-android-client/">V2Ray 安卓客户端V2RayNG安装和使用</a></li>
+<li>V2Ray Windows客户端: <a href="https://lockshell.com/2019/12/29/v2rayn-core-client/">V2Ray Windows客户端V2RayN安装和使用</a></li>
+</ul>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
