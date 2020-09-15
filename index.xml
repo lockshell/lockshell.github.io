@@ -156,6 +156,15 @@
     </item>
     
     <item>
+      <title>V2Ray 通过Docker部署 </title>
+      <link>https://lockshell.com/2020/01/06/v2ray-docker-deploy/</link>
+      <pubDate>Mon, 06 Jan 2020 21:19:05 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/06/v2ray-docker-deploy/</guid>
+      <description>Docker 部署 V2Ray Docker 技术是一种新的虚拟化技术，和传统的虚拟化技术不同。V2Ray 同样提供 Docker 部署方式，并且通过 Docker 来部署 V2Ray 会非常轻松高效。 Docker 只能部署在 KVM 或</description>
+    </item>
+    
+    <item>
       <title>在VPS上禁止BT下载</title>
       <link>https://lockshell.com/2020/01/05/block-bt-via-iptables-on-vps/</link>
       <pubDate>Sun, 05 Jan 2020 11:16:56 +0800</pubDate>
@@ -449,7 +458,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了66篇日志，继续加油哦！ 2020-08 2020-08-23 [转]价值投资要点 2020-08-22 [转]冯柳: 投资观与是非心 2020-08-22 [转]王大磊: 投资洞见 2020-08-22 [转]怎样成功 2020-07 2020-07-17 [转]茅</description>
+      <description>很好，总共写了67篇日志，继续加油哦！ 2020-08 2020-08-23 [转]价值投资要点 2020-08-22 [转]冯柳: 投资观与是非心 2020-08-22 [转]王大磊: 投资洞见 2020-08-22 [转]怎样成功 2020-07 2020-07-17 [转]茅</description>
     </item>
     
     <item>
