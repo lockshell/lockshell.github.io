@@ -6,10 +6,19 @@
     <description>Recent content in VPN on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 31 Dec 2019 22:17:33 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2020 21:58:48 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/tags/vpn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>V2ray经国内VPS中转配置</title>
+      <link>https://lockshell.com/2020/01/01/v2ray-vps-relay/</link>
+      <pubDate>Wed, 01 Jan 2020 21:58:48 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/01/v2ray-vps-relay/</guid>
+      <description>国内 VPS 中转 为了方便维护，或者从速度上的考虑，可以在国内架设一台中转 VPS，在这台 VPS 上判断目标地址是国内还是国外的，只需把国外的流量向国外 VPS 转</description>
+    </item>
     
     <item>
       <title>V2Ray Mac客户端V2RayX安装和使用</title>
