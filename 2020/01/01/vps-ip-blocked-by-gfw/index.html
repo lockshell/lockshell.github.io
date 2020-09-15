@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>国外VPS IP被墙检测及解决方法 - 络壳 LockShell</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="How to check and resolve if Vps IP is Blocked by Gfw">
+	<meta property="og:title" content="国外VPS IP被墙检测及解决方法" />
+<meta property="og:description" content="How to check and resolve if Vps IP is Blocked by Gfw" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lockshell.com/2020/01/01/vps-ip-blocked-by-gfw/" />
+<meta property="article:published_time" content="2020-01-01T22:33:34+08:00" />
+<meta property="article:modified_time" content="2020-01-01T22:33:34+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="国外VPS IP被墙检测及解决方法"/>
+<meta name="twitter:description" content="How to check and resolve if Vps IP is Blocked by Gfw"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-131513582-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="络壳 LockShell" rel="home">
+				<div class="logo__title">络壳 LockShell</div>
+				<div class="logo__tagline">Slow is fast</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/links/">
+				
+				<span class="menu__text">友情链接</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/archives/">
+				
+				<span class="menu__text">文章归档</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/books/">
+				
+				<span class="menu__text">读万卷书</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+
+	
+	<link href="https://lockshell.com/css/custom.css" rel="stylesheet">
+
+	
+	<script data-ad-client="ca-pub-1242672487226703" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+	<script async src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	
+
+	<script type="text/javascript" async src="//tajs.qq.com/stats?sId=66505732" charset="UTF-8"></script>
+</header>
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">国外VPS IP被墙检测及解决方法</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2020-01-01T22:33:34&#43;08:00">2020-01-01</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
+	</span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1119 words</span>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#国外vps被墙检测工具">国外VPS被墙检测工具</a>
+          <ol>
+            <li><a href="#一首选测试网站pingpe">一、首选测试网站<code>PING.PE</code></a></li>
+            <li><a href="#二备用测试网站">二、备用测试网站</a></li>
+          </ol>
+        </li>
+        <li><a href="#被墙检测结果分析">被墙检测结果分析</a></li>
+        <li><a href="#被墙具体表现及解决">被墙具体表现及解决</a>
+          <ol>
+            <li><a href="#tcp阻断">TCP阻断</a></li>
+            <li><a href="#ip被墙">IP被墙</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>目前有相当一部分国外VPS服务器，是被国内用户用来做代理服务器的，比如架设V2ray等服务器。
+而GFW可能会检测出部分协议的代理服务器，直接将服务器墙掉，导致用户不能正常使用。</p>
+<p>如何避免被墙？可以参考：<a href="https://lockshell.com/2020/01/01/v2ray-tips-avoid-vps-being-blocked-by-gfw/">V2Ray注意事项 避免VPS服务器被墙</a></p>
+<h2 id="国外vps被墙检测工具">国外VPS被墙检测工具</h2>
+<p>下面提供两个IP被墙检测工具网站，可以实时检测国外VPS服务器是否墙，并且可以判断出是否TCP阻断。</p>
+<h3 id="一首选测试网站pingpe">一、首选测试网站<code>PING.PE</code></h3>
+<p>PING.PE测试网站，网站地址：<a href="http://ping.pe">http://ping.pe</a></p>
+<p>PING.PE与搬瓦工同属一家，测试结果相对更加专业可靠，建议作为首选测试网站。</p>
+<h3 id="二备用测试网站">二、备用测试网站</h3>
+<p>1.进入以下网址：https://ipcheck.need.sh，界面如下图所示。</p>
+<p><img class="post-img" src="/images/vps/vps_ip_check.jpg"></p>
+<p>注意：此网站的测试有一定的出错概率，结果仅供参考。</p>
+<p>2.在空白框中输入要检测的服务器IP地址，点击右侧的检查，稍等即会出现检测结果。</p>
+<p>3.为了结果更为准确，可以重复检测几次。</p>
+<h2 id="被墙检测结果分析">被墙检测结果分析</h2>
+<p><strong>1.没有被墙，一切正常。</strong></p>
+<p>如果是下图这样的结果，ICMP TCP都是正常结果，则表示服务器一切正常，可以正常使用。</p>
+<p><img class="post-img" src="/images/vps/vps_ok.jpg"></p>
+<p>提示：如果在这种情况下，你还是连不上服务器，那么可能是你本地网络的问题，稍后再试。</p>
+<p><strong>2.服务器TCP阻断。</strong></p>
+<p>如果是下图这样的结果，国内ICMP协议正常，TCP不通，同时国外一切正常。则代表被GFW TCP阻断：</p>
+<p><img class="post-img" src="/images/vps/vps_tcp_blocked.jpg"></p>
+<p><strong>3.服务器彻底被墙。</strong></p>
+<p>如果是下图这样的结果，国内连不上，国外正常，则代表服务器彻底被墙：</p>
+<p><img class="post-img" src="/images/vps/vps_blocked.jpg"></p>
+<h2 id="被墙具体表现及解决">被墙具体表现及解决</h2>
+<h3 id="tcp阻断">TCP阻断</h3>
+<p>TCP阻断，对一台服务器来说，是半毁灭性的打击。因为无论是做代理服务器，还是做网站，使用的都是TCP流量。</p>
+<p>这种情况下，服务器所有TCP流量被国内阻断，但是可以ping通，因为Ping服务器用的ICMP协议，另外UDP流量也正常。</p>
+<p><strong>具体表现为</strong>：</p>
+<ul>
+<li>VPS服务器可以Ping通。</li>
+<li>SSH端口无法连接，Putty/Winscp连不上服务器。</li>
+<li>V2Ray服务连不上。</li>
+<li>服务器上的网站打不开。</li>
+<li>以上几种情况会同时出现。</li>
+</ul>
+<p><strong>解决办法</strong></p>
+<ul>
+<li>安装V2ray后，将流量设置为mkcp</li>
+</ul>
+<h3 id="ip被墙">IP被墙</h3>
+<p><strong>具体表现为</strong>：</p>
+<ul>
+<li>国内Ping不通。</li>
+<li>SSH连不上。</li>
+<li>V2Ray连不上。</li>
+</ul>
+<p><strong>解决办法</strong></p>
+<ul>
+<li>方案1：联系VPS商家客服，要求换一个IP，注意大部分小商家更换被墙IP是需要付费的！如果你需要可以随时自己换被墙IP，可以考虑使用AWS，换IP免费。</li>
+<li>方案2：耐心等待，中间不要再尝试连接服务器。国外VPS被墙，也可以说是IP被墙了，被墙后的封禁期有长有短，大部分会在几个月后放出，到时就可以正常使用了。</li>
+<li>方案3：使用Cloudflare CDN中转服务器流量，变相解决被墙。但这种方法比较麻烦，对很多初级用户并不友好。</li>
+<li>方案4：急用的话再买一台服务器顶上，是最简单粗暴的解决方法。</li>
+</ul>
+
+			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
+			<hr>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/vps/" rel="tag">VPS</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="南洋布衣 avatar" src="/lockshell.jpeg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 南洋布衣</span>
+	</div>
+	<div class="authorbox__description">
+		此生多勉强，此身越重洋，轻描时光漫长，低唱语焉不详
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2020/01/01/v2ray-vps-relay/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">V2ray经国内VPS中转配置</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2020/01/01/v2ray-multiple-users/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">V2Ray多用户配置</p></a>
+	</div>
+</nav>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '41b3bd5685f4310306a5',
+    clientSecret: '4b943ef7620d478481ffd403f08bb951e01e22b8',
+    repo: 'lockshell.github.io',
+    owner: 'lockshell',
+    admin: ['lockshell'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 LockShell.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+        </span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

@@ -174,6 +174,15 @@
     </item>
     
     <item>
+      <title>国外VPS IP被墙检测及解决方法</title>
+      <link>https://lockshell.com/2020/01/01/vps-ip-blocked-by-gfw/</link>
+      <pubDate>Wed, 01 Jan 2020 22:33:34 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/01/vps-ip-blocked-by-gfw/</guid>
+      <description>目前有相当一部分国外VPS服务器，是被国内用户用来做代理服务器的，比如架设V2ray等服务器。 而GFW可能会检测出部分协议的代理服务器，直接</description>
+    </item>
+    
+    <item>
       <title>V2ray经国内VPS中转配置</title>
       <link>https://lockshell.com/2020/01/01/v2ray-vps-relay/</link>
       <pubDate>Wed, 01 Jan 2020 21:58:48 +0800</pubDate>
