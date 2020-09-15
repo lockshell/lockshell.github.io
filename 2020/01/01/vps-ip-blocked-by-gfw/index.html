@@ -94,8 +94,6 @@ if (!doNotTrack) {
 	<script async src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 	
-
-	<script type="text/javascript" async src="//tajs.qq.com/stats?sId=66505732" charset="UTF-8"></script>
 </header>
 
 		<div class="wrapper flex">
@@ -116,7 +114,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1119 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1354 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -177,15 +175,18 @@ if (!doNotTrack) {
 <p>这种情况下，服务器所有TCP流量被国内阻断，但是可以ping通，因为Ping服务器用的ICMP协议，另外UDP流量也正常。</p>
 <p><strong>具体表现为</strong>：</p>
 <ul>
-<li>VPS服务器可以Ping通。</li>
-<li>SSH端口无法连接，Putty/Winscp连不上服务器。</li>
-<li>V2Ray服务连不上。</li>
-<li>服务器上的网站打不开。</li>
-<li>以上几种情况会同时出现。</li>
+<li>可以正常ping通（ICMP协议正常）。</li>
+<li>不能正常SSH连接，换端口也不行。</li>
+<li>不能正常使用V2Ray服务，换端口也不行。</li>
+<li>不能打开服务器上架设的网站。</li>
+<li>在国外连接以上各项服务，一切正常。</li>
 </ul>
+<p>在TCP阻断的封禁模式下，国外服务器上的所有TCP流量，都无法在国内正常连接。而SSH、HTTP流量、V2Ray流量，走的恰好就是TCP流量。</p>
+<p>在TCP流量被阻断的同时，其它协议，比如ICMP、UDP等流量，是可以正常连接的。</p>
+<p>根据以上情况，我们可以将服务器上的V2Ray使用的TCP流量，在服务器内部转化为UDP流量发出来。经过这样转化后，就可以正常在国内连接了。</p>
 <p><strong>解决办法</strong></p>
 <ul>
-<li>安装V2ray后，将流量设置为mkcp</li>
+<li>安装V2ray后，将流量传输协议设置为mkcp；经过设置后，V2ray的流量，将以UDP的形式发出，也可以避开TCP阻断。</li>
 </ul>
 <h3 id="ip被墙">IP被墙</h3>
 <p><strong>具体表现为</strong>：</p>
