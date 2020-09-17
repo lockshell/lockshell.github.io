@@ -48,6 +48,15 @@
     </item>
     
     <item>
+      <title>V2ray 负载均衡</title>
+      <link>https://lockshell.com/2020/01/01/v2ray-load-balance/</link>
+      <pubDate>Wed, 01 Jan 2020 12:17:28 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/01/v2ray-load-balance/</guid>
+      <description>负载均衡 相较于 Shadowsocks 等其它的代理，V2Ray 可以配置多服务器实现负载均衡。 此处的负载均衡并非是自动选择一个延迟或网速最好的服务器进行连接，而是指</description>
+    </item>
+    
+    <item>
       <title>V2Ray注意事项 避免VPS服务器被墙</title>
       <link>https://lockshell.com/2020/01/01/v2ray-tips-avoid-vps-being-blocked-by-gfw/</link>
       <pubDate>Wed, 01 Jan 2020 12:08:05 +0800</pubDate>
