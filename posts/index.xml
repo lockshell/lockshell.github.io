@@ -147,15 +147,6 @@
     </item>
     
     <item>
-      <title>V2Ray 通过Docker部署 </title>
-      <link>https://lockshell.com/2020/01/06/v2ray-docker-deploy/</link>
-      <pubDate>Mon, 06 Jan 2020 21:19:05 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2020/01/06/v2ray-docker-deploy/</guid>
-      <description>Docker 部署 V2Ray Docker 技术是一种新的虚拟化技术，和传统的虚拟化技术不同。V2Ray 同样提供 Docker 部署方式，并且通过 Docker 来部署 V2Ray 会非常轻松高效。 Docker 只能部署在 KVM 或</description>
-    </item>
-    
-    <item>
       <title>在VPS上禁止BT下载</title>
       <link>https://lockshell.com/2020/01/05/block-bt-via-iptables-on-vps/</link>
       <pubDate>Sun, 05 Jan 2020 11:16:56 +0800</pubDate>
@@ -165,7 +156,7 @@
     </item>
     
     <item>
-      <title>V2Ray多用户配置</title>
+      <title>V2Ray 多用户配置</title>
       <link>https://lockshell.com/2020/01/01/v2ray-multiple-users/</link>
       <pubDate>Wed, 01 Jan 2020 23:49:23 +0800</pubDate>
       
@@ -183,7 +174,7 @@
     </item>
     
     <item>
-      <title>V2ray经国内VPS中转配置</title>
+      <title>V2Ray 经国内VPS中转配置</title>
       <link>https://lockshell.com/2020/01/01/v2ray-vps-relay/</link>
       <pubDate>Wed, 01 Jan 2020 21:58:48 +0800</pubDate>
       
@@ -192,7 +183,16 @@
     </item>
     
     <item>
-      <title>V2ray 负载均衡</title>
+      <title>V2Ray 通过Docker部署 </title>
+      <link>https://lockshell.com/2020/01/01/v2ray-docker-deploy/</link>
+      <pubDate>Wed, 01 Jan 2020 21:19:05 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/01/v2ray-docker-deploy/</guid>
+      <description>Docker 部署 V2Ray Docker 技术是一种新的虚拟化技术，和传统的虚拟化技术不同。V2Ray 同样提供 Docker 部署方式，并且通过 Docker 来部署 V2Ray 会非常轻松高效。 Docker 只能部署在 KVM 或</description>
+    </item>
+    
+    <item>
+      <title>V2Ray 负载均衡</title>
       <link>https://lockshell.com/2020/01/01/v2ray-load-balance/</link>
       <pubDate>Wed, 01 Jan 2020 12:17:28 +0800</pubDate>
       
