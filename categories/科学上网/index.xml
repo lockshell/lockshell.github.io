@@ -39,7 +39,7 @@
     </item>
     
     <item>
-      <title>V2Ray 通过Docker部署 </title>
+      <title>[转]V2Ray 通过Docker部署 </title>
       <link>https://lockshell.com/2020/01/01/v2ray-docker-deploy/</link>
       <pubDate>Wed, 01 Jan 2020 21:19:05 +0800</pubDate>
       
@@ -48,7 +48,7 @@
     </item>
     
     <item>
-      <title>V2Ray 负载均衡</title>
+      <title>[转]V2Ray 负载均衡</title>
       <link>https://lockshell.com/2020/01/01/v2ray-load-balance/</link>
       <pubDate>Wed, 01 Jan 2020 12:17:28 +0800</pubDate>
       
@@ -63,6 +63,15 @@
       
       <guid>https://lockshell.com/2020/01/01/v2ray-tips-avoid-vps-being-blocked-by-gfw/</guid>
       <description>注意事项之服务器 选择冷门VPS 选择VPS服务器时，可以避开一些热门城市，选择比较冷门的。 一般来说，美国西海岸城市，如洛杉矶、旧金山等，因为对</description>
+    </item>
+    
+    <item>
+      <title>[转]V2Ray 流量统计</title>
+      <link>https://lockshell.com/2020/01/01/v2ray-traffic-statistics/</link>
+      <pubDate>Wed, 01 Jan 2020 11:46:28 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/01/v2ray-traffic-statistics/</guid>
+      <description>V2Ray 内包含了流量记录器功能，但是默认并不启用。流量统计分两类：inbound和user。 inbound 即配置内各个 inbound 的入站的统计，需要根据 tag 来记录入站流量</description>
     </item>
     
     <item>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[转]V2Ray 流量统计 - 络壳 LockShell</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="V2ray Network Traffic Statistics">
+	<meta property="og:title" content="[转]V2Ray 流量统计" />
+<meta property="og:description" content="V2ray Network Traffic Statistics" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lockshell.com/2020/01/01/v2ray-traffic-statistics/" />
+<meta property="article:published_time" content="2020-01-01T11:46:28+08:00" />
+<meta property="article:modified_time" content="2020-01-01T11:46:28+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[转]V2Ray 流量统计"/>
+<meta name="twitter:description" content="V2ray Network Traffic Statistics"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-131513582-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="络壳 LockShell" rel="home">
+				<div class="logo__title">络壳 LockShell</div>
+				<div class="logo__tagline">Slow is fast</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/links/">
+				
+				<span class="menu__text">友情链接</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/archives/">
+				
+				<span class="menu__text">文章归档</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/books/">
+				
+				<span class="menu__text">读万卷书</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+
+	
+	<link href="https://lockshell.com/css/custom.css" rel="stylesheet">
+
+	
+	<script data-ad-client="ca-pub-1242672487226703" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+	<script async src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	
+</header>
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[转]V2Ray 流量统计</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2020-01-01T11:46:28&#43;08:00">2020-01-01</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
+	</span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1224 words</span>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#配置统计功能">配置统计功能</a></li>
+        <li><a href="#配置实例">配置实例</a></li>
+        <li><a href="#查看流量信息">查看流量信息</a></li>
+        <li><a href="#流量信息的处理">流量信息的处理</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>V2Ray 内包含了流量记录器功能，但是默认并不启用。流量统计分两类：<code>inbound</code>和<code>user</code>。</p>
+<ul>
+<li><code>inbound</code> 即配置内各个 inbound 的入站的统计，需要根据 <code>tag</code> 来记录入站流量。</li>
+<li><code>user</code> 即 vmess 协议用户里面的统计，用户的 <code>email</code> 既是统计和区分的依据。socks, shadowsocks, http 等其他协议内的用户不支持被统计。</li>
+</ul>
+<h2 id="配置统计功能">配置统计功能</h2>
+<p>要实现流量统计功能，配置内需要确保存在以下配置：</p>
+<ol>
+<li><code>&quot;stats&quot;:{}</code> 对象的存在</li>
+<li><code>&quot;api&quot;</code> 配置对象里面有 <code>StatsService</code></li>
+<li><code>&quot;policy&quot;</code> 中的统计开关为 true，除了各个用户的统计，还有全局统计</li>
+<li>clients 里面要有 email</li>
+<li>专用的 <code>dokodemo-door</code> 协议的入口，tag 为 api</li>
+<li>routing 里面有 inboundTag:api -&gt; outboundTag:api 的规则</li>
+</ol>
+<p>注意： 统计的 <code>email</code>/<code>tag</code> 是当前的 V2Ray 进程实例的数据，比如在服务器上统计，客户端写的 email 对服务器没有意义；如果在客户端统计，输出的就是客户端本身的数据。</p>
+<h2 id="配置实例">配置实例</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;stats&#34;</span>: {},
+    <span style="color:#f92672">&#34;api&#34;</span>: {
+        <span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;api&#34;</span>,
+        <span style="color:#f92672">&#34;services&#34;</span>: [
+            <span style="color:#e6db74">&#34;StatsService&#34;</span>
+        ]
+    },
+    <span style="color:#f92672">&#34;policy&#34;</span>: {
+        <span style="color:#f92672">&#34;levels&#34;</span>: {
+            <span style="color:#f92672">&#34;0&#34;</span>: {
+                <span style="color:#f92672">&#34;statsUserUplink&#34;</span>: <span style="color:#66d9ef">true</span>,
+                <span style="color:#f92672">&#34;statsUserDownlink&#34;</span>: <span style="color:#66d9ef">true</span>
+            }
+        },
+        <span style="color:#f92672">&#34;system&#34;</span>: {
+            <span style="color:#f92672">&#34;statsInboundUplink&#34;</span>: <span style="color:#66d9ef">true</span>,
+            <span style="color:#f92672">&#34;statsInboundDownlink&#34;</span>: <span style="color:#66d9ef">true</span>
+        }
+    },
+    <span style="color:#f92672">&#34;inbounds&#34;</span>: [
+        {
+            <span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;tcp&#34;</span>,
+            <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">3307</span>,
+            <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;vmess&#34;</span>,
+            <span style="color:#f92672">&#34;settings&#34;</span>: {
+                <span style="color:#f92672">&#34;clients&#34;</span>: [
+                    {
+                        <span style="color:#f92672">&#34;email&#34;</span>: <span style="color:#e6db74">&#34;auser&#34;</span>,
+                        <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;e731f153-4f31-49d3-9e8f-ff8f396135ef&#34;</span>,
+                        <span style="color:#f92672">&#34;level&#34;</span>: <span style="color:#ae81ff">0</span>,
+                        <span style="color:#f92672">&#34;alterId&#34;</span>: <span style="color:#ae81ff">64</span>
+                    },
+                    {
+                        <span style="color:#f92672">&#34;email&#34;</span>: <span style="color:#e6db74">&#34;buser&#34;</span>,
+                        <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;e731f153-4f31-49d3-9e8f-ff8f396135ee&#34;</span>,
+                        <span style="color:#f92672">&#34;level&#34;</span>: <span style="color:#ae81ff">0</span>,
+                        <span style="color:#f92672">&#34;alterId&#34;</span>: <span style="color:#ae81ff">64</span>
+                    }
+                ]
+            }
+        },
+        {
+            <span style="color:#f92672">&#34;listen&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
+            <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">10085</span>,
+            <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;dokodemo-door&#34;</span>,
+            <span style="color:#f92672">&#34;settings&#34;</span>: {
+                <span style="color:#f92672">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>
+            },
+            <span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;api&#34;</span>
+        }
+    ],
+    <span style="color:#f92672">&#34;outbounds&#34;</span>: [
+        {
+            <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;freedom&#34;</span>,
+            <span style="color:#f92672">&#34;settings&#34;</span>: {}
+        }
+    ],
+    <span style="color:#f92672">&#34;routing&#34;</span>: {
+        <span style="color:#f92672">&#34;settings&#34;</span>: {
+            <span style="color:#f92672">&#34;rules&#34;</span>: [
+                {
+                    <span style="color:#f92672">&#34;inboundTag&#34;</span>: [
+                        <span style="color:#e6db74">&#34;api&#34;</span>
+                    ],
+                    <span style="color:#f92672">&#34;outboundTag&#34;</span>: <span style="color:#e6db74">&#34;api&#34;</span>,
+                    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;field&#34;</span>
+                }
+            ]
+        },
+        <span style="color:#f92672">&#34;strategy&#34;</span>: <span style="color:#e6db74">&#34;rules&#34;</span>
+    }
+}
+</code></pre></div><h2 id="查看流量信息">查看流量信息</h2>
+<p>查看流量信息是 <code>v2ctl</code> 的其中一个功能。使用 <code>v2ctl api -h</code> 可见查询例子。 配置内设置的 api dokodemo-door 端口，即为 <code>--server</code> 参数的端口。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">v2ctl api --server<span style="color:#f92672">=</span>127.0.0.1:10085 StatsService.QueryStats <span style="color:#e6db74">&#39;pattern: &#34;&#34; reset: false&#39;</span>
+v2ctl api --server<span style="color:#f92672">=</span>127.0.0.1:10085 StatsService.GetStats <span style="color:#e6db74">&#39;name: &#34;inbound&gt;&gt;&gt;statin&gt;&gt;&gt;traffic&gt;&gt;&gt;downlink&#34; reset: false&#39;</span>
+</code></pre></div><p>注意如果在 Windows 的 CMD 内运行，里面的引号要特别处理：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cmd" data-lang="cmd">v2ctl.exe api --server=<span style="color:#e6db74">&#34;127.0.0.1:10085&#34;</span> StatsService.GetStats <span style="color:#e6db74">&#34;name: &#34;&#34;&#34;&#34;inbound&gt;&gt;&gt;statin&gt;&gt;&gt;traffic&gt;&gt;&gt;downlink&#34;&#34;&#34;&#34; reset: false&#34;</span>
+</code></pre></div><p>可调用的 api 有两个：</p>
+<ul>
+<li><code>QueryStats</code>用来查询匹配的记录，可以使用参数<code>pattern</code>和<code>reset</code>；pattern 留空则是匹配所有记录；reset 使匹配的单元数值置零。</li>
+<li><code>GetStats</code>用来其中一个的记录，接受<code>name</code>和<code>reset</code>，name 可参考 QueryStats 的输出结果构建，reset 使该单元数值置零。</li>
+</ul>
+<p>输出例子：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ /usr/bin/v2ray/v2ctl api --server=127.0.0.1:10085 StatsService.GetStats &#39;name:&#34;inbound&gt;&gt;&gt;ws&gt;&gt;&gt;traffic&gt;&gt;&gt;uplink&#34;&#39;
+stat: &lt;
+  name: &#34;inbound&gt;&gt;&gt;ws&gt;&gt;&gt;traffic&gt;&gt;&gt;uplink&#34;
+  value: 3350713
+&gt;
+$
+$
+$ /usr/bin/v2ray/v2ctl api --server=127.0.0.1:10085 StatsService.QueryStats &#39;&#39;
+stat: &lt;
+  name: &#34;inbound&gt;&gt;&gt;ws&gt;&gt;&gt;traffic&gt;&gt;&gt;uplink&#34;
+  value: 3350713
+&gt;
+stat: &lt;
+  name: &#34;inbound&gt;&gt;&gt;ss&gt;&gt;&gt;traffic&gt;&gt;&gt;downlink&#34;
+  value: 1704
+&gt;
+stat: &lt;
+  name: &#34;user&gt;&gt;&gt;u3@ws&gt;&gt;&gt;traffic&gt;&gt;&gt;uplink&#34;
+  value: 2810759
+&gt;
+stat: &lt;
+  name: &#34;user&gt;&gt;&gt;u9@ss&gt;&gt;&gt;traffic&gt;&gt;&gt;uplink&#34;
+  value: 1776
+&gt;
+stat: &lt;
+  name: &#34;inbound&gt;&gt;&gt;ss&gt;&gt;&gt;traffic&gt;&gt;&gt;uplink&#34;
+  value: 2276
+&gt;
+stat: &lt;
+  name: &#34;inbound&gt;&gt;&gt;api&gt;&gt;&gt;traffic&gt;&gt;&gt;uplink&#34;
+  value: 318
+&gt;
+stat: &lt;
+  name: &#34;user&gt;&gt;&gt;u9@ss&gt;&gt;&gt;traffic&gt;&gt;&gt;downlink&#34;
+  value: 1368
+&gt;
+stat: &lt;
+  name: &#34;inbound&gt;&gt;&gt;tcp&gt;&gt;&gt;traffic&gt;&gt;&gt;uplink&#34;
+&gt;
+stat: &lt;
+  name: &#34;inbound&gt;&gt;&gt;tcp&gt;&gt;&gt;traffic&gt;&gt;&gt;downlink&#34;
+&gt;
+stat: &lt;
+  name: &#34;inbound&gt;&gt;&gt;ws&gt;&gt;&gt;traffic&gt;&gt;&gt;downlink&#34;
+  value: 130637140
+&gt;
+stat: &lt;
+  name: &#34;inbound&gt;&gt;&gt;api&gt;&gt;&gt;traffic&gt;&gt;&gt;downlink&#34;
+  value: 759
+&gt;
+stat: &lt;
+  name: &#34;user&gt;&gt;&gt;u3@ws&gt;&gt;&gt;traffic&gt;&gt;&gt;downlink&#34;
+  value: 126944108
+&gt;
+</code></pre></div><p>结果中的 <code>name</code> 可作为 <code>GetStats</code> API 查询单个计数单元的值，name 的组成规律请自行概括，这里不再详谈；value 的计数单位是字节。</p>
+<h2 id="流量信息的处理">流量信息的处理</h2>
+<p>上述配置是让 v2ray 打开一个 <code>grpc</code> 协议的查询接口，除了使用 v2ctl ，可以用各种支持 grpc 协议的程序查询上述数值并另外处理（如入库统计、用户计费、图表报告）。不过，本文不会深入探讨。既然有 <code>v2ctl</code> 现成的命令行程序，我们可以用简单的 shell 脚本 awk 工具来处理，生成足够可读的报表。</p>
+<p>尝试把以下脚本保存到 <code>traffic.sh</code>，注意使用 <code>chmod 755 traffic.sh</code> 授予执行权限。注意调整修改 <code>_APISERVER</code> 一行的连接具体的端口参数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
+_APISERVER<span style="color:#f92672">=</span>127.0.0.1:10085
+_V2CTL<span style="color:#f92672">=</span>/usr/bin/v2ray/v2ctl
+
+apidata <span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    local ARGS<span style="color:#f92672">=</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $1 <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;reset&#34;</span> <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+      ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;reset: true&#34;</span>
+    <span style="color:#66d9ef">fi</span>
+    $_V2CTL api --server<span style="color:#f92672">=</span>$_APISERVER StatsService.QueryStats <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ARGS<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    | awk <span style="color:#e6db74">&#39;{
+</span><span style="color:#e6db74">        if (match($1, /name:/)) {
+</span><span style="color:#e6db74">            f=1; gsub(/^&#34;|link&#34;$/, &#34;&#34;, $2);
+</span><span style="color:#e6db74">            split($2, p,  &#34;&gt;&gt;&gt;&#34;);
+</span><span style="color:#e6db74">            printf &#34;%s:%s-&gt;%s\t&#34;, p[1],p[2],p[4];
+</span><span style="color:#e6db74">        }
+</span><span style="color:#e6db74">        else if (match($1, /value:/) &amp;&amp; f){ f = 0; printf &#34;%.0f\n&#34;, $2; }
+</span><span style="color:#e6db74">        else if (match($0, /^&gt;$/) &amp;&amp; f) { f = 0; print 0; }
+</span><span style="color:#e6db74">    }&#39;</span>
+<span style="color:#f92672">}</span>
+
+print_sum<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    local DATA<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span>
+    local PREFIX<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$2<span style="color:#e6db74">&#34;</span>
+    local SORTED<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">&#34;</span>$DATA<span style="color:#e6db74">&#34;</span> | grep <span style="color:#e6db74">&#34;^</span><span style="color:#e6db74">${</span>PREFIX<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> | sort -r<span style="color:#66d9ef">)</span>
+    local SUM<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">&#34;</span>$SORTED<span style="color:#e6db74">&#34;</span> | awk <span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">        /-&gt;up/{us+=$2}
+</span><span style="color:#e6db74">        /-&gt;down/{ds+=$2}
+</span><span style="color:#e6db74">        END{
+</span><span style="color:#e6db74">            printf &#34;SUM-&gt;up:\t%.0f\nSUM-&gt;down:\t%.0f\nSUM-&gt;TOTAL:\t%.0f\n&#34;, us, ds, us+ds;
+</span><span style="color:#e6db74">        }&#39;</span><span style="color:#66d9ef">)</span>
+    echo -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SORTED<span style="color:#e6db74">}</span><span style="color:#e6db74">\n</span><span style="color:#e6db74">${</span>SUM<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    | numfmt --field<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> --suffix<span style="color:#f92672">=</span>B --to<span style="color:#f92672">=</span>iec <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    | column -t
+<span style="color:#f92672">}</span>
+
+DATA<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>apidata $1<span style="color:#66d9ef">)</span>
+echo <span style="color:#e6db74">&#34;------------Inbound----------&#34;</span>
+print_sum <span style="color:#e6db74">&#34;</span>$DATA<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;inbound&#34;</span>
+echo <span style="color:#e6db74">&#34;-----------------------------&#34;</span>
+echo
+echo <span style="color:#e6db74">&#34;-------------User------------&#34;</span>
+print_sum <span style="color:#e6db74">&#34;</span>$DATA<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;user&#34;</span>
+echo <span style="color:#e6db74">&#34;-----------------------------&#34;</span>
+</code></pre></div><p>运行效果：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ ./traffic.sh
+------------Inbound----------
+inbound:ws-&gt;up      0B
+inbound:ws-&gt;down    0B
+inbound:tcp-&gt;up     47B
+inbound:tcp-&gt;down   0B
+inbound:kcp-&gt;up     259MB
+inbound:kcp-&gt;down   2.4GB
+inbound:api-&gt;up     2.0KB
+inbound:api-&gt;down   6.6KB
+SUM-&gt;up:            259MB
+SUM-&gt;down:          2.4GB
+SUM-&gt;TOTAL:         2.6GB
+-----------------------------
+
+-------------User------------
+user:me@kcp-&gt;up    240MB
+user:me@kcp-&gt;down  2.3GB
+SUM-&gt;up:           240MB
+SUM-&gt;down:         2.3GB
+SUM-&gt;TOTAL:        2.5GB
+-----------------------------
+</code></pre></div><p>脚本使用 <code>reset</code> 参数让调用的计数单元置零，配合 watch 命令，即可查看流经 v2ray 的每秒实时流量速度：
+<code>watch ./traffic.sh reset</code></p>
+
+			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
+			<hr>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/v2ray/" rel="tag">V2ray</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="南洋布衣 avatar" src="/lockshell.jpeg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 南洋布衣</span>
+	</div>
+	<div class="authorbox__description">
+		此生多勉强，此身越重洋，轻描时光漫长，低唱语焉不详
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2019/12/31/v2rayx-mac-client/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">V2Ray Mac客户端V2RayX安装和使用</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2020/01/01/v2ray-tips-avoid-vps-being-blocked-by-gfw/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">V2Ray注意事项 避免VPS服务器被墙</p></a>
+	</div>
+</nav>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '41b3bd5685f4310306a5',
+    clientSecret: '4b943ef7620d478481ffd403f08bb951e01e22b8',
+    repo: 'lockshell.github.io',
+    owner: 'lockshell',
+    admin: ['lockshell'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 LockShell.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+        </span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

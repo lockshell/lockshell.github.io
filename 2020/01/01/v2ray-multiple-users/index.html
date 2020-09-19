@@ -114,7 +114,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 850 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 883 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -176,34 +176,35 @@ if (!doNotTrack) {
 <h2 id="同端口不同id">同端口不同id</h2>
 <p>这是最简单的配置多用户方式。方法是编辑 /etc/v2ray/config.json 文件，在”clients“一节中增加新增用户配置。</p>
 <p>例如在上面配置基础上增加一个用户：</p>
-<pre><code>{
-  &quot;log&quot;: {
-    &quot;loglevel&quot;: &quot;info&quot;,
-    &quot;access&quot;: &quot;/var/log/v2ray/access.log&quot;,
-    &quot;error&quot;: &quot;/var/log/v2ray/error.log&quot;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">{
+  <span style="color:#66d9ef">&#34;log&#34;: </span>{
+    <span style="color:#66d9ef">&#34;loglevel&#34;: </span><span style="color:#e6db74">&#34;info&#34;</span>,
+    <span style="color:#66d9ef">&#34;access&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/access.log&#34;</span>,
+    <span style="color:#66d9ef">&#34;error&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/error.log&#34;</span>
   },
-  &quot;inbounds&quot;: [{
-    &quot;port&quot;: 8888,
-    &quot;protocol&quot;: &quot;vmess&quot;,
-    &quot;settings&quot;: {
-      &quot;clients&quot;: [
+  <span style="color:#66d9ef">&#34;inbounds&#34;: </span>[{
+    <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">8888</span>,
+    <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>,
+    <span style="color:#66d9ef">&#34;settings&#34;: </span>{
+      <span style="color:#66d9ef">&#34;clients&#34;: </span>[
         {
-          &quot;id&quot;: &quot;12345625-xxxx-xxxx-xxxx-75cd3485021f&quot;,
-          &quot;level&quot;: 1,
-          &quot;alterId&quot;: 53
+          <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;12345625-xxxx-xxxx-xxxx-75cd3485021f&#34;</span>,
+          <span style="color:#66d9ef">&#34;level&#34;: </span><span style="color:#ae81ff">1</span>,
+          <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">53</span>
         },
         {
-          &quot;id&quot;: &quot;12345625-xxxx-xxxx-xxxx-75cd3485021f&quot;,
-          &quot;level&quot;: 1,
-          &quot;alterId&quot;: 63 # 建议50-150之间的一个整数
+          <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;12345625-xxxx-xxxx-xxxx-75cd3485021f&#34;</span>,
+          <span style="color:#66d9ef">&#34;level&#34;: </span><span style="color:#ae81ff">1</span>,
+          <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">63</span> <span style="color:#75715e"># 建议50-150之间的一个整数</span>
         }
       ]
     }
   }],
-# 下面的内容保持不变
-</code></pre><p>注意：“#”和后面的东西都不能出现在配置文件中，上面只是为了解释说明。</p>
-<p>编辑好文件后，重启 v2ray：<code>service v2ray restart</code>。
-如果命令失败，或者 netstat -nltp | grep v2ray 输出为空，说明配置文件有错误，请仔细检查，改好后再重启。</p>
+<span style="color:#75715e"># 下面的内容保持不变</span>
+</code></pre></div><p>注意：“#”和后面的东西都不能出现在配置文件中，上面只是为了解释说明。</p>
+<p>编辑好文件后，先检查修改后的配置是否有语法错误 <code>cat /etc/v2ray/config.json | python -m json.tool</code>，
+然后重启 v2ray：<code>service v2ray restart</code>。</p>
+<p>如果命令失败，或者 <code>netstat -nltp | grep v2ray</code> 输出为空，说明配置文件有错误，请仔细检查，改好后再重启。</p>
 <p>接下来就可以用新的id和alterId配置客户端，其余信息保持不变。</p>
 <h2 id="不同端口不同id">不同端口不同id</h2>
 <p>如果希望端口也不一样，请按照如下步骤做：</p>

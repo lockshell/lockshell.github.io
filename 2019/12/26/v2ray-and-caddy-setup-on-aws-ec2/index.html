@@ -114,7 +114,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2920 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2976 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -204,82 +204,84 @@ if (!doNotTrack) {
 这里是一个最基本的服务端配置，我们尽量保持简单，太复杂的东西总是难以维护，最后就放弃了。</p>
 <p>修改完成后要运行<code>service v2ray restart</code>重启 V2Ray，才会使修改的配置生效。</p>
 <p>启动后，V2ray会以 Vmess + WS 方式监听 8888 端口。</p>
-<pre><code>{
-    &quot;inbound&quot;: {
-        &quot;port&quot;: 8888, // 服务器监听端口
-        &quot;listen&quot;: &quot;127.0.0.1&quot;, // 只监听 127.0.0.1，避免除本机外的机器探测到开放了8888端口 
-        &quot;protocol&quot;: &quot;vmess&quot;,
-        &quot;settings&quot;: {
-            &quot;clients&quot;: [
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">{
+    <span style="color:#66d9ef">&#34;inbound&#34;: </span>{
+        <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">8888</span>, <span style="color:#75715e"># 服务器监听端口</span>
+        <span style="color:#66d9ef">&#34;listen&#34;: </span><span style="color:#e6db74">&#34;127.0.0.1&#34;</span>, <span style="color:#75715e"># 只监听 127.0.0.1，避免除本机外的机器探测到开放了8888端口 </span>
+        <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>,
+        <span style="color:#66d9ef">&#34;settings&#34;: </span>{
+            <span style="color:#66d9ef">&#34;clients&#34;: </span>[
                 {
-                    &quot;id&quot;: &quot;b831381d-6324-4d53-ad4f-8cda48b30811&quot;,
-                    &quot;alterId&quot;: 64
+                    <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;b831381d-6324-4d53-ad4f-8cda48b30811&#34;</span>,
+                    <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">64</span>
                 }
             ]
         },
-        &quot;streamSettings&quot;: {
-            &quot;network&quot;: &quot;ws&quot;, // WebSocket 方式
-            &quot;wsSettings&quot;: {
-                &quot;path&quot;: &quot;/ray&quot;
+        <span style="color:#66d9ef">&#34;streamSettings&#34;: </span>{
+            <span style="color:#66d9ef">&#34;network&#34;: </span><span style="color:#e6db74">&#34;ws&#34;</span>, <span style="color:#75715e"># WebSocket 方式</span>
+            <span style="color:#66d9ef">&#34;wsSettings&#34;: </span>{
+                <span style="color:#66d9ef">&#34;path&#34;: </span><span style="color:#e6db74">&#34;/ray&#34;</span>
             }
         }
     },
-    &quot;outbound&quot;: {
-        &quot;protocol&quot;: &quot;freedom&quot;, // 主传出协议 这里是直接转发所以流量
-        &quot;settings&quot;: {}
+    <span style="color:#66d9ef">&#34;outbound&#34;: </span>{
+        <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;freedom&#34;</span>, <span style="color:#75715e"># 主传出协议 这里是直接转发所以流量</span>
+        <span style="color:#66d9ef">&#34;settings&#34;: </span>{}
     }
 }
-</code></pre><h2 id="v2ray高级配置">V2Ray高级配置</h2>
+</code></pre></div><h2 id="v2ray高级配置">V2Ray高级配置</h2>
 <ul>
 <li><a href="https://lockshell.com/2020/01/01/v2ray-multiple-users/">V2Ray 多用户配置</a></li>
 <li><a href="https://lockshell.com/2020/01/01/v2ray-vps-relay/">V2Ray 经国内VPS中转配置</a></li>
 <li><a href="https://lockshell.com/2020/01/01/v2ray-load-balance/">V2Ray 负载均衡</a></li>
 <li><a href="https://lockshell.com/2020/01/01/v2ray-docker-deploy/">V2Ray 通过Docker部署 </a></li>
+<li><a href="https://lockshell.com/2020/01/01/v2ray-traffic-statistics/">V2Ray 流量统计</a></li>
 </ul>
 <h2 id="v2ray客户端">V2Ray客户端</h2>
 <h3 id="客户端配置">客户端配置</h3>
-<p>将客户端的 config.json 文件修改成下面的内容，修改完成后要重启 V2Ray 才会使修改的配置生效。</p>
-<pre><code>{
-  &quot;inbounds&quot;: [
+<p>将客户端的 config.json 文件修改成下面的内容，修改完成后要重启客户端 V2Ray 才会使修改的配置生效。
+(<code>#</code>及后面的文字为注释，json文件中不需要包含)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">{
+  <span style="color:#66d9ef">&#34;inbounds&#34;: </span>[
     {
-      &quot;port&quot;: 1080, // 本地监听端口
-      &quot;protocol&quot;: &quot;socks&quot;, // 入口协议为 SOCKS 5
-      &quot;sniffing&quot;: {
-        &quot;enabled&quot;: true,
-        &quot;destOverride&quot;: [&quot;http&quot;, &quot;tls&quot;]
+      <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">1080</span>, <span style="color:#75715e"># 本地监听端口</span>
+      <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;socks&#34;</span>, <span style="color:#75715e"># 入口协议为 SOCKS 5</span>
+      <span style="color:#66d9ef">&#34;sniffing&#34;: </span>{
+        <span style="color:#66d9ef">&#34;enabled&#34;: </span><span style="color:#66d9ef">true</span>,
+        <span style="color:#66d9ef">&#34;destOverride&#34;: </span>[<span style="color:#e6db74">&#34;http&#34;</span>, <span style="color:#e6db74">&#34;tls&#34;</span>]
       },
-      &quot;settings&quot;: {
-        &quot;auth&quot;: &quot;noauth&quot;  //socks的认证设置，noauth 代表不认证，由于 socks 通常在客户端使用，所以这里不认证
+      <span style="color:#66d9ef">&#34;settings&#34;: </span>{
+        <span style="color:#66d9ef">&#34;auth&#34;: </span><span style="color:#e6db74">&#34;noauth&#34;</span>  <span style="color:#75715e">#socks的认证设置，noauth 代表不认证，由于 socks 通常在客户端使用，所以这里不认证</span>
       }
     }
   ],
-  &quot;outbounds&quot;: [
+  <span style="color:#66d9ef">&#34;outbounds&#34;: </span>[
     {
-      &quot;protocol&quot;: &quot;vmess&quot;, // 出口协议
-      &quot;settings&quot;: {
-        &quot;vnext&quot;: [
+      <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>, <span style="color:#75715e"># 出口协议</span>
+      <span style="color:#66d9ef">&#34;settings&#34;: </span>{
+        <span style="color:#66d9ef">&#34;vnext&#34;: </span>[
           {
-            &quot;address&quot;: &quot;your_server_ip&quot;, // 服务器地址，请修改为你自己的服务器IP
-            &quot;port&quot;: 8888,  // 服务器监听的端口
-            &quot;users&quot;: [
+            <span style="color:#66d9ef">&#34;address&#34;: </span><span style="color:#e6db74">&#34;your_server_ip&#34;</span>, <span style="color:#75715e"># 服务器地址，请修改为你自己的服务器IP</span>
+            <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">8888</span>,  <span style="color:#75715e"># 服务器监听的端口</span>
+            <span style="color:#66d9ef">&#34;users&#34;: </span>[
               {
-                &quot;id&quot;: &quot;b831381d-6324-4d53-ad4f-8cda48b30811&quot;,  // 用户 ID，必须与服务器端配置相同
-                &quot;alterId&quot;: 64 // 此处的值也应当与服务器相同
+                <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;b831381d-6324-4d53-ad4f-8cda48b30811&#34;</span>,  <span style="color:#75715e"># 用户 ID，必须与服务器端配置相同</span>
+                <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">64</span> <span style="color:#75715e"># 此处的值也应当与服务器相同</span>
               }
             ]
           }
         ],
-        &quot;streamSettings&quot;: {
-          &quot;network&quot;: &quot;ws&quot;,
-          &quot;wsSettings&quot;: {
-            &quot;path&quot;: &quot;/ray&quot;
+        <span style="color:#66d9ef">&#34;streamSettings&#34;: </span>{
+          <span style="color:#66d9ef">&#34;network&#34;: </span><span style="color:#e6db74">&#34;ws&#34;</span>,
+          <span style="color:#66d9ef">&#34;wsSettings&#34;: </span>{
+            <span style="color:#66d9ef">&#34;path&#34;: </span><span style="color:#e6db74">&#34;/ray&#34;</span>
           }
         }
       }
     }
   ]
 }
-</code></pre><h3 id="客户端运行">客户端运行</h3>
+</code></pre></div><h3 id="客户端运行">客户端运行</h3>
 <ul>
 <li>在 Windows 和 macOS 中，配置文件通常是 V2Ray 同目录下的 config.json 文件。直接运行 v2ray 或 v2ray.exe 即可。</li>
 <li>在 Linux 中，配置文件通常位于 /etc/v2ray/config.json 文件。运行 v2ray &ndash;config=/etc/v2ray/config.json，或使用 systemd 等工具把 V2Ray 作为服务在后台运行。</li>
@@ -335,51 +337,51 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 <pre><code>https://crt.sh/?q=yourdomain.com
 </code></pre><h3 id="v2ray客户端-1">V2Ray客户端</h3>
 <h3 id="客户端配置-1">客户端配置</h3>
-<pre><code>{
-  &quot;inbounds&quot;: [
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">{
+  <span style="color:#66d9ef">&#34;inbounds&#34;: </span>[
     {
-      &quot;port&quot;: 1080, // 监听端口
-      &quot;protocol&quot;: &quot;socks&quot;, // 入口协议为 SOCKS 5
-      &quot;sniffing&quot;: {
-        &quot;enabled&quot;: true,
-        &quot;destOverride&quot;: [
-          &quot;http&quot;,
-          &quot;tls&quot;
+      <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">1080</span>, <span style="color:#75715e"># 监听端口</span>
+      <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;socks&#34;</span>, <span style="color:#75715e"># 入口协议为 SOCKS 5</span>
+      <span style="color:#66d9ef">&#34;sniffing&#34;: </span>{
+        <span style="color:#66d9ef">&#34;enabled&#34;: </span><span style="color:#66d9ef">true</span>,
+        <span style="color:#66d9ef">&#34;destOverride&#34;: </span>[
+          <span style="color:#e6db74">&#34;http&#34;</span>,
+          <span style="color:#e6db74">&#34;tls&#34;</span>
         ]
       },
-      &quot;settings&quot;: {
-        &quot;auth&quot;: &quot;noauth&quot; //socks的认证设置，noauth 代表不认证，由于 socks 通常在客户端使用，所以这里不认证
+      <span style="color:#66d9ef">&#34;settings&#34;: </span>{
+        <span style="color:#66d9ef">&#34;auth&#34;: </span><span style="color:#e6db74">&#34;noauth&#34;</span> <span style="color:#75715e">#socks的认证设置，noauth 代表不认证，由于 socks 通常在客户端使用，所以这里不认证</span>
       }
     }
   ],
-  &quot;outbounds&quot;: [
+  <span style="color:#66d9ef">&#34;outbounds&#34;: </span>[
     {
-      &quot;protocol&quot;: &quot;vmess&quot;, // 出口协议
-      &quot;settings&quot;: {
-        &quot;vnext&quot;: [
+      <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>, <span style="color:#75715e"># 出口协议</span>
+      <span style="color:#66d9ef">&#34;settings&#34;: </span>{
+        <span style="color:#66d9ef">&#34;vnext&#34;: </span>[
           {
-            &quot;address&quot;: &quot;yourdomain.com&quot;, // 服务器地址，请修改为你自己的服务器域名
-            &quot;port&quot;: 443, // 服务器端口 443是https使用的端口
-            &quot;users&quot;: [
+            <span style="color:#66d9ef">&#34;address&#34;: </span><span style="color:#e6db74">&#34;yourdomain.com&#34;</span>, <span style="color:#75715e"># 服务器地址，请修改为你自己的服务器域名</span>
+            <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">443</span>, <span style="color:#75715e"># 服务器端口 443是https使用的端口</span>
+            <span style="color:#66d9ef">&#34;users&#34;: </span>[
               {
-                &quot;id&quot;: &quot;b831381d-6324-4d53-ad4f-8cda48b30811&quot;, // 用户 ID，必须与服务器端配置相同
-                &quot;alterId&quot;: 64 // 此处的值也应当与服务器相同
+                <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;b831381d-6324-4d53-ad4f-8cda48b30811&#34;</span>, <span style="color:#75715e"># 用户 ID，必须与服务器端配置相同</span>
+                <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">64</span> <span style="color:#75715e"># 此处的值也应当与服务器相同</span>
               }
             ]
           }
         ],
-        &quot;streamSettings&quot;: {
-          &quot;network&quot;: &quot;ws&quot;,
-          &quot;security&quot;: &quot;tls&quot;, // 客户端的 security 要设置为 tls
-          &quot;wsSettings&quot;: {
-            &quot;path&quot;: &quot;/ray&quot; // 注意：对于 V2Ray，/ray 和 /ray/ 是不一样的
+        <span style="color:#66d9ef">&#34;streamSettings&#34;: </span>{
+          <span style="color:#66d9ef">&#34;network&#34;: </span><span style="color:#e6db74">&#34;ws&#34;</span>,
+          <span style="color:#66d9ef">&#34;security&#34;: </span><span style="color:#e6db74">&#34;tls&#34;</span>, <span style="color:#75715e"># 客户端的 security 要设置为 tls</span>
+          <span style="color:#66d9ef">&#34;wsSettings&#34;: </span>{
+            <span style="color:#66d9ef">&#34;path&#34;: </span><span style="color:#e6db74">&#34;/ray&#34;</span> <span style="color:#75715e"># 注意：对于 V2Ray，/ray 和 /ray/ 是不一样的</span>
           }
         }
       }
     }
   ]
 }
-</code></pre><p>新的配置修改了3个地方：</p>
+</code></pre></div><p>新的配置修改了3个地方：(<code>#</code>及后面的文字为注释，json文件中不需要包含)</p>
 <ul>
 <li>address：ip -&gt; your_domain，把ip修改为你的域名，tls需要使用域名</li>
 <li>port：8888 -&gt; 443，443是https使用的端口，也是Caddy监听的端口</li>
@@ -393,7 +395,7 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 <li>使用 Header 分流并不比 path 安全，不要迷信 (不懂，反正教程里这么说的)</li>
 </ul>
 <p>然后重启V2Ray客户端，这样访问代理的流量就跟访问普通网站一样，https/tls会加密路径信息，仅靠中间环节捕捉到的流量包极难区分是正常请求还是夹带私货的流量。
-这也显示了v2ray的强大之处：通过配置不同的协议和载体，就能对进出的流量做定制。
+这也显示了v2ray的强大之处：<strong>通过配置不同的协议和载体，就能对进出的流量做定制。</strong>
 从流量伪装、反向代理的功能上看，v2ray毫无疑问的是一个强大的网络框架/工具，科学上网功能只是其一个成功应用。</p>
 <h2 id="更多v2ray客户端">更多V2Ray客户端</h2>
 <p>可参照下面的教程安装配置不同平台的V2Ray客户端：</p>
