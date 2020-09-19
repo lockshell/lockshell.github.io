@@ -114,7 +114,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 759 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 787 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -122,8 +122,9 @@ if (!doNotTrack) {
 	<div class="toc__menu">
 		<nav id="TableOfContents">
   <ol>
-    <li><a href="#点击购买服务httpspaypalmepaybowenlocalexen_gb"><a href="https://paypal.me/paybowen?locale.x=en_GB">点击购买服务</a></a>
+    <li>
       <ol>
+        <li><a href="#点击购买服务">点击购买服务</a></li>
         <li><a href="#搭建v2ray">搭建V2Ray</a></li>
         <li><a href="#搭建shadowsocks">搭建Shadowsocks</a></li>
         <li><a href="#搭建l2tp-vpn">搭建L2TP VPN</a></li>
@@ -145,21 +146,32 @@ if (!doNotTrack) {
 </ul>
 <p>用AWS相对其他VPS的好处是支持弹性IP，即使IP被封了，后台重新申请一个弹性公网IP绑定到对应的实例，可以很方便的更换IP。
 但AWS流量相对其他机场价格略贵。</p>
-<p>博主在新加坡和日本的VPS上搭建了V2Ray，嫌自己维护VPS和域名麻烦小伙伴，可以通过下面的paypal链接购买V2ray服务：</p>
+<p>朋友在新加坡和日本的VPS上搭建了V2Ray，嫌自己维护VPS和域名麻烦小伙伴，可以通过下面的paypal链接购买V2Ray服务：</p>
 <ul>
-<li>收费情况：50美刀/年</li>
-<li>流量：每月60G流量，每天不到一块钱，畅享高速国际网络，油管1080P无压力。</li>
-<li>
-<h1 id="点击购买服务httpspaypalmepaybowenlocalexen_gb"><a href="https://paypal.me/paybowen?locale.x=en_GB">点击购买服务</a></h1>
-</li>
-<li>转账完成后发送截图到邮箱: <code>paybowen@gmail.com</code>，V2Ray账号密码及客户端邮件发送</li>
-<li>在收到账号信息之后，可参照下面的教程安装配置客户端：
+<li>标准版：30美刀/半年，50美刀/年，每月60G流量，每天一块钱，畅享高速国际网络，油管1080P无压力。</li>
+<li>VIP版：150美刀/年，每月300G流量，CN2专线高速线路的VPS。</li>
+</ul>
+<h2 id="点击购买服务">点击购买服务</h2>
+<form style="margin-left: 2em;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="HZ4UWSHNRQA7N">
+<table>
+<tr><td><input type="hidden" name="on0" value="版本">版本</td></tr><tr><td><select name="os0">
+	<option value="标准版本">标准版本 $60.00 USD</option>
+	<option value="VIP版本">VIP版本 $150.00 USD</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="charset" value="utf-8">
+<input type="image" src="https://www.paypalobjects.com/en_GB/SG/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+<p>转账完成后V2Ray账号密码及客户端邮件发送。
+在收到账号信息之后，可参照下面的教程安装配置客户端：</p>
 <ul>
 <li>V2Ray Mac客户端: <a href="https://lockshell.com/2019/12/31/v2rayx-mac-client/">V2Ray MAC客户端V2RayX安装和使用</a></li>
 <li>V2Ray 安卓客户端: <a href="https://lockshell.com/2019/12/30/v2ray-ng-android-client/">V2Ray 安卓客户端V2RayNG安装及使用</a></li>
 <li>V2Ray Windows客户端: <a href="https://lockshell.com/2019/12/29/v2rayn-core-client/">V2Ray Windows客户端V2RayN安装使用</a></li>
-</ul>
-</li>
 </ul>
 <h2 id="搭建v2ray">搭建V2Ray</h2>
 <p>V2Ray的安装配置比L2TP和SS略复杂一些，但理论上来讲更安全可靠。还可以加一层Nginx代理，伪装成网站。</p>
