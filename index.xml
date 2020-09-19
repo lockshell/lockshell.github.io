@@ -6,37 +6,10 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 19 Sep 2020 18:17:11 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2020 13:38:32 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Buy V2Ray Service</title>
-      <link>https://lockshell.com/buy/</link>
-      <pubDate>Sat, 19 Sep 2020 18:17:11 +0800</pubDate>
-      
-      <guid>https://lockshell.com/buy/</guid>
-      <description>Paypal购买服务 朋友在新加坡和日本的VPS上搭建了V2Ray，嫌自己维护VPS和域名麻烦小伙伴，可以通过下面的paypal链接购买V2R</description>
-    </item>
-    
-    <item>
-      <title>Cancel</title>
-      <link>https://lockshell.com/cancel/</link>
-      <pubDate>Sat, 19 Sep 2020 18:17:11 +0800</pubDate>
-      
-      <guid>https://lockshell.com/cancel/</guid>
-      <description> You have cacnelled the order! If you have any questions, please email paybowen@gmail.com. </description>
-    </item>
-    
-    <item>
-      <title>Success</title>
-      <link>https://lockshell.com/success/</link>
-      <pubDate>Sat, 19 Sep 2020 18:17:11 +0800</pubDate>
-      
-      <guid>https://lockshell.com/success/</guid>
-      <description> We appreciate your business! If you have any questions, please email paybowen@gmail.com. </description>
-    </item>
     
     <item>
       <title>[转]价值投资要点</title>
@@ -225,6 +198,33 @@
       
       <guid>https://lockshell.com/2020/01/01/v2ray-docker-deploy/</guid>
       <description>Docker 部署 V2Ray Docker 技术是一种新的虚拟化技术，和传统的虚拟化技术不同。V2Ray 同样提供 Docker 部署方式，并且通过 Docker 来部署 V2Ray 会非常轻松高效。 Docker 只能部署在 KVM 或</description>
+    </item>
+    
+    <item>
+      <title>Buy V2Ray Service</title>
+      <link>https://lockshell.com/buy/</link>
+      <pubDate>Wed, 01 Jan 2020 18:17:11 +0800</pubDate>
+      
+      <guid>https://lockshell.com/buy/</guid>
+      <description>Paypal购买服务 朋友在新加坡和日本的VPS上搭建了V2Ray，嫌自己维护VPS和域名麻烦小伙伴，可以通过下面的paypal链接购买V2R</description>
+    </item>
+    
+    <item>
+      <title>Cancel</title>
+      <link>https://lockshell.com/cancel/</link>
+      <pubDate>Wed, 01 Jan 2020 18:17:11 +0800</pubDate>
+      
+      <guid>https://lockshell.com/cancel/</guid>
+      <description>您已经取消了订单，如有任何疑问，请邮件联系： paybowen@gmail.com. You have cancelled the order! If you have any questions, please email paybowen@gmail.com.</description>
+    </item>
+    
+    <item>
+      <title>Success</title>
+      <link>https://lockshell.com/success/</link>
+      <pubDate>Wed, 01 Jan 2020 18:17:11 +0800</pubDate>
+      
+      <guid>https://lockshell.com/success/</guid>
+      <description>感谢您的惠顾，如有任何疑问，请邮件联系： paybowen@gmail.com. We appreciate your business! If you have any questions, please email paybowen@gmail.com.</description>
     </item>
     
     <item>
