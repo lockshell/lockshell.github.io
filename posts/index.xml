@@ -156,6 +156,15 @@
     </item>
     
     <item>
+      <title>在Vultr VPS上搭建V2Ray&#43;Caddy代理</title>
+      <link>https://lockshell.com/2020/01/02/v2ray-setup-on-vultr-vps/</link>
+      <pubDate>Thu, 02 Jan 2020 13:07:53 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/02/v2ray-setup-on-vultr-vps/</guid>
+      <description>本文假设读者已经具备以下条件： 一台境外的vps，如Vultr VPS; 优惠购买Vultr VPS 一个域名，无备案要求。先设置dns将域名解析到vps的ip</description>
+    </item>
+    
+    <item>
       <title>V2Ray 多用户配置</title>
       <link>https://lockshell.com/2020/01/01/v2ray-multiple-users/</link>
       <pubDate>Wed, 01 Jan 2020 23:49:23 +0800</pubDate>

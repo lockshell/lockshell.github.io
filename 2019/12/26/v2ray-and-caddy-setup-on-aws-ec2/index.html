@@ -111,7 +111,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2976 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2989 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -145,7 +145,7 @@ if (!doNotTrack) {
             <li><a href="#启动caddy">启动Caddy</a></li>
             <li><a href="#检查证书">检查证书</a></li>
             <li><a href="#v2ray客户端-1">V2Ray客户端</a></li>
-            <li><a href="#客户端配置-1">客户端配置</a></li>
+            <li><a href="#更新客户端配置">更新客户端配置</a></li>
           </ol>
         </li>
         <li><a href="#更多v2ray客户端">更多V2Ray客户端</a></li>
@@ -177,7 +177,8 @@ if (!doNotTrack) {
 </ul>
 <h2 id="v2ay服务端">V2ay服务端</h2>
 <h3 id="服务端安装">服务端安装</h3>
-<pre><code>bash &lt;(curl -L -s https://install.direct/go.sh) # 直接使用脚本
+<pre><code>curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
+sudo bash install-release.sh
 </code></pre><p>此脚本会自动安装以下文件：</p>
 <ul>
 <li>/usr/bin/v2ray/v2ray：V2Ray 程序；</li>
@@ -310,10 +311,19 @@ sudo apt install caddy
 v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 </code></pre><h3 id="配置caddy">配置Caddy</h3>
 <p>新建一个Caddyfile，添加如下内容：</p>
-<pre><code>yourdomain.com:443 {
-    log /home/ubuntu/caddy/access.log
-    tls test@abc.com
-    reverse_proxy /ray localhost:8888 {
+<pre><code>localhost:80 {
+    respond &quot;Goodbye, world!&quot;
+}
+
+yourdomain.com:443 {
+    log {
+        output file /home/vpn/caddy/access.log
+        format single_field common_log
+    }
+    root * /home/vpn/caddy/html/
+    file_server
+    tls caddy@test.com
+    reverse_proxy /ray localhost:9010 {
         header_up Host {http.request.host}
         header_up X-Real-IP {http.request.remote}
         header_up X-Forwarded-For {http.request.remote}
@@ -328,12 +338,12 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 <li>V2Ray收到请求后依然 按 Vmess 处理，V2ray服务器端不需要配置 TLS</li>
 </ul>
 <h3 id="启动caddy">启动Caddy</h3>
-<pre><code>sudo caddy run --config &amp;
+<pre><code>sudo caddy start --config Caddfile
 </code></pre><h3 id="检查证书">检查证书</h3>
 <p>直接用浏览器访问这个地址，这里示例域名: yourdomain.com</p>
 <pre><code>https://crt.sh/?q=yourdomain.com
 </code></pre><h3 id="v2ray客户端-1">V2Ray客户端</h3>
-<h3 id="客户端配置-1">客户端配置</h3>
+<h3 id="更新客户端配置">更新客户端配置</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">{
   <span style="color:#66d9ef">&#34;inbounds&#34;: </span>[
     {

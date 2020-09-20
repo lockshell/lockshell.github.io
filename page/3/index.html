@@ -101,6 +101,33 @@ if (!doNotTrack) {
 	<article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/2019/09/17/django-fetch-huge-data-by-queryset/" rel="bookmark">
+			Django QuerySet高效读取百万行数据
+			</a>
+		</h3>
+		<div class="list__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-09-17T21:21:27&#43;08:00">2019-09-17</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/django/" rel="category">Django</a>
+	</span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 296 words</span>
+</div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		How to fetch millions of rows from DataBase by Django Queryset in a memory efficient way? Below is a solution that chunks the QuerySets so they&rsquo;re only keeping a small subset in memory. While this is somewhat heavier on the database (multiple queries) it seriously reduces the memory usage. Example import gc def lazy_fetch_iterator(table, start_pk=0, chunk_size=1000, *args, **kwargs): &#34;&#34;&#34; Get the entire rows of a table by iterating over Django
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2019/09/17/django-fetch-huge-data-by-queryset/">Read more…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/2019/09/16/django-queryset-cache-and-iterator/" rel="bookmark">
 			Django QuerySet缓存和迭代器
 			</a>
@@ -615,34 +642,6 @@ Then update the config.toml for <code>Gitalk</code>.</p>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2019/01/18/school-district-house-paradox/">Read more…</a>
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/2018/08/17/nginx-forward-proxy-config/" rel="bookmark">
-			Nginx正向代理配置
-			</a>
-		</h3>
-		<div class="list__meta meta">
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2018-08-17T11:20:19&#43;08:00">2018-08-17</time>
-</div>
-
-<div class="meta__item-categories meta__item">
-	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/nginx/" rel="category">Nginx</a>
-	</span>
-</div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1133 words</span>
-</div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>Nginx不仅可以做反向代理，实现负载均衡。还能用作正向代理来进行上网等功能。</p>
-<p>正向代理：如果把局域网外的Internet想象成一个巨大的资源库，局域网中的客户端要访问Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理。</p>
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2018/08/17/nginx-forward-proxy-config/">Read more…</a>
-	</div>
 </article>
 </main>
 
@@ -713,8 +712,8 @@ Then update the config.toml for <code>Gitalk</code>.</p>
 		<a class="widget-taglist__link widget__link btn" href="/tags/thrift/" title="Thrift">Thrift (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/tools/" title="Tools">Tools (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/v2ray/" title="V2Ray">V2Ray (12)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vpn/" title="VPN">VPN (9)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vps/" title="VPS">VPS (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vpn/" title="VPN">VPN (10)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vps/" title="VPS">VPS (6)</a>
 	</div>
 </div>
 <div class="widget-categories widget">
