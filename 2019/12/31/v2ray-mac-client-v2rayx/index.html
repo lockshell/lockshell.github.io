@@ -4,19 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>V2Ray 安卓客户端V2RayNG安装和使用 - 络壳 LockShell</title>
+	<title>V2Ray Mac客户端V2RayX安装和使用 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="V2ray Android client: V2RayNG download, install, config and usage, 翻墙上网">
-	<meta property="og:title" content="V2Ray 安卓客户端V2RayNG安装和使用" />
-<meta property="og:description" content="V2ray Android client: V2RayNG download, install, config and usage, 翻墙上网" />
+	<meta name="description" content="V2ray Mac Client: V2rayX download,install,科学上网">
+	<meta property="og:title" content="V2Ray Mac客户端V2RayX安装和使用" />
+<meta property="og:description" content="V2ray Mac Client: V2rayX download,install,科学上网" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2019/12/30/v2ray-ng-android-client/" />
-<meta property="article:published_time" content="2019-12-30T21:43:52+08:00" />
-<meta property="article:modified_time" content="2019-12-30T21:43:52+08:00" />
+<meta property="og:url" content="https://lockshell.com/2019/12/31/v2ray-mac-client-v2rayx/" />
+<meta property="article:published_time" content="2019-12-31T22:17:33+08:00" />
+<meta property="article:modified_time" content="2019-12-31T22:17:33+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="V2Ray 安卓客户端V2RayNG安装和使用"/>
-<meta name="twitter:description" content="V2ray Android client: V2RayNG download, install, config and usage, 翻墙上网"/>
+<meta name="twitter:title" content="V2Ray Mac客户端V2RayX安装和使用"/>
+<meta name="twitter:description" content="V2ray Mac Client: V2rayX download,install,科学上网"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -99,11 +99,11 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">V2Ray 安卓客户端V2RayNG安装和使用</h1>
+			<h1 class="post__title">V2Ray Mac客户端V2RayX安装和使用</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-12-30T21:43:52&#43;08:00">2019-12-30</time>
+	<time class="meta__text" datetime="2019-12-31T22:17:33&#43;08:00">2019-12-31</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -111,7 +111,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 574 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 918 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -121,13 +121,8 @@ if (!doNotTrack) {
   <ol>
     <li>
       <ol>
-        <li><a href="#v2rayng-下载地址">V2RayNG 下载地址</a></li>
-        <li><a href="#安装及使用教程">安装及使用教程</a>
-          <ol>
-            <li><a href="#基本设置">基本设置</a></li>
-            <li><a href="#v2rayng选项设置">V2RayNG选项设置</a></li>
-          </ol>
-        </li>
+        <li><a href="#v2rayx下载">V2RayX下载</a></li>
+        <li><a href="#v2rayx安装和使用">V2RayX安装和使用</a></li>
         <li><a href="#检查v2ray是否可用">检查v2ray是否可用</a></li>
       </ol>
     </li>
@@ -136,37 +131,61 @@ if (!doNotTrack) {
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<p>V2Ray服务器端安装完成后，接下来就需要用V2Ray客户端与之相连了，下面我们介绍下V2Ray 安卓客户端的下载、安装及使用。</p>
-<p>如果你还没有搭建好V2Ray服务器端，可以参考以下文章，本文内容在此基础上展开：</p>
+			<p>V2Ray服务器端安装完成后，接下来就需要用V2Ray客户端与之相连了，下面我们介绍下V2Ray Mac客户端的下载、安装及使用。</p>
+<p>安装之前，如果你还没有架设V2Ray服务器，那么可以参考以下链接文章，先在VPS服务器上安装V2Ray，本文介绍在此基础上展开：</p>
 <ul>
 <li><a href="https://lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/">在AWS EC2上搭建V2ray+Caddy代理</a></li>
 </ul>
-<h2 id="v2rayng-下载地址">V2RayNG 下载地址</h2>
-<p>V2RayNG目前的最新版本为1.3.3，版本随时更新，以实际为准。</p>
-<p>APK下载地址：</p>
+<p>V2Ray官方发布的Mac OS客户端，仅提供内核，没有图形化界面。
+而V2RayX是一个集成V2Ray内核的图形化界面，安装在Mac OS之后，可以很方便的进行各项参数设置，快速连接V2Ray服务器。</p>
+<h2 id="v2rayx下载">V2RayX下载</h2>
+<p>V2RayX 是一个基于 V2Ray 内核的 Mac OS X 客户端。
+用户可以通过界面生成配置文件，并且可以手动更新 V2Ray 内核。V2RayX 还可以配置系统代理。</p>
+<p>V2RayX目前最新版本为1.5.1，版本随时更新，以实际为准。</p>
+<p>V2RayX 1.5.1下载地址：</p>
 <ul>
-<li><a href="https://github.com/2dust/v2rayNG/releases/download/1.3.3/v2rayNG_1.3.3.apk">https://github.com/2dust/v2rayNG/releases/download/1.3.3/v2rayNG_1.3.3.apk</a></li>
+<li><a href="https://github.com/Cenmrev/V2RayX/releases/download/v1.5.1/V2RayX.app.zip">https://github.com/Cenmrev/V2RayX/releases/download/v1.5.1/V2RayX.app.zip</a></li>
 </ul>
-<p>查看更多内容可以访问：</p>
+<p>更多相关情况可以访问：</p>
 <ul>
-<li><a href="https://github.com/2dust/v2rayNG/releases">https://github.com/2dust/v2rayNG/releases</a></li>
+<li><a href="https://github.com/Cenmrev/V2RayX/releasesV">https://github.com/Cenmrev/V2RayX/releasesV</a></li>
 </ul>
-<h2 id="安装及使用教程">安装及使用教程</h2>
-<h3 id="基本设置">基本设置</h3>
-<p>打开V2Ray服务器端控制面板，找到二维码界面。</p>
+<h2 id="v2rayx安装和使用">V2RayX安装和使用</h2>
+<ol>
+<li>V2RayX下载完成后解压，得到V2RayX.app，将其拖动至程序目录进行安装。</li>
+</ol>
+<p><img class="post-img" src="/images/v2rayx/v2rayx_install.png"></p>
+<p>因为软件不是来自于Mac自带的应用商店，打开程序时可能会有安全提示，如下：</p>
+<p><img class="post-img" src="/images/v2rayx/v2rayx_confirm.png"></p>
+<p>需要前往“系统偏好设置”－“安全性和隐私”，点“仍要打开”，再点&quot;install&quot;安裝。</p>
+<p><img class="post-img" src="/images/v2rayx/v2rayx_allow.png"></p>
+<ol start="2">
+<li>
+<p>安装完成后打开V2RayX，桌面右上角会出现V2RayX图标。</p>
+</li>
+<li>
+<p>点击桌面右上角的V2RayX图标，会弹出如下菜单，点击Configure进入设置</p>
+</li>
+<li>
+<p>在设置界面，点击左下角的+号，添加服务器。
+之后填入你 V2Ray 服务器的各项参数即可，包括：</p>
+</li>
+</ol>
 <ul>
-<li>在安卓手机上安装V2RayNG后打开，点击右上角的 + 号开始添加V2Ray服务器。</li>
-<li>点击扫描二维码，开始扫描V2Ray控制面板中的二维码，扫描完成后即可添加成功。或者也可以复制Vmess链接，然后选择从剪贴板导入，效果是一样的。</li>
-<li>点击小铅笔按钮，核对连接参数中的加密方式一项，是否与服务器端一致。
-核对一致后，点击下图中的左侧红框，选中添加的服务器，然后点击下方的纸飞机标志，稍等即可连接成功。</li>
+<li>Address (服务器域名和端口号): test.com 443</li>
+<li>User ID：一个uuid字符串</li>
+<li>alterId: 一般64</li>
+<li>Security: 一般auto</li>
+<li>Network（你的伪装类型）: 一般ws 或者 tcp</li>
 </ul>
+<p>这些都是必填项跟你的 V2Ray 服务器一致。
+最后点击 OK 保存你的 V2Ray 服务器配置，再次点击右上角通知栏的 V2RayX 的图标，点击<code>Start V2Ray</code>即可连接你的 V2Ray 服务器。</p>
+<p>另外，菜单中的PAC Mode表示根据V2RayX内置规则，决定是否走代理，这种模式下，一般国内流量直连，部分国外网站走代理。
+而Global Mode则表示所有流量走代理。可以根据自己的使用情况，选择其中一种模式。</p>
 <p>示例图如下：</p>
-<p><img src="/images/v2ray_ng/v2ray_ng_import_setting.jpg" alt=""></p>
-<p><img src="/images/v2ray_ng/v2ray_ng_android_setting.jpg" alt=""></p>
-<h3 id="v2rayng选项设置">V2RayNG选项设置</h3>
-<p>在V2RayNG的选项设置中，我们可以设置特定APP使用V2Ray代理，还可以设置所有国内流量直连。</p>
-<p>点击V2RayNG界面右上角的菜单按钮，即可进入下图的选项设置界面。其中，分应用代理 和 路由两个功能即可实现上述功能：</p>
-<p><img src="/images/v2ray_ng/v2ray_ng_proxy.jpg" alt=""></p>
+<p><img class="post-img" src="/images/v2rayx/v2rayx_menu.jpg"></p>
+<p>服务器的各项参数:</p>
+<p><img class="post-img" src="/images/v2rayx/v2rayx_example.png"></p>
 <h2 id="检查v2ray是否可用">检查v2ray是否可用</h2>
 <p>最后直接访问油管: <a href="https://www.youtube.com/">https://www.youtube.com/</a> 检查v2ray服务是否可用。</p>
 
@@ -200,10 +219,10 @@ if (!doNotTrack) {
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2019/12/29/v2rayn-core-client/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">V2Ray Windows客户端V2RayN安装和使用</p></a>
+		<a class="post-nav__link" href="/2019/12/30/v2ray-ng-android-client/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">V2Ray 安卓客户端V2RayNG安装和使用</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2019/12/31/v2ray-mac-client-v2rayx/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">V2Ray Mac客户端V2RayX安装和使用</p></a>
+		<a class="post-nav__link" href="/2019/12/31/v2ray-mac-client-v2rayu/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">V2Ray Mac客户端V2RayU安装和使用</p></a>
 	</div>
 </nav>
 
