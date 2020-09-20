@@ -4,19 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>在AWS EC2上搭建V2ray&#43;Nginx代理 - 络壳 LockShell</title>
+	<title>在Vultr VPS上搭建V2Ray&#43;Caddy代理 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="V2ray and Nginx proxy Setup on Aws Ec2 Ubuntu, v2ray配置, VPN搭建, 翻墙上网, HK">
-	<meta property="og:title" content="在AWS EC2上搭建V2ray&#43;Nginx代理" />
-<meta property="og:description" content="V2ray and Nginx proxy Setup on Aws Ec2 Ubuntu, v2ray配置, VPN搭建, 翻墙上网, HK" />
+	<meta name="description" content="V2ray Setup on Vultr VPS with Ubuntu">
+	<meta property="og:title" content="在Vultr VPS上搭建V2Ray&#43;Caddy代理" />
+<meta property="og:description" content="V2ray Setup on Vultr VPS with Ubuntu" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2019/12/26/v2ray-and-nginx-proxy-setup-on-aws-ec2/" />
-<meta property="article:published_time" content="2019-12-26T18:20:20+08:00" />
-<meta property="article:modified_time" content="2019-12-26T18:20:20+08:00" />
+<meta property="og:url" content="https://lockshell.com/2020/01/02/v2ray-and-caddy-setup-on-vultr-vps/" />
+<meta property="article:published_time" content="2020-01-02T13:07:53+08:00" />
+<meta property="article:modified_time" content="2020-01-02T13:07:53+08:00" />
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="在AWS EC2上搭建V2ray&#43;Nginx代理"/>
-<meta name="twitter:description" content="V2ray and Nginx proxy Setup on Aws Ec2 Ubuntu, v2ray配置, VPN搭建, 翻墙上网, HK"/>
+<meta name="twitter:title" content="在Vultr VPS上搭建V2Ray&#43;Caddy代理"/>
+<meta name="twitter:description" content="V2ray Setup on Vultr VPS with Ubuntu"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -99,11 +99,11 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">在AWS EC2上搭建V2ray&#43;Nginx代理</h1>
+			<h1 class="post__title">在Vultr VPS上搭建V2Ray&#43;Caddy代理</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-12-26T18:20:20&#43;08:00">2019-12-26</time>
+	<time class="meta__text" datetime="2020-01-02T13:07:53&#43;08:00">2020-01-02</time>
 </div>
 
 <div class="meta__item-categories meta__item">
@@ -111,7 +111,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1555 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1203 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -121,17 +121,20 @@ if (!doNotTrack) {
   <ol>
     <li>
       <ol>
-        <li><a href="#前提条件">前提条件</a></li>
-        <li><a href="#v2ray服务端">v2ray服务端</a>
+        <li><a href="#v2ay服务端">V2ay服务端</a>
           <ol>
-            <li><a href="#安装v2ray">安装v2ray</a></li>
-            <li><a href="#v2ray配置">v2ray配置</a></li>
+            <li><a href="#安装">安装</a></li>
+            <li><a href="#修改配置文件">修改配置文件</a></li>
+            <li><a href="#重启v2ray">重启V2Ray</a></li>
+            <li><a href="#检查v2ray是否成功启动">检查V2Ray是否成功启动</a></li>
+            <li><a href="#停止v2ray">停止V2Ray</a></li>
           </ol>
         </li>
-        <li><a href="#安装配置nginx">安装配置Nginx</a>
+        <li><a href="#caddy安装与配置">Caddy安装与配置</a>
           <ol>
-            <li><a href="#准备ssl证书">准备SSL证书</a></li>
-            <li><a href="#配置nginx">配置Nginx</a></li>
+            <li><a href="#安装caddy">安装Caddy</a></li>
+            <li><a href="#修改caddy配置">修改caddy配置</a></li>
+            <li><a href="#重启caddy">重启Caddy</a></li>
           </ol>
         </li>
         <li><a href="#v2ray客户端">V2Ray客户端</a>
@@ -146,125 +149,126 @@ if (!doNotTrack) {
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<h2 id="前提条件">前提条件</h2>
+			<a href="https://www.vultr.com/?ref=8685348-6G">
+<img src="https://www.vultr.com/media/banners/banner_728x90.png" width="728" height="90"></a>
 <p>本文假设读者已经具备以下条件：</p>
 <ul>
-<li>一台境外的vps，购买可参考：<a href="">一些VPS商家整理</a>。</li>
-<li>一个域名，无备案要求。先设置DNS将域名解析到vps的ip，例如www.lockshell.com解析到xxx.xxx.xx.xx。</li>
-<li>为域名申请一个证书，可以从Let’s Encrypt获取免费证书。</li>
+<li>一台境外的vps，如Vultr VPS; <a href="https://www.vultr.com/?ref=8685348-6G">优惠购买Vultr VPS</a></li>
+<li>一个域名，无备案要求。先设置dns将域名解析到vps的ip，例如www.lockshell.com解析到xxx.xxx.xx.xx。</li>
+<li>为域名申请一个证书，可以从Let’s Encrypt获取免费证书；本文用到caddy能自动申请。</li>
 <li>有基本linux技巧，能使用vim/nano等编辑器。</li>
 </ul>
-<p>理论上来说，证书不是必须的。
-但没有tls加持或不做加密，防火墙直接能看出来流量真实意图从而进行干扰，这也是为什么不建议伪装http流量的原因。
-本文给出的方法采用合法机构签发的证书对流量进行加密，不是做特征混淆得到的TLS流量，从而更难被检测和干扰。</p>
-<p>关于伪装技术的选择，V2ray web+websocket+tls 和 V2ray web+http2+tls 常用来做对比。
-理论上http2省去了upgrade的请求，性能更好。但实际使用中两者没有明显区别，本文使用的是<code>websocket</code>方式。</p>
 <p>本文用到系统环境及软件版本如下：</p>
 <ul>
-<li>系统: ubuntu 18.04</li>
-<li>Nginx: nginx/1.14.0 (Ubuntu)</li>
+<li>Caddy: 2.x</li>
 <li>V2ray: 4.x</li>
+<li>Vultr VPS一台</li>
+<li>系统: Ubuntu 20.04</li>
 </ul>
-<h2 id="v2ray服务端">v2ray服务端</h2>
-<h3 id="安装v2ray">安装v2ray</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 20.04.1 LTS
+Release:	20.04
+Codename:	focal
+</code></pre></div><h2 id="v2ay服务端">V2ay服务端</h2>
+<h3 id="安装">安装</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
 sudo bash install-release.sh
-</code></pre></div><p>此脚本会自动安装以下文件：</p>
-<ul>
-<li>/usr/bin/v2ray/v2ray：V2Ray 程序；</li>
-<li>/usr/bin/v2ray/v2ctl：V2Ray 工具；</li>
-<li>/etc/v2ray/config.json：配置文件；</li>
-<li>/usr/bin/v2ray/geoip.dat：IP 数据文件</li>
-<li>/usr/bin/v2ray/geosite.dat：域名数据文件 此脚本会配置自动运行脚本。自动运行脚本会在系统重启之后，自动运行 V2Ray。目前自动运行脚本只支持带有 Systemd 的系统，以及 Debian / Ubuntu 全系列。</li>
-</ul>
-<p>脚本运行完成后，你需要：</p>
-<ul>
-<li>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</li>
-<li>运行 service v2ray start 来启动 V2Ray 进程；</li>
-</ul>
-<p>之后可以使用 <code>service v2ray start|stop|status|reload|restart|force-reload</code> 控制 V2Ray 的运行。</p>
-<h3 id="v2ray配置">v2ray配置</h3>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl enable v2ray
+sudo systemctl start v2ray
+</code></pre></div><h3 id="修改配置文件">修改配置文件</h3>
+<p>配置文件位于<code>/usr/local/etc/v2ray/config.json</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">{
-  <span style="color:#e6db74">&#34;log&#34;</span> : {
-    <span style="color:#66d9ef">&#34;access&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/access.log&#34;</span>,
-    <span style="color:#66d9ef">&#34;error&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/error.log&#34;</span>,
-    <span style="color:#66d9ef">&#34;loglevel&#34;: </span><span style="color:#e6db74">&#34;warning&#34;</span>
-  },
-  <span style="color:#66d9ef">&#34;inbound&#34;: </span>{
-    <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">8080</span>, //(此端口与nginx配置相关)
-    <span style="color:#66d9ef">&#34;listen&#34;: </span><span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
-    <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>,
-    <span style="color:#66d9ef">&#34;settings&#34;: </span>{
-      <span style="color:#66d9ef">&#34;clients&#34;: </span>[
-        {
-          <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;zhangsan&#34;</span>, //你的UUID， 此ID需与客户端保持一致
-          <span style="color:#66d9ef">&#34;level&#34;: </span><span style="color:#ae81ff">1</span>,
-          <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">64</span> //此ID也需与客户端保持一致
+    <span style="color:#66d9ef">&#34;inbound&#34;: </span>{
+        <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">8888</span>, <span style="color:#75715e"># 服务器监听端口</span>
+        <span style="color:#66d9ef">&#34;listen&#34;: </span><span style="color:#e6db74">&#34;127.0.0.1&#34;</span>, <span style="color:#75715e"># 只监听 127.0.0.1，避免除本机外的机器探测到开放了8888端口 </span>
+        <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>,
+        <span style="color:#66d9ef">&#34;settings&#34;: </span>{
+            <span style="color:#66d9ef">&#34;clients&#34;: </span>[
+                {
+                    <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;b831381d-6324-4d53-ad4f-8cda48b30811&#34;</span>,
+                    <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">64</span>
+                }
+            ]
+        },
+        <span style="color:#66d9ef">&#34;streamSettings&#34;: </span>{
+            <span style="color:#66d9ef">&#34;network&#34;: </span><span style="color:#e6db74">&#34;ws&#34;</span>, <span style="color:#75715e"># WebSocket 方式</span>
+            <span style="color:#66d9ef">&#34;wsSettings&#34;: </span>{
+                <span style="color:#66d9ef">&#34;path&#34;: </span><span style="color:#e6db74">&#34;/ray&#34;</span>
+            }
         }
-      ]
     },
-   <span style="color:#e6db74">&#34;streamSettings&#34;</span>:{
-      <span style="color:#66d9ef">&#34;network&#34;: </span><span style="color:#e6db74">&#34;ws&#34;</span>,
-      <span style="color:#66d9ef">&#34;wsSettings&#34;: </span>{
-           <span style="color:#66d9ef">&#34;path&#34;: </span><span style="color:#e6db74">&#34;/v2ray&#34;</span> //与nginx配置相关
-      }
-   }
-  },
-  <span style="color:#66d9ef">&#34;outbound&#34;: </span>{
-    <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;freedom&#34;</span>,
-    <span style="color:#66d9ef">&#34;settings&#34;: </span>{}
-  },
-  <span style="color:#66d9ef">&#34;outboundDetour&#34;: </span>[
-    {
-      <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;blackhole&#34;</span>,
-      <span style="color:#66d9ef">&#34;settings&#34;: </span>{},
-      <span style="color:#66d9ef">&#34;tag&#34;: </span><span style="color:#e6db74">&#34;blocked&#34;</span>
+    <span style="color:#66d9ef">&#34;outbound&#34;: </span>{
+        <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;freedom&#34;</span>, <span style="color:#75715e"># 主传出协议 这里是直接转发所以流量</span>
+        <span style="color:#66d9ef">&#34;settings&#34;: </span>{}
     }
-  ]
 }
-</code></pre></div><h2 id="安装配置nginx">安装配置Nginx</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get update
-sudo apt-get install nginx
-</code></pre></div><h3 id="准备ssl证书">准备SSL证书</h3>
-<p>关于域名SSL证书，使用certbot自动签一个let’s encrypt证书就行了。
-很简单，参考链接: <a href="https://certbot.eff.org/">https://certbot.eff.org/</a></p>
-<pre><code>sudo apt-get update
-sudo apt-get install software-properties-common
+</code></pre></div><h3 id="重启v2ray">重启V2Ray</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl restart v2ray
+</code></pre></div><h3 id="检查v2ray是否成功启动">检查V2Ray是否成功启动</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vpn@sg-vpn:~/v2ray$ ps aux | grep v2ray
+nobody     <span style="color:#ae81ff">22527</span>  3.2  2.2 <span style="color:#ae81ff">4913616</span> <span style="color:#ae81ff">22312</span> ?       Ssl  05:45   0:00 /usr/local/bin/v2ray -config /usr/local/etc/v2ray/config.json
+vpn        <span style="color:#ae81ff">22545</span>  0.0  0.0   <span style="color:#ae81ff">9540</span>   <span style="color:#ae81ff">740</span> pts/1    S+   05:45   0:00 grep --color<span style="color:#f92672">=</span>auto v2ray
+</code></pre></div><h3 id="停止v2ray">停止V2Ray</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl disable v2ray.service --now
+</code></pre></div><h2 id="caddy安装与配置">Caddy安装与配置</h2>
+<h3 id="安装caddy">安装Caddy</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt update
+sudo apt install caddy
+</code></pre></div><p>如果找不到安装包</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+E: Unable to locate package caddy
+</code></pre></div><p>授权一下Ubuntu repositories</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># enabled Ubuntu repositories</span>
+sudo add-apt-repository main
 sudo add-apt-repository universe
-sudo add-apt-repository ppa:certbot/certbot
-sudo apt-get update
-
-sudo apt-get install certbot
-sudo apt-get install python3-certbot-nginx
-
-sudo certbot -nginx # 生成证书
-</code></pre><p>成功后， 在crontab 中添加一条任务计划每三个月执行一次，因为let’s encrypt证书三个月过期：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">15</span> */3 * /root/certbot/certbot-auto renew  <span style="color:#75715e"># 在3，6，9，12月份的15号零点零分执行更新</span>
-</code></pre></div><h3 id="配置nginx">配置Nginx</h3>
-<pre><code>server {
-    # SSL configuration
-    listen 443 ssl http2 default_server;
-    listen [::]:443 ssl http2 default_server;
-    ssl_certificate /ssl.pem; # 你的ssl证书， 如果第一次，可能还需要自签一下，
-    ssl_certificate_key /ssl.key; # 你的ssl key
- 
-    root /var/www/html;
- 
-    # Add index.php to the list if you are using PHP
-    index index.html index.htm index.nginx-debian.html;
- 
-    server_name test.v2ray.com; # 你的服务器域名
- 
-    location /ray { #/ray 路径需要和v2ray服务器端，客户端保持一致
-        proxy_redirect off;
-        proxy_pass http://127.0.0.1:8080; #此IP地址和端口需要和v2ray服务器保持一致，
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection &quot;upgrade&quot;;
-        proxy_set_header Host $http_host;
+sudo add-apt-repository restricted
+sudo add-apt-repository multiverse
+</code></pre></div><p>继续安装就okay了</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt update  <span style="color:#75715e"># 不能跳过，需要先update</span>
+sudo apt install caddy
+</code></pre></div><p>查看一下Caddy版本，因为v1.x跟v2.x的配置文件格式不一样，这里我们安装的是v2。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vpn@sg-vpn:~$ caddy version
+v2.1.1 h1:X9k1+ehZPYYrSqBvf/ocUgdLSRIuiNiMo7CvyGUQKeA<span style="color:#f92672">=</span>
+</code></pre></div><h3 id="修改caddy配置">修改caddy配置</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo vim /etc/caddy/Caddyfile
+</code></pre></div><p>新建一个Caddyfile，添加如下内容：</p>
+<pre><code>your_domain.com:443 {
+    log {
+        output file /home/vpn/caddy/access.log
     }
+    root * /home/vpn/caddy/html
+    file_server
+    tls {
+        protocols tls1.2 tls1.3
+        ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+        curves x25519
+    }
+    @v2ray_websocket {
+        path /ray
+        header Connection *Upgrade*
+        header Upgrade websocket
+    }
+    reverse_proxy @v2ray_websocket localhost:8888
 }
-</code></pre><h2 id="v2ray客户端">V2Ray客户端</h2>
+</code></pre><ul>
+<li>Caddy v1.x 和 v2.x 的配置文件是不兼容的，这里我们采用的是最新的v2</li>
+<li>Caddy监听 443 端口（可以是其他端口）</li>
+<li>Caddy处理 TLS 之后，将流量转发到 V2Ray 的 WebSocket 所监听的内网端口，本例是8888</li>
+<li>V2Ray收到请求后依然 按 Vmess 处理，V2ray服务器端不需要配置 TLS</li>
+</ul>
+<h3 id="重启caddy">重启Caddy</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vpn@sg-vpn:~/caddy$ pwd
+/home/vpn/caddy
+vpn@sg-vpn:~/caddy$ ls
+access.log  Caddyfile  html
+
+sudo caddy stop
+sudo caddy run --config Caddyfile
+</code></pre></div><h2 id="v2ray客户端">V2Ray客户端</h2>
 <p>服务端部署完成后，可参照下面的教程安装配置不同平台的V2Ray客户端：</p>
 <ul>
 <li>V2Ray Mac客户端: <a href="https://lockshell.com/2019/12/31/v2rayx-mac-client/">V2Ray MAC客户端V2RayX安装和使用</a></li>
@@ -327,7 +331,6 @@ sudo certbot -nginx # 生成证书
 	<ul class="tags__list">
 		<li class="tags__item"><a class="tags__link btn" href="/tags/vpn/" rel="tag">VPN</a></li>
 		<li class="tags__item"><a class="tags__link btn" href="/tags/v2ray/" rel="tag">V2RAY</a></li>
-		<li class="tags__item"><a class="tags__link btn" href="/tags/aws/" rel="tag">AWS</a></li>
 	</ul>
 </div>
 		</footer>
@@ -348,10 +351,10 @@ sudo certbot -nginx # 生成证书
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">在AWS EC2上搭建V2ray&#43;Caddy代理</p></a>
+		<a class="post-nav__link" href="/2020/01/01/v2ray-multiple-users/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">V2Ray 多用户配置</p></a>
 	</div>
 	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2019/12/29/v2rayn-core-client/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">V2Ray Windows客户端V2RayN安装和使用</p></a>
+		<a class="post-nav__link" href="/2020/01/02/v2ray-and-nginx-setup-on-vultr-vps/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">在Vultr VPS上搭建V2Ray&#43;Nginx代理</p></a>
 	</div>
 </nav>
 

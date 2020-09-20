@@ -6,10 +6,28 @@
     <description>Recent content in V2Ray on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Jan 2020 23:49:23 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jan 2020 18:03:30 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/tags/v2ray/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>在Vultr VPS上搭建V2Ray&#43;Nginx代理</title>
+      <link>https://lockshell.com/2020/01/02/v2ray-and-nginx-setup-on-vultr-vps/</link>
+      <pubDate>Thu, 02 Jan 2020 18:03:30 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/02/v2ray-and-nginx-setup-on-vultr-vps/</guid>
+      <description>本文假设读者已经具备以下条件： 一台境外的vps，如Vultr VPS; 优惠购买Vultr VPS 一个域名，无备案要求。先设置dns将域名解析到vps的ip</description>
+    </item>
+    
+    <item>
+      <title>在Vultr VPS上搭建V2Ray&#43;Caddy代理</title>
+      <link>https://lockshell.com/2020/01/02/v2ray-and-caddy-setup-on-vultr-vps/</link>
+      <pubDate>Thu, 02 Jan 2020 13:07:53 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/02/v2ray-and-caddy-setup-on-vultr-vps/</guid>
+      <description>本文假设读者已经具备以下条件： 一台境外的vps，如Vultr VPS; 优惠购买Vultr VPS 一个域名，无备案要求。先设置dns将域名解析到vps的ip</description>
+    </item>
     
     <item>
       <title>V2Ray 多用户配置</title>

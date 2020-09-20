@@ -111,7 +111,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2989 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 2972 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -302,34 +302,30 @@ WSS三件套的思路其实就是，本地v2ray客户端出口(outBound)访问�
 <p>Nginx需要手动生成一个SSL证书，添加到配置里。
 Caddy 会自动申请证书并自动更新，所以使用 Caddy 不用指定证书、密钥。这里选择更简单的 Caddy。</p>
 <h3 id="安装caddy">安装Caddy</h3>
-<pre><code>echo &quot;deb [trusted=yes] https://apt.fury.io/caddy/ /&quot; \
-    | sudo tee -a /etc/apt/sources.list.d/caddy-fury.list
-sudo apt update
+<pre><code>sudo apt update
 sudo apt install caddy
 </code></pre><p>确认caddy版本</p>
 <pre><code>caddy version
 v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 </code></pre><h3 id="配置caddy">配置Caddy</h3>
 <p>新建一个Caddyfile，添加如下内容：</p>
-<pre><code>localhost:80 {
-    respond &quot;Goodbye, world!&quot;
-}
-
-yourdomain.com:443 {
+<pre><code>your_domain.com:443 {
     log {
         output file /home/vpn/caddy/access.log
-        format single_field common_log
     }
-    root * /home/vpn/caddy/html/
+    root * /home/vpn/caddy/html
     file_server
-    tls caddy@test.com
-    reverse_proxy /ray localhost:9010 {
-        header_up Host {http.request.host}
-        header_up X-Real-IP {http.request.remote}
-        header_up X-Forwarded-For {http.request.remote}
-        header_up X-Forwarded-Port {http.request.port}
-        header_up X-Forwarded-Proto {http.request.scheme}
+    tls {
+        protocols tls1.2 tls1.3
+        ciphers TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+        curves x25519
     }
+    @v2ray_websocket {
+        path /ray
+        header Connection *Upgrade*
+        header Upgrade websocket
+    }
+    reverse_proxy @v2ray_websocket localhost:8888
 }
 </code></pre><ul>
 <li>Caddy v1.x 和 v2.x 的配置文件是不兼容的，这里我们采用的是最新的v2</li>
