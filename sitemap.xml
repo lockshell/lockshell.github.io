@@ -3,22 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://lockshell.com/categories/</loc>
+    <lastmod>2020-09-21T09:27:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/network/</loc>
+    <lastmod>2020-09-21T09:27:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/tags/</loc>
+    <lastmod>2020-09-21T09:27:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/2020/09/21/bandwidth-requirement-for-1080p-2k-4k-video/</loc>
+    <lastmod>2020-09-21T09:27:42+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lockshell.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</loc>
+    <lastmod>2020-09-21T09:27:42+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://lockshell.com/2020/08/23/key-points-of-value-investment/</loc>
     <lastmod>2020-08-23T10:52:02+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lockshell.com/categories/</loc>
-    <lastmod>2020-08-23T10:52:02+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://lockshell.com/tags/invest/</loc>
-    <lastmod>2020-08-23T10:52:02+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/tags/</loc>
     <lastmod>2020-08-23T10:52:02+08:00</lastmod>
   </url>
   
@@ -199,11 +214,6 @@
   
   <url>
     <loc>https://lockshell.com/2020/01/02/v2ray-and-nginx-setup-on-vultr-vps/</loc>
-    <lastmod>2020-01-02T18:03:30+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lockshell.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</loc>
     <lastmod>2020-01-02T18:03:30+08:00</lastmod>
   </url>
   
