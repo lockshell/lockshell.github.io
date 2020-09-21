@@ -43,7 +43,7 @@ html {
 
 body {
 	margin: 0;
-	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+	font-family: Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	font-size: .875rem;
 	line-height: 1.6;
@@ -297,11 +297,17 @@ kbd {
 
 blockquote {
 	display: block;
-	padding: 5px 0 5px 15px;
+	padding: 0px 0px 0px 1px;
 	margin: 0 0 20px;
 	margin: 0 0 1.25rem;
 	line-height: 1.6;
-	border-left: 5px solid #e22d30;
+	border-left: 4px solid #F17C8D; /*#e22d30;*/
+	border-radius: 3px;
+}
+
+blockquote p {
+    background-color: #FDF6E3;
+    padding: 0.5em;
 }
 
 blockquote p:last-child {
@@ -678,18 +684,28 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 
 .content ul,
 .content ol {
-	margin: 0 0 20px 40px;
+	margin: 0 0 1.5em 2em;
 }
 
 .content ul ul,
 .content ol ol,
 .content ol ul,
 .content ul ol {
-	margin: 0 0 0 40px;
+	margin: 0 0 0 2em;
 }
 
 .content li {
 	margin-bottom: 5px;
+}
+
+.content h1, h2, h3, h4, h5, h6 {
+	padding: 3px 3px 3px 0.5em;
+	border-style: solid;
+	border-width: 0px 0px 1px 3px;
+	border-color: #e22d30;
+	border-bottom-color: #F17C8D;
+	border-radius: 3px;
+	color: #1198AC;
 }
 
 .post__footer {
@@ -770,24 +786,20 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	list-style: none;
 }
 
-.toc__menu ol ol a {
-	padding-left: 1.2em;
-}
-
 .toc__menu ol ol ol a {
-	padding-left: 2.4em;
+	padding-left: 2em;
 }
 
 .toc__menu ol ol ol ol a {
-	padding-left: 3.6em;
+	padding-left: 3em;
 }
 
 .toc__menu ol ol ol ol ol a {
-	padding-left: 4.8em;
+	padding-left: 4em;
 }
 
 .toc__menu ol ol ol ol ol ol a {
-	padding-left: 6em;
+	padding-left: 5em;
 }
 
 .toc__menu ul {
@@ -796,19 +808,19 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 }
 
 .toc__menu ul ul ul a {
-	padding-left: 2.4em;
+	padding-left: 2em;
 }
 
 .toc__menu ul ul ul ul a {
-	padding-left: 3.6em;
+	padding-left: 3em;
 }
 
 .toc__menu ul ul ul ul ul a {
-	padding-left: 4.8em;
+	padding-left: 4em;
 }
 
 .toc__menu ul ul ul ul ul ul a {
-	padding-left: 6em;
+	padding-left: 5em;
 }
 
 .toc__menu li {
