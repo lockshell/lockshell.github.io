@@ -22,7 +22,7 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -79,9 +79,6 @@ if (!doNotTrack) {
 
 	</div>
 
-	
-	<link href="https://lockshell.com/css/custom.css" rel="stylesheet">
-
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	
@@ -133,7 +130,7 @@ if (!doNotTrack) {
 </nav>
 	</div>
 </div>
-<div class="content post__content clearfix">
+<div id="custom-content" class="custom-content content post__content clearfix">
 			<p>HTTP是建立在TCP上面的，一次HTTP请求要经历TCP三次握手阶段，然后发送请求，得到相应数据，最后TCP断开连接。
 如果我们要发出多个HTTP请求，每次都这么搞，那每次要握手、请求、断开，就比较浪费资源。
 所以如果我们在HTTP(S)连接建立之后，可以复用已经建立的连接传输数据，就能省反复新建连接的开销。
@@ -545,5 +542,5 @@ class MySession(Session):
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-</body>
+<script src="/js/custom.js"></script></body>
 </html>

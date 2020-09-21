@@ -22,7 +22,7 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -79,9 +79,6 @@ if (!doNotTrack) {
 
 	</div>
 
-	
-	<link href="https://lockshell.com/css/custom.css" rel="stylesheet">
-
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	
@@ -113,7 +110,7 @@ if (!doNotTrack) {
 </div>
 <span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 598 words</span>
 </div>
-		</header><div class="content post__content clearfix">
+		</header><div id="custom-content" class="custom-content content post__content clearfix">
 			<p>Nginx一大经典使用场景就是用来提供静态文件服务，例如图片、html、脚本、样式文件等，这些文件没有必要交给 tomcat、jboss等应用服务器处理，使用 Nginx 直接处理将大大提高性能。
 用 Nginx 来提供静态文件服务十分简单，只需要添加一个 server块指令即可。</p>
 <h2 id="基本配置">基本配置</h2>
@@ -238,5 +235,5 @@ root 指令用来指定文件在服务器上的基路径。</p>
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-</body>
+<script src="/js/custom.js"></script></body>
 </html>

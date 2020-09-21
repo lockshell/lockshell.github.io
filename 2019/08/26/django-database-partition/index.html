@@ -22,7 +22,7 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -78,9 +78,6 @@ if (!doNotTrack) {
 </nav>
 
 	</div>
-
-	
-	<link href="https://lockshell.com/css/custom.css" rel="stylesheet">
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -146,7 +143,7 @@ if (!doNotTrack) {
 </nav>
 	</div>
 </div>
-<div class="content post__content clearfix">
+<div id="custom-content" class="custom-content content post__content clearfix">
 			<p>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外，
 另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的性能问题。</p>
 <p><code>Django ORM</code>提供了默认的分库功能，只需要在<code>settings.py</code>文件中添加相应的数据库配置。</p>
@@ -379,5 +376,5 @@ DATABASE_MAPPING <span style="color:#f92672">=</span> settings<span style="color
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-</body>
+<script src="/js/custom.js"></script></body>
 </html>

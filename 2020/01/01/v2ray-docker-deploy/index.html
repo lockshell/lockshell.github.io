@@ -22,7 +22,7 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -78,9 +78,6 @@ if (!doNotTrack) {
 </nav>
 
 	</div>
-
-	
-	<link href="https://lockshell.com/css/custom.css" rel="stylesheet">
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -138,7 +135,7 @@ if (!doNotTrack) {
 </nav>
 	</div>
 </div>
-<div class="content post__content clearfix">
+<div id="custom-content" class="custom-content content post__content clearfix">
 			<h2 id="docker-部署-v2ray">Docker 部署 V2Ray</h2>
 <p>Docker 技术是一种新的虚拟化技术，和传统的虚拟化技术不同。V2Ray 同样提供 Docker 部署方式，并且通过 Docker 来部署 V2Ray 会非常轻松高效。</p>
 <p><strong>Docker 只能部署在 KVM 或者 XEN 架构的 VPS中</strong></p>
@@ -255,5 +252,5 @@ $ sudo docker run -d --name v2ray -v /etc/v2ray:/etc/v2ray -p 8888:8888 v2ray/of
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-</body>
+<script src="/js/custom.js"></script></body>
 </html>

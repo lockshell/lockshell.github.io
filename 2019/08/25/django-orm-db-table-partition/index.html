@@ -22,7 +22,7 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -79,9 +79,6 @@ if (!doNotTrack) {
 
 	</div>
 
-	
-	<link href="https://lockshell.com/css/custom.css" rel="stylesheet">
-
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	
@@ -132,7 +129,7 @@ if (!doNotTrack) {
 </nav>
 	</div>
 </div>
-<div class="content post__content clearfix">
+<div id="custom-content" class="custom-content content post__content clearfix">
 			<p><code>Django ORM</code>没有提供默认的分表功能，给访问分表的数据库带来的不变。那么<code>Django</code>分表怎么实现呢？</p>
 <h2 id="分析django-orm">分析Django ORM</h2>
 <p>在实现具体的方案之前，我们先看看<code>Django ORM</code>是如何访问数据表的。</p>
@@ -456,5 +453,5 @@ user <span style="color:#f92672">=</span> db_model<span style="color:#f92672">.<
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-</body>
+<script src="/js/custom.js"></script></body>
 </html>

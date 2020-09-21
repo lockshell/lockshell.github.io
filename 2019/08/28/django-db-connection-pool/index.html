@@ -22,7 +22,7 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -78,9 +78,6 @@ if (!doNotTrack) {
 </nav>
 
 	</div>
-
-	
-	<link href="https://lockshell.com/css/custom.css" rel="stylesheet">
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -149,7 +146,7 @@ if (!doNotTrack) {
 </nav>
 	</div>
 </div>
-<div class="content post__content clearfix">
+<div id="custom-content" class="custom-content content post__content clearfix">
 			<h2 id="数据库长连接">数据库长连接</h2>
 <p>长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销。<br>
 先看看官方文档是怎么讲Django长连接的。
@@ -481,5 +478,5 @@ def install_django_orm_patch():
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
-</body>
+<script src="/js/custom.js"></script></body>
 </html>

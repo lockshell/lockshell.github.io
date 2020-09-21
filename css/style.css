@@ -698,14 +698,13 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	margin-bottom: 5px;
 }
 
-.content h1, h2, h3, h4, h5, h6 {
+div#custom-content h1, h2, h3, h4, h5, h6 {
 	padding: 3px 3px 3px 0.5em;
 	border-style: solid;
 	border-width: 0px 0px 1px 3px;
 	border-color: #e22d30;
 	border-bottom-color: #F17C8D;
-	border-radius: 3px;
-	color: #1198AC;
+	color: #2E405B;
 }
 
 .post__footer {
