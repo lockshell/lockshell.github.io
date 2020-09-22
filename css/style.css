@@ -607,6 +607,9 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 
 .post__title {
 	margin: 0;
+	border-left: 0px;
+	padding-left: 0px;
+	border-bottom-color: #F17C8D;
 }
 
 .post__meta {
