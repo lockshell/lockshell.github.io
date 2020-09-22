@@ -219,6 +219,15 @@
     </item>
     
     <item>
+      <title>V2Ray iOS客户端下载</title>
+      <link>https://lockshell.com/2020/01/01/v2ray-ios-clients/</link>
+      <pubDate>Wed, 01 Jan 2020 19:49:23 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2020/01/01/v2ray-ios-clients/</guid>
+      <description>V2Ray核心不区分客户端和服务端，因此V2Ray官方未提供各平台的GUI客户端。许多第三方开发人员基于V2Ray核心开发了适用于各平台的G</description>
+    </item>
+    
+    <item>
       <title>[转]V2Ray 负载均衡</title>
       <link>https://lockshell.com/2020/01/01/v2ray-load-balance/</link>
       <pubDate>Wed, 01 Jan 2020 12:17:28 +0800</pubDate>
