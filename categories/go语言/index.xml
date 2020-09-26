@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Go语言 on 络壳 LockShell</title>
-    <link>https://lockshell.com/categories/go%E8%AF%AD%E8%A8%80/</link>
+    <link>https://blog.lockshell.com/categories/go%E8%AF%AD%E8%A8%80/</link>
     <description>Recent content in Go语言 on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 11 Apr 2020 21:26:43 +0800</lastBuildDate>
     
-	<atom:link href="https://lockshell.com/categories/go%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lockshell.com/categories/go%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Go TCP Server示例</title>
-      <link>https://lockshell.com/2020/04/11/go-tcp-server/</link>
+      <link>https://blog.lockshell.com/2020/04/11/go-tcp-server/</link>
       <pubDate>Sat, 11 Apr 2020 21:26:43 +0800</pubDate>
       
-      <guid>https://lockshell.com/2020/04/11/go-tcp-server/</guid>
+      <guid>https://blog.lockshell.com/2020/04/11/go-tcp-server/</guid>
       <description>4月开始了Go语言的学习。 在五年的工作生涯中，主要用过C、Shell、Python、Java。 体验过Java的臃肿，C的简陋，Python的</description>
     </item>
     

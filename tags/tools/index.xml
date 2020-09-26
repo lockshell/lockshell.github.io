@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tools on 络壳 LockShell</title>
-    <link>https://lockshell.com/tags/tools/</link>
+    <link>https://blog.lockshell.com/tags/tools/</link>
     <description>Recent content in Tools on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 14 Feb 2020 23:07:57 +0800</lastBuildDate>
     
-	<atom:link href="https://lockshell.com/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lockshell.com/tags/tools/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mac设置多个GitHub账号</title>
-      <link>https://lockshell.com/2020/02/14/mutiple-github-accout-on-mac/</link>
+      <link>https://blog.lockshell.com/2020/02/14/mutiple-github-accout-on-mac/</link>
       <pubDate>Fri, 14 Feb 2020 23:07:57 +0800</pubDate>
       
-      <guid>https://lockshell.com/2020/02/14/mutiple-github-accout-on-mac/</guid>
+      <guid>https://blog.lockshell.com/2020/02/14/mutiple-github-accout-on-mac/</guid>
       <description>为多个账号设置 ssh keys 假定我们有两个账号，一个lockshell，一个zhangsan。 分别用不同 github 账号对应的邮箱生成 ssh key，示例： $ ssh-keygen -t rsa -C</description>
     </item>
     
     <item>
       <title>怎样计算子网IP地址</title>
-      <link>https://lockshell.com/2019/08/18/how-to-calculate-ip-subnet-address/</link>
+      <link>https://blog.lockshell.com/2019/08/18/how-to-calculate-ip-subnet-address/</link>
       <pubDate>Sun, 18 Aug 2019 15:08:15 +0800</pubDate>
       
-      <guid>https://lockshell.com/2019/08/18/how-to-calculate-ip-subnet-address/</guid>
+      <guid>https://blog.lockshell.com/2019/08/18/how-to-calculate-ip-subnet-address/</guid>
       <description>工作中遇到这样的子网ip和掩码：192.168.20.0/24，得在脑海中用二进制去算IP范围是多少，子网掩码是多少；有时还得在纸上画一画，</description>
     </item>
     

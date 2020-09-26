@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Django on 络壳 LockShell</title>
-    <link>https://lockshell.com/tags/django/</link>
+    <link>https://blog.lockshell.com/tags/django/</link>
     <description>Recent content in Django on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 18 Sep 2019 23:36:49 +0800</lastBuildDate>
     
-	<atom:link href="https://lockshell.com/tags/django/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lockshell.com/tags/django/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Django 通过Ajax上传文件</title>
-      <link>https://lockshell.com/2019/09/18/django-file-upload-via-ajax-and-formdata/</link>
+      <link>https://blog.lockshell.com/2019/09/18/django-file-upload-via-ajax-and-formdata/</link>
       <pubDate>Wed, 18 Sep 2019 23:36:49 +0800</pubDate>
       
-      <guid>https://lockshell.com/2019/09/18/django-file-upload-via-ajax-and-formdata/</guid>
+      <guid>https://blog.lockshell.com/2019/09/18/django-file-upload-via-ajax-and-formdata/</guid>
       <description>在上传文件到Django Server时，如果前端页面依赖Django form模板，耦合会较多，不便于异常处理和前后端分离。 我们可以通过新建F</description>
     </item>
     
     <item>
       <title>Django QuerySet高效读取百万行数据</title>
-      <link>https://lockshell.com/2019/09/17/django-fetch-huge-data-by-queryset/</link>
+      <link>https://blog.lockshell.com/2019/09/17/django-fetch-huge-data-by-queryset/</link>
       <pubDate>Tue, 17 Sep 2019 21:21:27 +0800</pubDate>
       
-      <guid>https://lockshell.com/2019/09/17/django-fetch-huge-data-by-queryset/</guid>
+      <guid>https://blog.lockshell.com/2019/09/17/django-fetch-huge-data-by-queryset/</guid>
       <description>How to fetch millions of rows from DataBase by Django Queryset in a memory efficient way? Below is a solution that chunks the QuerySets so they&amp;rsquo;re only keeping a small subset in memory. While this is somewhat heavier on the database (multiple queries) it seriously reduces the memory usage. Example import gc def lazy_fetch_iterator(table, start_pk=0, chunk_size=1000, *args, **kwargs): &amp;#34;&amp;#34;&amp;#34; Get the entire rows of a table by iterating over Django</description>
     </item>
     
     <item>
       <title>Django QuerySet缓存和迭代器</title>
-      <link>https://lockshell.com/2019/09/16/django-queryset-cache-and-iterator/</link>
+      <link>https://blog.lockshell.com/2019/09/16/django-queryset-cache-and-iterator/</link>
       <pubDate>Mon, 16 Sep 2019 12:29:35 +0800</pubDate>
       
-      <guid>https://lockshell.com/2019/09/16/django-queryset-cache-and-iterator/</guid>
+      <guid>https://blog.lockshell.com/2019/09/16/django-queryset-cache-and-iterator/</guid>
       <description>Lazy QuerySet A queryset in Django represents a number of rows in the database, optionally filtered by a query. For example, the following code represents all people in the database whose first name is ‘Dave’: person_set = Person.objects.filter(first_name=&amp;quot;Dave&amp;quot;) The above code doesn’t run any database queries. You can can take the person_set and apply additional filters, or pass</description>
     </item>
     
     <item>
       <title>Django数据库连接池</title>
-      <link>https://lockshell.com/2019/08/28/django-db-connection-pool/</link>
+      <link>https://blog.lockshell.com/2019/08/28/django-db-connection-pool/</link>
       <pubDate>Wed, 28 Aug 2019 02:40:57 +0800</pubDate>
       
-      <guid>https://lockshell.com/2019/08/28/django-db-connection-pool/</guid>
+      <guid>https://blog.lockshell.com/2019/08/28/django-db-connection-pool/</guid>
       <description>数据库长连接 长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销。 先看看官方文档是怎么讲Djan</description>
     </item>
     
     <item>
       <title>Django数据库分库&#43;读写分离</title>
-      <link>https://lockshell.com/2019/08/26/django-database-partition/</link>
+      <link>https://blog.lockshell.com/2019/08/26/django-database-partition/</link>
       <pubDate>Mon, 26 Aug 2019 20:47:37 +0800</pubDate>
       
-      <guid>https://lockshell.com/2019/08/26/django-database-partition/</guid>
+      <guid>https://blog.lockshell.com/2019/08/26/django-database-partition/</guid>
       <description>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外， 另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的</description>
     </item>
     
     <item>
       <title>Django数据库分表</title>
-      <link>https://lockshell.com/2019/08/25/django-orm-db-table-partition/</link>
+      <link>https://blog.lockshell.com/2019/08/25/django-orm-db-table-partition/</link>
       <pubDate>Sun, 25 Aug 2019 10:37:30 +0800</pubDate>
       
-      <guid>https://lockshell.com/2019/08/25/django-orm-db-table-partition/</guid>
+      <guid>https://blog.lockshell.com/2019/08/25/django-orm-db-table-partition/</guid>
       <description>Django ORM没有提供默认的分表功能，给访问分表的数据库带来的不变。那么Django分表怎么实现呢？ 分析Django ORM 在实现具体的方案之前，我们先</description>
     </item>
     

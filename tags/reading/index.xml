@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>reading on 络壳 LockShell</title>
-    <link>https://lockshell.com/tags/reading/</link>
+    <link>https://blog.lockshell.com/tags/reading/</link>
     <description>Recent content in reading on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 29 Mar 2020 13:38:32 +0800</lastBuildDate>
     
-	<atom:link href="https://lockshell.com/tags/reading/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lockshell.com/tags/reading/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>读万卷书</title>
-      <link>https://lockshell.com/books/</link>
+      <link>https://blog.lockshell.com/books/</link>
       <pubDate>Sun, 29 Mar 2020 13:38:32 +0800</pubDate>
       
-      <guid>https://lockshell.com/books/</guid>
+      <guid>https://blog.lockshell.com/books/</guid>
       <description>从木子的博客里看到这句，真是超赞： 你所读过的书和你接触的人，决定了你以后能走什么样的路。 注： 推荐指数：从低到高 0-5。 5: 强烈推荐 4: 推荐 3: 一般</description>
     </item>
     
