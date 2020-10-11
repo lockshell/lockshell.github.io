@@ -29,14 +29,5 @@
       <description>工作中遇到这样的子网ip和掩码：192.168.20.0/24，得在脑海中用二进制去算IP范围是多少，子网掩码是多少；有时还得在纸上画一画，</description>
     </item>
     
-    <item>
-      <title>怎样查看DNS服务的IP</title>
-      <link>https://blog.lockshell.com/2019/08/18/how-to-find-dns-ip/</link>
-      <pubDate>Sun, 18 Aug 2019 14:48:06 +0800</pubDate>
-      
-      <guid>https://blog.lockshell.com/2019/08/18/how-to-find-dns-ip/</guid>
-      <description>IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。 域名解析就是域名到IP地址的转换过程。 域名的解析工作由</description>
-    </item>
-    
   </channel>
 </rss>

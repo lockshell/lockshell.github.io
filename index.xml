@@ -273,15 +273,6 @@
     </item>
     
     <item>
-      <title>[转]V2Ray 负载均衡</title>
-      <link>https://blog.lockshell.com/2020/01/01/v2ray-load-balance/</link>
-      <pubDate>Wed, 01 Jan 2020 12:17:28 +0800</pubDate>
-      
-      <guid>https://blog.lockshell.com/2020/01/01/v2ray-load-balance/</guid>
-      <description>负载均衡 相较于 Shadowsocks 等其它的代理，V2Ray 可以配置多服务器实现负载均衡。 此处的负载均衡并非是自动选择一个延迟或网速最好的服务器进行连接，而是指</description>
-    </item>
-    
-    <item>
       <title>V2Ray注意事项 避免VPS服务器被墙</title>
       <link>https://blog.lockshell.com/2020/01/01/v2ray-tips-avoid-vps-being-blocked-by-gfw/</link>
       <pubDate>Wed, 01 Jan 2020 12:08:05 +0800</pubDate>
@@ -525,15 +516,6 @@
     </item>
     
     <item>
-      <title>怎样查看DNS服务的IP</title>
-      <link>https://blog.lockshell.com/2019/08/18/how-to-find-dns-ip/</link>
-      <pubDate>Sun, 18 Aug 2019 14:48:06 +0800</pubDate>
-      
-      <guid>https://blog.lockshell.com/2019/08/18/how-to-find-dns-ip/</guid>
-      <description>IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。 域名解析就是域名到IP地址的转换过程。 域名的解析工作由</description>
-    </item>
-    
-    <item>
       <title>程序员的自我修养</title>
       <link>https://blog.lockshell.com/2019/08/13/programmer-self-discipline/</link>
       <pubDate>Tue, 13 Aug 2019 21:08:08 +0800</pubDate>
@@ -566,7 +548,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://blog.lockshell.com/archives/</guid>
-      <description>很好，总共写了76篇日志，继续加油哦！ 2020-10 2020-10-03 [转]职业选择的原则 2020-09 2020-09-26 可复制的商业闭环 2020-09-21 流畅看1080p、2k、4k视频需要多大带宽？ 2020-08 2020-08-23 [转]</description>
+      <description>很好，总共写了74篇日志，继续加油哦！ 2020-10 2020-10-03 [转]职业选择的原则 2020-09 2020-09-26 可复制的商业闭环 2020-09-21 流畅看1080p、2k、4k视频需要多大带宽？ 2020-08 2020-08-23 [转]</description>
     </item>
     
     <item>
