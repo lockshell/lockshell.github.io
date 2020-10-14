@@ -372,15 +372,6 @@
     </item>
     
     <item>
-      <title>程序员的自我修养2</title>
-      <link>https://blog.lockshell.com/2019/10/12/programmer-self-discipline2/</link>
-      <pubDate>Sat, 12 Oct 2019 14:31:13 +0800</pubDate>
-      
-      <guid>https://blog.lockshell.com/2019/10/12/programmer-self-discipline2/</guid>
-      <description>生活里有几个趋势，预示着熵越来越大。一是密码越来越多，多到记不住；全部用一个密码，又有很多安全风险。二是卡片越来越多，银行卡、交通卡、工卡、</description>
-    </item>
-    
-    <item>
       <title>Django 通过Ajax上传文件</title>
       <link>https://blog.lockshell.com/2019/09/18/django-file-upload-via-ajax-and-formdata/</link>
       <pubDate>Wed, 18 Sep 2019 23:36:49 +0800</pubDate>
