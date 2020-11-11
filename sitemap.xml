@@ -48,21 +48,6 @@
   </url>
   
   <url>
-    <loc>https://blog.lockshell.com/tags/network/</loc>
-    <lastmod>2020-09-21T09:27:42+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.lockshell.com/2020/09/21/bandwidth-requirement-for-1080p-2k-4k-video/</loc>
-    <lastmod>2020-09-21T09:27:42+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.lockshell.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</loc>
-    <lastmod>2020-09-21T09:27:42+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.lockshell.com/2020/08/22/how-to-succeed/</loc>
     <lastmod>2020-08-22T23:14:22+08:00</lastmod>
   </url>
@@ -204,6 +189,11 @@
   
   <url>
     <loc>https://blog.lockshell.com/2020/01/02/v2ray-and-nginx-setup-on-vultr-vps/</loc>
+    <lastmod>2020-01-02T18:03:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lockshell.com/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</loc>
     <lastmod>2020-01-02T18:03:30+08:00</lastmod>
   </url>
   
