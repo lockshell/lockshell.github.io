@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MySQL on 络壳 LockShell</title>
-    <link>https://blog.lockshell.com/tags/mysql/</link>
+    <link>https://lockshell.com/tags/mysql/</link>
     <description>Recent content in MySQL on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 28 Aug 2019 02:40:57 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.lockshell.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lockshell.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Django数据库连接池</title>
-      <link>https://blog.lockshell.com/2019/08/28/django-db-connection-pool/</link>
+      <link>https://lockshell.com/2019/08/28/django-db-connection-pool/</link>
       <pubDate>Wed, 28 Aug 2019 02:40:57 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/08/28/django-db-connection-pool/</guid>
+      <guid>https://lockshell.com/2019/08/28/django-db-connection-pool/</guid>
       <description>数据库长连接 长连接是指程序之间的连接在建立之后，就一直打开，被后续程序重用。使用长连接的初衷是减少连接的开销。 先看看官方文档是怎么讲Djan</description>
     </item>
     
     <item>
       <title>Django数据库分库&#43;读写分离</title>
-      <link>https://blog.lockshell.com/2019/08/26/django-database-partition/</link>
+      <link>https://lockshell.com/2019/08/26/django-database-partition/</link>
       <pubDate>Mon, 26 Aug 2019 20:47:37 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/08/26/django-database-partition/</guid>
+      <guid>https://lockshell.com/2019/08/26/django-database-partition/</guid>
       <description>为了解决单个数据库的性能问题，除了使用性能更好的硬件之外， 另外一个思路就是将一个数据库切分成多个部分放到不同的数据库上，从而缓解单一数据库的</description>
     </item>
     
     <item>
       <title>Django数据库分表</title>
-      <link>https://blog.lockshell.com/2019/08/25/django-orm-db-table-partition/</link>
+      <link>https://lockshell.com/2019/08/25/django-orm-db-table-partition/</link>
       <pubDate>Sun, 25 Aug 2019 10:37:30 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/08/25/django-orm-db-table-partition/</guid>
+      <guid>https://lockshell.com/2019/08/25/django-orm-db-table-partition/</guid>
       <description>Django ORM没有提供默认的分表功能，给访问分表的数据库带来的不变。那么Django分表怎么实现呢？ 分析Django ORM 在实现具体的方案之前，我们先</description>
     </item>
     
     <item>
       <title>MySQL优化思路-后端</title>
-      <link>https://blog.lockshell.com/2019/08/23/mysql-optimization-of-backend/</link>
+      <link>https://lockshell.com/2019/08/23/mysql-optimization-of-backend/</link>
       <pubDate>Fri, 23 Aug 2019 22:42:49 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/08/23/mysql-optimization-of-backend/</guid>
+      <guid>https://lockshell.com/2019/08/23/mysql-optimization-of-backend/</guid>
       <description>基本思路 **首先是如何定位性能瓶颈？** 一般使用show命令、慢查询日志、explain、profiling等进行分析。 当服务器的负载增加时</description>
     </item>
     
     <item>
       <title>Python SQLAlchemy ORM示例</title>
-      <link>https://blog.lockshell.com/2017/07/08/python-sqlalchemy-orm-demo/</link>
+      <link>https://lockshell.com/2017/07/08/python-sqlalchemy-orm-demo/</link>
       <pubDate>Sat, 08 Jul 2017 01:20:04 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2017/07/08/python-sqlalchemy-orm-demo/</guid>
+      <guid>https://lockshell.com/2017/07/08/python-sqlalchemy-orm-demo/</guid>
       <description>SQLAlchemy的是Python的SQL工具包和对象关系映射，给应用程序开发者提供SQL的强大功能和灵活性。 安装 pip install mysql-python pip install sqlalchemy 初始化 SQLAlchemy OR</description>
     </item>
     

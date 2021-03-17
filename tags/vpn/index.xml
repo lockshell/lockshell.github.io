@@ -2,120 +2,120 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VPN on 络壳 LockShell</title>
-    <link>https://blog.lockshell.com/tags/vpn/</link>
+    <link>https://lockshell.com/tags/vpn/</link>
     <description>Recent content in VPN on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 02 Jan 2020 18:03:30 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.lockshell.com/tags/vpn/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lockshell.com/tags/vpn/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>在Vultr VPS上搭建V2Ray&#43;Nginx代理</title>
-      <link>https://blog.lockshell.com/2020/01/02/v2ray-and-nginx-setup-on-vultr-vps/</link>
+      <link>https://lockshell.com/2020/01/02/v2ray-and-nginx-setup-on-vultr-vps/</link>
       <pubDate>Thu, 02 Jan 2020 18:03:30 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/02/v2ray-and-nginx-setup-on-vultr-vps/</guid>
+      <guid>https://lockshell.com/2020/01/02/v2ray-and-nginx-setup-on-vultr-vps/</guid>
       <description>本文假设读者已经具备以下条件： 一台境外的vps，如Vultr VPS; 优惠购买Vultr VPS 一个域名，无备案要求。先设置dns将域名解析到vps的ip</description>
     </item>
     
     <item>
       <title>在Vultr VPS上搭建V2Ray&#43;Caddy代理</title>
-      <link>https://blog.lockshell.com/2020/01/02/v2ray-and-caddy-setup-on-vultr-vps/</link>
+      <link>https://lockshell.com/2020/01/02/v2ray-and-caddy-setup-on-vultr-vps/</link>
       <pubDate>Thu, 02 Jan 2020 13:07:53 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/02/v2ray-and-caddy-setup-on-vultr-vps/</guid>
+      <guid>https://lockshell.com/2020/01/02/v2ray-and-caddy-setup-on-vultr-vps/</guid>
       <description>本文假设读者已经具备以下条件： 一台境外的vps，如Vultr VPS; 优惠购买Vultr VPS 一个域名，无备案要求。先设置dns将域名解析到vps的ip</description>
     </item>
     
     <item>
       <title>V2Ray 经国内VPS中转配置</title>
-      <link>https://blog.lockshell.com/2020/01/01/v2ray-vps-relay/</link>
+      <link>https://lockshell.com/2020/01/01/v2ray-vps-relay/</link>
       <pubDate>Wed, 01 Jan 2020 21:58:48 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/01/v2ray-vps-relay/</guid>
+      <guid>https://lockshell.com/2020/01/01/v2ray-vps-relay/</guid>
       <description>国内 VPS 中转 为了方便维护，或者从速度上的考虑，可以在国内架设一台中转 VPS，在这台 VPS 上判断目标地址是国内还是国外的，只需把国外的流量向国外 VPS 转</description>
     </item>
     
     <item>
       <title>V2Ray Mac客户端V2RayU安装和使用</title>
-      <link>https://blog.lockshell.com/2019/12/31/v2ray-mac-client-v2rayu/</link>
+      <link>https://lockshell.com/2019/12/31/v2ray-mac-client-v2rayu/</link>
       <pubDate>Tue, 31 Dec 2019 22:20:01 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/31/v2ray-mac-client-v2rayu/</guid>
+      <guid>https://lockshell.com/2019/12/31/v2ray-mac-client-v2rayu/</guid>
       <description>V2Ray服务器端安装完成后，接下来就需要用V2Ray客户端与之相连了，下面我们介绍下V2Ray Mac客户端的下载、安装及使用。 安装之前，如</description>
     </item>
     
     <item>
       <title>V2Ray Mac客户端V2RayX安装和使用</title>
-      <link>https://blog.lockshell.com/2019/12/31/v2ray-mac-client-v2rayx/</link>
+      <link>https://lockshell.com/2019/12/31/v2ray-mac-client-v2rayx/</link>
       <pubDate>Tue, 31 Dec 2019 22:17:33 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/31/v2ray-mac-client-v2rayx/</guid>
+      <guid>https://lockshell.com/2019/12/31/v2ray-mac-client-v2rayx/</guid>
       <description>V2Ray服务器端安装完成后，接下来就需要用V2Ray客户端与之相连了，下面我们介绍下V2Ray Mac客户端的下载、安装及使用。 安装之前，如</description>
     </item>
     
     <item>
       <title>V2Ray 安卓客户端V2RayNG安装和使用</title>
-      <link>https://blog.lockshell.com/2019/12/30/v2ray-ng-android-client/</link>
+      <link>https://lockshell.com/2019/12/30/v2ray-ng-android-client/</link>
       <pubDate>Mon, 30 Dec 2019 21:43:52 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/30/v2ray-ng-android-client/</guid>
+      <guid>https://lockshell.com/2019/12/30/v2ray-ng-android-client/</guid>
       <description>V2Ray服务器端安装完成后，接下来就需要用V2Ray客户端与之相连了，下面我们介绍下V2Ray 安卓客户端的下载、安装及使用。 如果你还没有搭</description>
     </item>
     
     <item>
       <title>V2Ray Windows客户端V2RayN安装和使用</title>
-      <link>https://blog.lockshell.com/2019/12/29/v2rayn-core-client/</link>
+      <link>https://lockshell.com/2019/12/29/v2rayn-core-client/</link>
       <pubDate>Sun, 29 Dec 2019 20:15:22 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/29/v2rayn-core-client/</guid>
+      <guid>https://lockshell.com/2019/12/29/v2rayn-core-client/</guid>
       <description>V2Ray服务器端安装完成后，接下来就需要用V2Ray客户端与之相连了，下面我们介绍下V2Ray Windows客户端的下载、安装及使用。 如果</description>
     </item>
     
     <item>
       <title>在AWS EC2上搭建V2ray&#43;Nginx代理</title>
-      <link>https://blog.lockshell.com/2019/12/26/v2ray-and-nginx-proxy-setup-on-aws-ec2/</link>
+      <link>https://lockshell.com/2019/12/26/v2ray-and-nginx-proxy-setup-on-aws-ec2/</link>
       <pubDate>Thu, 26 Dec 2019 18:20:20 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/26/v2ray-and-nginx-proxy-setup-on-aws-ec2/</guid>
+      <guid>https://lockshell.com/2019/12/26/v2ray-and-nginx-proxy-setup-on-aws-ec2/</guid>
       <description>前提条件 本文假设读者已经具备以下条件： 一台境外的vps，购买可参考：一些VPS商家整理。 一个域名，无备案要求。先设置DNS将域名解析到vps</description>
     </item>
     
     <item>
       <title>在AWS EC2上搭建V2ray&#43;Caddy代理</title>
-      <link>https://blog.lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/</link>
+      <link>https://lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/</link>
       <pubDate>Thu, 26 Dec 2019 10:30:37 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/</guid>
+      <guid>https://lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/</guid>
       <description>前提条件 本文假设读者已经具备以下条件： 一台境外的vps，购买可参考：一些VPS商家整理; 一个域名，无备案要求。先设置dns将域名解析到vps</description>
     </item>
     
     <item>
       <title>在AWS EC2上搭建Shadowsocks</title>
-      <link>https://blog.lockshell.com/2019/12/26/vpn-shadowsocks-setup-on-aws-ec2/</link>
+      <link>https://lockshell.com/2019/12/26/vpn-shadowsocks-setup-on-aws-ec2/</link>
       <pubDate>Thu, 26 Dec 2019 00:55:14 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/26/vpn-shadowsocks-setup-on-aws-ec2/</guid>
+      <guid>https://lockshell.com/2019/12/26/vpn-shadowsocks-setup-on-aws-ec2/</guid>
       <description>警告 虽然本文介绍了安装SS VPN的方法，但已不推荐使用基于SS的VPN，作者已被请去喝茶，非常容易被GFW检测到并封杀。 Shadowsock</description>
     </item>
     
     <item>
       <title>在AWS EC2上搭建VPN服务</title>
-      <link>https://blog.lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</link>
+      <link>https://lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</link>
       <pubDate>Wed, 25 Dec 2019 18:01:32 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</guid>
+      <guid>https://lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</guid>
       <description>狭义的VPN虛拟私人网络（Virtual Private Network，缩写：VPN）是一种常用于连接中、大型企业或团体与团体间的私人网络的通讯方法。 广义</description>
     </item>
     
     <item>
       <title>一键安装L2TP VPN</title>
-      <link>https://blog.lockshell.com/2019/12/14/vpn-l2tp-setup/</link>
+      <link>https://lockshell.com/2019/12/14/vpn-l2tp-setup/</link>
       <pubDate>Sat, 14 Dec 2019 23:27:05 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/14/vpn-l2tp-setup/</guid>
+      <guid>https://lockshell.com/2019/12/14/vpn-l2tp-setup/</guid>
       <description>警告 虽然本文介绍了安装L2TP VPN的方法，但已不推荐使用基于L2TP的VPN，非常容易被GFW检测到并封杀。 搭建L2TP VPN 下载脚本 ubuntu wget https://git.io/vpnsetup -O</description>
     </item>
     

@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VPS on 络壳 LockShell</title>
-    <link>https://blog.lockshell.com/tags/vps/</link>
+    <link>https://lockshell.com/tags/vps/</link>
     <description>Recent content in VPS on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 05 Jan 2020 11:16:56 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.lockshell.com/tags/vps/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lockshell.com/tags/vps/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>在VPS上禁止BT下载</title>
-      <link>https://blog.lockshell.com/2020/01/05/block-bt-via-iptables-on-vps/</link>
+      <link>https://lockshell.com/2020/01/05/block-bt-via-iptables-on-vps/</link>
       <pubDate>Sun, 05 Jan 2020 11:16:56 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/05/block-bt-via-iptables-on-vps/</guid>
+      <guid>https://lockshell.com/2020/01/05/block-bt-via-iptables-on-vps/</guid>
       <description>为什么要禁止BT下载？ BT下载受版权保护的资源在国外是非法的。同时管理员还会收到侵权投诉信，甚至可能吃官司。 BT下载会大量占用服务器带宽，消</description>
     </item>
     
     <item>
       <title>国外VPS IP被墙检测及解决方法</title>
-      <link>https://blog.lockshell.com/2020/01/01/vps-ip-blocked-by-gfw/</link>
+      <link>https://lockshell.com/2020/01/01/vps-ip-blocked-by-gfw/</link>
       <pubDate>Wed, 01 Jan 2020 22:33:34 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/01/vps-ip-blocked-by-gfw/</guid>
+      <guid>https://lockshell.com/2020/01/01/vps-ip-blocked-by-gfw/</guid>
       <description>目前有相当一部分国外VPS服务器，是被国内用户用来做代理服务器的，比如架设V2ray等服务器。 而GFW可能会检测出部分协议的代理服务器，直接</description>
     </item>
     
     <item>
       <title>V2Ray注意事项 避免VPS服务器被墙</title>
-      <link>https://blog.lockshell.com/2020/01/01/v2ray-tips-avoid-vps-being-blocked-by-gfw/</link>
+      <link>https://lockshell.com/2020/01/01/v2ray-tips-avoid-vps-being-blocked-by-gfw/</link>
       <pubDate>Wed, 01 Jan 2020 12:08:05 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/01/v2ray-tips-avoid-vps-being-blocked-by-gfw/</guid>
+      <guid>https://lockshell.com/2020/01/01/v2ray-tips-avoid-vps-being-blocked-by-gfw/</guid>
       <description>注意事项之服务器 选择冷门VPS 选择VPS服务器时，可以避开一些热门城市，选择比较冷门的。 一般来说，美国西海岸城市，如洛杉矶、旧金山等，因为对</description>
     </item>
     
     <item>
       <title>在AWS EC2上搭建VPN服务</title>
-      <link>https://blog.lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</link>
+      <link>https://lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</link>
       <pubDate>Wed, 25 Dec 2019 18:01:32 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</guid>
+      <guid>https://lockshell.com/2019/12/25/vpn-setup-on-aws-es2/</guid>
       <description>狭义的VPN虛拟私人网络（Virtual Private Network，缩写：VPN）是一种常用于连接中、大型企业或团体与团体间的私人网络的通讯方法。 广义</description>
     </item>
     
     <item>
       <title>一键安装L2TP VPN</title>
-      <link>https://blog.lockshell.com/2019/12/14/vpn-l2tp-setup/</link>
+      <link>https://lockshell.com/2019/12/14/vpn-l2tp-setup/</link>
       <pubDate>Sat, 14 Dec 2019 23:27:05 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/14/vpn-l2tp-setup/</guid>
+      <guid>https://lockshell.com/2019/12/14/vpn-l2tp-setup/</guid>
       <description>警告 虽然本文介绍了安装L2TP VPN的方法，但已不推荐使用基于L2TP的VPN，非常容易被GFW检测到并封杀。 搭建L2TP VPN 下载脚本 ubuntu wget https://git.io/vpnsetup -O</description>
     </item>
     

@@ -2,147 +2,147 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>V2Ray on 络壳 LockShell</title>
-    <link>https://blog.lockshell.com/tags/v2ray/</link>
+    <link>https://lockshell.com/tags/v2ray/</link>
     <description>Recent content in V2Ray on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 02 Jan 2020 18:03:30 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.lockshell.com/tags/v2ray/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lockshell.com/tags/v2ray/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>在Vultr VPS上搭建V2Ray&#43;Nginx代理</title>
-      <link>https://blog.lockshell.com/2020/01/02/v2ray-and-nginx-setup-on-vultr-vps/</link>
+      <link>https://lockshell.com/2020/01/02/v2ray-and-nginx-setup-on-vultr-vps/</link>
       <pubDate>Thu, 02 Jan 2020 18:03:30 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/02/v2ray-and-nginx-setup-on-vultr-vps/</guid>
+      <guid>https://lockshell.com/2020/01/02/v2ray-and-nginx-setup-on-vultr-vps/</guid>
       <description>本文假设读者已经具备以下条件： 一台境外的vps，如Vultr VPS; 优惠购买Vultr VPS 一个域名，无备案要求。先设置dns将域名解析到vps的ip</description>
     </item>
     
     <item>
       <title>在Vultr VPS上搭建V2Ray&#43;Caddy代理</title>
-      <link>https://blog.lockshell.com/2020/01/02/v2ray-and-caddy-setup-on-vultr-vps/</link>
+      <link>https://lockshell.com/2020/01/02/v2ray-and-caddy-setup-on-vultr-vps/</link>
       <pubDate>Thu, 02 Jan 2020 13:07:53 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/02/v2ray-and-caddy-setup-on-vultr-vps/</guid>
+      <guid>https://lockshell.com/2020/01/02/v2ray-and-caddy-setup-on-vultr-vps/</guid>
       <description>本文假设读者已经具备以下条件： 一台境外的vps，如Vultr VPS; 优惠购买Vultr VPS 一个域名，无备案要求。先设置dns将域名解析到vps的ip</description>
     </item>
     
     <item>
       <title>V2Ray 多用户配置</title>
-      <link>https://blog.lockshell.com/2020/01/01/v2ray-multiple-users/</link>
+      <link>https://lockshell.com/2020/01/01/v2ray-multiple-users/</link>
       <pubDate>Wed, 01 Jan 2020 23:49:23 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/01/v2ray-multiple-users/</guid>
+      <guid>https://lockshell.com/2020/01/01/v2ray-multiple-users/</guid>
       <description>自行搭建好v2ray科学上网环境后，可以设置一个不同的端口或者id再分享。 v2ray一键脚本 运行完后，会输出配置文件路径，默认是 /etc/v</description>
     </item>
     
     <item>
       <title>V2Ray 经国内VPS中转配置</title>
-      <link>https://blog.lockshell.com/2020/01/01/v2ray-vps-relay/</link>
+      <link>https://lockshell.com/2020/01/01/v2ray-vps-relay/</link>
       <pubDate>Wed, 01 Jan 2020 21:58:48 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/01/v2ray-vps-relay/</guid>
+      <guid>https://lockshell.com/2020/01/01/v2ray-vps-relay/</guid>
       <description>国内 VPS 中转 为了方便维护，或者从速度上的考虑，可以在国内架设一台中转 VPS，在这台 VPS 上判断目标地址是国内还是国外的，只需把国外的流量向国外 VPS 转</description>
     </item>
     
     <item>
       <title>[转]V2Ray 通过Docker部署 </title>
-      <link>https://blog.lockshell.com/2020/01/01/v2ray-docker-deploy/</link>
+      <link>https://lockshell.com/2020/01/01/v2ray-docker-deploy/</link>
       <pubDate>Wed, 01 Jan 2020 21:19:05 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/01/v2ray-docker-deploy/</guid>
+      <guid>https://lockshell.com/2020/01/01/v2ray-docker-deploy/</guid>
       <description>Docker 部署 V2Ray Docker 技术是一种新的虚拟化技术，和传统的虚拟化技术不同。V2Ray 同样提供 Docker 部署方式，并且通过 Docker 来部署 V2Ray 会非常轻松高效。 Docker 只能部署在 KVM 或</description>
     </item>
     
     <item>
       <title>V2Ray iOS客户端下载</title>
-      <link>https://blog.lockshell.com/2020/01/01/v2ray-ios-clients/</link>
+      <link>https://lockshell.com/2020/01/01/v2ray-ios-clients/</link>
       <pubDate>Wed, 01 Jan 2020 19:49:23 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/01/v2ray-ios-clients/</guid>
+      <guid>https://lockshell.com/2020/01/01/v2ray-ios-clients/</guid>
       <description>V2Ray核心不区分客户端和服务端，因此V2Ray官方未提供各平台的GUI客户端。许多第三方开发人员基于V2Ray核心开发了适用于各平台的G</description>
     </item>
     
     <item>
       <title>Buy V2Ray VPN Service</title>
-      <link>https://blog.lockshell.com/buy/</link>
+      <link>https://lockshell.com/buy/</link>
       <pubDate>Wed, 01 Jan 2020 18:17:11 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/buy/</guid>
+      <guid>https://lockshell.com/buy/</guid>
       <description>Paypal购买服务 嫌自己维护VPS和域名，自建梯子麻烦小伙伴，可以通过下面的paypal链接购买V2Ray VPN服务： 标准版：30美刀/半</description>
     </item>
     
     <item>
       <title>V2Ray注意事项 避免VPS服务器被墙</title>
-      <link>https://blog.lockshell.com/2020/01/01/v2ray-tips-avoid-vps-being-blocked-by-gfw/</link>
+      <link>https://lockshell.com/2020/01/01/v2ray-tips-avoid-vps-being-blocked-by-gfw/</link>
       <pubDate>Wed, 01 Jan 2020 12:08:05 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/01/v2ray-tips-avoid-vps-being-blocked-by-gfw/</guid>
+      <guid>https://lockshell.com/2020/01/01/v2ray-tips-avoid-vps-being-blocked-by-gfw/</guid>
       <description>注意事项之服务器 选择冷门VPS 选择VPS服务器时，可以避开一些热门城市，选择比较冷门的。 一般来说，美国西海岸城市，如洛杉矶、旧金山等，因为对</description>
     </item>
     
     <item>
       <title>[转]V2Ray 流量统计</title>
-      <link>https://blog.lockshell.com/2020/01/01/v2ray-traffic-statistics/</link>
+      <link>https://lockshell.com/2020/01/01/v2ray-traffic-statistics/</link>
       <pubDate>Wed, 01 Jan 2020 11:46:28 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/01/v2ray-traffic-statistics/</guid>
+      <guid>https://lockshell.com/2020/01/01/v2ray-traffic-statistics/</guid>
       <description>V2Ray 内包含了流量记录器功能，但是默认并不启用。流量统计分两类：inbound和user。 inbound 即配置内各个 inbound 的入站的统计，需要根据 tag 来记录入站流量</description>
     </item>
     
     <item>
       <title>V2Ray Mac客户端V2RayU安装和使用</title>
-      <link>https://blog.lockshell.com/2019/12/31/v2ray-mac-client-v2rayu/</link>
+      <link>https://lockshell.com/2019/12/31/v2ray-mac-client-v2rayu/</link>
       <pubDate>Tue, 31 Dec 2019 22:20:01 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/31/v2ray-mac-client-v2rayu/</guid>
+      <guid>https://lockshell.com/2019/12/31/v2ray-mac-client-v2rayu/</guid>
       <description>V2Ray服务器端安装完成后，接下来就需要用V2Ray客户端与之相连了，下面我们介绍下V2Ray Mac客户端的下载、安装及使用。 安装之前，如</description>
     </item>
     
     <item>
       <title>V2Ray Mac客户端V2RayX安装和使用</title>
-      <link>https://blog.lockshell.com/2019/12/31/v2ray-mac-client-v2rayx/</link>
+      <link>https://lockshell.com/2019/12/31/v2ray-mac-client-v2rayx/</link>
       <pubDate>Tue, 31 Dec 2019 22:17:33 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/31/v2ray-mac-client-v2rayx/</guid>
+      <guid>https://lockshell.com/2019/12/31/v2ray-mac-client-v2rayx/</guid>
       <description>V2Ray服务器端安装完成后，接下来就需要用V2Ray客户端与之相连了，下面我们介绍下V2Ray Mac客户端的下载、安装及使用。 安装之前，如</description>
     </item>
     
     <item>
       <title>V2Ray 安卓客户端V2RayNG安装和使用</title>
-      <link>https://blog.lockshell.com/2019/12/30/v2ray-ng-android-client/</link>
+      <link>https://lockshell.com/2019/12/30/v2ray-ng-android-client/</link>
       <pubDate>Mon, 30 Dec 2019 21:43:52 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/30/v2ray-ng-android-client/</guid>
+      <guid>https://lockshell.com/2019/12/30/v2ray-ng-android-client/</guid>
       <description>V2Ray服务器端安装完成后，接下来就需要用V2Ray客户端与之相连了，下面我们介绍下V2Ray 安卓客户端的下载、安装及使用。 如果你还没有搭</description>
     </item>
     
     <item>
       <title>V2Ray Windows客户端V2RayN安装和使用</title>
-      <link>https://blog.lockshell.com/2019/12/29/v2rayn-core-client/</link>
+      <link>https://lockshell.com/2019/12/29/v2rayn-core-client/</link>
       <pubDate>Sun, 29 Dec 2019 20:15:22 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/29/v2rayn-core-client/</guid>
+      <guid>https://lockshell.com/2019/12/29/v2rayn-core-client/</guid>
       <description>V2Ray服务器端安装完成后，接下来就需要用V2Ray客户端与之相连了，下面我们介绍下V2Ray Windows客户端的下载、安装及使用。 如果</description>
     </item>
     
     <item>
       <title>在AWS EC2上搭建V2ray&#43;Nginx代理</title>
-      <link>https://blog.lockshell.com/2019/12/26/v2ray-and-nginx-proxy-setup-on-aws-ec2/</link>
+      <link>https://lockshell.com/2019/12/26/v2ray-and-nginx-proxy-setup-on-aws-ec2/</link>
       <pubDate>Thu, 26 Dec 2019 18:20:20 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/26/v2ray-and-nginx-proxy-setup-on-aws-ec2/</guid>
+      <guid>https://lockshell.com/2019/12/26/v2ray-and-nginx-proxy-setup-on-aws-ec2/</guid>
       <description>前提条件 本文假设读者已经具备以下条件： 一台境外的vps，购买可参考：一些VPS商家整理。 一个域名，无备案要求。先设置DNS将域名解析到vps</description>
     </item>
     
     <item>
       <title>在AWS EC2上搭建V2ray&#43;Caddy代理</title>
-      <link>https://blog.lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/</link>
+      <link>https://lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/</link>
       <pubDate>Thu, 26 Dec 2019 10:30:37 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/</guid>
+      <guid>https://lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/</guid>
       <description>前提条件 本文假设读者已经具备以下条件： 一台境外的vps，购买可参考：一些VPS商家整理; 一个域名，无备案要求。先设置dns将域名解析到vps</description>
     </item>
     

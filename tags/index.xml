@@ -2,246 +2,246 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 络壳 LockShell</title>
-    <link>https://blog.lockshell.com/tags/</link>
+    <link>https://lockshell.com/tags/</link>
     <description>Recent content in Tags on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 16 Mar 2021 16:34:44 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.lockshell.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lockshell.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Life</title>
-      <link>https://blog.lockshell.com/tags/life/</link>
+      <link>https://lockshell.com/tags/life/</link>
       <pubDate>Tue, 16 Mar 2021 16:34:44 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/life/</guid>
+      <guid>https://lockshell.com/tags/life/</guid>
       <description></description>
     </item>
     
     <item>
       <title>invest</title>
-      <link>https://blog.lockshell.com/tags/invest/</link>
+      <link>https://lockshell.com/tags/invest/</link>
       <pubDate>Thu, 04 Mar 2021 18:02:48 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/invest/</guid>
+      <guid>https://lockshell.com/tags/invest/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Other</title>
-      <link>https://blog.lockshell.com/tags/other/</link>
+      <link>https://lockshell.com/tags/other/</link>
       <pubDate>Thu, 04 Feb 2021 03:30:27 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/other/</guid>
+      <guid>https://lockshell.com/tags/other/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Golang</title>
-      <link>https://blog.lockshell.com/tags/golang/</link>
+      <link>https://lockshell.com/tags/golang/</link>
       <pubDate>Thu, 05 Nov 2020 18:52:32 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/golang/</guid>
+      <guid>https://lockshell.com/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Career</title>
-      <link>https://blog.lockshell.com/tags/career/</link>
+      <link>https://lockshell.com/tags/career/</link>
       <pubDate>Sat, 03 Oct 2020 12:48:22 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/career/</guid>
+      <guid>https://lockshell.com/tags/career/</guid>
       <description></description>
     </item>
     
     <item>
       <title>reading</title>
-      <link>https://blog.lockshell.com/tags/reading/</link>
+      <link>https://lockshell.com/tags/reading/</link>
       <pubDate>Sun, 29 Mar 2020 13:38:32 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/reading/</guid>
+      <guid>https://lockshell.com/tags/reading/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>https://blog.lockshell.com/tags/git/</link>
+      <link>https://lockshell.com/tags/git/</link>
       <pubDate>Fri, 14 Feb 2020 23:07:57 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/git/</guid>
+      <guid>https://lockshell.com/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tools</title>
-      <link>https://blog.lockshell.com/tags/tools/</link>
+      <link>https://lockshell.com/tags/tools/</link>
       <pubDate>Fri, 14 Feb 2020 23:07:57 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/tools/</guid>
+      <guid>https://lockshell.com/tags/tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>AWS</title>
-      <link>https://blog.lockshell.com/tags/aws/</link>
+      <link>https://lockshell.com/tags/aws/</link>
       <pubDate>Sun, 05 Jan 2020 11:16:56 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/aws/</guid>
+      <guid>https://lockshell.com/tags/aws/</guid>
       <description></description>
     </item>
     
     <item>
       <title>BT</title>
-      <link>https://blog.lockshell.com/tags/bt/</link>
+      <link>https://lockshell.com/tags/bt/</link>
       <pubDate>Sun, 05 Jan 2020 11:16:56 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/bt/</guid>
+      <guid>https://lockshell.com/tags/bt/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VPS</title>
-      <link>https://blog.lockshell.com/tags/vps/</link>
+      <link>https://lockshell.com/tags/vps/</link>
       <pubDate>Sun, 05 Jan 2020 11:16:56 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/vps/</guid>
+      <guid>https://lockshell.com/tags/vps/</guid>
       <description></description>
     </item>
     
     <item>
       <title>V2Ray</title>
-      <link>https://blog.lockshell.com/tags/v2ray/</link>
+      <link>https://lockshell.com/tags/v2ray/</link>
       <pubDate>Thu, 02 Jan 2020 18:03:30 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/v2ray/</guid>
+      <guid>https://lockshell.com/tags/v2ray/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VPN</title>
-      <link>https://blog.lockshell.com/tags/vpn/</link>
+      <link>https://lockshell.com/tags/vpn/</link>
       <pubDate>Thu, 02 Jan 2020 18:03:30 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/vpn/</guid>
+      <guid>https://lockshell.com/tags/vpn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Caddy</title>
-      <link>https://blog.lockshell.com/tags/caddy/</link>
+      <link>https://lockshell.com/tags/caddy/</link>
       <pubDate>Thu, 26 Dec 2019 10:30:37 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/caddy/</guid>
+      <guid>https://lockshell.com/tags/caddy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>L2TP</title>
-      <link>https://blog.lockshell.com/tags/l2tp/</link>
+      <link>https://lockshell.com/tags/l2tp/</link>
       <pubDate>Sat, 14 Dec 2019 23:27:05 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/l2tp/</guid>
+      <guid>https://lockshell.com/tags/l2tp/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>https://blog.lockshell.com/tags/python/</link>
+      <link>https://lockshell.com/tags/python/</link>
       <pubDate>Tue, 10 Dec 2019 17:39:40 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/python/</guid>
+      <guid>https://lockshell.com/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HTTP</title>
-      <link>https://blog.lockshell.com/tags/http/</link>
+      <link>https://lockshell.com/tags/http/</link>
       <pubDate>Wed, 04 Dec 2019 20:28:00 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/http/</guid>
+      <guid>https://lockshell.com/tags/http/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Shopee</title>
-      <link>https://blog.lockshell.com/tags/shopee/</link>
+      <link>https://lockshell.com/tags/shopee/</link>
       <pubDate>Sat, 30 Nov 2019 17:46:55 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/shopee/</guid>
+      <guid>https://lockshell.com/tags/shopee/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ajax</title>
-      <link>https://blog.lockshell.com/tags/ajax/</link>
+      <link>https://lockshell.com/tags/ajax/</link>
       <pubDate>Wed, 18 Sep 2019 23:36:49 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/ajax/</guid>
+      <guid>https://lockshell.com/tags/ajax/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Django</title>
-      <link>https://blog.lockshell.com/tags/django/</link>
+      <link>https://lockshell.com/tags/django/</link>
       <pubDate>Wed, 18 Sep 2019 23:36:49 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/django/</guid>
+      <guid>https://lockshell.com/tags/django/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MySQL</title>
-      <link>https://blog.lockshell.com/tags/mysql/</link>
+      <link>https://lockshell.com/tags/mysql/</link>
       <pubDate>Wed, 28 Aug 2019 02:40:57 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/mysql/</guid>
+      <guid>https://lockshell.com/tags/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>https://blog.lockshell.com/tags/linux/</link>
+      <link>https://lockshell.com/tags/linux/</link>
       <pubDate>Sun, 18 Aug 2019 15:08:15 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/linux/</guid>
+      <guid>https://lockshell.com/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nginx</title>
-      <link>https://blog.lockshell.com/tags/nginx/</link>
+      <link>https://lockshell.com/tags/nginx/</link>
       <pubDate>Mon, 12 Aug 2019 15:35:37 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/nginx/</guid>
+      <guid>https://lockshell.com/tags/nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>https://blog.lockshell.com/tags/hugo/</link>
+      <link>https://lockshell.com/tags/hugo/</link>
       <pubDate>Sat, 10 Aug 2019 11:12:00 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/hugo/</guid>
+      <guid>https://lockshell.com/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Thrift</title>
-      <link>https://blog.lockshell.com/tags/thrift/</link>
+      <link>https://lockshell.com/tags/thrift/</link>
       <pubDate>Thu, 04 May 2017 01:28:34 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/thrift/</guid>
+      <guid>https://lockshell.com/tags/thrift/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Flask</title>
-      <link>https://blog.lockshell.com/tags/flask/</link>
+      <link>https://lockshell.com/tags/flask/</link>
       <pubDate>Thu, 19 May 2016 13:43:57 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/tags/flask/</guid>
+      <guid>https://lockshell.com/tags/flask/</guid>
       <description></description>
     </item>
     

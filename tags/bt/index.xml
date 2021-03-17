@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>BT on 络壳 LockShell</title>
-    <link>https://blog.lockshell.com/tags/bt/</link>
+    <link>https://lockshell.com/tags/bt/</link>
     <description>Recent content in BT on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 05 Jan 2020 11:16:56 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.lockshell.com/tags/bt/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lockshell.com/tags/bt/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>在VPS上禁止BT下载</title>
-      <link>https://blog.lockshell.com/2020/01/05/block-bt-via-iptables-on-vps/</link>
+      <link>https://lockshell.com/2020/01/05/block-bt-via-iptables-on-vps/</link>
       <pubDate>Sun, 05 Jan 2020 11:16:56 +0800</pubDate>
       
-      <guid>https://blog.lockshell.com/2020/01/05/block-bt-via-iptables-on-vps/</guid>
+      <guid>https://lockshell.com/2020/01/05/block-bt-via-iptables-on-vps/</guid>
       <description>为什么要禁止BT下载？ BT下载受版权保护的资源在国外是非法的。同时管理员还会收到侵权投诉信，甚至可能吃官司。 BT下载会大量占用服务器带宽，消</description>
     </item>
     
