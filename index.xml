@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>最大的int uint</title>
+      <link>https://lockshell.com/2021/04/01/maximum-int-and-uint/</link>
+      <pubDate>Thu, 01 Apr 2021 14:13:48 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2021/04/01/maximum-int-and-uint/</guid>
+      <description>uint8 : 0 to 255 uint16 : 0 to 65535 uint32 : 0 to 4294967295 uint64 : 0 to 18446744073709551615 int8 : -128 to 127 int16 : -32768 to 32767 int32 : -2147483648 to 2147483647 int64 : -9223372036854775808 to 9223372036854775807</description>
+    </item>
+    
+    <item>
+      <title>奇思妙想</title>
+      <link>https://lockshell.com/2021/03/19/good-ideas/</link>
+      <pubDate>Fri, 19 Mar 2021 18:13:35 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2021/03/19/good-ideas/</guid>
+      <description>你想要月亮，至少跳一跳，伸一伸手，就算你最后够不到月亮，你也得到了一身月光。 仔细想想，你没有结婚，没有月入过万，生活过的一团糟糕，为什么还有</description>
+    </item>
+    
+    <item>
       <title>[转]辛劳一生 仍在底层</title>
       <link>https://lockshell.com/2021/03/16/work-hard-but-still-live-at-bottom-of-society/</link>
       <pubDate>Tue, 16 Mar 2021 16:34:44 +0800</pubDate>
@@ -548,7 +566,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了71篇日志，继续加油哦！ 2021-03 2021-03-16 [转]辛劳一生 仍在底层 2021-03-04 易方达：萧楠谈投资 2021-02 2021-02-04 华夏幸福董事长: 干到今天这步，我愿赌服输 2020-12 2020-12-04 [转]德</description>
+      <description>很好，总共写了73篇日志，继续加油哦！ 2021-04 2021-04-01 最大的int uint 2021-03 2021-03-19 奇思妙想 2021-03-16 [转]辛劳一生 仍在底层 2021-03-04 易方达：萧楠谈投资 2021-02 2021-02-04 华夏幸福董事长: 干到今天</description>
     </item>
     
     <item>

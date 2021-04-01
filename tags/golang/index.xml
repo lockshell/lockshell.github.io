@@ -6,10 +6,19 @@
     <description>Recent content in Golang on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 05 Nov 2020 18:52:32 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 01 Apr 2021 14:13:48 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>最大的int uint</title>
+      <link>https://lockshell.com/2021/04/01/maximum-int-and-uint/</link>
+      <pubDate>Thu, 01 Apr 2021 14:13:48 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2021/04/01/maximum-int-and-uint/</guid>
+      <description>uint8 : 0 to 255 uint16 : 0 to 65535 uint32 : 0 to 4294967295 uint64 : 0 to 18446744073709551615 int8 : -128 to 127 int16 : -32768 to 32767 int32 : -2147483648 to 2147483647 int64 : -9223372036854775808 to 9223372036854775807</description>
+    </item>
     
     <item>
       <title>Go命令报错 cannot load Bufio</title>

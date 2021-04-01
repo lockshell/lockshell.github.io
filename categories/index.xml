@@ -6,15 +6,24 @@
     <description>Recent content in Categories on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 16 Mar 2021 16:34:44 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 01 Apr 2021 14:13:48 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Go语言</title>
+      <link>https://lockshell.com/categories/go%E8%AF%AD%E8%A8%80/</link>
+      <pubDate>Thu, 01 Apr 2021 14:13:48 +0800</pubDate>
+      
+      <guid>https://lockshell.com/categories/go%E8%AF%AD%E8%A8%80/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>技术人生</title>
       <link>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</link>
-      <pubDate>Tue, 16 Mar 2021 16:34:44 +0800</pubDate>
+      <pubDate>Fri, 19 Mar 2021 18:13:35 +0800</pubDate>
       
       <guid>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</guid>
       <description></description>
@@ -35,15 +44,6 @@
       <pubDate>Thu, 04 Feb 2021 03:30:27 +0800</pubDate>
       
       <guid>https://lockshell.com/categories/other/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Go语言</title>
-      <link>https://lockshell.com/categories/go%E8%AF%AD%E8%A8%80/</link>
-      <pubDate>Thu, 05 Nov 2020 18:52:32 +0800</pubDate>
-      
-      <guid>https://lockshell.com/categories/go%E8%AF%AD%E8%A8%80/</guid>
       <description></description>
     </item>
     
