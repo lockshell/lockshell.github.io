@@ -6,10 +6,19 @@
     <description>Recent content in 开发工具 on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 14 Feb 2020 23:07:57 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Apr 2021 09:52:20 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>git diff 中文乱码</title>
+      <link>https://lockshell.com/2021/04/13/git-diff-display-chinese-well/</link>
+      <pubDate>Tue, 13 Apr 2021 09:52:20 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2021/04/13/git-diff-display-chinese-well/</guid>
+      <description>在命令行下输入以下命令： $ git config --global core.quotepath false # 显示 status 编码 $ git config --global gui.encoding utf-8 # 图形界面编码 $ git config --global i18n.commit.encoding utf-8 # 提交信息编码 $ git config --global i18n.logoutputencoding utf-8 # 输出 log 编码 $ export LESSCHARSET=utf-8 最后一条命</description>
+    </item>
     
     <item>
       <title>Mac设置多个GitHub账号</title>

@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>git diff 中文乱码</title>
+      <link>https://lockshell.com/2021/04/13/git-diff-display-chinese-well/</link>
+      <pubDate>Tue, 13 Apr 2021 09:52:20 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2021/04/13/git-diff-display-chinese-well/</guid>
+      <description>在命令行下输入以下命令： $ git config --global core.quotepath false # 显示 status 编码 $ git config --global gui.encoding utf-8 # 图形界面编码 $ git config --global i18n.commit.encoding utf-8 # 提交信息编码 $ git config --global i18n.logoutputencoding utf-8 # 输出 log 编码 $ export LESSCHARSET=utf-8 最后一条命</description>
+    </item>
+    
+    <item>
       <title>最大的int uint</title>
       <link>https://lockshell.com/2021/04/01/maximum-int-and-uint/</link>
       <pubDate>Thu, 01 Apr 2021 14:13:48 +0800</pubDate>
@@ -548,7 +557,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了70篇日志，继续加油哦！ 2021-04 2021-04-01 最大的int uint 2021-03 2021-03-19 奇思妙想 2021-03-16 [转]辛劳一生 仍在底层 2021-03-04 易方达：萧楠谈投资 2021-03-03 易方达：张坤谈投资 2021-02 2021-02-04 华夏</description>
+      <description>很好，总共写了71篇日志，继续加油哦！ 2021-04 2021-04-13 git diff 中文乱码 2021-04-01 最大的int uint 2021-03 2021-03-19 奇思妙想 2021-03-16 [转]辛劳一生 仍在底层 2021-03-04 易方达：萧楠谈投资 2021-03-03 易方达：张坤</description>
     </item>
     
     <item>
