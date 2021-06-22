@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>常见VPN协议对比 - 络壳 LockShell</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="VPN Protocol Comparison">
+	<meta property="og:title" content="常见VPN协议对比" />
+<meta property="og:description" content="VPN Protocol Comparison" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lockshell.com/2019/12/14/vpn-protocol-comparison/" />
+<meta property="article:published_time" content="2019-12-14T22:47:02+08:00" />
+<meta property="article:modified_time" content="2019-12-14T22:47:02+08:00" />
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="常见VPN协议对比"/>
+<meta name="twitter:description" content="VPN Protocol Comparison"/>
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-131513582-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="络壳 LockShell" rel="home">
+				<div class="logo__title">络壳 LockShell</div>
+				<div class="logo__tagline">Slow is fast</div>
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/links/">
+				
+				<span class="menu__text">友情链接</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/archives/">
+				
+				<span class="menu__text">文章归档</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/books/">
+				
+				<span class="menu__text">读万卷书</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+
+	
+	<link href="https://lockshell.com/css/custom.css" rel="stylesheet">
+
+	
+	<script data-ad-client="ca-pub-1242672487226703" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/monokai.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+	<script async src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/languages/go.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	
+</header>
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">常见VPN协议对比</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
+	<time class="meta__text" datetime="2019-12-14T22:47:02&#43;08:00">2019-12-14</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
+	</span>
+</div>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1733 words</span>
+</div>
+		</header><div id="custom-content" class="custom-content content post__content clearfix">
+			<h2 id="vpn翻墙协议对比">VPN翻墙协议对比</h2>
+<p>以上所有 VPN 协议都有各种优点和缺点。有些是更广泛地使用，而另一些服务于更具体的利基和问题。</p>
+<p>以下是每个 VPN 协议脱颖而出的快速细分：</p>
+<p><strong>OpenVPN</strong>是推荐的最频繁、使用最广泛的 VPN 协议。它快速、安全和开源，因此可以由第三方进行审核和改进。唯一真正的缺点是设置和配置的困难。未能以正确的方式设置它可能会导致安全漏洞和性能不佳。</p>
+<p><strong>PPTP</strong>已经安装在大多数较旧的 Windows 操作系统上，因此是一个有吸引力的选择。但是，它通常非常不安全，应该避免，如果隐私是一个问题。其兼容性、易设置性和速度都十分突出。它可以用于访问地理限制的内容，但如果您正在做任何其他工作，您至少应该选择 L2TP/IPSec。</p>
+<p>如果您不交换敏感数据，<strong>L2TP/IPSec</strong>是可靠的 VPN 选择。它基本上是一个改进版本的 PPTP 。一些较旧的设备和平台不支持 OpenVPN，因此这可能是一个有吸引力的选择。唯一真正的缺点是它的安全标准，已经削弱和妥协的国家安全局。</p>
+<p><strong>SoftTher</strong> 是一个较新的 VPN 协议， 但不要让它的青春愚弄你。它提供了与 OpenVPN 类似的功能，但提供了更高水平的灵活性。由于能够跨多个不同的平台和操作系统进行集成，因此很难找到无法使用此协议的设置。此外，它快速而安全。它没有 OpenVPN 的遗产和稳定性， 但本身是一个竞争者。</p>
+<p><strong>WireGuard</strong>是一个向上和即将启动的 VPN 协议。当前版本最适合技术 Linux 用户，但其他平台和操作系统的支持正在工作中。它闪耀着其精益的性质、速度和安全性。通过减少移动部件和选择，可以更轻松地维护和捕获任何安全问题。它目前正在朝着一个稳定的版本努力，因此不建议非技术用户使用，但此 VPN 协议的未来是光明的。</p>
+<p><strong>SSTP</strong>是 Windows 用户可靠的选择。它为您提供与 OpenVPN 类似的安全性和速度，但有一个很大的缺点。由于它是由微软创建的，因此没有任何外部第三方的审查。这意味着代码中可能内置了后门，这损害了整体安全性。其他平台和操作系统可以实现 SSTP，但支持不足。</p>
+<p><strong>IKEv2/IPSec</strong>是一个坚实的快速和安全的 VPN 协议。它突出的能力，它保持一个安全的VPN连接，即使连接丢失，或你切换网络。它的主要用途是移动网络。此外，如果你是黑莓用户，那么这个VPN协议将是你的首选协议。</p>
+<h2 id="哪种-vpn-协议最适合">哪种 VPN 协议最适合？</h2>
+<p>现在，你的头可能旋转试图决定使用哪个VPN协议。</p>
+<p>总体而言，这取决于您的需求，以及您为什么使用 VPN。但是，为了简单，使用 OpenVPN 时不会出错。</p>
+<p>还是不确定？</p>
+<p>下面是一个细分，将帮助您选择最好的VPN协议：</p>
+<ul>
+<li>OpenVPN快速、灵活且安全。无论您的操作系统或平台如何，您都包括在内。</li>
+<li>PPTP几乎不应使用。它易于设置和快速，但它是令人难以置信的不安全。</li>
+<li>L2TP/IPSec是 PPTP 的升级方案，但它也是最慢的连接之一，其安全性值得怀疑。</li>
+<li>SSTP对 Windows 用户来说相当不错。它设置快速且简单，但再次不知道您的连接有多安全和私密。</li>
+<li>IKEv2/IPSec是移动用户不错的选择，也是黑莓用户的必有选择。但是， 除此之外， 与 Openvpn 。</li>
+<li>SoftEther是很好的 Openvpn 竞争者。如果您愿意使用较新的 VPN 协议，而不是 OpenVPN 的旧式协议，那么这是一个不错的第二选择。</li>
+<li>WireGuard真的应该只由技术 Linux 用户使用。一旦版本稳定，它可能获得更多的牵引力，但一般VPN用户应该等待它稳定成熟后再使用。</li>
+</ul>
+<h2 id="常见问题">常见问题</h2>
+<h3 id="最好的vpn协议是什么">最好的VPN协议是什么？</h3>
+<p>没有适合每个人的最佳VPN协议。这个问题的回答取决于你的需求和你在互联网上做什么。如果你是一个狂热的玩家，你可能使用VPN的原因不同的人谁看很多电视节目或经常工作在咖啡馆。</p>
+<h3 id="最快的vpn协议是什么">最快的VPN协议是什么？</h3>
+<p>Wireguard 被认为是最快的 VPN 协议之一，为移动设备提供更快的连接/重新连接时间并延长电池寿命。IKEv2/IPsec 也被认为是一种快速协议，它可能满足许多人的需求。</p>
+<h3 id="什么是最安全的vpn协议">什么是最安全的VPN协议？</h3>
+<p>许多 VPN 专家建议 OpenVPN 作为最安全的协议。它使用 256 位加密作为默认值，但也提供其他密码，如 3DES（三维加密标准）、吹鱼、CAST-128 和 AES（高级加密标准）</p>
+<h3 id="什么是最稳定的vpn协议">什么是最稳定的VPN协议？</h3>
+<p>IKEv2/IPsec 被认为是最稳定的 VPN 协议，因为它提供了强大的连接，并允许用户在网络之间切换，而不会冒其安全风险。</p>
+<h3 id="最简单的-vpn-协议是什么">最简单的 VPN 协议是什么？</h3>
+<p>PPTP 协议内置于许多设备中，是最容易设置的协议之一。但是，由于它已过时且以安全问题为名，因此我们不建议使用它。查看其他选项，如IKEv2/IPsec。</p>
+
+			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
+			<hr>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/vpn/" rel="tag">VPN</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/l2tp/" rel="tag">L2TP</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="络壳 avatar" src="/sheep2.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About 络壳</span>
+	</div>
+	<div class="authorbox__description">
+		文章本天成，妙手偶得之
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/2019/12/10/python-generate-random-password/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Python生成随机密码</p></a>
+	</div>
+	<div class="post-nav__item post-nav__item--next">
+		<a class="post-nav__link" href="/2019/12/14/vpn-l2tp-setup/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">一键安装L2TP VPN</p></a>
+	</div>
+</nav>
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '41b3bd5685f4310306a5',
+    clientSecret: '4b943ef7620d478481ffd403f08bb951e01e22b8',
+    repo: 'lockshell.github.io',
+    owner: 'lockshell',
+    admin: ['lockshell'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 LockShell.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+        </span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

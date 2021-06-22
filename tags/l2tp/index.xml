@@ -20,5 +20,14 @@
       <description>警告 虽然本文介绍了安装L2TP VPN的方法，但已不推荐使用基于L2TP的VPN，非常容易被GFW检测到并封杀。 搭建L2TP VPN 下载脚本 ubuntu wget https://git.io/vpnsetup -O</description>
     </item>
     
+    <item>
+      <title>常见VPN协议对比</title>
+      <link>https://lockshell.com/2019/12/14/vpn-protocol-comparison/</link>
+      <pubDate>Sat, 14 Dec 2019 22:47:02 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2019/12/14/vpn-protocol-comparison/</guid>
+      <description>VPN翻墙协议对比 以上所有 VPN 协议都有各种优点和缺点。有些是更广泛地使用，而另一些服务于更具体的利基和问题。 以下是每个 VPN 协议脱颖而出的快速细分</description>
+    </item>
+    
   </channel>
 </rss>
