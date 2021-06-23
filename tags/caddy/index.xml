@@ -17,7 +17,7 @@
       <pubDate>Thu, 26 Dec 2019 10:30:37 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/12/26/v2ray-and-caddy-setup-on-aws-ec2/</guid>
-      <description>前提条件 本文假设读者已经具备以下条件： 一台境外的vps，购买可参考：一些VPS商家整理; 一个域名，无备案要求。先设置dns将域名解析到vps</description>
+      <description>付费VPN 如果觉得自建VPN麻烦，可以选择付费VPN: Panda VPN 是性价比不错的 前提条件 本文假设读者已经具备以下条件： 一台境外的vps，购买可参考：</description>
     </item>
     
   </channel>
