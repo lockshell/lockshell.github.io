@@ -377,7 +377,7 @@
       <pubDate>Sat, 14 Dec 2019 23:27:05 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/12/14/vpn-l2tp-setup/</guid>
-      <description>警告 虽然本文介绍了安装L2TP VPN的方法，但已不推荐使用基于L2TP的VPN，非常容易被GFW检测到并封杀。 付费VPN 如果觉得自建VPN麻</description>
+      <description>警告 虽然本文介绍了安装L2TP VPN的方法，但已不推荐使用基于L2TP的VPN，非常容易被GFW检测到并封杀。推荐安装使用安全性更好的V2R</description>
     </item>
     
     <item>

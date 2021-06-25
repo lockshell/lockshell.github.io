@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>一键安装L2TP VPN - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Vpn L2tp Setup on Ubuntu by one cmd">
+	<meta name="description" content="VPM L2TP Setup on Ubuntu by one single command">
 	<meta property="og:title" content="一键安装L2TP VPN" />
-<meta property="og:description" content="Vpn L2tp Setup on Ubuntu by one cmd" />
+<meta property="og:description" content="VPM L2TP Setup on Ubuntu by one single command" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lockshell.com/2019/12/14/vpn-l2tp-setup/" />
 <meta property="article:published_time" content="2019-12-14T23:27:05+08:00" />
@@ -16,7 +16,7 @@
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="一键安装L2TP VPN"/>
-<meta name="twitter:description" content="Vpn L2tp Setup on Ubuntu by one cmd"/>
+<meta name="twitter:description" content="VPM L2TP Setup on Ubuntu by one single command"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -114,7 +114,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 712 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 1006 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -132,6 +132,7 @@ if (!doNotTrack) {
             <li><a href="#修改配置">修改配置</a></li>
             <li><a href="#启动服务">启动服务</a></li>
             <li><a href="#开放aws端口">开放AWS端口</a></li>
+            <li><a href="#软件说明">软件说明</a></li>
             <li><a href="#客户端访问">客户端访问</a>
               <ol>
                 <li><a href="#mac">Mac</a></li>
@@ -151,25 +152,60 @@ if (!doNotTrack) {
 <div id="custom-content" class="custom-content content post__content clearfix">
 			<h2 id="警告">警告</h2>
 <blockquote>
-<p>虽然本文介绍了安装L2TP VPN的方法，但已不推荐使用基于L2TP的VPN，非常容易被GFW检测到并封杀。</p>
+<p>虽然本文介绍了安装L2TP VPN的方法，但已不推荐使用基于L2TP的VPN，非常容易被GFW检测到并封杀。推荐安装使用安全性更好的V2Ray。</p>
 </blockquote>
 <h2 id="付费vpn">付费VPN</h2>
-<p>如果觉得自建VPN麻烦，可以选择付费VPN: <strong><a href="https://www.pantoto.xyz/r/42352574">Panda VPN</a></strong> 是性价比不错的</p>
+<p>朋友在新加坡和日本的VPS上搭建了V2Ray，嫌自己维护VPS和域名麻烦小伙伴，可以通过下面的paypal链接购买V2Ray服务：</p>
+<ul>
+<li>标准版：30美刀/半年，50美刀/年，每月100G流量，每天一块钱，畅享高速国际网络，油管1080P无压力。</li>
+<li>VIP版：90美刀/半年，150美刀/年，每月1T流量。</li>
+</ul>
+<form style="margin-left: 2em;margin-bottom: 1em" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="HZ4UWSHNRQA7N">
+<table>
+<tr><td><input type="hidden" name="on0" value="版本">版本</td></tr><tr><td><select name="os0">
+	<option value="标准版本">标准版本 $50.00 USD</option>
+	<option value="VIP版本">VIP版本 $150.00 USD</option>
+	<option value="半年标准版本">半年标准版本 $30.00 USD</option>
+	<option value="半年VIP版本">半年VIP版本 $90.00 USD</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="charset" value="utf-8">
+<input type="image" src="https://www.paypalobjects.com/zh_XC/C2/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal——最安全便捷的在线支付方式！">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+</form>
+<p>支付完成请邮件付款截图到<code>paybowen@gmail.com</code>，V2Ray账号密码及客户端会通过邮件发送。</p>
 <h2 id="搭建l2tp-vpn">搭建L2TP VPN</h2>
 <h3 id="下载脚本">下载脚本</h3>
 <p>ubuntu</p>
 <pre><code>wget https://git.io/vpnsetup -O vpnsetup.sh &amp;&amp; sudo sh vpnsetup.sh
-</code></pre><p>centos</p>
-<pre><code>wget https://git.io/vpnsetup-centos -O vpnsetup.sh &amp;&amp; sudo sh vpnsetup.sh
 </code></pre><h3 id="修改配置">修改配置</h3>
-<pre><code>YOUR_IPSEC_PSK='lockshell.com'
-YOUR_USERNAME='lockshell'
+<pre><code>YOUR_IPSEC_PSK='abc'
+YOUR_USERNAME='xyz'
 YOUR_PASSWORD='1234567'
 </code></pre><h3 id="启动服务">启动服务</h3>
 <pre><code>sudo sh vpnsetup.sh
 </code></pre><h3 id="开放aws端口">开放AWS端口</h3>
 <p>如果使用的是AWS的VPS，现在 vpn 服务还不能直接访问，需要将 vpn 服务端口对外网开放。
-vpn 服务使用到的端口有 500/4500/50/51/1701，通过配置AWS安全组可以开放这些端口。</p>
+vpn 服务使用到的端口有 500/4500/1701，通过配置AWS安全组可以开放这些端口，以使得客户端可以通过防火墙链接到虚拟机。</p>
+<p>现在实例中找到对应属于的安全组，然后再在安全组添加入站规则如下，其中来源选择任何位置</p>
+<ul>
+<li>UDP port 1701 (for L2TP)</li>
+<li>UDP port 500 (for IKE)</li>
+<li>UDP port 4500 (for IPSec over UDP)</li>
+</ul>
+<h3 id="软件说明">软件说明</h3>
+<p>脚本用到的软件分别起这些作用：</p>
+<ul>
+<li>openswan(ipsec) : 提供一个密钥</li>
+<li>ppp：提供用户名和密码</li>
+<li>xl2tpd： 提供L2TP服务</li>
+<li>sysctl： 提供服务器内部转发；它能够将服务器内部的ip地址关系进行转发和映射，从而实现我们连接VPN之后的用户，能够通过内部的一些端口进行请求的转发</li>
+<li>iptables：提供请求从服务器内部转向外部，外部响应转向服务器内部。</li>
+</ul>
+<p>手机或者其他设备就可以尝试连接这个VPN了，记得协议选择<code>L2TP</code></p>
 <h3 id="客户端访问">客户端访问</h3>
 <h4 id="mac">Mac</h4>
 <ul>
@@ -191,29 +227,11 @@ vpn 服务使用到的端口有 500/4500/50/51/1701，通过配置AWS安全组�
 <pre><code>&quot;user1&quot; l2tpd &quot;password1&quot; *
 &quot;user2&quot; l2tpd &quot;password2&quot; *
 &quot;user3&quot; l2tpd &quot;password3&quot; *
-</code></pre><h2 id="购买服务">购买服务</h2>
-<p>朋友在新加坡和日本的VPS上搭建了V2Ray，嫌自己维护VPS和域名麻烦小伙伴，可以通过下面的paypal链接购买V2Ray服务：</p>
-<ul>
-<li>标准版：30美刀/半年，50美刀/年，每月60G流量，每天一块钱，畅享高速国际网络，油管1080P无压力。</li>
-<li>VIP版：90美刀/半年，150美刀/年，每月300G流量。</li>
-</ul>
-<form style="margin-left: 2em;margin-bottom: 1em" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="HZ4UWSHNRQA7N">
-<table>
-<tr><td><input type="hidden" name="on0" value="版本">版本</td></tr><tr><td><select name="os0">
-	<option value="标准版本">标准版本 $50.00 USD</option>
-	<option value="VIP版本">VIP版本 $150.00 USD</option>
-	<option value="半年标准版本">半年标准版本 $30.00 USD</option>
-	<option value="半年VIP版本">半年VIP版本 $90.00 USD</option>
-</select> </td></tr>
-</table>
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="charset" value="utf-8">
-<input type="image" src="https://www.paypalobjects.com/zh_XC/C2/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal——最安全便捷的在线支付方式！">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-</form>
-<p>支付完成请邮件付款截图到<code>paybowen@gmail.com</code>，V2Ray账号密码及客户端会通过邮件发送。</p>
+</code></pre><blockquote>
+<p>在里边新增一行类似这样的： loginname * loginpassword *</p>
+</blockquote>
+<p>第一个是用户名，然后空格<em>号，再是密码，后边再有一个空格</em>号。</p>
+<h2 id="购买服务">购买服务</h2>
 
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
