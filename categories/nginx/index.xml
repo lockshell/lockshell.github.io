@@ -6,19 +6,10 @@
     <description>Recent content in Nginx on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 12 Aug 2019 15:35:37 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 17 Aug 2018 11:20:19 +0800</lastBuildDate>
     
 	<atom:link href="https://lockshell.com/categories/nginx/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Nginx安全相关配置</title>
-      <link>https://lockshell.com/2019/08/12/nginx-security-configs/</link>
-      <pubDate>Mon, 12 Aug 2019 15:35:37 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/12/nginx-security-configs/</guid>
-      <description>&lt;p&gt;A summary of Nginx security configuration.&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>Nginx正向代理配置</title>

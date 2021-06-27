@@ -516,15 +516,6 @@
     </item>
     
     <item>
-      <title>Nginx安全相关配置</title>
-      <link>https://lockshell.com/2019/08/12/nginx-security-configs/</link>
-      <pubDate>Mon, 12 Aug 2019 15:35:37 +0800</pubDate>
-      
-      <guid>https://lockshell.com/2019/08/12/nginx-security-configs/</guid>
-      <description>&lt;p&gt;A summary of Nginx security configuration.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Add Gitalk for comments in Hugo Blog</title>
       <link>https://lockshell.com/2019/08/10/add-gitalk-for-hugo-blog/</link>
       <pubDate>Sat, 10 Aug 2019 11:12:00 +0800</pubDate>
