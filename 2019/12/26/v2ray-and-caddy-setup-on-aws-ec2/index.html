@@ -114,7 +114,7 @@ if (!doNotTrack) {
 	<span class="meta__text"><a class="meta__link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="category">科学上网</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3098 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 3290 words</span>
 </div>
 		</header>
 <div class="post__toc toc">
@@ -128,13 +128,14 @@ if (!doNotTrack) {
         <li><a href="#前提条件">前提条件</a></li>
         <li><a href="#v2ay服务端">V2ay服务端</a>
           <ol>
+            <li><a href="#校准时区">校准时区</a></li>
             <li><a href="#服务端安装">服务端安装</a></li>
             <li><a href="#修改配置">修改配置</a></li>
             <li><a href="#启动v2ray">启动V2ray</a></li>
             <li><a href="#服务端配置">服务端配置</a></li>
+            <li><a href="#v2ray高级配置">V2Ray高级配置</a></li>
           </ol>
         </li>
-        <li><a href="#v2ray高级配置">V2Ray高级配置</a></li>
         <li><a href="#v2ray客户端">V2Ray客户端</a>
           <ol>
             <li><a href="#客户端配置">客户端配置</a></li>
@@ -182,22 +183,49 @@ if (!doNotTrack) {
 <li>V2ray: 4.x</li>
 </ul>
 <h2 id="v2ay服务端">V2ay服务端</h2>
-<h3 id="服务端安装">服务端安装</h3>
+<h3 id="校准时区">校准时区</h3>
+<blockquote>
+<p>VMess 协议的认证基于时间，一定要保证服务器和客户端的系统时间相差要在 90 秒以内。</p>
+</blockquote>
+<p>这里我们把时区设成上海</p>
+<pre><code>&gt; timedatectl list-timezones | grep Shanghai
+Asia/Shanghai
+
+&gt; sudo timedatectl set-timezone Asia/Shanghai
+
+&gt; date -R
+Sat, 26 Jun 2021 18:03:36 +0800
+</code></pre><h3 id="服务端安装">服务端安装</h3>
 <pre><code>curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
 sudo bash install-release.sh
+</code></pre><pre><code># /etc/systemd/system/v2ray.service.d/10-donot_touch_single_conf.conf
+# In case you have a good reason to do so, duplicate this file in the same directory and make your customizes there.
+# Or all changes you made will be lost!  # Refer: https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+[Service]
+ExecStart=
+ExecStart=/usr/local/bin/v2ray -config /usr/local/etc/v2ray/config.json
+
+installed: /usr/local/bin/v2ray
+installed: /usr/local/bin/v2ctl
+installed: /usr/local/share/v2ray/geoip.dat
+installed: /usr/local/share/v2ray/geosite.dat
+installed: /usr/local/etc/v2ray/config.json
+installed: /var/log/v2ray/
+installed: /var/log/v2ray/access.log
+installed: /var/log/v2ray/error.log
+installed: /etc/systemd/system/v2ray.service
+installed: /etc/systemd/system/v2ray@.service
 </code></pre><p>此脚本会自动安装以下文件：</p>
 <ul>
 <li>/usr/bin/v2ray/v2ray：V2Ray 程序；</li>
 <li>/usr/bin/v2ray/v2ctl：V2Ray 工具；</li>
 <li>/etc/v2ray/config.json：配置文件；</li>
 <li>/usr/bin/v2ray/geoip.dat：IP 数据文件</li>
-<li>/usr/bin/v2ray/geosite.dat：域名数据文件 此脚本会配置自动运行脚本。<br>
-自动运行脚本会在系统重启之后，自动运行 V2Ray。
-目前自动运行脚本只支持带有 Systemd 的系统，以及 Debian / Ubuntu 全系列。</li>
+<li>/usr/bin/v2ray/geosite.dat：域名数据文件 此脚本会配置自动运行脚本。<br></li>
 </ul>
 <h3 id="修改配置">修改配置</h3>
-<p>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式。</p>
-<pre><code>vim /etc/v2ray/config.json 
+<p>编辑 /usr/local/etc/v2ray/config.json 文件来配置你需要的代理方式。</p>
+<pre><code>vim /usr/local/etc/v2ray/config.json
 </code></pre><h3 id="启动v2ray">启动V2ray</h3>
 <pre><code>service v2ray start
 </code></pre><ul>
@@ -210,13 +238,13 @@ sudo bash install-release.sh
 <p>启动后，V2ray会以 Vmess + WS 方式监听 8888 端口。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">{
     <span style="color:#66d9ef">&#34;inbound&#34;: </span>{
-        <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">8888</span>, <span style="color:#75715e"># 服务器监听端口</span>
-        <span style="color:#66d9ef">&#34;listen&#34;: </span><span style="color:#e6db74">&#34;127.0.0.1&#34;</span>, <span style="color:#75715e"># 只监听 127.0.0.1，避免除本机外的机器探测到开放了8888端口 </span>
+        <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">8888</span>,
+        <span style="color:#66d9ef">&#34;listen&#34;: </span><span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
         <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>,
         <span style="color:#66d9ef">&#34;settings&#34;: </span>{
             <span style="color:#66d9ef">&#34;clients&#34;: </span>[
                 {
-                    <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;b831381d-6324-4d53-ad4f-8cda48b30811&#34;</span>,
+                    <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;26f616e6-d668-11eb-baaf-acde48001122&#34;</span>, 
                     <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">64</span>
                 }
             ]
@@ -229,11 +257,17 @@ sudo bash install-release.sh
         }
     },
     <span style="color:#66d9ef">&#34;outbound&#34;: </span>{
-        <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;freedom&#34;</span>, <span style="color:#75715e"># 主传出协议 这里是直接转发所以流量</span>
+        <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;freedom&#34;</span>, <span style="color:#75715e"># 主传出协议 这里是直接转发所有流量</span>
         <span style="color:#66d9ef">&#34;settings&#34;: </span>{}
     }
 }
-</code></pre></div><h2 id="v2ray高级配置">V2Ray高级配置</h2>
+</code></pre></div><p>说明：</p>
+<ul>
+<li><code>8888</code> 服务器监听端口</li>
+<li><code>127.0.0.1</code>代表本机, 只监听 127.0.0.1，避免除本机外的机器探测到开放了8888端口</li>
+<li>id 为 UUID 格式，请使用软件生成，不要尝试自己造一个，否则很大程度上造出一个错误的格式来。</li>
+</ul>
+<h3 id="v2ray高级配置">V2Ray高级配置</h3>
 <ul>
 <li><a href="https://lockshell.com/2020/01/01/v2ray-multiple-users/">V2Ray 多用户配置</a></li>
 <li><a href="https://lockshell.com/2020/01/01/v2ray-vps-relay/">V2Ray 经国内VPS中转配置</a></li>
@@ -269,7 +303,7 @@ sudo bash install-release.sh
             <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">8888</span>,  <span style="color:#75715e"># 服务器监听的端口</span>
             <span style="color:#66d9ef">&#34;users&#34;: </span>[
               {
-                <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;b831381d-6324-4d53-ad4f-8cda48b30811&#34;</span>,  <span style="color:#75715e"># 用户 ID，必须与服务器端配置相同</span>
+                <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;26f616e6-d668-11eb-baaf-acde48001122&#34;</span>,  <span style="color:#75715e"># 用户 ID，必须与服务器端配置相同</span>
                 <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">64</span> <span style="color:#75715e"># 此处的值也应当与服务器相同</span>
               }
             ]
@@ -310,6 +344,17 @@ Caddy 会自动申请证书并自动更新，所以使用 Caddy 不用指定证�
 <h3 id="安装caddy">安装Caddy</h3>
 <pre><code>sudo apt update
 sudo apt install caddy
+</code></pre><p>如果遇到这个错误</p>
+<blockquote>
+<p>E: Unable to locate package caddy</p>
+</blockquote>
+<p>可以运行</p>
+<pre><code>sudo apt-get install curl
+sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo apt-key add -
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+sudo apt update
+sudo apt install caddy
 </code></pre><p>确认caddy版本</p>
 <pre><code>caddy version
 v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
@@ -340,7 +385,7 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
 <li>V2Ray收到请求后依然 按 Vmess 处理，V2ray服务器端不需要配置 TLS</li>
 </ul>
 <h3 id="启动caddy">启动Caddy</h3>
-<pre><code>sudo caddy start --config Caddfile
+<pre><code>sudo caddy start --config Caddyfile
 </code></pre><h3 id="检查证书">检查证书</h3>
 <p>直接用浏览器访问这个地址，这里示例域名: yourdomain.com</p>
 <pre><code>https://crt.sh/?q=yourdomain.com
@@ -373,7 +418,7 @@ v2.0.0 h1:pQSaIJGFluFvu8KDGDODV8u4/QRED/OPyIR+MWYYse8=
             <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">443</span>, <span style="color:#75715e"># 服务器端口 443是https使用的端口</span>
             <span style="color:#66d9ef">&#34;users&#34;: </span>[
               {
-                <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;b831381d-6324-4d53-ad4f-8cda48b30811&#34;</span>, <span style="color:#75715e"># 用户 ID，必须与服务器端配置相同</span>
+                <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;26f616e6-d668-11eb-baaf-acde48001122&#34;</span>, <span style="color:#75715e"># 用户 ID，必须与服务器端配置相同</span>
                 <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">64</span> <span style="color:#75715e"># 此处的值也应当与服务器相同</span>
               }
             ]
