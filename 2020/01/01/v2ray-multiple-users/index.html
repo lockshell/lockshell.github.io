@@ -10,9 +10,10 @@
 	<meta property="og:title" content="V2Ray 多用户配置" />
 <meta property="og:description" content="V2ray Multiple Users config" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2020/01/01/v2ray-multiple-users/" />
+<meta property="og:url" content="https://lockshell.com/2020/01/01/v2ray-multiple-users/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-01-01T23:49:23+08:00" />
 <meta property="article:modified_time" content="2020-01-01T23:49:23+08:00" />
+
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="V2Ray 多用户配置"/>
@@ -136,38 +137,38 @@ if (!doNotTrack) {
 			<p>自行搭建好v2ray科学上网环境后，可以设置一个不同的端口或者id再分享。</p>
 <p>v2ray一键脚本 运行完后，会输出配置文件路径，默认是 /etc/v2ray/config.json，其内容类似这样：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">{
-  <span style="color:#66d9ef">&#34;log&#34;: </span>{
-    <span style="color:#66d9ef">&#34;loglevel&#34;: </span><span style="color:#e6db74">&#34;info&#34;</span>,
-    <span style="color:#66d9ef">&#34;access&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/access.log&#34;</span>,
-    <span style="color:#66d9ef">&#34;error&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/error.log&#34;</span>
+  <span style="color:#f92672">&#34;log&#34;: </span>{
+    <span style="color:#f92672">&#34;loglevel&#34;: </span><span style="color:#e6db74">&#34;info&#34;</span>,
+    <span style="color:#f92672">&#34;access&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/access.log&#34;</span>,
+    <span style="color:#f92672">&#34;error&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/error.log&#34;</span>
   },
-  <span style="color:#66d9ef">&#34;inbounds&#34;: </span>[{
-    <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">8888</span>,
-    <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>,
-    <span style="color:#66d9ef">&#34;settings&#34;: </span>{
-      <span style="color:#66d9ef">&#34;clients&#34;: </span>[
+  <span style="color:#f92672">&#34;inbounds&#34;: </span>[{
+    <span style="color:#f92672">&#34;port&#34;: </span><span style="color:#ae81ff">8888</span>,
+    <span style="color:#f92672">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>,
+    <span style="color:#f92672">&#34;settings&#34;: </span>{
+      <span style="color:#f92672">&#34;clients&#34;: </span>[
         {
-          <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;6be0aa25-xxxx-xxxx-xxxx-75cd3485021f&#34;</span>,
-          <span style="color:#66d9ef">&#34;level&#34;: </span><span style="color:#ae81ff">1</span>,
-          <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">53</span>
+          <span style="color:#f92672">&#34;id&#34;: </span><span style="color:#e6db74">&#34;6be0aa25-xxxx-xxxx-xxxx-75cd3485021f&#34;</span>,
+          <span style="color:#f92672">&#34;level&#34;: </span><span style="color:#ae81ff">1</span>,
+          <span style="color:#f92672">&#34;alterId&#34;: </span><span style="color:#ae81ff">53</span>
         }
       ]
     }
   }],
-  <span style="color:#66d9ef">&#34;outbounds&#34;: </span>[{
-    <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;freedom&#34;</span>,
-    <span style="color:#66d9ef">&#34;settings&#34;: </span>{}
+  <span style="color:#f92672">&#34;outbounds&#34;: </span>[{
+    <span style="color:#f92672">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;freedom&#34;</span>,
+    <span style="color:#f92672">&#34;settings&#34;: </span>{}
   },{
-    <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;blackhole&#34;</span>,
-    <span style="color:#66d9ef">&#34;settings&#34;: </span>{},
-    <span style="color:#66d9ef">&#34;tag&#34;: </span><span style="color:#e6db74">&#34;blocked&#34;</span>
+    <span style="color:#f92672">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;blackhole&#34;</span>,
+    <span style="color:#f92672">&#34;settings&#34;: </span>{},
+    <span style="color:#f92672">&#34;tag&#34;: </span><span style="color:#e6db74">&#34;blocked&#34;</span>
   }],
-  <span style="color:#66d9ef">&#34;routing&#34;: </span>{
-    <span style="color:#66d9ef">&#34;rules&#34;: </span>[
+  <span style="color:#f92672">&#34;routing&#34;: </span>{
+    <span style="color:#f92672">&#34;rules&#34;: </span>[
       {
-        <span style="color:#66d9ef">&#34;type&#34;: </span><span style="color:#e6db74">&#34;field&#34;</span>,
-        <span style="color:#66d9ef">&#34;ip&#34;: </span>[<span style="color:#e6db74">&#34;geoip:private&#34;</span>],
-        <span style="color:#66d9ef">&#34;outboundTag&#34;: </span><span style="color:#e6db74">&#34;blocked&#34;</span>
+        <span style="color:#f92672">&#34;type&#34;: </span><span style="color:#e6db74">&#34;field&#34;</span>,
+        <span style="color:#f92672">&#34;ip&#34;: </span>[<span style="color:#e6db74">&#34;geoip:private&#34;</span>],
+        <span style="color:#f92672">&#34;outboundTag&#34;: </span><span style="color:#e6db74">&#34;blocked&#34;</span>
       }
     ]
   }
@@ -177,25 +178,25 @@ if (!doNotTrack) {
 <p>这是最简单的配置多用户方式。方法是编辑 /etc/v2ray/config.json 文件，在”clients“一节中增加新增用户配置。</p>
 <p>例如在上面配置基础上增加一个用户：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">{
-  <span style="color:#66d9ef">&#34;log&#34;: </span>{
-    <span style="color:#66d9ef">&#34;loglevel&#34;: </span><span style="color:#e6db74">&#34;info&#34;</span>,
-    <span style="color:#66d9ef">&#34;access&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/access.log&#34;</span>,
-    <span style="color:#66d9ef">&#34;error&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/error.log&#34;</span>
+  <span style="color:#f92672">&#34;log&#34;: </span>{
+    <span style="color:#f92672">&#34;loglevel&#34;: </span><span style="color:#e6db74">&#34;info&#34;</span>,
+    <span style="color:#f92672">&#34;access&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/access.log&#34;</span>,
+    <span style="color:#f92672">&#34;error&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/error.log&#34;</span>
   },
-  <span style="color:#66d9ef">&#34;inbounds&#34;: </span>[{
-    <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">8888</span>,
-    <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>,
-    <span style="color:#66d9ef">&#34;settings&#34;: </span>{
-      <span style="color:#66d9ef">&#34;clients&#34;: </span>[
+  <span style="color:#f92672">&#34;inbounds&#34;: </span>[{
+    <span style="color:#f92672">&#34;port&#34;: </span><span style="color:#ae81ff">8888</span>,
+    <span style="color:#f92672">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>,
+    <span style="color:#f92672">&#34;settings&#34;: </span>{
+      <span style="color:#f92672">&#34;clients&#34;: </span>[
         {
-          <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;12345625-xxxx-xxxx-xxxx-75cd3485021f&#34;</span>,
-          <span style="color:#66d9ef">&#34;level&#34;: </span><span style="color:#ae81ff">1</span>,
-          <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">53</span>
+          <span style="color:#f92672">&#34;id&#34;: </span><span style="color:#e6db74">&#34;12345625-xxxx-xxxx-xxxx-75cd3485021f&#34;</span>,
+          <span style="color:#f92672">&#34;level&#34;: </span><span style="color:#ae81ff">1</span>,
+          <span style="color:#f92672">&#34;alterId&#34;: </span><span style="color:#ae81ff">53</span>
         },
         {
-          <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;12345625-xxxx-xxxx-xxxx-75cd3485021f&#34;</span>,
-          <span style="color:#66d9ef">&#34;level&#34;: </span><span style="color:#ae81ff">1</span>,
-          <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">63</span> <span style="color:#75715e"># 建议50-150之间的一个整数</span>
+          <span style="color:#f92672">&#34;id&#34;: </span><span style="color:#e6db74">&#34;12345625-xxxx-xxxx-xxxx-75cd3485021f&#34;</span>,
+          <span style="color:#f92672">&#34;level&#34;: </span><span style="color:#ae81ff">1</span>,
+          <span style="color:#f92672">&#34;alterId&#34;: </span><span style="color:#ae81ff">63</span> <span style="color:#75715e"># 建议50-150之间的一个整数</span>
         }
       ]
     }
@@ -210,34 +211,34 @@ if (!doNotTrack) {
 <p>如果希望端口也不一样，请按照如下步骤做：</p>
 <p>首先编辑 /etc/v2ray/config.json 文件，按照”inbounds“格式新增入口和用户。例如新增一个端口和用户后，配置文件变成：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">{
-  <span style="color:#66d9ef">&#34;log&#34;: </span>{
-    <span style="color:#66d9ef">&#34;loglevel&#34;: </span><span style="color:#e6db74">&#34;info&#34;</span>,
-    <span style="color:#66d9ef">&#34;access&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/access.log&#34;</span>,
-    <span style="color:#66d9ef">&#34;error&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/error.log&#34;</span>
+  <span style="color:#f92672">&#34;log&#34;: </span>{
+    <span style="color:#f92672">&#34;loglevel&#34;: </span><span style="color:#e6db74">&#34;info&#34;</span>,
+    <span style="color:#f92672">&#34;access&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/access.log&#34;</span>,
+    <span style="color:#f92672">&#34;error&#34;: </span><span style="color:#e6db74">&#34;/var/log/v2ray/error.log&#34;</span>
   },
-  <span style="color:#66d9ef">&#34;inbounds&#34;: </span>[{
-    <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">8888</span>,
-    <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>,
-    <span style="color:#66d9ef">&#34;settings&#34;: </span>{
-      <span style="color:#66d9ef">&#34;clients&#34;: </span>[
+  <span style="color:#f92672">&#34;inbounds&#34;: </span>[{
+    <span style="color:#f92672">&#34;port&#34;: </span><span style="color:#ae81ff">8888</span>,
+    <span style="color:#f92672">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>,
+    <span style="color:#f92672">&#34;settings&#34;: </span>{
+      <span style="color:#f92672">&#34;clients&#34;: </span>[
         {
-          <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;12345625-xxxx-xxxx-xxxx-75cd3485021f&#34;</span>,
-          <span style="color:#66d9ef">&#34;level&#34;: </span><span style="color:#ae81ff">1</span>,
-          <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">53</span>
+          <span style="color:#f92672">&#34;id&#34;: </span><span style="color:#e6db74">&#34;12345625-xxxx-xxxx-xxxx-75cd3485021f&#34;</span>,
+          <span style="color:#f92672">&#34;level&#34;: </span><span style="color:#ae81ff">1</span>,
+          <span style="color:#f92672">&#34;alterId&#34;: </span><span style="color:#ae81ff">53</span>
         }
       ]
     }
   }, <span style="color:#75715e"># 逗号不能省，原来这里是&#34;}],&#34;</span>
   <span style="color:#75715e"># 以下是新增的配置</span>
   {
-    <span style="color:#66d9ef">&#34;port&#34;: </span><span style="color:#ae81ff">8889</span>, <span style="color:#75715e"># 端口是1000-65535之间的一个整数</span>
-    <span style="color:#66d9ef">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>, <span style="color:#75715e"># 也可以改成其他协议，如果你知道怎么配置的话</span>
-    <span style="color:#66d9ef">&#34;settings&#34;: </span>{
-      <span style="color:#66d9ef">&#34;clients&#34;: </span>[
+    <span style="color:#f92672">&#34;port&#34;: </span><span style="color:#ae81ff">8889</span>, <span style="color:#75715e"># 端口是1000-65535之间的一个整数</span>
+    <span style="color:#f92672">&#34;protocol&#34;: </span><span style="color:#e6db74">&#34;vmess&#34;</span>, <span style="color:#75715e"># 也可以改成其他协议，如果你知道怎么配置的话</span>
+    <span style="color:#f92672">&#34;settings&#34;: </span>{
+      <span style="color:#f92672">&#34;clients&#34;: </span>[
         {
-          <span style="color:#66d9ef">&#34;id&#34;: </span><span style="color:#e6db74">&#34;12345625-xxxx-xxxx-xxxx-75cd3485021f&#34;</span>, <span style="color:#75715e"># id可以用 /usr/bin/v2ray/v2ctl uuid生成</span>
-          <span style="color:#66d9ef">&#34;level&#34;: </span><span style="color:#ae81ff">1</span>, <span style="color:#75715e"># 0或1都可以</span>
-          <span style="color:#66d9ef">&#34;alterId&#34;: </span><span style="color:#ae81ff">57</span> <span style="color:#75715e"># 建议50-150之间的一个整数</span>
+          <span style="color:#f92672">&#34;id&#34;: </span><span style="color:#e6db74">&#34;12345625-xxxx-xxxx-xxxx-75cd3485021f&#34;</span>, <span style="color:#75715e"># id可以用 /usr/bin/v2ray/v2ctl uuid生成</span>
+          <span style="color:#f92672">&#34;level&#34;: </span><span style="color:#ae81ff">1</span>, <span style="color:#75715e"># 0或1都可以</span>
+          <span style="color:#f92672">&#34;alterId&#34;: </span><span style="color:#ae81ff">57</span> <span style="color:#75715e"># 建议50-150之间的一个整数</span>
         }
       ]
     }
@@ -268,7 +269,7 @@ if (!doNotTrack) {
 		<img alt="络壳 avatar" src="/sheep2.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name">About 络壳</span>
+		<span class="authorbox__name"></span>
 	</div>
 	<div class="authorbox__description">
 		按照自己的方式，去度过人生

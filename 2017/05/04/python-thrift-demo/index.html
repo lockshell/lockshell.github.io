@@ -10,9 +10,10 @@
 	<meta property="og:title" content="Python Thrift 示例" />
 <meta property="og:description" content="Python Thrift Demo" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2017/05/04/python-thrift-demo/" />
+<meta property="og:url" content="https://lockshell.com/2017/05/04/python-thrift-demo/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2017-05-04T01:28:34+08:00" />
 <meta property="article:modified_time" content="2017-05-04T01:28:34+08:00" />
+
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python Thrift 示例"/>
@@ -185,7 +186,7 @@ service HelloService {
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HelloServiceHandler</span>:
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">say</span>(self, msg):
         ret <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Received: &#34;</span> <span style="color:#f92672">+</span> msg
-        <span style="color:#66d9ef">print</span> ret
+        print ret
         <span style="color:#66d9ef">return</span> ret
 
 
@@ -197,9 +198,9 @@ pfactory <span style="color:#f92672">=</span> TBinaryProtocol<span style="color:
 
 server <span style="color:#f92672">=</span> TServer<span style="color:#f92672">.</span>TSimpleServer(processor, transport, tfactory, pfactory)
 
-<span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#34;Starting thrift server in python...&#34;</span>
+print <span style="color:#e6db74">&#34;Starting thrift server in python...&#34;</span>
 server<span style="color:#f92672">.</span>serve()
-<span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#34;done!&#34;</span>
+print <span style="color:#e6db74">&#34;done!&#34;</span>
 
 </code></pre></div><h2 id="client">client</h2>
 <pre><code># coding: utf-8
@@ -276,7 +277,7 @@ Received: Hello!
 		<img alt="络壳 avatar" src="/sheep2.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name">About 络壳</span>
+		<span class="authorbox__name"></span>
 	</div>
 	<div class="authorbox__description">
 		按照自己的方式，去度过人生

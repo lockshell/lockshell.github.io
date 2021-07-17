@@ -6,11 +6,7 @@
     <description>Recent content in Go语言 on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 11 May 2021 18:29:31 +0800</lastBuildDate>
-    
-	<atom:link href="https://lockshell.com/categories/go%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 11 May 2021 18:29:31 +0800</lastBuildDate><atom:link href="https://lockshell.com/categories/go%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>优雅的关闭golang server</title>
       <link>https://lockshell.com/2021/05/11/go-server-shutdown-gracefully/</link>

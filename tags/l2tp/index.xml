@@ -6,11 +6,7 @@
     <description>Recent content in L2TP on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 14 Dec 2019 23:27:05 +0800</lastBuildDate>
-    
-	<atom:link href="https://lockshell.com/tags/l2tp/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 14 Dec 2019 23:27:05 +0800</lastBuildDate><atom:link href="https://lockshell.com/tags/l2tp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一键安装L2TP VPN</title>
       <link>https://lockshell.com/2019/12/14/vpn-l2tp-setup/</link>

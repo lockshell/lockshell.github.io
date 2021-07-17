@@ -10,9 +10,10 @@
 	<meta property="og:title" content="Django QuerySet高效读取百万行数据" />
 <meta property="og:description" content="Fetch huge data (millions rows) by Django QuerySet in a memory efficient way" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2019/09/17/django-fetch-huge-data-by-queryset/" />
+<meta property="og:url" content="https://lockshell.com/2019/09/17/django-fetch-huge-data-by-queryset/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-09-17T21:21:27+08:00" />
 <meta property="article:modified_time" content="2019-09-17T21:21:27+08:00" />
+
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Django QuerySet高效读取百万行数据"/>
@@ -133,8 +134,8 @@ While this is somewhat heavier on the database (multiple queries) it seriously r
 </span><span style="color:#e6db74">	:param int chunk_size:
 </span><span style="color:#e6db74">	&#34;&#34;&#34;</span>
 	queryset <span style="color:#f92672">=</span> table<span style="color:#f92672">.</span>objects
-	end_pk <span style="color:#f92672">=</span> queryset<span style="color:#f92672">.</span>filter(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)<span style="color:#f92672">.</span>order_by(<span style="color:#e6db74">&#39;-pk&#39;</span>)<span style="color:#f92672">.</span>values_list(<span style="color:#e6db74">&#39;pk&#39;</span>, flat<span style="color:#f92672">=</span>True)<span style="color:#f92672">.</span>first()
-	<span style="color:#66d9ef">if</span> end_pk <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+	end_pk <span style="color:#f92672">=</span> queryset<span style="color:#f92672">.</span>filter(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)<span style="color:#f92672">.</span>order_by(<span style="color:#e6db74">&#39;-pk&#39;</span>)<span style="color:#f92672">.</span>values_list(<span style="color:#e6db74">&#39;pk&#39;</span>, flat<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>first()
+	<span style="color:#66d9ef">if</span> end_pk <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
 		<span style="color:#66d9ef">while</span> start_pk <span style="color:#f92672">&lt;</span> end_pk:
 			objs <span style="color:#f92672">=</span> queryset<span style="color:#f92672">.</span>filter(pk__gt<span style="color:#f92672">=</span>start_pk, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)<span style="color:#f92672">.</span>order_by(<span style="color:#e6db74">&#39;pk&#39;</span>)[:chunk_size]
 			<span style="color:#66d9ef">for</span> obj <span style="color:#f92672">in</span> objs:
@@ -179,7 +180,7 @@ When doing <code>LIMIT 1 OFFSET 1000000</code> the MySQL server will fetch 10000
 		<img alt="络壳 avatar" src="/sheep2.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name">About 络壳</span>
+		<span class="authorbox__name"></span>
 	</div>
 	<div class="authorbox__description">
 		按照自己的方式，去度过人生

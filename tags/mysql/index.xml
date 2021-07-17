@@ -6,11 +6,7 @@
     <description>Recent content in MySQL on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 28 Aug 2019 02:40:57 +0800</lastBuildDate>
-    
-	<atom:link href="https://lockshell.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 28 Aug 2019 02:40:57 +0800</lastBuildDate><atom:link href="https://lockshell.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Django数据库连接池</title>
       <link>https://lockshell.com/2019/08/28/django-db-connection-pool/</link>
@@ -44,7 +40,7 @@
       <pubDate>Fri, 23 Aug 2019 22:42:49 +0800</pubDate>
       
       <guid>https://lockshell.com/2019/08/23/mysql-optimization-of-backend/</guid>
-      <description>基本思路 **首先是如何定位性能瓶颈？** 一般使用show命令、慢查询日志、explain、profiling等进行分析。 当服务器的负载增加时</description>
+      <description>基本思路 首先是如何定位性能瓶颈？ 一般使用show命令、慢查询日志、explain、profiling等进行分析。 当服务器的负载增加时，使用S</description>
     </item>
     
     <item>

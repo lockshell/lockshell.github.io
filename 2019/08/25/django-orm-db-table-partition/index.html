@@ -10,9 +10,10 @@
 	<meta property="og:title" content="Django数据库分表" />
 <meta property="og:description" content="Python Django ORM MySQL DataBase Table partition" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2019/08/25/django-orm-db-table-partition/" />
+<meta property="og:url" content="https://lockshell.com/2019/08/25/django-orm-db-table-partition/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-08-25T10:37:30+08:00" />
 <meta property="article:modified_time" content="2019-08-25T10:37:30+08:00" />
+
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Django数据库分表"/>
@@ -153,8 +154,8 @@ if (!doNotTrack) {
     <span style="color:#66d9ef">pass</span>
 </code></pre></div><p><code>from_queryset</code>的源码如下</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#a6e22e">@classmethod</span>
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">from_queryset</span>(cls, queryset_class, class_name<span style="color:#f92672">=</span>None):
-        <span style="color:#66d9ef">if</span> class_name <span style="color:#f92672">is</span> None:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">from_queryset</span>(cls, queryset_class, class_name<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+        <span style="color:#66d9ef">if</span> class_name <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
             class_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">From</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (cls<span style="color:#f92672">.</span>__name__, queryset_class<span style="color:#f92672">.</span>__name__)
         <span style="color:#66d9ef">return</span> type(class_name, (cls,), {
             <span style="color:#e6db74">&#39;_queryset_class&#39;</span>: queryset_class,
@@ -168,7 +169,7 @@ if (!doNotTrack) {
 最直接的思路就是声明三个<code>User Model</code>，然后在<code>Meta</code>类中，指定不同的<code>db_table</code>。在查询的时候，根据user_id返回具体的Model。</p>
 <p>实现方法如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>(models<span style="color:#f92672">.</span>Model):
-    user_id <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>IntegerField(primary_key<span style="color:#f92672">=</span>True)
+    user_id <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>IntegerField(primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
     user_name <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
     password <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
 
@@ -225,7 +226,7 @@ TABLE_NUM <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</sp
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>(models<span style="color:#f92672">.</span>Model):
     <span style="color:#a6e22e">@classmethod</span>
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_db_model</span>(cls, user_id<span style="color:#f92672">=</span>None):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_db_model</span>(cls, user_id<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
         suffix <span style="color:#f92672">=</span> user_id <span style="color:#f92672">%</span> TABLE_NUM
         table_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;user_</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> suffix
         <span style="color:#66d9ef">if</span> table_name <span style="color:#f92672">in</span> cls<span style="color:#f92672">.</span>_user_model_dict:
@@ -249,7 +250,7 @@ TABLE_NUM <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</sp
     password <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
 
     <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>:
-        abstract <span style="color:#f92672">=</span> True
+        abstract <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
 </code></pre></div><p>嗯，看起来不错，我们已经不需要用复制粘贴来定义1000个类了，而且实现同样的功能代码短了不少。</p>
 <p>依然可通过如下的方式获取数据：</p>
 <pre><code>db_model = User.get_user_db_model(user_id)
@@ -263,7 +264,7 @@ TABLE_NUM <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</sp
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>(models<span style="color:#f92672">.</span>Model):
     <span style="color:#a6e22e">@classmethod</span>
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_db_model</span>(cls, user_id<span style="color:#f92672">=</span>None):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_db_model</span>(cls, user_id<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
         suffix <span style="color:#f92672">=</span> user_id <span style="color:#f92672">%</span> TABLE_NUM
         table_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;user_</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> suffix
         <span style="color:#66d9ef">if</span> table_name <span style="color:#f92672">in</span> cls<span style="color:#f92672">.</span>_user_model_dict:
@@ -283,12 +284,12 @@ TABLE_NUM <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</sp
 
     _user_model_dict <span style="color:#f92672">=</span> {}
     
-    user_id <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>IntegerField(primary_key<span style="color:#f92672">=</span>True)
+    user_id <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>IntegerField(primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
     user_name <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
     password <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>)
     
     <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Meta</span>:
-        abstract <span style="color:#f92672">=</span> True
+        abstract <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
 </code></pre></div><p>我们定义了一个私有变量<code>_user_model_dict</code>，以table_name作为key，model对象作为值，把已经创建的Model类都缓存下来。</p>
 <p>但到了这里还是有点麻烦。</p>
 <ol>
@@ -328,7 +329,7 @@ user <span style="color:#f92672">=</span> db_model<span style="color:#f92672">.<
         model_name <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;_</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> shard_key
 
         model_class <span style="color:#f92672">=</span> cls<span style="color:#f92672">.</span>_shard_db_models<span style="color:#f92672">.</span>get(model_name)
-        <span style="color:#66d9ef">if</span> model_class <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+        <span style="color:#66d9ef">if</span> model_class <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
             <span style="color:#66d9ef">return</span> model_class
 
         <span style="color:#75715e"># Deep copy attrs</span>
@@ -404,7 +405,7 @@ user <span style="color:#f92672">=</span> db_model<span style="color:#f92672">.<
 		<img alt="络壳 avatar" src="/sheep2.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name">About 络壳</span>
+		<span class="authorbox__name"></span>
 	</div>
 	<div class="authorbox__description">
 		按照自己的方式，去度过人生

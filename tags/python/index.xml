@@ -6,11 +6,7 @@
     <description>Recent content in Python on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 10 Dec 2019 17:39:40 +0800</lastBuildDate>
-    
-	<atom:link href="https://lockshell.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 10 Dec 2019 17:39:40 +0800</lastBuildDate><atom:link href="https://lockshell.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python生成随机密码</title>
       <link>https://lockshell.com/2019/12/10/python-generate-random-password/</link>

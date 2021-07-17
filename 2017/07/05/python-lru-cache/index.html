@@ -10,9 +10,10 @@
 	<meta property="og:title" content="Python实现LRU Cache" />
 <meta property="og:description" content="Python LRU Cache" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2017/07/05/python-lru-cache/" />
+<meta property="og:url" content="https://lockshell.com/2017/07/05/python-lru-cache/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2017-07-05T13:26:07+08:00" />
 <meta property="article:modified_time" content="2017-07-05T13:26:07+08:00" />
+
 
 	<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python实现LRU Cache"/>
@@ -137,7 +138,7 @@ if (!doNotTrack) {
             val <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>cache<span style="color:#f92672">.</span>pop(key)
             self<span style="color:#f92672">.</span>cache[key] <span style="color:#f92672">=</span> val
         <span style="color:#66d9ef">else</span>:
-            val <span style="color:#f92672">=</span> None
+            val <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
 
         <span style="color:#66d9ef">return</span> val
 
@@ -147,7 +148,7 @@ if (!doNotTrack) {
             self<span style="color:#f92672">.</span>cache[key] <span style="color:#f92672">=</span> val
         <span style="color:#66d9ef">else</span>:
             <span style="color:#66d9ef">if</span> len(self<span style="color:#f92672">.</span>cache) <span style="color:#f92672">==</span> self<span style="color:#f92672">.</span>size:
-                self<span style="color:#f92672">.</span>cache<span style="color:#f92672">.</span>popitem(last<span style="color:#f92672">=</span>False)
+                self<span style="color:#f92672">.</span>cache<span style="color:#f92672">.</span>popitem(last<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
                 self<span style="color:#f92672">.</span>cache[key] <span style="color:#f92672">=</span> val
             <span style="color:#66d9ef">else</span>:
                 self<span style="color:#f92672">.</span>cache[key] <span style="color:#f92672">=</span> val
@@ -164,11 +165,11 @@ if (!doNotTrack) {
         <span style="color:#f92672">import</span> random
 
         i <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">20</span>)
-        <span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#39;cache&#39;</span>, cache<span style="color:#f92672">.</span>cache<span style="color:#f92672">.</span>keys()
+        print <span style="color:#e6db74">&#39;cache&#39;</span>, cache<span style="color:#f92672">.</span>cache<span style="color:#f92672">.</span>keys()
         <span style="color:#66d9ef">if</span> cache<span style="color:#f92672">.</span>get(i):
-            <span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#39;hit, </span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> i
+            print <span style="color:#e6db74">&#39;hit, </span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> i
         <span style="color:#66d9ef">else</span>:
-            <span style="color:#66d9ef">print</span> <span style="color:#e6db74">&#39;not hit, </span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> i
+            print <span style="color:#e6db74">&#39;not hit, </span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> i
 
 </code></pre></div><p>这个实现存在的问题：</p>
 <ol>
@@ -197,7 +198,7 @@ if (!doNotTrack) {
 		<img alt="络壳 avatar" src="/sheep2.jpg" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
-		<span class="authorbox__name">About 络壳</span>
+		<span class="authorbox__name"></span>
 	</div>
 	<div class="authorbox__description">
 		按照自己的方式，去度过人生
