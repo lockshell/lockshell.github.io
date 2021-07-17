@@ -6,7 +6,16 @@
     <description>Recent content on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 17 Jul 2021 22:07:41 +0800</lastBuildDate><atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Jul 2021 22:35:09 +0800</lastBuildDate><atom:link href="https://lockshell.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于程序员副业的思考</title>
+      <link>https://lockshell.com/2021/07/17/side-project/</link>
+      <pubDate>Sat, 17 Jul 2021 22:35:09 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2021/07/17/side-project/</guid>
+      <description>尽量不要做仅出卖时间和体力的副业，要做可以增长可以复利的副业。 副业模式 教他人 网课，写书，写博客 自主产品 自主产品，用简单的技术能力满足很多小客</description>
+    </item>
+    
     <item>
       <title>Gin绑定Http GET查询参数</title>
       <link>https://lockshell.com/2021/07/17/go-gin-bind-query-params/</link>
@@ -571,7 +580,7 @@
       <pubDate>Mon, 12 Aug 2019 13:38:32 +0800</pubDate>
       
       <guid>https://lockshell.com/archives/</guid>
-      <description>很好，总共写了73篇日志，继续加油哦！ 2021-07 2021-07-17 Gin绑定Http GET查询参数 2021-06 2021-06-06 好未来能否再有好未来？ 2021-05 2021-05-11 优雅的关闭golang server 2021-04 2021-04-13 git diff 中文</description>
+      <description>很好，总共写了74篇日志，继续加油哦！ 2021-07 2021-07-17 Gin绑定Http GET查询参数 2021-07-17 关于程序员副业的思考 2021-06 2021-06-06 好未来能否再有好未来？ 2021-05 2021-05-11 优雅的关闭go</description>
     </item>
     
     <item>

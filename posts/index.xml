@@ -8,6 +8,15 @@
     <language>zh-cn</language>
     <lastBuildDate>Sat, 17 Aug 2019 16:44:38 +0800</lastBuildDate><atom:link href="https://lockshell.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>关于程序员副业的思考</title>
+      <link>https://lockshell.com/2021/07/17/side-project/</link>
+      <pubDate>Sat, 17 Jul 2021 22:35:09 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2021/07/17/side-project/</guid>
+      <description>尽量不要做仅出卖时间和体力的副业，要做可以增长可以复利的副业。 副业模式 教他人 网课，写书，写博客 自主产品 自主产品，用简单的技术能力满足很多小客</description>
+    </item>
+    
+    <item>
       <title>Gin绑定Http GET查询参数</title>
       <link>https://lockshell.com/2021/07/17/go-gin-bind-query-params/</link>
       <pubDate>Sat, 17 Jul 2021 22:07:41 +0800</pubDate>

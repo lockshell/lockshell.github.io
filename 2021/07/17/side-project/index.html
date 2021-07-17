@@ -4,20 +4,20 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Add Gitalk for comments in Hugo Blog - 络壳 LockShell</title>
+	<title>关于程序员副业的思考 - 络壳 LockShell</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Add Gitalk for comments in Hugo Blog">
-	<meta property="og:title" content="Add Gitalk for comments in Hugo Blog" />
-<meta property="og:description" content="Add Gitalk for comments in Hugo Blog" />
+	<meta name="description" content="Side Project">
+	<meta property="og:title" content="关于程序员副业的思考" />
+<meta property="og:description" content="Side Project" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lockshell.com/2019/08/10/add-gitalk-for-hugo-blog/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-08-10T11:12:00+08:00" />
-<meta property="article:modified_time" content="2019-08-10T11:12:00+08:00" />
+<meta property="og:url" content="https://lockshell.com/2021/07/17/side-project/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-17T22:35:09+08:00" />
+<meta property="article:modified_time" content="2021-07-17T22:35:09+08:00" />
 
 
 	<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Add Gitalk for comments in Hugo Blog"/>
-<meta name="twitter:description" content="Add Gitalk for comments in Hugo Blog"/>
+<meta name="twitter:title" content="关于程序员副业的思考"/>
+<meta name="twitter:description" content="Side Project"/>
 
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -103,80 +103,50 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Add Gitalk for comments in Hugo Blog</h1>
+			<h1 class="post__title">关于程序员副业的思考</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg>
-	<time class="meta__text" datetime="2019-08-10T11:12:00&#43;08:00">2019-08-10</time>
+	<time class="meta__text" datetime="2021-07-17T22:35:09&#43;08:00">2021-07-17</time>
 </div>
 
 <div class="meta__item-categories meta__item">
 	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-	<span class="meta__text"><a class="meta__link" href="/categories/hugo/" rel="category">Hugo</a>
+	<span class="meta__text"><a class="meta__link" href="/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/" rel="category">技术人生</a>
 	</span>
 </div>
-<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 354 words</span>
+<span class="meta__text post-word-count" style="margin: 20px 0 0 10px"> 380 words</span>
 </div>
 		</header><div id="custom-content" class="custom-content content post__content clearfix">
-			<p><code>Gitalk</code> is a comment plug based on Github issue api.
-<code>Hugo</code> can compile the Markdown files with themes and templates into static web files, such as CSS, HTML and JavaScript.</p>
-<p>To use <code>Gitalk</code> in the <code>Hugo</code> blog, we need to add Gitalk related code as <code>&lt;div&gt;</code> into the HTML template.
-Then update the config.toml for <code>Gitalk</code>.</p>
-<h2 id="create-github-application">Create Github Application</h2>
-<p>Firstly, you should create Github Application on Github.
-Yon can refer to the official sites below for more information.</p>
+			<p>尽量不要做仅出卖时间和体力的副业，要做可以增长可以复利的副业。</p>
+<h2 id="副业模式">副业模式</h2>
+<h3 id="教他人">教他人</h3>
+<p>网课，写书，写博客</p>
+<h3 id="自主产品">自主产品</h3>
+<p>自主产品，用简单的技术能力满足很多小客户的需求；解决用户痛点的小工具。</p>
+<p>比如你找到一个需求，做个网站、小程序，可能不需要什么高深的技术，更重要的你是否挠到了用户的痒处，让他愿意付费。</p>
+<h3 id="渠道模式">渠道模式</h3>
+<p>渠道，比如公众号，可以依靠鉴赏能力、选题、运营能力，做聚合内容；</p>
+<h3 id="外包模式">外包模式</h3>
+<p>帮人做需求是分层的，也有一些简单的需求，如做小程序、做小网站，工作一两年就可以做；
+SEO 可以做长尾关键字引流。</p>
+<h2 id="副业产品形态">副业产品形态</h2>
+<h3 id="能力圈范围内做独占且有知识壁垒的产品">能力圈范围内，做独占且有知识壁垒的产品</h3>
 <ul>
-<li><a href="https://github.com/gitalk/gitalk/">https://github.com/gitalk/gitalk/</a></li>
-<li><a href="https://gitalk.github.io/">https://gitalk.github.io/</a></li>
+<li>程序员会开发技术，普通人不会</li>
 </ul>
-<p>Then you can get Client ID and Client Secret.</p>
-<h2 id="create-gitalk-comments-template">Create Gitalk Comments Template</h2>
-<pre><code>{{ if .Site.Params.enableGitalk }}
-&lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/gitalk/dist/gitalk.css&quot;&gt;
-&lt;script src=&quot;https://unpkg.com/gitalk/dist/gitalk.min.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-  const gitalk = new Gitalk({
-    clientID: '{{ .Site.Params.Gitalk.clientID }}',
-    clientSecret: '{{ .Site.Params.Gitalk.clientSecret }}',
-    repo: '{{ .Site.Params.Gitalk.repo }}',
-    owner: '{{ .Site.Params.Gitalk.owner }}',
-    admin: ['{{ .Site.Params.Gitalk.owner }}'],
-    id: location.pathname, // Ensure uniqueness and length less than 50
-    distractionFreeMode: false // Facebook-like distraction free mode
-  });
-  (function() {
-    if ([&quot;localhost&quot;, &quot;127.0.0.1&quot;].indexOf(window.location.hostname) != -1) {
-      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
-      return;
-    }
-    gitalk.render('gitalk-container');
-  })();
-&lt;/script&gt;
-{{ end }}
-</code></pre><p>I&rsquo;m using the <code>Mainroad</code> theme, so I just overwrite the <code>comments.html</code> with the code above.</p>
-<h2 id="update-configtoml">Update config.toml</h2>
-<pre><code>[params]
-  enableGitalk = true
-  
-[params.gitalk]
-    clientID = &quot;[Client ID]&quot; # Your client ID
-    clientSecret = &quot;[Client Secret]&quot; # Your client secret
-    repo = &quot;&quot; # The repo to store comments
-    owner = &quot;&quot; # Your GitHub ID
-    admin= &quot;&quot; # Required. Github repository owner and collaborators. (Users who having write access to this repository)
-    id= &quot;location.pathname&quot; # The unique id of the page.
-    labels= &quot;gitalk&quot; # Github issue labels. If you used to use Gitment, you can change it
-    perPage= 15 # Pagination size, with maximum 100.
-    pagerDirection= &quot;last&quot; # Comment sorting direction, available values are 'last' and 'first'.
-    createIssueManually= false # If it is 'false', it is auto to make a Github issue when the administrators login.
-    distractionFreeMode= false # Enable hot key (cmd|ctrl + enter) submit comment.
-</code></pre><ul>
-<li>replace [Client ID] with Github Application&rsquo;s Client ID</li>
-<li>replace [Client Secret] with Github Application&rsquo;s Client Secret</li>
-<li>set repo to your blog address</li>
-<li>set owner and admin to your GitHub ID</li>
+<h3 id="可以多次售卖的产品">可以多次售卖的产品</h3>
+<ul>
+<li>app软件</li>
+<li>edu网课</li>
+<li>web网站</li>
+<li>写书等</li>
 </ul>
+<h3 id="自动化交易的产品">自动化交易的产品</h3>
+<p>自动售卖，无需配置，躺着都有交易。千万别做客服，别自己做销售员。</p>
+<h4 id="迭代产品做市场增量">迭代产品，做市场增量</h4>
+<p>对于已经成熟的商业模式，逐步迭代升级产品，拓展功能和用户覆盖</p>
+
 			<div style="color: grey">本文由 <a target="_blank" href="https://lockshell.com/">络壳</a> 原创或整理，转载请注明出处</div>
 			<hr>
 		</div>
@@ -185,7 +155,7 @@ Yon can refer to the official sites below for more information.</p>
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/hugo/" rel="tag">Hugo</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/other/" rel="tag">other</a></li>
 	</ul>
 </div>
 		</footer>
@@ -206,10 +176,7 @@ Yon can refer to the official sites below for more information.</p>
 
 <nav class="post-nav flex">
 	<div class="post-nav__item post-nav__item--prev">
-		<a class="post-nav__link" href="/2019/08/10/display-word-count-in-hugo-blog/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Display Word Count in Hugo Blog</p></a>
-	</div>
-	<div class="post-nav__item post-nav__item--next">
-		<a class="post-nav__link" href="/2019/08/13/programmer-self-discipline/" rel="next"><span class="post-nav__caption">Next&thinsp;»</span><p class="post-nav__post-title">程序员的自我修养</p></a>
+		<a class="post-nav__link" href="/2021/07/17/go-gin-bind-query-params/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Gin绑定Http GET查询参数</p></a>
 	</div>
 </nav>
 

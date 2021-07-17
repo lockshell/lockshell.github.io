@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lockshell.com/categories/</loc>
-    <lastmod>2021-07-17T22:07:41+08:00</lastmod>
+    <lastmod>2021-07-17T22:35:09+08:00</lastmod>
+  </url><url>
+    <loc>https://lockshell.com/tags/other/</loc>
+    <lastmod>2021-07-17T22:35:09+08:00</lastmod>
+  </url><url>
+    <loc>https://lockshell.com/tags/</loc>
+    <lastmod>2021-07-17T22:35:09+08:00</lastmod>
+  </url><url>
+    <loc>https://lockshell.com/2021/07/17/side-project/</loc>
+    <lastmod>2021-07-17T22:35:09+08:00</lastmod>
+  </url><url>
+    <loc>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</loc>
+    <lastmod>2021-07-17T22:35:09+08:00</lastmod>
+  </url><url>
+    <loc>https://lockshell.com/</loc>
+    <lastmod>2021-07-17T22:35:09+08:00</lastmod>
   </url><url>
     <loc>https://lockshell.com/2021/07/17/go-gin-bind-query-params/</loc>
     <lastmod>2021-07-17T22:07:41+08:00</lastmod>
@@ -12,12 +27,6 @@
     <lastmod>2021-07-17T22:07:41+08:00</lastmod>
   </url><url>
     <loc>https://lockshell.com/categories/go%E8%AF%AD%E8%A8%80/</loc>
-    <lastmod>2021-07-17T22:07:41+08:00</lastmod>
-  </url><url>
-    <loc>https://lockshell.com/tags/</loc>
-    <lastmod>2021-07-17T22:07:41+08:00</lastmod>
-  </url><url>
-    <loc>https://lockshell.com/</loc>
     <lastmod>2021-07-17T22:07:41+08:00</lastmod>
   </url><url>
     <loc>https://lockshell.com/tags/invest/</loc>
@@ -44,13 +53,7 @@
     <loc>https://lockshell.com/2021/04/01/go-maximum-int-and-uint/</loc>
     <lastmod>2021-04-01T14:13:48+08:00</lastmod>
   </url><url>
-    <loc>https://lockshell.com/tags/other/</loc>
-    <lastmod>2021-03-19T18:13:35+08:00</lastmod>
-  </url><url>
     <loc>https://lockshell.com/2021/03/19/good-ideas/</loc>
-    <lastmod>2021-03-19T18:13:35+08:00</lastmod>
-  </url><url>
-    <loc>https://lockshell.com/categories/%E6%8A%80%E6%9C%AF%E4%BA%BA%E7%94%9F/</loc>
     <lastmod>2021-03-19T18:13:35+08:00</lastmod>
   </url><url>
     <loc>https://lockshell.com/2021/03/16/work-hard-but-still-live-at-bottom-of-society/</loc>
