@@ -6,7 +6,16 @@
     <description>Recent content in Golang on 络壳 LockShell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 11 May 2021 18:29:31 +0800</lastBuildDate><atom:link href="https://lockshell.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Jul 2021 22:07:41 +0800</lastBuildDate><atom:link href="https://lockshell.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gin绑定Http GET查询参数</title>
+      <link>https://lockshell.com/2021/07/17/go-gin-bind-query-params/</link>
+      <pubDate>Sat, 17 Jul 2021 22:07:41 +0800</pubDate>
+      
+      <guid>https://lockshell.com/2021/07/17/go-gin-bind-query-params/</guid>
+      <description>Get请求处理绑定参数常见方式： query string: abc=123&amp;amp;xyz=456 form表单方式 json方式 Gin通过不同的bind方法来处理参数绑定，示例如下： package main import &amp;#34;log&amp;#34; import &amp;#34;github.com/gin-gonic/gin&amp;#34; type Person struct {</description>
+    </item>
+    
     <item>
       <title>优雅的关闭golang server</title>
       <link>https://lockshell.com/2021/05/11/go-server-shutdown-gracefully/</link>
@@ -17,11 +26,11 @@
     </item>
     
     <item>
-      <title>最大的int uint</title>
-      <link>https://lockshell.com/2021/04/01/maximum-int-and-uint/</link>
+      <title>Golang最大的int uint</title>
+      <link>https://lockshell.com/2021/04/01/go-maximum-int-and-uint/</link>
       <pubDate>Thu, 01 Apr 2021 14:13:48 +0800</pubDate>
       
-      <guid>https://lockshell.com/2021/04/01/maximum-int-and-uint/</guid>
+      <guid>https://lockshell.com/2021/04/01/go-maximum-int-and-uint/</guid>
       <description>uint8 : 0 to 255 uint16 : 0 to 65535 uint32 : 0 to 4294967295 uint64 : 0 to 18446744073709551615 int8 : -128 to 127 int16 : -32768 to 32767 int32 : -2147483648 to 2147483647 int64 : -9223372036854775808 to 9223372036854775807</description>
     </item>
     
